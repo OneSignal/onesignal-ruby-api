@@ -5,7 +5,7 @@ require 'onesignal/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'onesignal'
-  spec.version       = Onesignal::VERSION
+  spec.version       = OneSignal::VERSION
   spec.authors       = ['Bastian Bartmann']
   spec.email         = ['babartmann@gmail.com']
 
