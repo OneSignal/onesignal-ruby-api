@@ -6,25 +6,38 @@ module OneSignal
       @client = client
     end
 
-    def get(path)
-      request(path, Net::HTTP::Get)
+    def get(path, params = {})
+      uri = uri(path)
+
+      if @client.app_id
+        params[:app_id] = @client.app_id
+      end
+
+      uri.query = URI.encode_www_form(params)
+
+      request(uri, Net::HTTP::Get)
     end
 
     def post(path, params)
-      request(path, Net::HTTP::Post, params)
+      uri = uri(path)
+      request(uri(path), Net::HTTP::Post, params)
     end
 
     def put(path, params)
-      request(path, Net::HTTP::Put, params)
+      uri = uri(path)
+      request(uri, Net::HTTP::Put, params)
     end
 
     private
 
-    def request(path, klass, params = nil)
-      uri = URI.parse(OneSignal::Client::BASE_URL + path)
+    def uri(path)
+      URI.parse(OneSignal::Client::BASE_URL + path)
+    end
+
+    def request(uri, klass, params = nil)
       request = klass.new(uri.request_uri)
 
-      if @client.app_id
+      if params && @client.app_id
         params[:app_id] = @client.app_id
       end
 

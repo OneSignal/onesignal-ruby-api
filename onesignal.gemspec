@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Bastian Bartmann']
   spec.email         = ['babartmann@gmail.com']
 
-  spec.summary       = %q{Simple wrapper for the OneSignal API.}
-  spec.description   = %q{Simple wrapper for the OneSignal API.}
+  spec.summary       = 'Simple wrapper for the OneSignal API.'
+  spec.description   = 'Simple wrapper for the OneSignal API.'
   spec.homepage      = 'https://github.com/coding-chimp/onesignal.'
   spec.license       = 'MIT'
 

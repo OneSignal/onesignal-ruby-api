@@ -8,5 +8,5 @@ require 'webmock/minitest'
 WebMock.disable_net_connect!
 
 Dir['./test/support/**/*.rb'].each do |file|
-    require file
+  require file
 end

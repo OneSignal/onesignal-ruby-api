@@ -57,8 +57,8 @@ class AppResourceTest < Minitest::Test
     assert_instance_of String, app.name
     assert_instance_of Fixnum, app.players
     assert_instance_of Fixnum, app.messagable_players
-    assert_instance_of DateTime, app.updated_at
-    assert_instance_of DateTime, app.created_at
+    assert_instance_of Time, app.updated_at
+    assert_instance_of Time, app.created_at
     assert_instance_of String, app.gcm_key
     assert_instance_of String, app.chrome_key
     assert_instance_of String, app.chrome_web_origin

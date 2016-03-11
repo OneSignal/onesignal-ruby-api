@@ -14,13 +14,12 @@ class BaseModelTest < Minitest::Test
   end
 
   def test_initialize
-    attributes = { id: 1, name: 'Test', created_at: '2014-04-01T04:20:02.003Z' }
+    attributes = { id: 1, name: 'Test' }
 
     dummy = DummyModel.new(attributes)
 
     assert_equal attributes[:id], dummy.id
     assert_equal attributes[:name], dummy.name
-    assert_equal DateTime.parse(attributes[:created_at]), dummy.created_at
   end
 
   def test_inspect

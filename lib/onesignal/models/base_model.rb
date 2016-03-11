@@ -1,21 +1,11 @@
-require 'date'
-
 module OneSignal
   class BaseModel
-    DATE_REGEX = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z/
-
     def self.to_proc
       method(:new).to_proc
     end
 
     def initialize(attributes = {})
-      attributes.each do |key, value|
-        if string_date?(value)
-          value = DateTime.parse(value)
-        end
-
-        instance_variable_set("@#{key}", value)
-      end
+      attributes.each { |key, value| send("#{key}=", value) }
     end
 
     def inspect
@@ -24,12 +14,6 @@ module OneSignal
       ]
 
       "<#{self.class.name} #{values}>"
-    end
-
-    private
-
-    def string_date?(date)
-      date.is_a?(String) && date.match(DATE_REGEX)
     end
   end
 end

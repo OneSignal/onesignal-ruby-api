@@ -12,5 +12,17 @@ module OneSignal
     def apps
       @apps ||= AppResource.new(self)
     end
+
+    def players
+      ensure_app_id_presence
+
+      @players ||= PlayerResource.new(self)
+    end
+
+    private
+
+    def ensure_app_id_presence
+      raise AppIdMissingError if app_id.nil?
+    end
   end
 end
