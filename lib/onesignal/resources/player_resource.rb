@@ -1,64 +1,53 @@
 module OneSignal
-  class PlayerResource
-    def initialize(client)
-      @client = client
-    end
-
+  class PlayerResource < BaseResource
     def all(params = {})
-      response = request.get('/players', params)
-      players = JSON.parse(response.body)['players']
+      get('/players', params)
+      players = response_body['players']
 
       players.map(&OneSignal::Player)
     end
 
     def find(id)
-      response = request.get("/players/#{id}")
-      player = JSON.parse(response.body)
+      get("/players/#{id}")
 
-      OneSignal::Player.new(player)
+      OneSignal::Player.new(response_body)
     end
 
     def create(params)
-      response = request.post('/players', params)
+      post('/players', params)
 
-      JSON.parse(response.body)['id']
+      response_body['id']
     end
 
     def update(id, params)
-      request.put("/players/#{id}", params)
+      put("/players/#{id}", params)
 
       true
     end
 
     def on_session(id, params)
-      request.post("/players/#{id}/on_session", params)
+      post("/players/#{id}/on_session", params)
 
       true
     end
 
     def on_purchase(id, params)
-      request.post("/players/#{id}/on_purchase", params)
+      post("/players/#{id}/on_purchase", params)
 
       true
     end
 
     def on_focus(id, params)
-      request.post("/players/#{id}/on_focus", params)
+      post("/players/#{id}/on_focus", params)
 
       true
     end
 
     def csv_export(id)
       params = { app_id: id }
-      response = request.post('/players/csv_export', params)
+      post('/players/csv_export', params)
 
-      JSON.parse(response.body)['csv_file_url']
-    end
-
-    private
-
-    def request
-      @request ||= OneSignal::Request.new(@client)
+      response_body['csv_file_url']
     end
   end
 end

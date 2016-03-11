@@ -6,12 +6,12 @@ require 'onesignal/app_id_missing_error'
 require 'onesignal/models/base_model'
 require 'onesignal/models/app'
 require 'onesignal/models/player'
+require 'onesignal/resources/base_resource'
 require 'onesignal/resources/app_resource'
 require 'onesignal/resources/player_resource'
 
 module OneSignal
-  DEVICE_TYPES = [
-    'ios', 'android', 'amazon', 'mpns', 'chrome_app', 'chrome_website', 'wns',
-    'safari', 'firefox'
-  ]
+  DEVICE_TYPES = %w(
+    ios android amazon mpns chrome_app chrome_website wns safari firefox
+  ).freeze
 end

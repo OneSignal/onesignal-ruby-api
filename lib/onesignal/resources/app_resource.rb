@@ -1,43 +1,27 @@
-require 'json'
-
 module OneSignal
-  class AppResource
-    def initialize(client)
-      @client = client
-    end
-
+  class AppResource < BaseResource
     def all
-      response = request.get('/apps')
-      apps = JSON.parse(response.body)
+      get('/apps')
 
-      apps.map(&OneSignal::App)
+      response_body.map(&OneSignal::App)
     end
 
     def find(id)
-      response = request.get("/apps/#{id}")
-      app = JSON.parse(response.body)
+      get("/apps/#{id}")
 
-      OneSignal::App.new(app)
+      OneSignal::App.new(response_body)
     end
 
     def create(params)
-      response = request.post('/apps', params)
-      app = JSON.parse(response.body)
+      post('/apps', params)
 
-      OneSignal::App.new(app)
+      OneSignal::App.new(response_body)
     end
 
     def update(id, params)
-      response = request.put("/apps/#{id}", params)
-      app = JSON.parse(response.body)
+      put("/apps/#{id}", params)
 
-      OneSignal::App.new(app)
-    end
-
-    private
-
-    def request
-      @request ||= OneSignal::Request.new(@client)
+      OneSignal::App.new(response_body)
     end
   end
 end
