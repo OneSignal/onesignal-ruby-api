@@ -19,6 +19,12 @@ module OneSignal
       @players ||= PlayerResource.new(self)
     end
 
+    def notifications
+      ensure_app_id_presence
+
+      @notifications ||= NotificationResource.new(self)
+    end
+
     private
 
     def ensure_app_id_presence

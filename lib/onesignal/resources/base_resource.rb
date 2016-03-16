@@ -20,6 +20,10 @@ module OneSignal
       @response = request.post(path, params)
     end
 
+    def delete(path)
+      @response = request.delete(path)
+    end
+
     def request
       @request ||= OneSignal::Request.new(@client)
     end

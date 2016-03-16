@@ -18,4 +18,16 @@ class ClientTest < Minitest::Test
 
     assert_raises(OneSignal::AppIdMissingError) { client.players }
   end
+
+  def test_notifications_returns_a_notification_resource
+    client = OneSignal::Client.new(auth_token: 'test', app_id: '1')
+
+    assert_instance_of OneSignal::NotificationResource, client.notifications
+  end
+
+  def test_notifications_throws_error_when_app_id_missing
+    client = OneSignal::Client.new(auth_token: 'test')
+
+    assert_raises(OneSignal::AppIdMissingError) { client.notifications }
+  end
 end

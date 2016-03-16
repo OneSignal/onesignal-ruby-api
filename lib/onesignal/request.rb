@@ -28,6 +28,18 @@ module OneSignal
       request(uri, Net::HTTP::Put, params)
     end
 
+    def delete(path, params = {})
+      uri = uri(path)
+
+      if @client.app_id
+        params[:app_id] = @client.app_id
+      end
+
+      uri.query = URI.encode_www_form(params)
+
+      request(uri, Net::HTTP::Delete, params)
+    end
+
     private
 
     def uri(path)

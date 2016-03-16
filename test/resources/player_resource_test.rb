@@ -9,7 +9,8 @@ class PlayerResourceTest < Minitest::Test
   end
 
   def test_all
-    stub_do_api('/players?app_id=2', :get).to_return(body: api_fixture('players/all'))
+    stub_do_api('/players?app_id=2', :get)
+      .to_return(body: api_fixture('players/all'))
     players = @resource.all
 
     players.each { |player| assert_instance_of OneSignal::Player, player }
