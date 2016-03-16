@@ -52,8 +52,8 @@ class NotificationResourceTest < Minitest::Test
     params = {
       app_id: '5eb5a37e-b458-11e3-ac11-000c2940e62c',
       included_segments: ['All'],
-      data: {foo: 'bar'},
-      contents: {en: 'English Message'}
+      data: { foo: 'bar' },
+      contents: { en: 'English Message' }
     }
 
     assert_instance_of Hash, @resource.create(params)

@@ -36,7 +36,8 @@ class PlayerResourceTest < Minitest::Test
   end
 
   def test_create
-    stub_do_api('/players', :post).to_return(body: api_fixture('players/create'))
+    stub_do_api('/players', :post)
+      .to_return(body: api_fixture('players/create'))
     params = {
       app_id: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
       identifier: 'ce777617da7f548fe7a9ab6febb56cf39fba6d382000c0395666288d961ee566',
@@ -86,7 +87,7 @@ class PlayerResourceTest < Minitest::Test
   def test_on_purchase
     stub_do_api('/players/27/on_purchase', :post)
       .to_return(body: api_fixture('players/on_purchase'))
-    params = { purchases: [{ sku: "SKU123", iso: "USD", amount: "0.99" }] }
+    params = { purchases: [{ sku: 'SKU123', iso: 'USD', amount: '0.99' }] }
 
     assert_equal true, @resource.on_purchase(27, params)
   end

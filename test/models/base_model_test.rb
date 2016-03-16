@@ -25,6 +25,6 @@ class BaseModelTest < Minitest::Test
   def test_inspect
     dummy = DummyModel.new(id: 1)
 
-    assert_equal "<DummyModel {:@id=>1}>", dummy.inspect
+    assert_equal '<DummyModel {:@id=>1}>', dummy.inspect
   end
 end

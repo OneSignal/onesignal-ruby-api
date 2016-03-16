@@ -1,2 +1,17 @@
 AllCops:
   TargetRubyVersion: 2.1
+
+ClassLength:
+  Enabled: false
+
+Documentation:
+  Enabled: false
+
+IfUnlessModifier:
+  Enabled: false
+
+MethodLength:
+  Enabled: false
+
+NumericLiterals:
+  Enabled: false

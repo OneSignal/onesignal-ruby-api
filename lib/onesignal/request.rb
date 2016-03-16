@@ -20,7 +20,7 @@ module OneSignal
 
     def post(path, params)
       uri = uri(path)
-      request(uri(path), Net::HTTP::Post, params)
+      request(uri, Net::HTTP::Post, params)
     end
 
     def put(path, params)

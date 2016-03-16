@@ -19,4 +19,3 @@ module OneSignal
     end
   end
 end
-
