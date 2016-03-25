@@ -16,4 +16,8 @@ module OneSignal
   DEVICE_TYPES = %w(
     ios android amazon mpns chrome_app chrome_website wns safari firefox
   ).freeze
+
+  def self.device_type_as_integer(device_type)
+    DEVICE_TYPES.index(device_type)
+  end
 end
