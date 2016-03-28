@@ -2,9 +2,7 @@
 
 [![Build Status][trb]][trl] [![Code Climate][ccb]][ccl]
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/onesignal`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+OneSignal is a simple ruby wrapper for the [OneSignal API][osa].
 
 ## Installation
 
@@ -24,24 +22,118 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+You can find your auth keys and app IDs on the Account Management page when
+you're logged into OneSignal. With those at hand, you can create a client.
 
-## Development
+```ruby
+client = OneSignal::Client.new((auth_token: 'AUTH_TOKEN', app_id: 'APP_ID')
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+### Design
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+This gem follows a strict design of resoures as methods on your client. For
+examples, for apps, you will call your client like this:
+
+```ruby
+client = OneSignal::Client.new(auth_token: 'AUTH_TOKEN')
+client.apps #=> AppResource
+```
+
+It will return objects that contain the information provided by the API. For
+example:
+
+```ruby
+client = OneSignal::Client.new(auth_token: 'AUTH_TOKEN')
+client.apps.all
+# => [ OneSignal::App(id: '92911750-242d-4260-9e00-9d9034f139ce', name: 'Your App 1', ...), OneSignal::App(id: 'e4e87830-b954-11e3-811d-f3b376925f15', name: Your app 2', ...) ]
+```
+
+To retrieve objects, you can perform this type of action on the resource (if
+the API supports it):
+
+```ruby
+client = OneSignal::Client.new(auth_token: 'AUTH_TOKEN')
+app = client.apps.find(id: 'e4e87830-b954-11e3-811d-f3b376925f15')
+# => OneSignal::App(id: 'e4e87830-b954-11e3-811d-f3b376925f15', name: 'Your app', ...)
+```
+
+To create objects, you just have to build a params hash and pass it to the
+action on the resource:
+
+```ruby
+client = OneSignal::Client.new(auth_token: 'AUTH_TOKEN')
+params = { name: 'Your app', apns_env: 'sandbox', ... }
+app = client.apps.create(params)
+# => OneSignal::App(id: 'e4e87830-b954-11e3-811d-f3b376925f15', name: 'Your app', ...)
+```
+
+### All Resources and actions
+
+#### App resource
+
+```ruby
+client = OneSignal::Client.new(auth_token: 'AUTH_TOKEN')
+client.apps #=> OneSignal::AppResource
+```
+
+Actions supported:
+
+* `client.apps.all`
+* `client.apps.find(id)`
+* `client.apps.create(params)`
+* `client.apps.update(id, params)`
+
+#### Player resource
+
+```ruby
+client = OneSignal::Client.new(auth_token: 'AUTH_TOKEN', app_id: 'APP_ID')
+client.players #=> OneSignal::PlayerResource
+```
+
+Actions supported:
+
+* `client.players.all`
+* `client.players.all(params)`
+* `client.players.find(id)`
+* `client.players.create(params)`
+* `client.players.update(id, params)`
+* `client.players.on_session(id, params)`
+* `client.players.on_purchase(id, params)`
+* `client.players.on_focus(id, params)`
+* `client.players.csv_export(id)`
+
+#### Notification resource
+
+```ruby
+client = OneSignal::Client.new(auth_token: 'AUTH_TOKEN', app_id: 'APP_ID')
+client.notifications #=> OneSignal::NotificationResource
+```
+
+Actions supported:
+
+* `client.notifications.all`
+* `client.notifications.all(params)`
+* `client.notifications.find(id)`
+* `client.notifications.track_open(id, params)`
+* `client.notifications.create(params)`
+* `client.notifications.cancel(id)`
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/coding-chimp/onesignal. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on [GitHub][gh].
 
+This project is intended to be a safe, welcoming space for collaboration, and
+contributors are expected to adhere to the [Contributor Covenant][cc] code of conduct.
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+The gem is available as open source under the terms of the [MIT License][mit].
 
 [trb]: https://travis-ci.org/coding-chimp/onesignal.svg?branch=master
 [trl]: https://travis-ci.org/coding-chimp/onesignal
 [ccb]: https://codeclimate.com/github/coding-chimp/onesignal/badges/gpa.svg
 [ccl]: https://codeclimate.com/github/coding-chimp/onesignal
+[osa]: https://documentation.onesignal.com/docs/server-api-overview
+[cc]: http://contributor-covenant.org
+[gh]: https://github.com/coding-chimp/onesignal
+[mit]: http://opensource.org/licenses/MIT
