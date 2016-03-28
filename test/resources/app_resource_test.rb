@@ -56,7 +56,7 @@ class AppResourceTest < Minitest::Test
     assert_instance_of String, app.id
     assert_instance_of String, app.name
     assert_instance_of Fixnum, app.players
-    assert_instance_of Fixnum, app.messagable_players
+    assert_instance_of Fixnum, app.messageable_players
     assert_instance_of Time, app.updated_at
     assert_instance_of Time, app.created_at
     assert_instance_of String, app.gcm_key
@@ -67,7 +67,7 @@ class AppResourceTest < Minitest::Test
     assert_instance_of String, app.chrome_web_sub_domain
     assert_instance_of String, app.apns_env
     assert_instance_of String, app.apns_certificates
-    assert_instance_of String, app.safari_apns_cetificate
+    assert_instance_of String, app.safari_apns_certificate
     assert_instance_of String, app.safari_site_origin
     assert_instance_of String, app.safari_push_id
     assert_instance_of String, app.safari_icon_16_16
