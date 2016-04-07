@@ -4,6 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'onesignal/version'
 
 Gem::Specification.new do |spec|
+  spec.required_ruby_version = '>= 2.1.0'
   spec.name          = 'onesignal'
   spec.version       = OneSignal::VERSION
   spec.authors       = ['Bastian Bartmann']
