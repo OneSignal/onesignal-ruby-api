@@ -4,9 +4,11 @@ module OneSignal
 
     attr_reader :auth_token, :app_id
 
-    def initialize(auth_token:, app_id: nil)
+    def initialize(auth_token: nil, app_id: nil)
       @auth_token = auth_token
       @app_id = app_id
+
+      ensure_auth_token_presence
     end
 
     def apps
@@ -27,8 +29,16 @@ module OneSignal
 
     private
 
+    def ensure_auth_token_presence
+      if auth_token.nil?
+        raise ArgumentError, 'missing keyword: auth_token'
+      end
+    end
+
     def ensure_app_id_presence
-      raise AppIdMissingError if app_id.nil?
+      if app_id.nil?
+        raise AppIdMissingError
+      end
     end
   end
 end
