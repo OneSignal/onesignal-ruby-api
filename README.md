@@ -26,12 +26,12 @@ You can find your auth keys and app IDs on the Account Management page when
 you're logged into OneSignal. With those at hand, you can create a client.
 
 ```ruby
-client = OneSignal::Client.new((auth_token: 'AUTH_TOKEN', app_id: 'APP_ID')
+client = OneSignal::Client.new(auth_token: 'AUTH_TOKEN', app_id: 'APP_ID')
 ```
 
 ### Design
 
-This gem follows a strict design of resoures as methods on your client. For
+This gem follows a strict design of resources as methods on your client. For
 examples, for apps, you will call your client like this:
 
 ```ruby
