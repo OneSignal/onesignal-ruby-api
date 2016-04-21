@@ -1,6 +1,6 @@
 # OneSignal
 
-[![Build Status][trb]][trl] [![Code Climate][ccb]][ccl]
+[![Gem Version][rgb]][rgl] [![Build Status][trb]][trl] [![Code Climate][ccb]][ccl]
 
 OneSignal is a simple ruby wrapper for the [OneSignal API][osa].
 
@@ -26,12 +26,12 @@ You can find your auth keys and app IDs on the Account Management page when
 you're logged into OneSignal. With those at hand, you can create a client.
 
 ```ruby
-client = OneSignal::Client.new((auth_token: 'AUTH_TOKEN', app_id: 'APP_ID')
+client = OneSignal::Client.new(auth_token: 'AUTH_TOKEN', app_id: 'APP_ID')
 ```
 
 ### Design
 
-This gem follows a strict design of resoures as methods on your client. For
+This gem follows a strict design of resources as methods on your client. For
 examples, for apps, you will call your client like this:
 
 ```ruby
@@ -129,6 +129,8 @@ contributors are expected to adhere to the [Contributor Covenant][cc] code of co
 
 The gem is available as open source under the terms of the [MIT License][mit].
 
+[rgb]: https://img.shields.io/gem/v/onesignal.svg
+[rgl]: https://rubygems.org/gems/onesignal
 [trb]: https://travis-ci.org/coding-chimp/onesignal.svg?branch=master
 [trl]: https://travis-ci.org/coding-chimp/onesignal
 [ccb]: https://codeclimate.com/github/coding-chimp/onesignal/badges/gpa.svg
