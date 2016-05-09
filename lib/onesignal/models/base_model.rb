@@ -5,7 +5,14 @@ module OneSignal
     end
 
     def initialize(attributes = {})
-      attributes.each { |key, value| send("#{key}=", value) }
+      attributes.each do |key, value|
+        if responds_to?("#{key}=")
+          send("#{key}=", value)
+          next
+        end
+
+        puts "Extra key: #{key} given"
+      end
     end
 
     def inspect
