@@ -1,10 +1,5 @@
 module OneSignal
   class Player < BaseModel
-    attr_accessor :ad_id, :amount_spent, :badge_count, :created_at,
-      :device_model, :device_os, :device_type, :game_version, :id, :identifier,
-      :invalid_identifier, :language, :last_active, :playtime, :session_count,
-      :sdk, :tags, :timezone
-
     def created_at=(time)
       @created_at = Time.at(time)
     end

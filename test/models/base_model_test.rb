@@ -1,7 +1,6 @@
 require_relative '../test_helper'
 
 class DummyModel < OneSignal::BaseModel
-  attr_accessor :id, :name, :created_at
 end
 
 class BaseModelTest < Minitest::Test
