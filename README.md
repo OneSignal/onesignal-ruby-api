@@ -48,27 +48,24 @@ Or install it yourself as:
 Please follow the [installation](#installation) procedure and then run the following code:
 
 ```ruby
-# Load the gem
+require 'time'
 require 'onesignal'
-
-# Setup authorization
+# setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: app_key
-  config.access_token = 'YOUR BEARER TOKEN'
+  config.access_token = 'YOUR BEARER TOKEN' # Change this
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'APP ID EXAMPLE' # String |
-notification_id = 'NOTIFICATION ID EXAMPLE' # String |
+notification = OneSignal::Notification.new({app_id: 'YOUR APP ID'}) # Notification
 
 begin
-  #Stop a scheduled or currently outgoing notification
-  result = api_instance.cancel_notification(app_id, notification_id)
+  # Create notification
+  result = api_instance.create_notification(notification)
   p result
 rescue OneSignal::ApiError => e
-  puts "Exception when calling DefaultApi->cancel_notification: #{e}"
+  puts "Error when calling DefaultApi->create_notification: #{e}"
 end
-
 ```
 
 ## Documentation for API Endpoints
