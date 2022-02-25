@@ -1,16 +1,9 @@
 language: ruby
 cache: bundler
-
 rvm:
-  - 2.0.0
-  - 2.1.0
-  - 2.2.0
-  - 2.3.0
-
-before_install:
-  - gem install bundler -v 1.11.2
-
-notifications:
-  slack:
-    rooms:
-      secure: Gr8OCGVXegUFZmA0GYQnvAMs6cei1139C7sce13VvcG1HulIvpidnobJuNghfTx44psQTYDptHpz8AVn+kChbsQ46+0zXdNgCq2t9fJAVzTlTGnsB5O28FjUUEJAppjztUeRPKJX+B284AHJ0ZM/Vw7upoJ9IPbJ9bpcr5Xbms8eF/iYmJcicZ7iZNkHET8PFKqQP4H4/ahBOHfiI150zys1Pjos66wRukss1K52i6cvGmMajx58aVxDdwrw8wksNOHFu7VuoThipNHTIFyzr39EdG+DDrrfDLkLtpcb4+3QFn3/XZO7WHNfubnUY2DQ9xZrn8mUgIBFx6bVbcZ+xt/eh+4h5cDQyeEFY3GI+GiWJBDQa8VS69+CZQqEAvBNzHMPAkp19DZt0KFPEQqNG7KwXwuMx/kVsbnDhSGGN7d1Dc2m1XXVHViOUS6YePPzwjOZ3B7MTtb4FFSnsDeYvFFeBxqkX7a25L4llR9AcBMMxgCHDJi070qr3bOoQv9Qwi/Xw4P92ZLQ+VRoskzPRmbFcdfZxsI6R9orxJ1YgA/FGuQZAbmVQ3gZAWcW4iP1sgYh8EkOUH/c1c5tb03gC4OyU1R44L/FBBQiAXBCAl50PhJgCR13KrR6vxBnV/AIg+Pbk1uQPx4zqda4UbertMc+bB0M6EDV9OUPezb59Pk=
+  - 2.7.4
+script:
+  - bundle install --path vendor/bundle
+  - bundle exec rspec
+  - gem build onesignal.gemspec
+  - gem install ./onesignal-1.0.0.gem
