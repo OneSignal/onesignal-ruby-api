@@ -43,6 +43,9 @@ Or install it yourself as:
 
     $ gem install onesignal --pre
 
+Or install from Github:
+    $ gem "onesignal", '~> 1.0.0.beta1', git: 'git://github.com/OneSignal/onesignal-ruby-client.git'
+
 ## Getting Started
 
 Please follow the [installation](#installation) procedure and then run the following code:
