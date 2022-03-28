@@ -56,7 +56,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: app_key
-  config.access_token = 'YOUR BEARER TOKEN' # Change this
+  config.user_key = 'YOUR BEARER TOKEN' # Change this
 end
 
 api_instance = OneSignal::DefaultApi.new
