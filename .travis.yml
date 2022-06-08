@@ -1,9 +1,0 @@
-language: ruby
-cache: bundler
-rvm:
-  - 2.7.4
-script:
-  - bundle install --path vendor/bundle
-  - bundle exec rspec
-  - gem build onesignal.gemspec
-  - gem install ./onesignal-1.0.0.gem

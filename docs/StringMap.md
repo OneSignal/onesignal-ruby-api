@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **en** | **String** | Text in English.  Will be used as a fallback |  |
+| **en** | **String** | Text in English.  Will be used as a fallback | [optional] |
 | **ar** | **String** | Text in Arabic. | [optional] |
 | **bs** | **String** | Text in Bosnian. | [optional] |
 | **bg** | **String** | Text in Bulgarian. | [optional] |
