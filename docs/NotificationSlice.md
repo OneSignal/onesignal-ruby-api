@@ -7,7 +7,7 @@
 | **total_count** | **Integer** |  | [optional] |
 | **offset** | **Integer** |  | [optional] |
 | **limit** | **Integer** |  | [optional] |
-| **notifications** | [**Array&lt;Notification&gt;**](Notification.md) |  | [optional] |
+| **notifications** | [**Array&lt;NotificationWithMeta&gt;**](NotificationWithMeta.md) |  | [optional] |
 
 ## Example
 

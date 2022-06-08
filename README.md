@@ -25,14 +25,12 @@ OneSignal is a simple ruby wrapper for the [OneSignal API][osa].
 
 ### 🖤 [RubyGems](https://rubygems.org/gems/onesignal)
 
-## 🚧 In Beta 🚧
-
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'onesignal', '~> 1.0.0.beta1'
+gem 'onesignal', '~> 1.0.0'
 ```
 
 And then execute:
@@ -41,10 +39,10 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install onesignal --pre
+    $ gem install onesignal
 
 Or install from Github:
-    $ gem "onesignal", '~> 1.0.0.beta1', git: 'git://github.com/OneSignal/onesignal-ruby-client.git'
+    $ gem "onesignal", '~> 1.0.0', git: 'git://github.com/OneSignal/onesignal-ruby-api.git'
 
 ## Getting Started
 
@@ -56,7 +54,8 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: app_key
-  config.access_token = 'YOUR BEARER TOKEN' # Change this
+  config.user_key = 'YOUR_USER_KEY' # Change this
+  config.app_key = 'YOUR_APP_KEY'
 end
 
 api_instance = OneSignal::DefaultApi.new
@@ -97,7 +96,6 @@ Class | Method | HTTP request | Description
 *OneSignal::DefaultApi* | [**update_player**](docs/DefaultApi.md#update_player) | **PUT** /players/{player_id} | Edit device
 *OneSignal::DefaultApi* | [**update_player_tags**](docs/DefaultApi.md#update_player_tags) | **PUT** /apps/{app_id}/users/{external_user_id} | Edit tags with external user id
 
-
 ## Documentation for Models
 
  - [OneSignal::App](docs/App.md)
@@ -136,17 +134,27 @@ Class | Method | HTTP request | Description
  - [OneSignal::StringMap](docs/StringMap.md)
  - [OneSignal::UpdatePlayerTagsRequestBody](docs/UpdatePlayerTagsRequestBody.md)
 
-
 ## Documentation for Authorization
-
 
 ### app_key
 
 - **Type**: Bearer authentication
 
+```rb
+OneSignal.configure do |config|
+  config.app_key = 'APP_KEY' # replace with your app key
+end
+```
+
 ### user_key
 
 - **Type**: Bearer authentication
+
+```rb
+OneSignal.configure do |config|
+  config.user_key = 'USER_KEY' # replace with your user key
+end
+```
 
 ## License
 

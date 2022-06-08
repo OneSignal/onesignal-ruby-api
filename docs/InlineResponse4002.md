@@ -4,7 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **erorrs** | **Array&lt;String&gt;** |  | [optional] |
+| **success** | **Boolean** |  | [optional] |
+| **errors** | **Array&lt;String&gt;** |  | [optional] |
 
 ## Example
 
@@ -12,7 +13,8 @@
 require 'onesignal'
 
 instance = OneSignal::InlineResponse4002.new(
-  erorrs: null
+  success: null,
+  errors: null
 )
 ```
 

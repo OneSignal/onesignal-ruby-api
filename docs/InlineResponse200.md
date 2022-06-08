@@ -7,7 +7,7 @@
 | **id** | **String** |  |  |
 | **recipients** | **Integer** | Estimated number of subscribers targetted by notification. |  |
 | **external_id** | **String** |  | [optional] |
-| **errors** | [**OneOfobjectarray**](OneOfobjectarray.md) |  | [optional] |
+| **errors** | [**Notification200Errors**](Notification200Errors.md) |  | [optional] |
 
 ## Example
 
