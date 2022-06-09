@@ -30,7 +30,7 @@ OneSignal is a simple ruby wrapper for the [OneSignal API][osa].
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'onesignal', '~> 1.0.0'
+gem 'onesignal', '~> 1.0.1'
 ```
 
 And then execute:
@@ -42,7 +42,8 @@ Or install it yourself as:
     $ gem install onesignal
 
 Or install from Github:
-    $ gem "onesignal", '~> 1.0.0', git: 'git://github.com/OneSignal/onesignal-ruby-api.git'
+
+    $ gem "onesignal", '~> 1.0.1', git: 'git://github.com/OneSignal/onesignal-ruby-api.git'
 
 ## Getting Started
 
