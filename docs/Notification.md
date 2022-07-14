@@ -30,6 +30,7 @@
 | **include_android_reg_ids** | **Array&lt;String&gt;** | Not Recommended: Please consider using include_player_ids or include_external_user_ids instead. Target using Android device registration IDs. If a token does not correspond to an existing user, a new user will be created. Example: APA91bEeiUeSukAAUdnw3O2RB45FWlSpgJ7Ji_... Limit of 2,000 entries per REST API call  | [optional] |
 | **id** | **String** |  | [optional] |
 | **value** | **Integer** |  | [optional][readonly] |
+| **name** | **String** | Required for SMS Messages. An identifier for tracking message within the OneSignal dashboard or export analytics. Not shown to end user. | [optional] |
 | **aggregation** | **String** |  | [optional][readonly] |
 | **is_ios** | **Boolean** | Indicates whether to send to all devices registered under your app&#39;s Apple iOS platform. | [optional][default to true] |
 | **is_android** | **Boolean** | Indicates whether to send to all devices registered under your app&#39;s Google Android platform. | [optional] |
@@ -149,6 +150,7 @@ instance = OneSignal::Notification.new(
   include_android_reg_ids: null,
   id: null,
   value: null,
+  name: null,
   aggregation: null,
   is_ios: null,
   is_android: null,

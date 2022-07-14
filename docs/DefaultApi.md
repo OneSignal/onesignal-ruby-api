@@ -27,7 +27,7 @@ All URIs are relative to *https://onesignal.com/api/v1*
 
 ## cancel_notification
 
-> <InlineResponse2001> cancel_notification(app_id, notification_id)
+> <CancelNotificationSuccessResponse> cancel_notification(app_id, notification_id)
 
 Stop a scheduled or currently outgoing notification
 
@@ -61,7 +61,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse2001>, Integer, Hash)> cancel_notification_with_http_info(app_id, notification_id)
+> <Array(<CancelNotificationSuccessResponse>, Integer, Hash)> cancel_notification_with_http_info(app_id, notification_id)
 
 ```ruby
 begin
@@ -69,7 +69,7 @@ begin
   data, status_code, headers = api_instance.cancel_notification_with_http_info(app_id, notification_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse2001>
+  p data # => <CancelNotificationSuccessResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->cancel_notification_with_http_info: #{e}"
 end
@@ -84,7 +84,7 @@ end
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**CancelNotificationSuccessResponse**](CancelNotificationSuccessResponse.md)
 
 ### Authorization
 
@@ -167,7 +167,7 @@ end
 
 ## create_notification
 
-> <InlineResponse200> create_notification(notification)
+> <CreateNotificationSuccessResponse> create_notification(notification)
 
 Create notification
 
@@ -200,7 +200,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse200>, Integer, Hash)> create_notification_with_http_info(notification)
+> <Array(<CreateNotificationSuccessResponse>, Integer, Hash)> create_notification_with_http_info(notification)
 
 ```ruby
 begin
@@ -208,7 +208,7 @@ begin
   data, status_code, headers = api_instance.create_notification_with_http_info(notification)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse200>
+  p data # => <CreateNotificationSuccessResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_notification_with_http_info: #{e}"
 end
@@ -222,7 +222,7 @@ end
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**CreateNotificationSuccessResponse**](CreateNotificationSuccessResponse.md)
 
 ### Authorization
 
@@ -236,7 +236,7 @@ end
 
 ## create_player
 
-> <InlineResponse2005> create_player(player)
+> <CreatePlayerSuccessResponse> create_player(player)
 
 Add a device
 
@@ -269,7 +269,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse2005>, Integer, Hash)> create_player_with_http_info(player)
+> <Array(<CreatePlayerSuccessResponse>, Integer, Hash)> create_player_with_http_info(player)
 
 ```ruby
 begin
@@ -277,7 +277,7 @@ begin
   data, status_code, headers = api_instance.create_player_with_http_info(player)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse2005>
+  p data # => <CreatePlayerSuccessResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_player_with_http_info: #{e}"
 end
@@ -291,7 +291,7 @@ end
 
 ### Return type
 
-[**InlineResponse2005**](InlineResponse2005.md)
+[**CreatePlayerSuccessResponse**](CreatePlayerSuccessResponse.md)
 
 ### Authorization
 
@@ -305,7 +305,7 @@ end
 
 ## create_segments
 
-> <InlineResponse201> create_segments(app_id, opts)
+> <CreateSegmentSuccessResponse> create_segments(app_id, opts)
 
 Create Segments
 
@@ -341,7 +341,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse201>, Integer, Hash)> create_segments_with_http_info(app_id, opts)
+> <Array(<CreateSegmentSuccessResponse>, Integer, Hash)> create_segments_with_http_info(app_id, opts)
 
 ```ruby
 begin
@@ -349,7 +349,7 @@ begin
   data, status_code, headers = api_instance.create_segments_with_http_info(app_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse201>
+  p data # => <CreateSegmentSuccessResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_segments_with_http_info: #{e}"
 end
@@ -364,7 +364,7 @@ end
 
 ### Return type
 
-[**InlineResponse201**](InlineResponse201.md)
+[**CreateSegmentSuccessResponse**](CreateSegmentSuccessResponse.md)
 
 ### Authorization
 
@@ -378,7 +378,7 @@ end
 
 ## delete_player
 
-> <InlineResponse2007> delete_player(app_id, player_id)
+> <DeletePlayerSuccessResponse> delete_player(app_id, player_id)
 
 Delete a user record
 
@@ -412,7 +412,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse2007>, Integer, Hash)> delete_player_with_http_info(app_id, player_id)
+> <Array(<DeletePlayerSuccessResponse>, Integer, Hash)> delete_player_with_http_info(app_id, player_id)
 
 ```ruby
 begin
@@ -420,7 +420,7 @@ begin
   data, status_code, headers = api_instance.delete_player_with_http_info(app_id, player_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse2007>
+  p data # => <DeletePlayerSuccessResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->delete_player_with_http_info: #{e}"
 end
@@ -435,7 +435,7 @@ end
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**DeletePlayerSuccessResponse**](DeletePlayerSuccessResponse.md)
 
 ### Authorization
 
@@ -449,7 +449,7 @@ end
 
 ## delete_segments
 
-> <InlineResponse2001> delete_segments(app_id, segment_id)
+> <DeleteSegmentSuccessResponse> delete_segments(app_id, segment_id)
 
 Delete Segments
 
@@ -483,7 +483,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse2001>, Integer, Hash)> delete_segments_with_http_info(app_id, segment_id)
+> <Array(<DeleteSegmentSuccessResponse>, Integer, Hash)> delete_segments_with_http_info(app_id, segment_id)
 
 ```ruby
 begin
@@ -491,7 +491,7 @@ begin
   data, status_code, headers = api_instance.delete_segments_with_http_info(app_id, segment_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse2001>
+  p data # => <DeleteSegmentSuccessResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->delete_segments_with_http_info: #{e}"
 end
@@ -506,7 +506,7 @@ end
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**DeleteSegmentSuccessResponse**](DeleteSegmentSuccessResponse.md)
 
 ### Authorization
 
@@ -520,7 +520,7 @@ end
 
 ## export_players
 
-> <InlineResponse2008> export_players(app_id, opts)
+> <ExportPlayersSuccessResponse> export_players(app_id, opts)
 
 CSV export
 
@@ -556,7 +556,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse2008>, Integer, Hash)> export_players_with_http_info(app_id, opts)
+> <Array(<ExportPlayersSuccessResponse>, Integer, Hash)> export_players_with_http_info(app_id, opts)
 
 ```ruby
 begin
@@ -564,7 +564,7 @@ begin
   data, status_code, headers = api_instance.export_players_with_http_info(app_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse2008>
+  p data # => <ExportPlayersSuccessResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->export_players_with_http_info: #{e}"
 end
@@ -579,7 +579,7 @@ end
 
 ### Return type
 
-[**InlineResponse2008**](InlineResponse2008.md)
+[**ExportPlayersSuccessResponse**](ExportPlayersSuccessResponse.md)
 
 ### Authorization
 
@@ -799,7 +799,7 @@ end
 
 ## get_notification_history
 
-> <InlineResponse2002> get_notification_history(notification_id, get_notification_request_body)
+> <NotificationHistorySuccessResponse> get_notification_history(notification_id, get_notification_request_body)
 
 Notification History
 
@@ -833,7 +833,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse2002>, Integer, Hash)> get_notification_history_with_http_info(notification_id, get_notification_request_body)
+> <Array(<NotificationHistorySuccessResponse>, Integer, Hash)> get_notification_history_with_http_info(notification_id, get_notification_request_body)
 
 ```ruby
 begin
@@ -841,7 +841,7 @@ begin
   data, status_code, headers = api_instance.get_notification_history_with_http_info(notification_id, get_notification_request_body)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse2002>
+  p data # => <NotificationHistorySuccessResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_notification_history_with_http_info: #{e}"
 end
@@ -856,7 +856,7 @@ end
 
 ### Return type
 
-[**InlineResponse2002**](InlineResponse2002.md)
+[**NotificationHistorySuccessResponse**](NotificationHistorySuccessResponse.md)
 
 ### Authorization
 
@@ -1249,7 +1249,7 @@ end
 
 ## update_player
 
-> <InlineResponse2001> update_player(player_id, player)
+> <UpdatePlayerSuccessResponse> update_player(player_id, player)
 
 Edit device
 
@@ -1283,7 +1283,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse2001>, Integer, Hash)> update_player_with_http_info(player_id, player)
+> <Array(<UpdatePlayerSuccessResponse>, Integer, Hash)> update_player_with_http_info(player_id, player)
 
 ```ruby
 begin
@@ -1291,7 +1291,7 @@ begin
   data, status_code, headers = api_instance.update_player_with_http_info(player_id, player)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse2001>
+  p data # => <UpdatePlayerSuccessResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_player_with_http_info: #{e}"
 end
@@ -1306,7 +1306,7 @@ end
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**UpdatePlayerSuccessResponse**](UpdatePlayerSuccessResponse.md)
 
 ### Authorization
 
@@ -1320,7 +1320,7 @@ end
 
 ## update_player_tags
 
-> <InlineResponse2001> update_player_tags(app_id, external_user_id, opts)
+> <UpdatePlayerTagsSuccessResponse> update_player_tags(app_id, external_user_id, opts)
 
 Edit tags with external user id
 
@@ -1357,7 +1357,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse2001>, Integer, Hash)> update_player_tags_with_http_info(app_id, external_user_id, opts)
+> <Array(<UpdatePlayerTagsSuccessResponse>, Integer, Hash)> update_player_tags_with_http_info(app_id, external_user_id, opts)
 
 ```ruby
 begin
@@ -1365,7 +1365,7 @@ begin
   data, status_code, headers = api_instance.update_player_tags_with_http_info(app_id, external_user_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse2001>
+  p data # => <UpdatePlayerTagsSuccessResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_player_tags_with_http_info: #{e}"
 end
@@ -1381,7 +1381,7 @@ end
 
 ### Return type
 
-[**InlineResponse2001**](InlineResponse2001.md)
+[**UpdatePlayerTagsSuccessResponse**](UpdatePlayerTagsSuccessResponse.md)
 
 ### Authorization
 

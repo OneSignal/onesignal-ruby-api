@@ -38,7 +38,7 @@ describe 'DefaultApi' do
   # @param app_id 
   # @param notification_id 
   # @param [Hash] opts the optional parameters
-  # @return [InlineResponse2001]
+  # @return [CancelNotificationSuccessResponse]
   describe 'cancel_notification test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -62,7 +62,7 @@ describe 'DefaultApi' do
   # Sends notifications to your users 
   # @param notification 
   # @param [Hash] opts the optional parameters
-  # @return [InlineResponse200]
+  # @return [CreateNotificationSuccessResponse]
   describe 'create_notification test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -74,7 +74,7 @@ describe 'DefaultApi' do
   # Register a new device to one of your OneSignal apps &amp;#x1F6A7; Don&#39;t use this This API endpoint is designed to be used from our open source Mobile and Web Push SDKs. It is not designed for developers to use it directly, unless instructed to do so by OneSignal support. If you use this method instead of our SDKs, many OneSignal features such as conversion tracking, timezone tracking, language detection, and rich-push won&#39;t work out of the box. It will also make it harder to identify possible setup issues. This method is used to register a new device with OneSignal. If a device is already registered with the specified identifier, then this will update the existing device record instead of creating a new one. The returned player is a player / user ID. Use the returned ID to send push notifications to this specific user later, or to include this player when sending to a set of users. &amp;#x1F6A7; iOS Must set test_type to 1 when building your iOS app as development. Omit this field in your production app builds. 
   # @param player 
   # @param [Hash] opts the optional parameters
-  # @return [InlineResponse2005]
+  # @return [CreatePlayerSuccessResponse]
   describe 'create_player test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -87,7 +87,7 @@ describe 'DefaultApi' do
   # @param app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs.
   # @param [Hash] opts the optional parameters
   # @option opts [Segment] :segment 
-  # @return [InlineResponse201]
+  # @return [CreateSegmentSuccessResponse]
   describe 'create_segments test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -100,7 +100,7 @@ describe 'DefaultApi' do
   # @param app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs.
   # @param player_id The OneSignal player_id
   # @param [Hash] opts the optional parameters
-  # @return [InlineResponse2007]
+  # @return [DeletePlayerSuccessResponse]
   describe 'delete_player test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -113,7 +113,7 @@ describe 'DefaultApi' do
   # @param app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs.
   # @param segment_id The segment_id can be found in the URL of the segment when viewing it in the dashboard.
   # @param [Hash] opts the optional parameters
-  # @return [InlineResponse2001]
+  # @return [DeleteSegmentSuccessResponse]
   describe 'delete_segments test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -126,7 +126,7 @@ describe 'DefaultApi' do
   # @param app_id The app ID that you want to export devices from
   # @param [Hash] opts the optional parameters
   # @option opts [ExportPlayersRequestBody] :export_players_request_body 
-  # @return [InlineResponse2008]
+  # @return [ExportPlayersSuccessResponse]
   describe 'export_players test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -175,7 +175,7 @@ describe 'DefaultApi' do
   # @param notification_id The \&quot;id\&quot; of the message found in the Notification object
   # @param get_notification_request_body 
   # @param [Hash] opts the optional parameters
-  # @return [InlineResponse2002]
+  # @return [NotificationHistorySuccessResponse]
   describe 'get_notification_history test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -261,7 +261,7 @@ describe 'DefaultApi' do
   # @param player_id Player&#39;s OneSignal ID
   # @param player 
   # @param [Hash] opts the optional parameters
-  # @return [InlineResponse2001]
+  # @return [UpdatePlayerSuccessResponse]
   describe 'update_player test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -275,7 +275,7 @@ describe 'DefaultApi' do
   # @param external_user_id The External User ID mapped to teh device record in OneSignal.  Must be actively set on the device to be updated.
   # @param [Hash] opts the optional parameters
   # @option opts [UpdatePlayerTagsRequestBody] :update_player_tags_request_body 
-  # @return [InlineResponse2001]
+  # @return [UpdatePlayerTagsSuccessResponse]
   describe 'update_player_tags test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers

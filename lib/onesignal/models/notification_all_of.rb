@@ -19,6 +19,9 @@ module OneSignal
 
     attr_accessor :value
 
+    # Required for SMS Messages. An identifier for tracking message within the OneSignal dashboard or export analytics. Not shown to end user.
+    attr_accessor :name
+
     attr_accessor :aggregation
 
     # Indicates whether to send to all devices registered under your app's Apple iOS platform.
@@ -299,6 +302,7 @@ module OneSignal
       {
         :'id' => :'id',
         :'value' => :'value',
+        :'name' => :'name',
         :'aggregation' => :'aggregation',
         :'is_ios' => :'isIos',
         :'is_android' => :'isAndroid',
@@ -398,6 +402,7 @@ module OneSignal
       {
         :'id' => :'String',
         :'value' => :'Integer',
+        :'name' => :'String',
         :'aggregation' => :'String',
         :'is_ios' => :'Boolean',
         :'is_android' => :'Boolean',
@@ -533,6 +538,10 @@ module OneSignal
 
       if attributes.key?(:'value')
         self.value = attributes[:'value']
+      end
+
+      if attributes.key?(:'name')
+        self.name = attributes[:'name']
       end
 
       if attributes.key?(:'aggregation')
@@ -920,6 +929,7 @@ module OneSignal
       self.class == o.class &&
           id == o.id &&
           value == o.value &&
+          name == o.name &&
           aggregation == o.aggregation &&
           is_ios == o.is_ios &&
           is_android == o.is_android &&
@@ -1017,7 +1027,7 @@ module OneSignal
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, value, aggregation, is_ios, is_android, is_huawei, is_any_web, is_chrome_web, is_firefox, is_safari, is_wp_wns, is_adm, is_chrome, channel_for_external_user_ids, app_id, external_id, contents, headings, subtitle, data, huawei_msg_type, url, web_url, app_url, ios_attachments, template_id, content_available, mutable_content, target_content_identifier, big_picture, huawei_big_picture, adm_big_picture, chrome_big_picture, chrome_web_image, buttons, web_buttons, ios_category, android_channel_id, huawei_channel_id, existing_android_channel_id, huawei_existing_channel_id, android_background_layout, small_icon, huawei_small_icon, large_icon, huawei_large_icon, adm_small_icon, adm_large_icon, chrome_web_icon, chrome_web_badge, firefox_icon, chrome_icon, ios_sound, android_sound, huawei_sound, adm_sound, wp_wns_sound, android_led_color, huawei_led_color, android_accent_color, huawei_accent_color, android_visibility, huawei_visibility, ios_badge_type, ios_badge_count, collapse_id, web_push_topic, apns_alert, send_after, delayed_option, delivery_time_of_day, ttl, priority, apns_push_type_override, throttle_rate_per_minute, android_group, android_group_message, adm_group, adm_group_message, thread_id, summary_arg, summary_arg_count, email_subject, email_body, email_from_name, email_from_address, sms_from, sms_media_urls].hash
+      [id, value, name, aggregation, is_ios, is_android, is_huawei, is_any_web, is_chrome_web, is_firefox, is_safari, is_wp_wns, is_adm, is_chrome, channel_for_external_user_ids, app_id, external_id, contents, headings, subtitle, data, huawei_msg_type, url, web_url, app_url, ios_attachments, template_id, content_available, mutable_content, target_content_identifier, big_picture, huawei_big_picture, adm_big_picture, chrome_big_picture, chrome_web_image, buttons, web_buttons, ios_category, android_channel_id, huawei_channel_id, existing_android_channel_id, huawei_existing_channel_id, android_background_layout, small_icon, huawei_small_icon, large_icon, huawei_large_icon, adm_small_icon, adm_large_icon, chrome_web_icon, chrome_web_badge, firefox_icon, chrome_icon, ios_sound, android_sound, huawei_sound, adm_sound, wp_wns_sound, android_led_color, huawei_led_color, android_accent_color, huawei_accent_color, android_visibility, huawei_visibility, ios_badge_type, ios_badge_count, collapse_id, web_push_topic, apns_alert, send_after, delayed_option, delivery_time_of_day, ttl, priority, apns_push_type_override, throttle_rate_per_minute, android_group, android_group_message, adm_group, adm_group_message, thread_id, summary_arg, summary_arg_count, email_subject, email_body, email_from_name, email_from_address, sms_from, sms_media_urls].hash
     end
 
     # Builds the object from hash

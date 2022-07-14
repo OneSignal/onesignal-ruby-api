@@ -6,6 +6,7 @@
 | ---- | ---- | ----------- | ----- |
 | **id** | **String** |  | [optional] |
 | **value** | **Integer** |  | [optional][readonly] |
+| **name** | **String** | Required for SMS Messages. An identifier for tracking message within the OneSignal dashboard or export analytics. Not shown to end user. | [optional] |
 | **aggregation** | **String** |  | [optional][readonly] |
 | **is_ios** | **Boolean** | Indicates whether to send to all devices registered under your app&#39;s Apple iOS platform. | [optional][default to true] |
 | **is_android** | **Boolean** | Indicates whether to send to all devices registered under your app&#39;s Google Android platform. | [optional] |
@@ -101,6 +102,7 @@ require 'onesignal'
 instance = OneSignal::NotificationAllOf.new(
   id: null,
   value: null,
+  name: null,
   aggregation: null,
   is_ios: null,
   is_android: null,
