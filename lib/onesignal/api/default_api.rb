@@ -24,7 +24,7 @@ module OneSignal
     # @param app_id [String] 
     # @param notification_id [String] 
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse2001]
+    # @return [CancelNotificationSuccessResponse]
     def cancel_notification(app_id, notification_id, opts = {})
       data, _status_code, _headers = cancel_notification_with_http_info(app_id, notification_id, opts)
       data
@@ -35,7 +35,7 @@ module OneSignal
     # @param app_id [String] 
     # @param notification_id [String] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse2001, Integer, Hash)>] InlineResponse2001 data, response status code and response headers
+    # @return [Array<(CancelNotificationSuccessResponse, Integer, Hash)>] CancelNotificationSuccessResponse data, response status code and response headers
     def cancel_notification_with_http_info(app_id, notification_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.cancel_notification ...'
@@ -67,7 +67,7 @@ module OneSignal
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InlineResponse2001'
+      return_type = opts[:debug_return_type] || 'CancelNotificationSuccessResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['app_key']
@@ -161,7 +161,7 @@ module OneSignal
     # Sends notifications to your users 
     # @param notification [Notification] 
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse200]
+    # @return [CreateNotificationSuccessResponse]
     def create_notification(notification, opts = {})
       data, _status_code, _headers = create_notification_with_http_info(notification, opts)
       data
@@ -171,7 +171,7 @@ module OneSignal
     # Sends notifications to your users 
     # @param notification [Notification] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse200, Integer, Hash)>] InlineResponse200 data, response status code and response headers
+    # @return [Array<(CreateNotificationSuccessResponse, Integer, Hash)>] CreateNotificationSuccessResponse data, response status code and response headers
     def create_notification_with_http_info(notification, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.create_notification ...'
@@ -203,7 +203,7 @@ module OneSignal
       post_body = opts[:debug_body] || @api_client.object_to_http_body(notification)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InlineResponse200'
+      return_type = opts[:debug_return_type] || 'CreateNotificationSuccessResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['app_key']
@@ -229,7 +229,7 @@ module OneSignal
     # Register a new device to one of your OneSignal apps &#x1F6A7; Don't use this This API endpoint is designed to be used from our open source Mobile and Web Push SDKs. It is not designed for developers to use it directly, unless instructed to do so by OneSignal support. If you use this method instead of our SDKs, many OneSignal features such as conversion tracking, timezone tracking, language detection, and rich-push won't work out of the box. It will also make it harder to identify possible setup issues. This method is used to register a new device with OneSignal. If a device is already registered with the specified identifier, then this will update the existing device record instead of creating a new one. The returned player is a player / user ID. Use the returned ID to send push notifications to this specific user later, or to include this player when sending to a set of users. &#x1F6A7; iOS Must set test_type to 1 when building your iOS app as development. Omit this field in your production app builds. 
     # @param player [Player] 
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse2005]
+    # @return [CreatePlayerSuccessResponse]
     def create_player(player, opts = {})
       data, _status_code, _headers = create_player_with_http_info(player, opts)
       data
@@ -239,7 +239,7 @@ module OneSignal
     # Register a new device to one of your OneSignal apps &amp;#x1F6A7; Don&#39;t use this This API endpoint is designed to be used from our open source Mobile and Web Push SDKs. It is not designed for developers to use it directly, unless instructed to do so by OneSignal support. If you use this method instead of our SDKs, many OneSignal features such as conversion tracking, timezone tracking, language detection, and rich-push won&#39;t work out of the box. It will also make it harder to identify possible setup issues. This method is used to register a new device with OneSignal. If a device is already registered with the specified identifier, then this will update the existing device record instead of creating a new one. The returned player is a player / user ID. Use the returned ID to send push notifications to this specific user later, or to include this player when sending to a set of users. &amp;#x1F6A7; iOS Must set test_type to 1 when building your iOS app as development. Omit this field in your production app builds. 
     # @param player [Player] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse2005, Integer, Hash)>] InlineResponse2005 data, response status code and response headers
+    # @return [Array<(CreatePlayerSuccessResponse, Integer, Hash)>] CreatePlayerSuccessResponse data, response status code and response headers
     def create_player_with_http_info(player, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.create_player ...'
@@ -271,7 +271,7 @@ module OneSignal
       post_body = opts[:debug_body] || @api_client.object_to_http_body(player)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InlineResponse2005'
+      return_type = opts[:debug_return_type] || 'CreatePlayerSuccessResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['app_key']
@@ -298,7 +298,7 @@ module OneSignal
     # @param app_id [String] The OneSignal App ID for your app.  Available in Keys &amp; IDs.
     # @param [Hash] opts the optional parameters
     # @option opts [Segment] :segment 
-    # @return [InlineResponse201]
+    # @return [CreateSegmentSuccessResponse]
     def create_segments(app_id, opts = {})
       data, _status_code, _headers = create_segments_with_http_info(app_id, opts)
       data
@@ -309,7 +309,7 @@ module OneSignal
     # @param app_id [String] The OneSignal App ID for your app.  Available in Keys &amp; IDs.
     # @param [Hash] opts the optional parameters
     # @option opts [Segment] :segment 
-    # @return [Array<(InlineResponse201, Integer, Hash)>] InlineResponse201 data, response status code and response headers
+    # @return [Array<(CreateSegmentSuccessResponse, Integer, Hash)>] CreateSegmentSuccessResponse data, response status code and response headers
     def create_segments_with_http_info(app_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.create_segments ...'
@@ -341,7 +341,7 @@ module OneSignal
       post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'segment'])
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InlineResponse201'
+      return_type = opts[:debug_return_type] || 'CreateSegmentSuccessResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['app_key']
@@ -368,7 +368,7 @@ module OneSignal
     # @param app_id [String] The OneSignal App ID for your app.  Available in Keys &amp; IDs.
     # @param player_id [String] The OneSignal player_id
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse2007]
+    # @return [DeletePlayerSuccessResponse]
     def delete_player(app_id, player_id, opts = {})
       data, _status_code, _headers = delete_player_with_http_info(app_id, player_id, opts)
       data
@@ -379,7 +379,7 @@ module OneSignal
     # @param app_id [String] The OneSignal App ID for your app.  Available in Keys &amp; IDs.
     # @param player_id [String] The OneSignal player_id
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse2007, Integer, Hash)>] InlineResponse2007 data, response status code and response headers
+    # @return [Array<(DeletePlayerSuccessResponse, Integer, Hash)>] DeletePlayerSuccessResponse data, response status code and response headers
     def delete_player_with_http_info(app_id, player_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.delete_player ...'
@@ -411,7 +411,7 @@ module OneSignal
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InlineResponse2007'
+      return_type = opts[:debug_return_type] || 'DeletePlayerSuccessResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['app_key']
@@ -438,7 +438,7 @@ module OneSignal
     # @param app_id [String] The OneSignal App ID for your app.  Available in Keys &amp; IDs.
     # @param segment_id [String] The segment_id can be found in the URL of the segment when viewing it in the dashboard.
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse2001]
+    # @return [DeleteSegmentSuccessResponse]
     def delete_segments(app_id, segment_id, opts = {})
       data, _status_code, _headers = delete_segments_with_http_info(app_id, segment_id, opts)
       data
@@ -449,7 +449,7 @@ module OneSignal
     # @param app_id [String] The OneSignal App ID for your app.  Available in Keys &amp; IDs.
     # @param segment_id [String] The segment_id can be found in the URL of the segment when viewing it in the dashboard.
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse2001, Integer, Hash)>] InlineResponse2001 data, response status code and response headers
+    # @return [Array<(DeleteSegmentSuccessResponse, Integer, Hash)>] DeleteSegmentSuccessResponse data, response status code and response headers
     def delete_segments_with_http_info(app_id, segment_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.delete_segments ...'
@@ -480,7 +480,7 @@ module OneSignal
       post_body = opts[:debug_body]
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InlineResponse2001'
+      return_type = opts[:debug_return_type] || 'DeleteSegmentSuccessResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['app_key']
@@ -507,7 +507,7 @@ module OneSignal
     # @param app_id [String] The app ID that you want to export devices from
     # @param [Hash] opts the optional parameters
     # @option opts [ExportPlayersRequestBody] :export_players_request_body 
-    # @return [InlineResponse2008]
+    # @return [ExportPlayersSuccessResponse]
     def export_players(app_id, opts = {})
       data, _status_code, _headers = export_players_with_http_info(app_id, opts)
       data
@@ -518,7 +518,7 @@ module OneSignal
     # @param app_id [String] The app ID that you want to export devices from
     # @param [Hash] opts the optional parameters
     # @option opts [ExportPlayersRequestBody] :export_players_request_body 
-    # @return [Array<(InlineResponse2008, Integer, Hash)>] InlineResponse2008 data, response status code and response headers
+    # @return [Array<(ExportPlayersSuccessResponse, Integer, Hash)>] ExportPlayersSuccessResponse data, response status code and response headers
     def export_players_with_http_info(app_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.export_players ...'
@@ -550,7 +550,7 @@ module OneSignal
       post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'export_players_request_body'])
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InlineResponse2008'
+      return_type = opts[:debug_return_type] || 'ExportPlayersSuccessResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['app_key']
@@ -767,7 +767,7 @@ module OneSignal
     # @param notification_id [String] The \&quot;id\&quot; of the message found in the Notification object
     # @param get_notification_request_body [GetNotificationRequestBody] 
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse2002]
+    # @return [NotificationHistorySuccessResponse]
     def get_notification_history(notification_id, get_notification_request_body, opts = {})
       data, _status_code, _headers = get_notification_history_with_http_info(notification_id, get_notification_request_body, opts)
       data
@@ -778,7 +778,7 @@ module OneSignal
     # @param notification_id [String] The \&quot;id\&quot; of the message found in the Notification object
     # @param get_notification_request_body [GetNotificationRequestBody] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse2002, Integer, Hash)>] InlineResponse2002 data, response status code and response headers
+    # @return [Array<(NotificationHistorySuccessResponse, Integer, Hash)>] NotificationHistorySuccessResponse data, response status code and response headers
     def get_notification_history_with_http_info(notification_id, get_notification_request_body, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.get_notification_history ...'
@@ -814,7 +814,7 @@ module OneSignal
       post_body = opts[:debug_body] || @api_client.object_to_http_body(get_notification_request_body)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InlineResponse2002'
+      return_type = opts[:debug_return_type] || 'NotificationHistorySuccessResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['app_key']
@@ -1217,7 +1217,7 @@ module OneSignal
     # @param player_id [String] Player&#39;s OneSignal ID
     # @param player [Player] 
     # @param [Hash] opts the optional parameters
-    # @return [InlineResponse2001]
+    # @return [UpdatePlayerSuccessResponse]
     def update_player(player_id, player, opts = {})
       data, _status_code, _headers = update_player_with_http_info(player_id, player, opts)
       data
@@ -1228,7 +1228,7 @@ module OneSignal
     # @param player_id [String] Player&#39;s OneSignal ID
     # @param player [Player] 
     # @param [Hash] opts the optional parameters
-    # @return [Array<(InlineResponse2001, Integer, Hash)>] InlineResponse2001 data, response status code and response headers
+    # @return [Array<(UpdatePlayerSuccessResponse, Integer, Hash)>] UpdatePlayerSuccessResponse data, response status code and response headers
     def update_player_with_http_info(player_id, player, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.update_player ...'
@@ -1264,7 +1264,7 @@ module OneSignal
       post_body = opts[:debug_body] || @api_client.object_to_http_body(player)
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InlineResponse2001'
+      return_type = opts[:debug_return_type] || 'UpdatePlayerSuccessResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['app_key']
@@ -1292,7 +1292,7 @@ module OneSignal
     # @param external_user_id [String] The External User ID mapped to teh device record in OneSignal.  Must be actively set on the device to be updated.
     # @param [Hash] opts the optional parameters
     # @option opts [UpdatePlayerTagsRequestBody] :update_player_tags_request_body 
-    # @return [InlineResponse2001]
+    # @return [UpdatePlayerTagsSuccessResponse]
     def update_player_tags(app_id, external_user_id, opts = {})
       data, _status_code, _headers = update_player_tags_with_http_info(app_id, external_user_id, opts)
       data
@@ -1304,7 +1304,7 @@ module OneSignal
     # @param external_user_id [String] The External User ID mapped to teh device record in OneSignal.  Must be actively set on the device to be updated.
     # @param [Hash] opts the optional parameters
     # @option opts [UpdatePlayerTagsRequestBody] :update_player_tags_request_body 
-    # @return [Array<(InlineResponse2001, Integer, Hash)>] InlineResponse2001 data, response status code and response headers
+    # @return [Array<(UpdatePlayerTagsSuccessResponse, Integer, Hash)>] UpdatePlayerTagsSuccessResponse data, response status code and response headers
     def update_player_tags_with_http_info(app_id, external_user_id, opts = {})
       if @api_client.config.debugging
         @api_client.config.logger.debug 'Calling API: DefaultApi.update_player_tags ...'
@@ -1340,7 +1340,7 @@ module OneSignal
       post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'update_player_tags_request_body'])
 
       # return_type
-      return_type = opts[:debug_return_type] || 'InlineResponse2001'
+      return_type = opts[:debug_return_type] || 'UpdatePlayerTagsSuccessResponse'
 
       # auth_names
       auth_names = opts[:debug_auth_names] || ['app_key']
