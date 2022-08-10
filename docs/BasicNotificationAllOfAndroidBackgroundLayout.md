@@ -1,4 +1,4 @@
-# OneSignal::NotificationAllOfAndroidBackgroundLayout
+# OneSignal::BasicNotificationAllOfAndroidBackgroundLayout
 
 ## Properties
 
@@ -13,7 +13,7 @@
 ```ruby
 require 'onesignal'
 
-instance = OneSignal::NotificationAllOfAndroidBackgroundLayout.new(
+instance = OneSignal::BasicNotificationAllOfAndroidBackgroundLayout.new(
   image: null,
   headings_color: null,
   contents_color: null

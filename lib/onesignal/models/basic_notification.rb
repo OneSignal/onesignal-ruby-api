@@ -14,7 +14,7 @@ require 'date'
 require 'time'
 
 module OneSignal
-  class NotificationWithMeta
+  class BasicNotification
     # The segment names you want to target. Users in these segments will receive a notification. This targeting parameter is only compatible with excluded_segments. Example: [\"Active Users\", \"Inactive Users\"] 
     attr_accessor :included_segments
 
@@ -302,7 +302,7 @@ module OneSignal
     # Channel: Push Notifications Platform: iOS valid values: voip Set the value to voip for sending VoIP Notifications This field maps to the APNS header apns-push-type. Note: alert and background are automatically set by OneSignal 
     attr_accessor :apns_push_type_override
 
-    # number of push notifications sent per minute. Paid Feature Only. If throttling is not enabled for the app or the notification, and for free accounts, null is returned. Refer to Throttling for more details.
+    # Channel: All Apps with throttling enabled:   - the parameter value will be used to override the default application throttling value set from the dashboard settings.   - parameter value 0 indicates not to apply throttling to the notification.   - if the parameter is not passed then the default app throttling value will be applied to the notification. Apps with throttling disabled:   - this parameter can be used to throttle delivery for the notification even though throttling is not enabled at the application level. Refer to throttling for more details. 
     attr_accessor :throttle_rate_per_minute
 
     # Channel: Push Notifications Platform: Android Notifications with the same group will be stacked together using Android's Notification Grouping feature. 
@@ -343,37 +343,6 @@ module OneSignal
 
     # Channel: SMS URLs for the media files to be attached to the SMS content. Limit: 10 media urls with a total max. size of 5MBs. 
     attr_accessor :sms_media_urls
-
-    # Number of notifications that were successfully delivered.
-    attr_accessor :successful
-
-    # Number of notifications that could not be delivered due to those devices being unsubscribed.
-    attr_accessor :failed
-
-    # Number of notifications that could not be delivered due to an error. You can find more information by viewing the notification in the dashboard.
-    attr_accessor :errored
-
-    # Number of users who have clicked / tapped on your notification.
-    attr_accessor :converted
-
-    # Confirmed Deliveries number of devices that received the push notification. Paid Feature Only. Free accounts will see 0.
-    attr_accessor :received
-
-    attr_accessor :outcomes
-
-    # Number of notifications that have not been sent out yet. This can mean either our system is still processing the notification or you have delayed options set.
-    attr_accessor :remaining
-
-    # Unix timestamp indicating when the notification was created.
-    attr_accessor :queued_at
-
-    # Unix timestamp indicating when notification delivery should begin.
-    attr_accessor :send_after
-
-    # Unix timestamp indicating when notification delivery completed. The delivery duration from start to finish can be calculated with completed_at - send_after.
-    attr_accessor :completed_at
-
-    attr_accessor :platform_delivery_stats
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -511,18 +480,7 @@ module OneSignal
         :'email_from_name' => :'email_from_name',
         :'email_from_address' => :'email_from_address',
         :'sms_from' => :'sms_from',
-        :'sms_media_urls' => :'sms_media_urls',
-        :'successful' => :'successful',
-        :'failed' => :'failed',
-        :'errored' => :'errored',
-        :'converted' => :'converted',
-        :'received' => :'received',
-        :'outcomes' => :'outcomes',
-        :'remaining' => :'remaining',
-        :'queued_at' => :'queued_at',
-        :'send_after' => :'send_after',
-        :'completed_at' => :'completed_at',
-        :'platform_delivery_stats' => :'platform_delivery_stats'
+        :'sms_media_urls' => :'sms_media_urls'
       }
     end
 
@@ -632,7 +590,7 @@ module OneSignal
         :'ttl' => :'Integer',
         :'priority' => :'Integer',
         :'apns_push_type_override' => :'String',
-        :'throttle_rate_per_minute' => :'Integer',
+        :'throttle_rate_per_minute' => :'String',
         :'android_group' => :'String',
         :'android_group_message' => :'String',
         :'adm_group' => :'String',
@@ -645,18 +603,7 @@ module OneSignal
         :'email_from_name' => :'String',
         :'email_from_address' => :'String',
         :'sms_from' => :'String',
-        :'sms_media_urls' => :'Array<String>',
-        :'successful' => :'Integer',
-        :'failed' => :'Integer',
-        :'errored' => :'Integer',
-        :'converted' => :'Integer',
-        :'received' => :'Integer',
-        :'outcomes' => :'Array<OutcomeData>',
-        :'remaining' => :'Integer',
-        :'queued_at' => :'Integer',
-        :'send_after' => :'Integer',
-        :'completed_at' => :'Integer',
-        :'platform_delivery_stats' => :'PlatformDeliveryData'
+        :'sms_media_urls' => :'Array<String>'
       }
     end
 
@@ -737,20 +684,15 @@ module OneSignal
         :'email_from_name',
         :'email_from_address',
         :'sms_from',
-        :'sms_media_urls',
-        :'received',
-        :'send_after',
-        :'completed_at',
+        :'sms_media_urls'
       ])
     end
 
     # List of class defined in allOf (OpenAPI v3)
     def self.openapi_all_of
       [
-      :'BasicNotification',
-      :'DeliveryData',
-      :'NotificationWithMetaAllOf',
-      :'OutcomesData'
+      :'BasicNotificationAllOf',
+      :'NotificationTarget'
       ]
     end
 
@@ -758,13 +700,13 @@ module OneSignal
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `OneSignal::NotificationWithMeta` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `OneSignal::BasicNotification` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `OneSignal::NotificationWithMeta`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `OneSignal::BasicNotification`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -1246,52 +1188,6 @@ module OneSignal
           self.sms_media_urls = value
         end
       end
-
-      if attributes.key?(:'successful')
-        self.successful = attributes[:'successful']
-      end
-
-      if attributes.key?(:'failed')
-        self.failed = attributes[:'failed']
-      end
-
-      if attributes.key?(:'errored')
-        self.errored = attributes[:'errored']
-      end
-
-      if attributes.key?(:'converted')
-        self.converted = attributes[:'converted']
-      end
-
-      if attributes.key?(:'received')
-        self.received = attributes[:'received']
-      end
-
-      if attributes.key?(:'outcomes')
-        if (value = attributes[:'outcomes']).is_a?(Array)
-          self.outcomes = value
-        end
-      end
-
-      if attributes.key?(:'remaining')
-        self.remaining = attributes[:'remaining']
-      end
-
-      if attributes.key?(:'queued_at')
-        self.queued_at = attributes[:'queued_at']
-      end
-
-      if attributes.key?(:'send_after')
-        self.send_after = attributes[:'send_after']
-      end
-
-      if attributes.key?(:'completed_at')
-        self.completed_at = attributes[:'completed_at']
-      end
-
-      if attributes.key?(:'platform_delivery_stats')
-        self.platform_delivery_stats = attributes[:'platform_delivery_stats']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -1440,18 +1336,7 @@ module OneSignal
           email_from_name == o.email_from_name &&
           email_from_address == o.email_from_address &&
           sms_from == o.sms_from &&
-          sms_media_urls == o.sms_media_urls &&
-          successful == o.successful &&
-          failed == o.failed &&
-          errored == o.errored &&
-          converted == o.converted &&
-          received == o.received &&
-          outcomes == o.outcomes &&
-          remaining == o.remaining &&
-          queued_at == o.queued_at &&
-          send_after == o.send_after &&
-          completed_at == o.completed_at &&
-          platform_delivery_stats == o.platform_delivery_stats
+          sms_media_urls == o.sms_media_urls
     end
 
     # @see the `==` method
@@ -1463,7 +1348,7 @@ module OneSignal
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [included_segments, excluded_segments, last_session, first_session, session_count, session_time, amount_spent, bought_sku, tag, language, app_version, location, email, country, include_player_ids, include_external_user_ids, include_email_tokens, include_phone_numbers, include_ios_tokens, include_wp_wns_uris, include_amazon_reg_ids, include_chrome_reg_ids, include_chrome_web_reg_ids, include_android_reg_ids, id, value, name, aggregation, is_ios, is_android, is_huawei, is_any_web, is_chrome_web, is_firefox, is_safari, is_wp_wns, is_adm, is_chrome, channel_for_external_user_ids, app_id, external_id, contents, headings, subtitle, data, huawei_msg_type, url, web_url, app_url, ios_attachments, template_id, content_available, mutable_content, target_content_identifier, big_picture, huawei_big_picture, adm_big_picture, chrome_big_picture, chrome_web_image, buttons, web_buttons, ios_category, android_channel_id, huawei_channel_id, existing_android_channel_id, huawei_existing_channel_id, android_background_layout, small_icon, huawei_small_icon, large_icon, huawei_large_icon, adm_small_icon, adm_large_icon, chrome_web_icon, chrome_web_badge, firefox_icon, chrome_icon, ios_sound, android_sound, huawei_sound, adm_sound, wp_wns_sound, android_led_color, huawei_led_color, android_accent_color, huawei_accent_color, android_visibility, huawei_visibility, ios_badge_type, ios_badge_count, collapse_id, web_push_topic, apns_alert, delayed_option, delivery_time_of_day, ttl, priority, apns_push_type_override, throttle_rate_per_minute, android_group, android_group_message, adm_group, adm_group_message, thread_id, summary_arg, summary_arg_count, email_subject, email_body, email_from_name, email_from_address, sms_from, sms_media_urls, successful, failed, errored, converted, received, outcomes, remaining, queued_at, send_after, completed_at, platform_delivery_stats].hash
+      [included_segments, excluded_segments, last_session, first_session, session_count, session_time, amount_spent, bought_sku, tag, language, app_version, location, email, country, include_player_ids, include_external_user_ids, include_email_tokens, include_phone_numbers, include_ios_tokens, include_wp_wns_uris, include_amazon_reg_ids, include_chrome_reg_ids, include_chrome_web_reg_ids, include_android_reg_ids, id, value, name, aggregation, is_ios, is_android, is_huawei, is_any_web, is_chrome_web, is_firefox, is_safari, is_wp_wns, is_adm, is_chrome, channel_for_external_user_ids, app_id, external_id, contents, headings, subtitle, data, huawei_msg_type, url, web_url, app_url, ios_attachments, template_id, content_available, mutable_content, target_content_identifier, big_picture, huawei_big_picture, adm_big_picture, chrome_big_picture, chrome_web_image, buttons, web_buttons, ios_category, android_channel_id, huawei_channel_id, existing_android_channel_id, huawei_existing_channel_id, android_background_layout, small_icon, huawei_small_icon, large_icon, huawei_large_icon, adm_small_icon, adm_large_icon, chrome_web_icon, chrome_web_badge, firefox_icon, chrome_icon, ios_sound, android_sound, huawei_sound, adm_sound, wp_wns_sound, android_led_color, huawei_led_color, android_accent_color, huawei_accent_color, android_visibility, huawei_visibility, ios_badge_type, ios_badge_count, collapse_id, web_push_topic, apns_alert, delayed_option, delivery_time_of_day, ttl, priority, apns_push_type_override, throttle_rate_per_minute, android_group, android_group_message, adm_group, adm_group_message, thread_id, summary_arg, summary_arg_count, email_subject, email_body, email_from_name, email_from_address, sms_from, sms_media_urls].hash
     end
 
     # Builds the object from hash

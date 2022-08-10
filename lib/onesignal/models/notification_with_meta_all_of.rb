@@ -89,6 +89,7 @@ module OneSignal
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'send_after',
         :'completed_at',
         :'received',
         :'throttle_rate_per_minute'

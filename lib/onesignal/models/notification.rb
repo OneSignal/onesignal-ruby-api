@@ -287,9 +287,6 @@ module OneSignal
     # Channel: Push Notifications Platform: iOS 10+ iOS can localize push notification messages on the client using special parameters such as loc-key. When using the Create Notification endpoint, you must include these parameters inside of a field called apns_alert. Please see Apple's guide on localizing push notifications to learn more. 
     attr_accessor :apns_alert
 
-    # Channel: All Schedule notification for future delivery. API defaults to UTC -1100 Examples: All examples are the exact same date & time. \"Thu Sep 24 2015 14:00:00 GMT-0700 (PDT)\" \"September 24th 2015, 2:00:00 pm UTC-07:00\" \"2015-09-24 14:00:00 GMT-0700\" \"Sept 24 2015 14:00:00 GMT-0700\" \"Thu Sep 24 2015 14:00:00 GMT-0700 (Pacific Daylight Time)\" Note: SMS currently only supports send_after parameter. 
-    attr_accessor :send_after
-
     # Channel: All Possible values are: timezone (Deliver at a specific time-of-day in each users own timezone) last-active Same as Intelligent Delivery . (Deliver at the same time of day as each user last used your app). If send_after is used, this takes effect after the send_after time has elapsed. 
     attr_accessor :delayed_option
 
@@ -346,6 +343,9 @@ module OneSignal
 
     # Channel: SMS URLs for the media files to be attached to the SMS content. Limit: 10 media urls with a total max. size of 5MBs. 
     attr_accessor :sms_media_urls
+
+    # Channel: All Schedule notification for future delivery. API defaults to UTC -1100 Examples: All examples are the exact same date & time. \"Thu Sep 24 2015 14:00:00 GMT-0700 (PDT)\" \"September 24th 2015, 2:00:00 pm UTC-07:00\" \"2015-09-24 14:00:00 GMT-0700\" \"Sept 24 2015 14:00:00 GMT-0700\" \"Thu Sep 24 2015 14:00:00 GMT-0700 (Pacific Daylight Time)\" Note: SMS currently only supports send_after parameter. 
+    attr_accessor :send_after
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -465,7 +465,6 @@ module OneSignal
         :'collapse_id' => :'collapse_id',
         :'web_push_topic' => :'web_push_topic',
         :'apns_alert' => :'apns_alert',
-        :'send_after' => :'send_after',
         :'delayed_option' => :'delayed_option',
         :'delivery_time_of_day' => :'delivery_time_of_day',
         :'ttl' => :'ttl',
@@ -484,7 +483,8 @@ module OneSignal
         :'email_from_name' => :'email_from_name',
         :'email_from_address' => :'email_from_address',
         :'sms_from' => :'sms_from',
-        :'sms_media_urls' => :'sms_media_urls'
+        :'sms_media_urls' => :'sms_media_urls',
+        :'send_after' => :'send_after'
       }
     end
 
@@ -562,7 +562,7 @@ module OneSignal
         :'huawei_channel_id' => :'String',
         :'existing_android_channel_id' => :'String',
         :'huawei_existing_channel_id' => :'String',
-        :'android_background_layout' => :'NotificationAllOfAndroidBackgroundLayout',
+        :'android_background_layout' => :'BasicNotificationAllOfAndroidBackgroundLayout',
         :'small_icon' => :'String',
         :'huawei_small_icon' => :'String',
         :'large_icon' => :'String',
@@ -589,7 +589,6 @@ module OneSignal
         :'collapse_id' => :'String',
         :'web_push_topic' => :'String',
         :'apns_alert' => :'Object',
-        :'send_after' => :'Time',
         :'delayed_option' => :'String',
         :'delivery_time_of_day' => :'String',
         :'ttl' => :'Integer',
@@ -608,13 +607,17 @@ module OneSignal
         :'email_from_name' => :'String',
         :'email_from_address' => :'String',
         :'sms_from' => :'String',
-        :'sms_media_urls' => :'Array<String>'
+        :'sms_media_urls' => :'Array<String>',
+        :'send_after' => :'Time'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'include_player_ids',
+        :'include_external_user_ids',
+        :'name',
         :'is_ios',
         :'is_android',
         :'is_huawei',
@@ -628,20 +631,74 @@ module OneSignal
         :'contents',
         :'headings',
         :'subtitle',
+        :'data',
+        :'huawei_msg_type',
+        :'url',
+        :'web_url',
+        :'app_url',
+        :'ios_attachments',
+        :'template_id',
         :'content_available',
+        :'target_content_identifier',
+        :'big_picture',
+        :'huawei_big_picture',
+        :'adm_big_picture',
+        :'chrome_big_picture',
+        :'chrome_web_image',
+        :'buttons',
+        :'web_buttons',
+        :'ios_category',
+        :'huawei_channel_id',
+        :'huawei_existing_channel_id',
+        :'small_icon',
+        :'huawei_small_icon',
+        :'large_icon',
+        :'huawei_large_icon',
+        :'adm_small_icon',
+        :'adm_large_icon',
+        :'chrome_web_icon',
+        :'chrome_web_badge',
+        :'firefox_icon',
+        :'chrome_icon',
+        :'ios_sound',
+        :'android_sound',
+        :'huawei_sound',
+        :'adm_sound',
+        :'wp_wns_sound',
+        :'android_led_color',
+        :'huawei_led_color',
+        :'android_accent_color',
+        :'huawei_accent_color',
         :'android_visibility',
         :'huawei_visibility',
+        :'ios_badge_type',
         :'ios_badge_count',
+        :'web_push_topic',
+        :'apns_alert',
+        :'delayed_option',
+        :'delivery_time_of_day',
         :'ttl',
         :'priority',
+        :'throttle_rate_per_minute',
+        :'android_group',
+        :'android_group_message',
+        :'adm_group',
+        :'adm_group_message',
+        :'thread_id',
+        :'email_subject',
+        :'email_from_name',
+        :'email_from_address',
+        :'sms_from',
+        :'sms_media_urls',
+        :'send_after'
       ])
     end
 
     # List of class defined in allOf (OpenAPI v3)
     def self.openapi_all_of
       [
-      :'NotificationAllOf',
-      :'NotificationTarget'
+      :'BasicNotification',
+      :'NotificationAllOf'
       ]
     end
 
@@ -798,8 +855,6 @@ module OneSignal
 
       if attributes.key?(:'is_ios')
         self.is_ios = attributes[:'is_ios']
-      else
-        self.is_ios = true
       end
 
       if attributes.key?(:'is_android')
@@ -1062,10 +1117,6 @@ module OneSignal
         self.apns_alert = attributes[:'apns_alert']
       end
 
-      if attributes.key?(:'send_after')
-        self.send_after = attributes[:'send_after']
-      end
-
       if attributes.key?(:'delayed_option')
         self.delayed_option = attributes[:'delayed_option']
       end
@@ -1142,6 +1193,10 @@ module OneSignal
         if (value = attributes[:'sms_media_urls']).is_a?(Array)
           self.sms_media_urls = value
         end
+      end
+
+      if attributes.key?(:'send_after')
+        self.send_after = attributes[:'send_after']
       end
     end
 
@@ -1273,7 +1328,6 @@ module OneSignal
           collapse_id == o.collapse_id &&
           web_push_topic == o.web_push_topic &&
           apns_alert == o.apns_alert &&
-          send_after == o.send_after &&
           delayed_option == o.delayed_option &&
           delivery_time_of_day == o.delivery_time_of_day &&
           ttl == o.ttl &&
@@ -1292,7 +1346,8 @@ module OneSignal
           email_from_name == o.email_from_name &&
           email_from_address == o.email_from_address &&
           sms_from == o.sms_from &&
-          sms_media_urls == o.sms_media_urls
+          sms_media_urls == o.sms_media_urls &&
+          send_after == o.send_after
     end
 
     # @see the `==` method
@@ -1304,7 +1359,7 @@ module OneSignal
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [included_segments, excluded_segments, last_session, first_session, session_count, session_time, amount_spent, bought_sku, tag, language, app_version, location, email, country, include_player_ids, include_external_user_ids, include_email_tokens, include_phone_numbers, include_ios_tokens, include_wp_wns_uris, include_amazon_reg_ids, include_chrome_reg_ids, include_chrome_web_reg_ids, include_android_reg_ids, id, value, name, aggregation, is_ios, is_android, is_huawei, is_any_web, is_chrome_web, is_firefox, is_safari, is_wp_wns, is_adm, is_chrome, channel_for_external_user_ids, app_id, external_id, contents, headings, subtitle, data, huawei_msg_type, url, web_url, app_url, ios_attachments, template_id, content_available, mutable_content, target_content_identifier, big_picture, huawei_big_picture, adm_big_picture, chrome_big_picture, chrome_web_image, buttons, web_buttons, ios_category, android_channel_id, huawei_channel_id, existing_android_channel_id, huawei_existing_channel_id, android_background_layout, small_icon, huawei_small_icon, large_icon, huawei_large_icon, adm_small_icon, adm_large_icon, chrome_web_icon, chrome_web_badge, firefox_icon, chrome_icon, ios_sound, android_sound, huawei_sound, adm_sound, wp_wns_sound, android_led_color, huawei_led_color, android_accent_color, huawei_accent_color, android_visibility, huawei_visibility, ios_badge_type, ios_badge_count, collapse_id, web_push_topic, apns_alert, send_after, delayed_option, delivery_time_of_day, ttl, priority, apns_push_type_override, throttle_rate_per_minute, android_group, android_group_message, adm_group, adm_group_message, thread_id, summary_arg, summary_arg_count, email_subject, email_body, email_from_name, email_from_address, sms_from, sms_media_urls].hash
+      [included_segments, excluded_segments, last_session, first_session, session_count, session_time, amount_spent, bought_sku, tag, language, app_version, location, email, country, include_player_ids, include_external_user_ids, include_email_tokens, include_phone_numbers, include_ios_tokens, include_wp_wns_uris, include_amazon_reg_ids, include_chrome_reg_ids, include_chrome_web_reg_ids, include_android_reg_ids, id, value, name, aggregation, is_ios, is_android, is_huawei, is_any_web, is_chrome_web, is_firefox, is_safari, is_wp_wns, is_adm, is_chrome, channel_for_external_user_ids, app_id, external_id, contents, headings, subtitle, data, huawei_msg_type, url, web_url, app_url, ios_attachments, template_id, content_available, mutable_content, target_content_identifier, big_picture, huawei_big_picture, adm_big_picture, chrome_big_picture, chrome_web_image, buttons, web_buttons, ios_category, android_channel_id, huawei_channel_id, existing_android_channel_id, huawei_existing_channel_id, android_background_layout, small_icon, huawei_small_icon, large_icon, huawei_large_icon, adm_small_icon, adm_large_icon, chrome_web_icon, chrome_web_badge, firefox_icon, chrome_icon, ios_sound, android_sound, huawei_sound, adm_sound, wp_wns_sound, android_led_color, huawei_led_color, android_accent_color, huawei_accent_color, android_visibility, huawei_visibility, ios_badge_type, ios_badge_count, collapse_id, web_push_topic, apns_alert, delayed_option, delivery_time_of_day, ttl, priority, apns_push_type_override, throttle_rate_per_minute, android_group, android_group_message, adm_group, adm_group_message, thread_id, summary_arg, summary_arg_count, email_subject, email_body, email_from_name, email_from_address, sms_from, sms_media_urls, send_after].hash
     end
 
     # Builds the object from hash

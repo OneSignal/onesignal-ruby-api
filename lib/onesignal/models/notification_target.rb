@@ -155,6 +155,8 @@ module OneSignal
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'include_player_ids',
+        :'include_external_user_ids',
       ])
     end
 

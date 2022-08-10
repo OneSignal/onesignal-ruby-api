@@ -169,7 +169,15 @@ module OneSignal
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'external_user_id',
+        :'identifier',
         :'timezone',
+        :'game_version',
+        :'device_model',
+        :'device_os',
+        :'ad_id',
+        :'sdk',
+        :'tags',
         :'test_type',
       ])
     end

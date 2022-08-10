@@ -42,7 +42,7 @@ module OneSignal
     def self.openapi_types
       {
         :'extra_fields' => :'Array<String>',
-        :'last_active_since' => :'Integer',
+        :'last_active_since' => :'String',
         :'segment_name' => :'String'
       }
     end
