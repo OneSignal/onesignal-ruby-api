@@ -32,7 +32,7 @@ module OneSignal
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'success' => :'String'
+        :'success' => :'Boolean'
       }
     end
 

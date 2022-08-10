@@ -194,6 +194,16 @@ module OneSignal
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'gcm_key',
+        :'chrome_web_origin',
+        :'chrome_key',
+        :'chrome_web_default_notification_icon',
+        :'chrome_web_sub_domain',
+        :'apns_env',
+        :'apns_certificates',
+        :'safari_site_origin',
+        :'safari_push_id',
+        :'site_name',
       ])
     end
 

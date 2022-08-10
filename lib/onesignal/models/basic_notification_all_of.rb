@@ -14,79 +14,7 @@ require 'date'
 require 'time'
 
 module OneSignal
-  class NotificationWithMeta
-    # The segment names you want to target. Users in these segments will receive a notification. This targeting parameter is only compatible with excluded_segments. Example: [\"Active Users\", \"Inactive Users\"] 
-    attr_accessor :included_segments
-
-    # Segment that will be excluded when sending. Users in these segments will not receive a notification, even if they were included in included_segments. This targeting parameter is only compatible with included_segments. Example: [\"Active Users\", \"Inactive Users\"] 
-    attr_accessor :excluded_segments
-
-    # relation = \">\" or \"<\" hours_ago = number of hours before or after the users last session. Example: \"1.1\" 
-    attr_accessor :last_session
-
-    # relation = \">\" or \"<\" hours_ago = number of hours before or after the users first session. Example: \"1.1\" 
-    attr_accessor :first_session
-
-    # relation = \">\", \"<\", \"=\" or \"!=\" value = number sessions. Example: \"1\" 
-    attr_accessor :session_count
-
-    # relation = \">\", \"<\", \"=\" or \"!=\" value = Time in seconds the user has been in your app. Example: \"3600\" 
-    attr_accessor :session_time
-
-    # relation = \">\", \"<\", or \"=\" value = Amount in USD a user has spent on IAP (In App Purchases). Example: \"0.99\" 
-    attr_accessor :amount_spent
-
-    # relation = \">\", \"<\" or \"=\" key = SKU purchased in your app as an IAP (In App Purchases). Example: \"com.domain.100coinpack\" value = value of SKU to compare to. Example: \"0.99\" 
-    attr_accessor :bought_sku
-
-    # relation = \">\", \"<\", \"=\", \"!=\", \"exists\", \"not_exists\", \"time_elapsed_gt\" (paid plan only) or \"time_elapsed_lt\" (paid plan only) See Time Operators key = Tag key to compare. value = Tag value to compare. Not required for \"exists\" or \"not_exists\". Example: See Formatting Filters 
-    attr_accessor :tag
-
-    # relation = \"=\" or \"!=\" value = 2 character language code. Example: \"en\". For a list of all language codes see Language & Localization. 
-    attr_accessor :language
-
-    # relation = \">\", \"<\", \"=\" or \"!=\" value = app version. Example: \"1.0.0\" 
-    attr_accessor :app_version
-
-    # radius = in meters lat = latitude long = longitude 
-    attr_accessor :location
-
-    # value = email address Only for sending Push Notifications Use this for targeting push subscribers associated with an email set with all SDK setEmail methods To send emails to specific email addresses use include_email_tokens parameter 
-    attr_accessor :email
-
-    # relation = \"=\" value = 2-digit Country code Example: \"field\": \"country\", \"relation\": \"=\", \"value\", \"US\" 
-    attr_accessor :country
-
-    # Specific playerids to send your notification to. _Does not require API Auth Key. Do not combine with other targeting parameters. Not compatible with any other targeting parameters. Example: [\"1dd608f2-c6a1-11e3-851d-000c2940e62c\"] Limit of 2,000 entries per REST API call 
-    attr_accessor :include_player_ids
-
-    # Target specific devices by custom user IDs assigned via API. Not compatible with any other targeting parameters Example: [\"custom-id-assigned-by-api\"] REQUIRED: REST API Key Authentication Limit of 2,000 entries per REST API call. Note: If targeting push, email, or sms subscribers with same ids, use with channel_for_external_user_ids to indicate you are sending a push or email or sms. 
-    attr_accessor :include_external_user_ids
-
-    # Recommended for Sending Emails - Target specific email addresses. If an email does not correspond to an existing user, a new user will be created. Example: nick@catfac.ts Limit of 2,000 entries per REST API call 
-    attr_accessor :include_email_tokens
-
-    # Recommended for Sending SMS - Target specific phone numbers. The phone number should be in the E.164 format. Phone number should be an existing subscriber on OneSignal. Refer our docs to learn how to add phone numbers to OneSignal. Example phone number: +1999999999 Limit of 2,000 entries per REST API call 
-    attr_accessor :include_phone_numbers
-
-    # Not Recommended: Please consider using include_player_ids or include_external_user_ids instead. Target using iOS device tokens. Warning: Only works with Production tokens. All non-alphanumeric characters must be removed from each token. If a token does not correspond to an existing user, a new user will be created. Example: ce777617da7f548fe7a9ab6febb56cf39fba6d38203... Limit of 2,000 entries per REST API call 
-    attr_accessor :include_ios_tokens
-
-    # Not Recommended: Please consider using include_player_ids or include_external_user_ids instead. Target using Windows URIs. If a token does not correspond to an existing user, a new user will be created. Example: http://s.notify.live.net/u/1/bn1/HmQAAACPaLDr-... Limit of 2,000 entries per REST API call 
-    attr_accessor :include_wp_wns_uris
-
-    # Not Recommended: Please consider using include_player_ids or include_external_user_ids instead. Target using Amazon ADM registration IDs. If a token does not correspond to an existing user, a new user will be created. Example: amzn1.adm-registration.v1.XpvSSUk0Rc3hTVVV... Limit of 2,000 entries per REST API call 
-    attr_accessor :include_amazon_reg_ids
-
-    # Not Recommended: Please consider using include_player_ids or include_external_user_ids instead. Target using Chrome App registration IDs. If a token does not correspond to an existing user, a new user will be created. Example: APA91bEeiUeSukAAUdnw3O2RB45FWlSpgJ7Ji_... Limit of 2,000 entries per REST API call 
-    attr_accessor :include_chrome_reg_ids
-
-    # Not Recommended: Please consider using include_player_ids or include_external_user_ids instead. Target using Chrome Web Push registration IDs. If a token does not correspond to an existing user, a new user will be created. Example: APA91bEeiUeSukAAUdnw3O2RB45FWlSpgJ7Ji_... Limit of 2,000 entries per REST API call 
-    attr_accessor :include_chrome_web_reg_ids
-
-    # Not Recommended: Please consider using include_player_ids or include_external_user_ids instead. Target using Android device registration IDs. If a token does not correspond to an existing user, a new user will be created. Example: APA91bEeiUeSukAAUdnw3O2RB45FWlSpgJ7Ji_... Limit of 2,000 entries per REST API call 
-    attr_accessor :include_android_reg_ids
-
+  class BasicNotificationAllOf
     attr_accessor :id
 
     attr_accessor :value
@@ -302,7 +230,7 @@ module OneSignal
     # Channel: Push Notifications Platform: iOS valid values: voip Set the value to voip for sending VoIP Notifications This field maps to the APNS header apns-push-type. Note: alert and background are automatically set by OneSignal 
     attr_accessor :apns_push_type_override
 
-    # number of push notifications sent per minute. Paid Feature Only. If throttling is not enabled for the app or the notification, and for free accounts, null is returned. Refer to Throttling for more details.
+    # Channel: All Apps with throttling enabled:   - the parameter value will be used to override the default application throttling value set from the dashboard settings.   - parameter value 0 indicates not to apply throttling to the notification.   - if the parameter is not passed then the default app throttling value will be applied to the notification. Apps with throttling disabled:   - this parameter can be used to throttle delivery for the notification even though throttling is not enabled at the application level. Refer to throttling for more details. 
     attr_accessor :throttle_rate_per_minute
 
     # Channel: Push Notifications Platform: Android Notifications with the same group will be stacked together using Android's Notification Grouping feature. 
@@ -344,37 +272,6 @@ module OneSignal
     # Channel: SMS URLs for the media files to be attached to the SMS content. Limit: 10 media urls with a total max. size of 5MBs. 
     attr_accessor :sms_media_urls
 
-    # Number of notifications that were successfully delivered.
-    attr_accessor :successful
-
-    # Number of notifications that could not be delivered due to those devices being unsubscribed.
-    attr_accessor :failed
-
-    # Number of notifications that could not be delivered due to an error. You can find more information by viewing the notification in the dashboard.
-    attr_accessor :errored
-
-    # Number of users who have clicked / tapped on your notification.
-    attr_accessor :converted
-
-    # Confirmed Deliveries number of devices that received the push notification. Paid Feature Only. Free accounts will see 0.
-    attr_accessor :received
-
-    attr_accessor :outcomes
-
-    # Number of notifications that have not been sent out yet. This can mean either our system is still processing the notification or you have delayed options set.
-    attr_accessor :remaining
-
-    # Unix timestamp indicating when the notification was created.
-    attr_accessor :queued_at
-
-    # Unix timestamp indicating when notification delivery should begin.
-    attr_accessor :send_after
-
-    # Unix timestamp indicating when notification delivery completed. The delivery duration from start to finish can be calculated with completed_at - send_after.
-    attr_accessor :completed_at
-
-    attr_accessor :platform_delivery_stats
-
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -400,30 +297,6 @@ module OneSignal
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'included_segments' => :'included_segments',
-        :'excluded_segments' => :'excluded_segments',
-        :'last_session' => :'last_session',
-        :'first_session' => :'first_session',
-        :'session_count' => :'session_count',
-        :'session_time' => :'session_time',
-        :'amount_spent' => :'amount_spent',
-        :'bought_sku' => :'bought_sku',
-        :'tag' => :'tag',
-        :'language' => :'language',
-        :'app_version' => :'app_version',
-        :'location' => :'location',
-        :'email' => :'email',
-        :'country' => :'country',
-        :'include_player_ids' => :'include_player_ids',
-        :'include_external_user_ids' => :'include_external_user_ids',
-        :'include_email_tokens' => :'include_email_tokens',
-        :'include_phone_numbers' => :'include_phone_numbers',
-        :'include_ios_tokens' => :'include_ios_tokens',
-        :'include_wp_wns_uris' => :'include_wp_wns_uris',
-        :'include_amazon_reg_ids' => :'include_amazon_reg_ids',
-        :'include_chrome_reg_ids' => :'include_chrome_reg_ids',
-        :'include_chrome_web_reg_ids' => :'include_chrome_web_reg_ids',
-        :'include_android_reg_ids' => :'include_android_reg_ids',
         :'id' => :'id',
         :'value' => :'value',
         :'name' => :'name',
@@ -511,18 +384,7 @@ module OneSignal
         :'email_from_name' => :'email_from_name',
         :'email_from_address' => :'email_from_address',
         :'sms_from' => :'sms_from',
-        :'sms_media_urls' => :'sms_media_urls',
-        :'successful' => :'successful',
-        :'failed' => :'failed',
-        :'errored' => :'errored',
-        :'converted' => :'converted',
-        :'received' => :'received',
-        :'outcomes' => :'outcomes',
-        :'remaining' => :'remaining',
-        :'queued_at' => :'queued_at',
-        :'send_after' => :'send_after',
-        :'completed_at' => :'completed_at',
-        :'platform_delivery_stats' => :'platform_delivery_stats'
+        :'sms_media_urls' => :'sms_media_urls'
       }
     end
 
@@ -534,30 +396,6 @@ module OneSignal
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'included_segments' => :'Array<String>',
-        :'excluded_segments' => :'Array<String>',
-        :'last_session' => :'String',
-        :'first_session' => :'String',
-        :'session_count' => :'String',
-        :'session_time' => :'String',
-        :'amount_spent' => :'String',
-        :'bought_sku' => :'String',
-        :'tag' => :'String',
-        :'language' => :'String',
-        :'app_version' => :'String',
-        :'location' => :'String',
-        :'email' => :'String',
-        :'country' => :'String',
-        :'include_player_ids' => :'Array<String>',
-        :'include_external_user_ids' => :'Array<String>',
-        :'include_email_tokens' => :'Array<String>',
-        :'include_phone_numbers' => :'Array<String>',
-        :'include_ios_tokens' => :'Array<String>',
-        :'include_wp_wns_uris' => :'Array<String>',
-        :'include_amazon_reg_ids' => :'Array<String>',
-        :'include_chrome_reg_ids' => :'Array<String>',
-        :'include_chrome_web_reg_ids' => :'Array<String>',
-        :'include_android_reg_ids' => :'Array<String>',
         :'id' => :'String',
         :'value' => :'Integer',
         :'name' => :'String',
@@ -632,7 +470,7 @@ module OneSignal
         :'ttl' => :'Integer',
         :'priority' => :'Integer',
         :'apns_push_type_override' => :'String',
-        :'throttle_rate_per_minute' => :'Integer',
+        :'throttle_rate_per_minute' => :'String',
         :'android_group' => :'String',
         :'android_group_message' => :'String',
         :'adm_group' => :'String',
@@ -645,26 +483,13 @@ module OneSignal
         :'email_from_name' => :'String',
         :'email_from_address' => :'String',
         :'sms_from' => :'String',
-        :'sms_media_urls' => :'Array<String>',
-        :'successful' => :'Integer',
-        :'failed' => :'Integer',
-        :'errored' => :'Integer',
-        :'converted' => :'Integer',
-        :'received' => :'Integer',
-        :'outcomes' => :'Array<OutcomeData>',
-        :'remaining' => :'Integer',
-        :'queued_at' => :'Integer',
-        :'send_after' => :'Integer',
-        :'completed_at' => :'Integer',
-        :'platform_delivery_stats' => :'PlatformDeliveryData'
+        :'sms_media_urls' => :'Array<String>'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'include_player_ids',
-        :'include_external_user_ids',
         :'name',
         :'is_ios',
         :'is_android',
@@ -737,157 +562,24 @@ module OneSignal
         :'email_from_name',
         :'email_from_address',
         :'sms_from',
-        :'sms_media_urls',
-        :'received',
-        :'send_after',
-        :'completed_at',
+        :'sms_media_urls'
       ])
-    end
-
-    # List of class defined in allOf (OpenAPI v3)
-    def self.openapi_all_of
-      [
-      :'BasicNotification',
-      :'DeliveryData',
-      :'NotificationWithMetaAllOf',
-      :'OutcomesData'
-      ]
     end
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `OneSignal::NotificationWithMeta` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `OneSignal::BasicNotificationAllOf` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `OneSignal::NotificationWithMeta`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `OneSignal::BasicNotificationAllOf`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'included_segments')
-        if (value = attributes[:'included_segments']).is_a?(Array)
-          self.included_segments = value
-        end
-      end
-
-      if attributes.key?(:'excluded_segments')
-        if (value = attributes[:'excluded_segments']).is_a?(Array)
-          self.excluded_segments = value
-        end
-      end
-
-      if attributes.key?(:'last_session')
-        self.last_session = attributes[:'last_session']
-      end
-
-      if attributes.key?(:'first_session')
-        self.first_session = attributes[:'first_session']
-      end
-
-      if attributes.key?(:'session_count')
-        self.session_count = attributes[:'session_count']
-      end
-
-      if attributes.key?(:'session_time')
-        self.session_time = attributes[:'session_time']
-      end
-
-      if attributes.key?(:'amount_spent')
-        self.amount_spent = attributes[:'amount_spent']
-      end
-
-      if attributes.key?(:'bought_sku')
-        self.bought_sku = attributes[:'bought_sku']
-      end
-
-      if attributes.key?(:'tag')
-        self.tag = attributes[:'tag']
-      end
-
-      if attributes.key?(:'language')
-        self.language = attributes[:'language']
-      end
-
-      if attributes.key?(:'app_version')
-        self.app_version = attributes[:'app_version']
-      end
-
-      if attributes.key?(:'location')
-        self.location = attributes[:'location']
-      end
-
-      if attributes.key?(:'email')
-        self.email = attributes[:'email']
-      end
-
-      if attributes.key?(:'country')
-        self.country = attributes[:'country']
-      end
-
-      if attributes.key?(:'include_player_ids')
-        if (value = attributes[:'include_player_ids']).is_a?(Array)
-          self.include_player_ids = value
-        end
-      end
-
-      if attributes.key?(:'include_external_user_ids')
-        if (value = attributes[:'include_external_user_ids']).is_a?(Array)
-          self.include_external_user_ids = value
-        end
-      end
-
-      if attributes.key?(:'include_email_tokens')
-        if (value = attributes[:'include_email_tokens']).is_a?(Array)
-          self.include_email_tokens = value
-        end
-      end
-
-      if attributes.key?(:'include_phone_numbers')
-        if (value = attributes[:'include_phone_numbers']).is_a?(Array)
-          self.include_phone_numbers = value
-        end
-      end
-
-      if attributes.key?(:'include_ios_tokens')
-        if (value = attributes[:'include_ios_tokens']).is_a?(Array)
-          self.include_ios_tokens = value
-        end
-      end
-
-      if attributes.key?(:'include_wp_wns_uris')
-        if (value = attributes[:'include_wp_wns_uris']).is_a?(Array)
-          self.include_wp_wns_uris = value
-        end
-      end
-
-      if attributes.key?(:'include_amazon_reg_ids')
-        if (value = attributes[:'include_amazon_reg_ids']).is_a?(Array)
-          self.include_amazon_reg_ids = value
-        end
-      end
-
-      if attributes.key?(:'include_chrome_reg_ids')
-        if (value = attributes[:'include_chrome_reg_ids']).is_a?(Array)
-          self.include_chrome_reg_ids = value
-        end
-      end
-
-      if attributes.key?(:'include_chrome_web_reg_ids')
-        if (value = attributes[:'include_chrome_web_reg_ids']).is_a?(Array)
-          self.include_chrome_web_reg_ids = value
-        end
-      end
-
-      if attributes.key?(:'include_android_reg_ids')
-        if (value = attributes[:'include_android_reg_ids']).is_a?(Array)
-          self.include_android_reg_ids = value
-        end
-      end
 
       if attributes.key?(:'id')
         self.id = attributes[:'id']
@@ -1246,62 +938,12 @@ module OneSignal
           self.sms_media_urls = value
         end
       end
-
-      if attributes.key?(:'successful')
-        self.successful = attributes[:'successful']
-      end
-
-      if attributes.key?(:'failed')
-        self.failed = attributes[:'failed']
-      end
-
-      if attributes.key?(:'errored')
-        self.errored = attributes[:'errored']
-      end
-
-      if attributes.key?(:'converted')
-        self.converted = attributes[:'converted']
-      end
-
-      if attributes.key?(:'received')
-        self.received = attributes[:'received']
-      end
-
-      if attributes.key?(:'outcomes')
-        if (value = attributes[:'outcomes']).is_a?(Array)
-          self.outcomes = value
-        end
-      end
-
-      if attributes.key?(:'remaining')
-        self.remaining = attributes[:'remaining']
-      end
-
-      if attributes.key?(:'queued_at')
-        self.queued_at = attributes[:'queued_at']
-      end
-
-      if attributes.key?(:'send_after')
-        self.send_after = attributes[:'send_after']
-      end
-
-      if attributes.key?(:'completed_at')
-        self.completed_at = attributes[:'completed_at']
-      end
-
-      if attributes.key?(:'platform_delivery_stats')
-        self.platform_delivery_stats = attributes[:'platform_delivery_stats']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @app_id.nil?
-        invalid_properties.push('invalid value for "app_id", app_id cannot be nil.')
-      end
-
       invalid_properties
     end
 
@@ -1310,7 +952,6 @@ module OneSignal
     def valid?
       aggregation_validator = EnumAttributeValidator.new('String', ["sum", "count"])
       return false unless aggregation_validator.valid?(@aggregation)
-      return false if @app_id.nil?
       true
     end
 
@@ -1329,30 +970,6 @@ module OneSignal
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          included_segments == o.included_segments &&
-          excluded_segments == o.excluded_segments &&
-          last_session == o.last_session &&
-          first_session == o.first_session &&
-          session_count == o.session_count &&
-          session_time == o.session_time &&
-          amount_spent == o.amount_spent &&
-          bought_sku == o.bought_sku &&
-          tag == o.tag &&
-          language == o.language &&
-          app_version == o.app_version &&
-          location == o.location &&
-          email == o.email &&
-          country == o.country &&
-          include_player_ids == o.include_player_ids &&
-          include_external_user_ids == o.include_external_user_ids &&
-          include_email_tokens == o.include_email_tokens &&
-          include_phone_numbers == o.include_phone_numbers &&
-          include_ios_tokens == o.include_ios_tokens &&
-          include_wp_wns_uris == o.include_wp_wns_uris &&
-          include_amazon_reg_ids == o.include_amazon_reg_ids &&
-          include_chrome_reg_ids == o.include_chrome_reg_ids &&
-          include_chrome_web_reg_ids == o.include_chrome_web_reg_ids &&
-          include_android_reg_ids == o.include_android_reg_ids &&
           id == o.id &&
           value == o.value &&
           name == o.name &&
@@ -1440,18 +1057,7 @@ module OneSignal
           email_from_name == o.email_from_name &&
           email_from_address == o.email_from_address &&
           sms_from == o.sms_from &&
-          sms_media_urls == o.sms_media_urls &&
-          successful == o.successful &&
-          failed == o.failed &&
-          errored == o.errored &&
-          converted == o.converted &&
-          received == o.received &&
-          outcomes == o.outcomes &&
-          remaining == o.remaining &&
-          queued_at == o.queued_at &&
-          send_after == o.send_after &&
-          completed_at == o.completed_at &&
-          platform_delivery_stats == o.platform_delivery_stats
+          sms_media_urls == o.sms_media_urls
     end
 
     # @see the `==` method
@@ -1463,7 +1069,7 @@ module OneSignal
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [included_segments, excluded_segments, last_session, first_session, session_count, session_time, amount_spent, bought_sku, tag, language, app_version, location, email, country, include_player_ids, include_external_user_ids, include_email_tokens, include_phone_numbers, include_ios_tokens, include_wp_wns_uris, include_amazon_reg_ids, include_chrome_reg_ids, include_chrome_web_reg_ids, include_android_reg_ids, id, value, name, aggregation, is_ios, is_android, is_huawei, is_any_web, is_chrome_web, is_firefox, is_safari, is_wp_wns, is_adm, is_chrome, channel_for_external_user_ids, app_id, external_id, contents, headings, subtitle, data, huawei_msg_type, url, web_url, app_url, ios_attachments, template_id, content_available, mutable_content, target_content_identifier, big_picture, huawei_big_picture, adm_big_picture, chrome_big_picture, chrome_web_image, buttons, web_buttons, ios_category, android_channel_id, huawei_channel_id, existing_android_channel_id, huawei_existing_channel_id, android_background_layout, small_icon, huawei_small_icon, large_icon, huawei_large_icon, adm_small_icon, adm_large_icon, chrome_web_icon, chrome_web_badge, firefox_icon, chrome_icon, ios_sound, android_sound, huawei_sound, adm_sound, wp_wns_sound, android_led_color, huawei_led_color, android_accent_color, huawei_accent_color, android_visibility, huawei_visibility, ios_badge_type, ios_badge_count, collapse_id, web_push_topic, apns_alert, delayed_option, delivery_time_of_day, ttl, priority, apns_push_type_override, throttle_rate_per_minute, android_group, android_group_message, adm_group, adm_group_message, thread_id, summary_arg, summary_arg_count, email_subject, email_body, email_from_name, email_from_address, sms_from, sms_media_urls, successful, failed, errored, converted, received, outcomes, remaining, queued_at, send_after, completed_at, platform_delivery_stats].hash
+      [id, value, name, aggregation, is_ios, is_android, is_huawei, is_any_web, is_chrome_web, is_firefox, is_safari, is_wp_wns, is_adm, is_chrome, channel_for_external_user_ids, app_id, external_id, contents, headings, subtitle, data, huawei_msg_type, url, web_url, app_url, ios_attachments, template_id, content_available, mutable_content, target_content_identifier, big_picture, huawei_big_picture, adm_big_picture, chrome_big_picture, chrome_web_image, buttons, web_buttons, ios_category, android_channel_id, huawei_channel_id, existing_android_channel_id, huawei_existing_channel_id, android_background_layout, small_icon, huawei_small_icon, large_icon, huawei_large_icon, adm_small_icon, adm_large_icon, chrome_web_icon, chrome_web_badge, firefox_icon, chrome_icon, ios_sound, android_sound, huawei_sound, adm_sound, wp_wns_sound, android_led_color, huawei_led_color, android_accent_color, huawei_accent_color, android_visibility, huawei_visibility, ios_badge_type, ios_badge_count, collapse_id, web_push_topic, apns_alert, delayed_option, delivery_time_of_day, ttl, priority, apns_push_type_override, throttle_rate_per_minute, android_group, android_group_message, adm_group, adm_group_message, thread_id, summary_arg, summary_arg_count, email_subject, email_body, email_from_name, email_from_address, sms_from, sms_media_urls].hash
     end
 
     # Builds the object from hash

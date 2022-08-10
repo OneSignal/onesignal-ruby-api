@@ -1,4 +1,4 @@
-# OneSignal::Notification
+# OneSignal::BasicNotification
 
 ## Properties
 
@@ -116,14 +116,13 @@
 | **email_from_address** | **String** | Channel: Email The email address the email is from. If not specified, will default to \&quot;from email\&quot; set in the OneSignal Dashboard Email Settings.  | [optional] |
 | **sms_from** | **String** | Channel: SMS Phone Number used to send SMS. Should be a registered Twilio phone number in E.164 format.  | [optional] |
 | **sms_media_urls** | **Array&lt;String&gt;** | Channel: SMS URLs for the media files to be attached to the SMS content. Limit: 10 media urls with a total max. size of 5MBs.  | [optional] |
-| **send_after** | **Time** | Channel: All Schedule notification for future delivery. API defaults to UTC -1100 Examples: All examples are the exact same date &amp; time. \&quot;Thu Sep 24 2015 14:00:00 GMT-0700 (PDT)\&quot; \&quot;September 24th 2015, 2:00:00 pm UTC-07:00\&quot; \&quot;2015-09-24 14:00:00 GMT-0700\&quot; \&quot;Sept 24 2015 14:00:00 GMT-0700\&quot; \&quot;Thu Sep 24 2015 14:00:00 GMT-0700 (Pacific Daylight Time)\&quot; Note: SMS currently only supports send_after parameter.  | [optional] |
 
 ## Example
 
 ```ruby
 require 'onesignal'
 
-instance = OneSignal::Notification.new(
+instance = OneSignal::BasicNotification.new(
   included_segments: null,
   excluded_segments: null,
   last_session: null,
@@ -235,8 +234,7 @@ instance = OneSignal::Notification.new(
   email_from_name: null,
   email_from_address: null,
   sms_from: null,
-  sms_media_urls: null,
-  send_after: null
+  sms_media_urls: null
 )
 ```
 
