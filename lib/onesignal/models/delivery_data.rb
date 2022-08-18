@@ -15,14 +15,19 @@ require 'time'
 
 module OneSignal
   class DeliveryData
+    # Number of messages delivered to push servers, mobile carriers, or email service providers.
     attr_accessor :successful
 
+    # Number of messages sent to unsubscribed devices.
     attr_accessor :failed
 
+    # Number of errors reported.
     attr_accessor :errored
 
+    # Number of messages that were clicked.
     attr_accessor :converted
 
+    # Number of devices that received the message.
     attr_accessor :received
 
     # Attribute mapping from ruby-style variable name to JSON key.
