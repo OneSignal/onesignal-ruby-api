@@ -14,35 +14,38 @@ require 'date'
 require 'time'
 
 module OneSignal
-  # Hash of delivery statistics broken out by target device platform.
-  class PlatformDeliveryData
-    attr_accessor :edge_web_push
+  class PlatformDeliveryDataEmailAllOf
+    # Number of times an email has been opened.
+    attr_accessor :opened
 
-    attr_accessor :chrome_web_push
+    # Number of unique recipients who have opened your email.
+    attr_accessor :unique_opens
 
-    attr_accessor :firefox_web_push
+    # Number of clicked links from your email. This can include the recipient clicking email links multiple times.
+    attr_accessor :clicks
 
-    attr_accessor :safari_web_push
+    # Number of unique clicks that your recipients have made on links from your email.
+    attr_accessor :unique_clicks
 
-    attr_accessor :android
+    # Number of recipients who registered as a hard or soft bounce and didn't receive your email.
+    attr_accessor :bounced
 
-    attr_accessor :ios
+    # Number of recipients who reported this email as spam.
+    attr_accessor :reported_spam
 
-    attr_accessor :sms
-
-    attr_accessor :email
+    # Number of recipients who opted out of your emails using the unsubscribe link in this email.
+    attr_accessor :unsubscribed
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'edge_web_push' => :'edge_web_push',
-        :'chrome_web_push' => :'chrome_web_push',
-        :'firefox_web_push' => :'firefox_web_push',
-        :'safari_web_push' => :'safari_web_push',
-        :'android' => :'android',
-        :'ios' => :'ios',
-        :'sms' => :'sms',
-        :'email' => :'email'
+        :'opened' => :'opened',
+        :'unique_opens' => :'unique_opens',
+        :'clicks' => :'clicks',
+        :'unique_clicks' => :'unique_clicks',
+        :'bounced' => :'bounced',
+        :'reported_spam' => :'reported_spam',
+        :'unsubscribed' => :'unsubscribed'
       }
     end
 
@@ -54,22 +57,26 @@ module OneSignal
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'edge_web_push' => :'DeliveryData',
-        :'chrome_web_push' => :'DeliveryData',
-        :'firefox_web_push' => :'DeliveryData',
-        :'safari_web_push' => :'DeliveryData',
-        :'android' => :'DeliveryData',
-        :'ios' => :'DeliveryData',
-        :'sms' => :'DeliveryData',
-        :'email' => :'DeliveryData'
+        :'opened' => :'Integer',
+        :'unique_opens' => :'Integer',
+        :'clicks' => :'Integer',
+        :'unique_clicks' => :'Integer',
+        :'bounced' => :'Integer',
+        :'reported_spam' => :'Integer',
+        :'unsubscribed' => :'Integer'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'sms',
-        :'email'
+        :'opened',
+        :'unique_opens',
+        :'clicks',
+        :'unique_clicks',
+        :'bounced',
+        :'reported_spam',
+        :'unsubscribed'
       ])
     end
 
@@ -77,47 +84,43 @@ module OneSignal
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `OneSignal::PlatformDeliveryData` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `OneSignal::PlatformDeliveryDataEmailAllOf` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `OneSignal::PlatformDeliveryData`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `OneSignal::PlatformDeliveryDataEmailAllOf`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'edge_web_push')
-        self.edge_web_push = attributes[:'edge_web_push']
+      if attributes.key?(:'opened')
+        self.opened = attributes[:'opened']
       end
 
-      if attributes.key?(:'chrome_web_push')
-        self.chrome_web_push = attributes[:'chrome_web_push']
+      if attributes.key?(:'unique_opens')
+        self.unique_opens = attributes[:'unique_opens']
       end
 
-      if attributes.key?(:'firefox_web_push')
-        self.firefox_web_push = attributes[:'firefox_web_push']
+      if attributes.key?(:'clicks')
+        self.clicks = attributes[:'clicks']
       end
 
-      if attributes.key?(:'safari_web_push')
-        self.safari_web_push = attributes[:'safari_web_push']
+      if attributes.key?(:'unique_clicks')
+        self.unique_clicks = attributes[:'unique_clicks']
       end
 
-      if attributes.key?(:'android')
-        self.android = attributes[:'android']
+      if attributes.key?(:'bounced')
+        self.bounced = attributes[:'bounced']
       end
 
-      if attributes.key?(:'ios')
-        self.ios = attributes[:'ios']
+      if attributes.key?(:'reported_spam')
+        self.reported_spam = attributes[:'reported_spam']
       end
 
-      if attributes.key?(:'sms')
-        self.sms = attributes[:'sms']
-      end
-
-      if attributes.key?(:'email')
-        self.email = attributes[:'email']
+      if attributes.key?(:'unsubscribed')
+        self.unsubscribed = attributes[:'unsubscribed']
       end
     end
 
@@ -139,14 +142,13 @@ module OneSignal
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          edge_web_push == o.edge_web_push &&
-          chrome_web_push == o.chrome_web_push &&
-          firefox_web_push == o.firefox_web_push &&
-          safari_web_push == o.safari_web_push &&
-          android == o.android &&
-          ios == o.ios &&
-          sms == o.sms &&
-          email == o.email
+          opened == o.opened &&
+          unique_opens == o.unique_opens &&
+          clicks == o.clicks &&
+          unique_clicks == o.unique_clicks &&
+          bounced == o.bounced &&
+          reported_spam == o.reported_spam &&
+          unsubscribed == o.unsubscribed
     end
 
     # @see the `==` method
@@ -158,7 +160,7 @@ module OneSignal
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [edge_web_push, chrome_web_push, firefox_web_push, safari_web_push, android, ios, sms, email].hash
+      [opened, unique_opens, clicks, unique_clicks, bounced, reported_spam, unsubscribed].hash
     end
 
     # Builds the object from hash

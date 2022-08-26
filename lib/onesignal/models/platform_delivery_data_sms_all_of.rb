@@ -14,35 +14,22 @@ require 'date'
 require 'time'
 
 module OneSignal
-  # Hash of delivery statistics broken out by target device platform.
-  class PlatformDeliveryData
-    attr_accessor :edge_web_push
+  class PlatformDeliveryDataSmsAllOf
+    # Number of messages reported as delivered successfully by the SMS service provider.
+    attr_accessor :provider_successful
 
-    attr_accessor :chrome_web_push
+    # Number of recipients who didn't receive your message as reported by the SMS service provider.
+    attr_accessor :provider_failed
 
-    attr_accessor :firefox_web_push
-
-    attr_accessor :safari_web_push
-
-    attr_accessor :android
-
-    attr_accessor :ios
-
-    attr_accessor :sms
-
-    attr_accessor :email
+    # Number of errors reported by the SMS service provider.
+    attr_accessor :provider_errored
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'edge_web_push' => :'edge_web_push',
-        :'chrome_web_push' => :'chrome_web_push',
-        :'firefox_web_push' => :'firefox_web_push',
-        :'safari_web_push' => :'safari_web_push',
-        :'android' => :'android',
-        :'ios' => :'ios',
-        :'sms' => :'sms',
-        :'email' => :'email'
+        :'provider_successful' => :'provider_successful',
+        :'provider_failed' => :'provider_failed',
+        :'provider_errored' => :'provider_errored'
       }
     end
 
@@ -54,22 +41,18 @@ module OneSignal
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'edge_web_push' => :'DeliveryData',
-        :'chrome_web_push' => :'DeliveryData',
-        :'firefox_web_push' => :'DeliveryData',
-        :'safari_web_push' => :'DeliveryData',
-        :'android' => :'DeliveryData',
-        :'ios' => :'DeliveryData',
-        :'sms' => :'DeliveryData',
-        :'email' => :'DeliveryData'
+        :'provider_successful' => :'Integer',
+        :'provider_failed' => :'Integer',
+        :'provider_errored' => :'Integer'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
-        :'sms',
-        :'email'
+        :'provider_successful',
+        :'provider_failed',
+        :'provider_errored'
       ])
     end
 
@@ -77,47 +60,27 @@ module OneSignal
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `OneSignal::PlatformDeliveryData` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `OneSignal::PlatformDeliveryDataSmsAllOf` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `OneSignal::PlatformDeliveryData`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `OneSignal::PlatformDeliveryDataSmsAllOf`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'edge_web_push')
-        self.edge_web_push = attributes[:'edge_web_push']
+      if attributes.key?(:'provider_successful')
+        self.provider_successful = attributes[:'provider_successful']
       end
 
-      if attributes.key?(:'chrome_web_push')
-        self.chrome_web_push = attributes[:'chrome_web_push']
+      if attributes.key?(:'provider_failed')
+        self.provider_failed = attributes[:'provider_failed']
       end
 
-      if attributes.key?(:'firefox_web_push')
-        self.firefox_web_push = attributes[:'firefox_web_push']
-      end
-
-      if attributes.key?(:'safari_web_push')
-        self.safari_web_push = attributes[:'safari_web_push']
-      end
-
-      if attributes.key?(:'android')
-        self.android = attributes[:'android']
-      end
-
-      if attributes.key?(:'ios')
-        self.ios = attributes[:'ios']
-      end
-
-      if attributes.key?(:'sms')
-        self.sms = attributes[:'sms']
-      end
-
-      if attributes.key?(:'email')
-        self.email = attributes[:'email']
+      if attributes.key?(:'provider_errored')
+        self.provider_errored = attributes[:'provider_errored']
       end
     end
 
@@ -139,14 +102,9 @@ module OneSignal
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          edge_web_push == o.edge_web_push &&
-          chrome_web_push == o.chrome_web_push &&
-          firefox_web_push == o.firefox_web_push &&
-          safari_web_push == o.safari_web_push &&
-          android == o.android &&
-          ios == o.ios &&
-          sms == o.sms &&
-          email == o.email
+          provider_successful == o.provider_successful &&
+          provider_failed == o.provider_failed &&
+          provider_errored == o.provider_errored
     end
 
     # @see the `==` method
@@ -158,7 +116,7 @@ module OneSignal
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [edge_web_push, chrome_web_push, firefox_web_push, safari_web_push, android, ios, sms, email].hash
+      [provider_successful, provider_failed, provider_errored].hash
     end
 
     # Builds the object from hash
