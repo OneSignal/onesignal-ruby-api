@@ -21,7 +21,7 @@ module OneSignal
     # Export all devices with a last_active timestamp greater than this time.  Unixtime in seconds.
     attr_accessor :last_active_since
 
-    # Export al ldevices belonging to the segment.
+    # Export all devices belonging to the segment.
     attr_accessor :segment_name
 
     # Attribute mapping from ruby-style variable name to JSON key.

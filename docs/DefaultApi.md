@@ -254,7 +254,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-player = OneSignal::Player.new({id: 'id_example', device_type: 37}) # Player | 
+player = OneSignal::Player.new({device_type: 37}) # Player | 
 
 begin
   # Add a device
@@ -1268,7 +1268,7 @@ end
 
 api_instance = OneSignal::DefaultApi.new
 player_id = 'player_id_example' # String | Player's OneSignal ID
-player = OneSignal::Player.new({id: 'id_example', device_type: 37}) # Player | 
+player = OneSignal::Player.new({device_type: 37}) # Player | 
 
 begin
   # Edit device
