@@ -21,42 +21,6 @@ module OneSignal
     # Segment that will be excluded when sending. Users in these segments will not receive a notification, even if they were included in included_segments. This targeting parameter is only compatible with included_segments. Example: [\"Active Users\", \"Inactive Users\"] 
     attr_accessor :excluded_segments
 
-    # relation = \">\" or \"<\" hours_ago = number of hours before or after the users last session. Example: \"1.1\" 
-    attr_accessor :last_session
-
-    # relation = \">\" or \"<\" hours_ago = number of hours before or after the users first session. Example: \"1.1\" 
-    attr_accessor :first_session
-
-    # relation = \">\", \"<\", \"=\" or \"!=\" value = number sessions. Example: \"1\" 
-    attr_accessor :session_count
-
-    # relation = \">\", \"<\", \"=\" or \"!=\" value = Time in seconds the user has been in your app. Example: \"3600\" 
-    attr_accessor :session_time
-
-    # relation = \">\", \"<\", or \"=\" value = Amount in USD a user has spent on IAP (In App Purchases). Example: \"0.99\" 
-    attr_accessor :amount_spent
-
-    # relation = \">\", \"<\" or \"=\" key = SKU purchased in your app as an IAP (In App Purchases). Example: \"com.domain.100coinpack\" value = value of SKU to compare to. Example: \"0.99\" 
-    attr_accessor :bought_sku
-
-    # relation = \">\", \"<\", \"=\", \"!=\", \"exists\", \"not_exists\", \"time_elapsed_gt\" (paid plan only) or \"time_elapsed_lt\" (paid plan only) See Time Operators key = Tag key to compare. value = Tag value to compare. Not required for \"exists\" or \"not_exists\". Example: See Formatting Filters 
-    attr_accessor :tag
-
-    # relation = \"=\" or \"!=\" value = 2 character language code. Example: \"en\". For a list of all language codes see Language & Localization. 
-    attr_accessor :language
-
-    # relation = \">\", \"<\", \"=\" or \"!=\" value = app version. Example: \"1.0.0\" 
-    attr_accessor :app_version
-
-    # radius = in meters lat = latitude long = longitude 
-    attr_accessor :location
-
-    # value = email address Only for sending Push Notifications Use this for targeting push subscribers associated with an email set with all SDK setEmail methods To send emails to specific email addresses use include_email_tokens parameter 
-    attr_accessor :email
-
-    # relation = \"=\" value = 2-digit Country code Example: \"field\": \"country\", \"relation\": \"=\", \"value\", \"US\" 
-    attr_accessor :country
-
     # Specific playerids to send your notification to. _Does not require API Auth Key. Do not combine with other targeting parameters. Not compatible with any other targeting parameters. Example: [\"1dd608f2-c6a1-11e3-851d-000c2940e62c\"] Limit of 2,000 entries per REST API call 
     attr_accessor :include_player_ids
 
@@ -344,6 +308,8 @@ module OneSignal
     # Channel: SMS URLs for the media files to be attached to the SMS content. Limit: 10 media urls with a total max. size of 5MBs. 
     attr_accessor :sms_media_urls
 
+    attr_accessor :filters
+
     # Number of notifications that were successfully delivered.
     attr_accessor :successful
 
@@ -402,18 +368,6 @@ module OneSignal
       {
         :'included_segments' => :'included_segments',
         :'excluded_segments' => :'excluded_segments',
-        :'last_session' => :'last_session',
-        :'first_session' => :'first_session',
-        :'session_count' => :'session_count',
-        :'session_time' => :'session_time',
-        :'amount_spent' => :'amount_spent',
-        :'bought_sku' => :'bought_sku',
-        :'tag' => :'tag',
-        :'language' => :'language',
-        :'app_version' => :'app_version',
-        :'location' => :'location',
-        :'email' => :'email',
-        :'country' => :'country',
         :'include_player_ids' => :'include_player_ids',
         :'include_external_user_ids' => :'include_external_user_ids',
         :'include_email_tokens' => :'include_email_tokens',
@@ -512,6 +466,7 @@ module OneSignal
         :'email_from_address' => :'email_from_address',
         :'sms_from' => :'sms_from',
         :'sms_media_urls' => :'sms_media_urls',
+        :'filters' => :'filters',
         :'successful' => :'successful',
         :'failed' => :'failed',
         :'errored' => :'errored',
@@ -536,18 +491,6 @@ module OneSignal
       {
         :'included_segments' => :'Array<String>',
         :'excluded_segments' => :'Array<String>',
-        :'last_session' => :'String',
-        :'first_session' => :'String',
-        :'session_count' => :'String',
-        :'session_time' => :'String',
-        :'amount_spent' => :'String',
-        :'bought_sku' => :'String',
-        :'tag' => :'String',
-        :'language' => :'String',
-        :'app_version' => :'String',
-        :'location' => :'String',
-        :'email' => :'String',
-        :'country' => :'String',
         :'include_player_ids' => :'Array<String>',
         :'include_external_user_ids' => :'Array<String>',
         :'include_email_tokens' => :'Array<String>',
@@ -646,6 +589,7 @@ module OneSignal
         :'email_from_address' => :'String',
         :'sms_from' => :'String',
         :'sms_media_urls' => :'Array<String>',
+        :'filters' => :'Array<Filter>',
         :'successful' => :'Integer',
         :'failed' => :'Integer',
         :'errored' => :'Integer',
@@ -738,6 +682,7 @@ module OneSignal
         :'email_from_address',
         :'sms_from',
         :'sms_media_urls',
+        :'filters',
         :'received',
         :'send_after',
         :'completed_at',
@@ -779,54 +724,6 @@ module OneSignal
         if (value = attributes[:'excluded_segments']).is_a?(Array)
           self.excluded_segments = value
         end
-      end
-
-      if attributes.key?(:'last_session')
-        self.last_session = attributes[:'last_session']
-      end
-
-      if attributes.key?(:'first_session')
-        self.first_session = attributes[:'first_session']
-      end
-
-      if attributes.key?(:'session_count')
-        self.session_count = attributes[:'session_count']
-      end
-
-      if attributes.key?(:'session_time')
-        self.session_time = attributes[:'session_time']
-      end
-
-      if attributes.key?(:'amount_spent')
-        self.amount_spent = attributes[:'amount_spent']
-      end
-
-      if attributes.key?(:'bought_sku')
-        self.bought_sku = attributes[:'bought_sku']
-      end
-
-      if attributes.key?(:'tag')
-        self.tag = attributes[:'tag']
-      end
-
-      if attributes.key?(:'language')
-        self.language = attributes[:'language']
-      end
-
-      if attributes.key?(:'app_version')
-        self.app_version = attributes[:'app_version']
-      end
-
-      if attributes.key?(:'location')
-        self.location = attributes[:'location']
-      end
-
-      if attributes.key?(:'email')
-        self.email = attributes[:'email']
-      end
-
-      if attributes.key?(:'country')
-        self.country = attributes[:'country']
       end
 
       if attributes.key?(:'include_player_ids')
@@ -1247,6 +1144,12 @@ module OneSignal
         end
       end
 
+      if attributes.key?(:'filters')
+        if (value = attributes[:'filters']).is_a?(Array)
+          self.filters = value
+        end
+      end
+
       if attributes.key?(:'successful')
         self.successful = attributes[:'successful']
       end
@@ -1331,18 +1234,6 @@ module OneSignal
       self.class == o.class &&
           included_segments == o.included_segments &&
           excluded_segments == o.excluded_segments &&
-          last_session == o.last_session &&
-          first_session == o.first_session &&
-          session_count == o.session_count &&
-          session_time == o.session_time &&
-          amount_spent == o.amount_spent &&
-          bought_sku == o.bought_sku &&
-          tag == o.tag &&
-          language == o.language &&
-          app_version == o.app_version &&
-          location == o.location &&
-          email == o.email &&
-          country == o.country &&
           include_player_ids == o.include_player_ids &&
           include_external_user_ids == o.include_external_user_ids &&
           include_email_tokens == o.include_email_tokens &&
@@ -1441,6 +1332,7 @@ module OneSignal
           email_from_address == o.email_from_address &&
           sms_from == o.sms_from &&
           sms_media_urls == o.sms_media_urls &&
+          filters == o.filters &&
           successful == o.successful &&
           failed == o.failed &&
           errored == o.errored &&
@@ -1463,7 +1355,7 @@ module OneSignal
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [included_segments, excluded_segments, last_session, first_session, session_count, session_time, amount_spent, bought_sku, tag, language, app_version, location, email, country, include_player_ids, include_external_user_ids, include_email_tokens, include_phone_numbers, include_ios_tokens, include_wp_wns_uris, include_amazon_reg_ids, include_chrome_reg_ids, include_chrome_web_reg_ids, include_android_reg_ids, id, value, name, aggregation, is_ios, is_android, is_huawei, is_any_web, is_chrome_web, is_firefox, is_safari, is_wp_wns, is_adm, is_chrome, channel_for_external_user_ids, app_id, external_id, contents, headings, subtitle, data, huawei_msg_type, url, web_url, app_url, ios_attachments, template_id, content_available, mutable_content, target_content_identifier, big_picture, huawei_big_picture, adm_big_picture, chrome_big_picture, chrome_web_image, buttons, web_buttons, ios_category, android_channel_id, huawei_channel_id, existing_android_channel_id, huawei_existing_channel_id, android_background_layout, small_icon, huawei_small_icon, large_icon, huawei_large_icon, adm_small_icon, adm_large_icon, chrome_web_icon, chrome_web_badge, firefox_icon, chrome_icon, ios_sound, android_sound, huawei_sound, adm_sound, wp_wns_sound, android_led_color, huawei_led_color, android_accent_color, huawei_accent_color, android_visibility, huawei_visibility, ios_badge_type, ios_badge_count, collapse_id, web_push_topic, apns_alert, delayed_option, delivery_time_of_day, ttl, priority, apns_push_type_override, throttle_rate_per_minute, android_group, android_group_message, adm_group, adm_group_message, thread_id, summary_arg, summary_arg_count, email_subject, email_body, email_from_name, email_from_address, sms_from, sms_media_urls, successful, failed, errored, converted, received, outcomes, remaining, queued_at, send_after, completed_at, platform_delivery_stats].hash
+      [included_segments, excluded_segments, include_player_ids, include_external_user_ids, include_email_tokens, include_phone_numbers, include_ios_tokens, include_wp_wns_uris, include_amazon_reg_ids, include_chrome_reg_ids, include_chrome_web_reg_ids, include_android_reg_ids, id, value, name, aggregation, is_ios, is_android, is_huawei, is_any_web, is_chrome_web, is_firefox, is_safari, is_wp_wns, is_adm, is_chrome, channel_for_external_user_ids, app_id, external_id, contents, headings, subtitle, data, huawei_msg_type, url, web_url, app_url, ios_attachments, template_id, content_available, mutable_content, target_content_identifier, big_picture, huawei_big_picture, adm_big_picture, chrome_big_picture, chrome_web_image, buttons, web_buttons, ios_category, android_channel_id, huawei_channel_id, existing_android_channel_id, huawei_existing_channel_id, android_background_layout, small_icon, huawei_small_icon, large_icon, huawei_large_icon, adm_small_icon, adm_large_icon, chrome_web_icon, chrome_web_badge, firefox_icon, chrome_icon, ios_sound, android_sound, huawei_sound, adm_sound, wp_wns_sound, android_led_color, huawei_led_color, android_accent_color, huawei_accent_color, android_visibility, huawei_visibility, ios_badge_type, ios_badge_count, collapse_id, web_push_topic, apns_alert, delayed_option, delivery_time_of_day, ttl, priority, apns_push_type_override, throttle_rate_per_minute, android_group, android_group_message, adm_group, adm_group_message, thread_id, summary_arg, summary_arg_count, email_subject, email_body, email_from_name, email_from_address, sms_from, sms_media_urls, filters, successful, failed, errored, converted, received, outcomes, remaining, queued_at, send_after, completed_at, platform_delivery_stats].hash
     end
 
     # Builds the object from hash

@@ -347,17 +347,12 @@ module OneSignal
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
-      if @id.nil?
-        invalid_properties.push('invalid value for "id", id cannot be nil.')
-      end
-
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      return false if @id.nil?
       apns_env_validator = EnumAttributeValidator.new('String', ["sandbox", "production"])
       return false unless apns_env_validator.valid?(@apns_env)
       true

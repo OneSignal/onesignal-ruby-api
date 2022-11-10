@@ -21,7 +21,7 @@ module OneSignal
     # If `field` is `tag`, this field is *required* to specify `key` inside the tags.
     attr_accessor :key
 
-    # Constant value to use as the second operand in the filter expression.  This value is *required* when the relation operator is a binary operator.
+    # Constant value to use as the second operand in the filter expression. This value is *required* when the relation operator is a binary operator.
     attr_accessor :value
 
     # Operator of a filter expression.
