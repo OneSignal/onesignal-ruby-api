@@ -92,6 +92,7 @@
 | **email_from_address** | **String** | Channel: Email The email address the email is from. If not specified, will default to \&quot;from email\&quot; set in the OneSignal Dashboard Email Settings.  | [optional] |
 | **sms_from** | **String** | Channel: SMS Phone Number used to send SMS. Should be a registered Twilio phone number in E.164 format.  | [optional] |
 | **sms_media_urls** | **Array&lt;String&gt;** | Channel: SMS URLs for the media files to be attached to the SMS content. Limit: 10 media urls with a total max. size of 5MBs.  | [optional] |
+| **filters** | [**Array&lt;Filter&gt;**](Filter.md) |  | [optional] |
 
 ## Example
 
@@ -186,7 +187,8 @@ instance = OneSignal::BasicNotificationAllOf.new(
   email_from_name: null,
   email_from_address: null,
   sms_from: null,
-  sms_media_urls: null
+  sms_media_urls: null,
+  filters: null
 )
 ```
 

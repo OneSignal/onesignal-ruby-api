@@ -116,7 +116,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app = OneSignal::App.new({id: 'id_example'}) # App | 
+app = OneSignal::App.new # App | 
 
 begin
   # Create an app
@@ -1197,7 +1197,7 @@ end
 
 api_instance = OneSignal::DefaultApi.new
 app_id = 'app_id_example' # String | An app id
-app = OneSignal::App.new({id: 'id_example'}) # App | 
+app = OneSignal::App.new # App | 
 
 begin
   # Update an app

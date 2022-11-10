@@ -272,6 +272,8 @@ module OneSignal
     # Channel: SMS URLs for the media files to be attached to the SMS content. Limit: 10 media urls with a total max. size of 5MBs. 
     attr_accessor :sms_media_urls
 
+    attr_accessor :filters
+
     class EnumAttributeValidator
       attr_reader :datatype
       attr_reader :allowable_values
@@ -384,7 +386,8 @@ module OneSignal
         :'email_from_name' => :'email_from_name',
         :'email_from_address' => :'email_from_address',
         :'sms_from' => :'sms_from',
-        :'sms_media_urls' => :'sms_media_urls'
+        :'sms_media_urls' => :'sms_media_urls',
+        :'filters' => :'filters'
       }
     end
 
@@ -483,7 +486,8 @@ module OneSignal
         :'email_from_name' => :'String',
         :'email_from_address' => :'String',
         :'sms_from' => :'String',
-        :'sms_media_urls' => :'Array<String>'
+        :'sms_media_urls' => :'Array<String>',
+        :'filters' => :'Array<Filter>'
       }
     end
 
@@ -562,7 +566,8 @@ module OneSignal
         :'email_from_name',
         :'email_from_address',
         :'sms_from',
-        :'sms_media_urls'
+        :'sms_media_urls',
+        :'filters'
       ])
     end
 
@@ -938,6 +943,12 @@ module OneSignal
           self.sms_media_urls = value
         end
       end
+
+      if attributes.key?(:'filters')
+        if (value = attributes[:'filters']).is_a?(Array)
+          self.filters = value
+        end
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -1057,7 +1068,8 @@ module OneSignal
           email_from_name == o.email_from_name &&
           email_from_address == o.email_from_address &&
           sms_from == o.sms_from &&
-          sms_media_urls == o.sms_media_urls
+          sms_media_urls == o.sms_media_urls &&
+          filters == o.filters
     end
 
     # @see the `==` method
@@ -1069,7 +1081,7 @@ module OneSignal
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, value, name, aggregation, is_ios, is_android, is_huawei, is_any_web, is_chrome_web, is_firefox, is_safari, is_wp_wns, is_adm, is_chrome, channel_for_external_user_ids, app_id, external_id, contents, headings, subtitle, data, huawei_msg_type, url, web_url, app_url, ios_attachments, template_id, content_available, mutable_content, target_content_identifier, big_picture, huawei_big_picture, adm_big_picture, chrome_big_picture, chrome_web_image, buttons, web_buttons, ios_category, android_channel_id, huawei_channel_id, existing_android_channel_id, huawei_existing_channel_id, android_background_layout, small_icon, huawei_small_icon, large_icon, huawei_large_icon, adm_small_icon, adm_large_icon, chrome_web_icon, chrome_web_badge, firefox_icon, chrome_icon, ios_sound, android_sound, huawei_sound, adm_sound, wp_wns_sound, android_led_color, huawei_led_color, android_accent_color, huawei_accent_color, android_visibility, huawei_visibility, ios_badge_type, ios_badge_count, collapse_id, web_push_topic, apns_alert, delayed_option, delivery_time_of_day, ttl, priority, apns_push_type_override, throttle_rate_per_minute, android_group, android_group_message, adm_group, adm_group_message, thread_id, summary_arg, summary_arg_count, email_subject, email_body, email_from_name, email_from_address, sms_from, sms_media_urls].hash
+      [id, value, name, aggregation, is_ios, is_android, is_huawei, is_any_web, is_chrome_web, is_firefox, is_safari, is_wp_wns, is_adm, is_chrome, channel_for_external_user_ids, app_id, external_id, contents, headings, subtitle, data, huawei_msg_type, url, web_url, app_url, ios_attachments, template_id, content_available, mutable_content, target_content_identifier, big_picture, huawei_big_picture, adm_big_picture, chrome_big_picture, chrome_web_image, buttons, web_buttons, ios_category, android_channel_id, huawei_channel_id, existing_android_channel_id, huawei_existing_channel_id, android_background_layout, small_icon, huawei_small_icon, large_icon, huawei_large_icon, adm_small_icon, adm_large_icon, chrome_web_icon, chrome_web_badge, firefox_icon, chrome_icon, ios_sound, android_sound, huawei_sound, adm_sound, wp_wns_sound, android_led_color, huawei_led_color, android_accent_color, huawei_accent_color, android_visibility, huawei_visibility, ios_badge_type, ios_badge_count, collapse_id, web_push_topic, apns_alert, delayed_option, delivery_time_of_day, ttl, priority, apns_push_type_override, throttle_rate_per_minute, android_group, android_group_message, adm_group, adm_group_message, thread_id, summary_arg, summary_arg_count, email_subject, email_body, email_from_name, email_from_address, sms_from, sms_media_urls, filters].hash
     end
 
     # Builds the object from hash
