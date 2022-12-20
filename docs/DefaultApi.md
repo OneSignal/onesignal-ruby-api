@@ -4,6 +4,7 @@ All URIs are relative to *https://onesignal.com/api/v1*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
+| [**begin_live_activity**](DefaultApi.md#begin_live_activity) | **POST** /apps/{app_id}/live_activities/{activity_id}/token | Start Live Activity |
 | [**cancel_notification**](DefaultApi.md#cancel_notification) | **DELETE** /notifications/{notification_id} | Stop a scheduled or currently outgoing notification |
 | [**create_app**](DefaultApi.md#create_app) | **POST** /apps | Create an app |
 | [**create_notification**](DefaultApi.md#create_notification) | **POST** /notifications | Create notification |
@@ -11,6 +12,7 @@ All URIs are relative to *https://onesignal.com/api/v1*
 | [**create_segments**](DefaultApi.md#create_segments) | **POST** /apps/{app_id}/segments | Create Segments |
 | [**delete_player**](DefaultApi.md#delete_player) | **DELETE** /players/{player_id} | Delete a user record |
 | [**delete_segments**](DefaultApi.md#delete_segments) | **DELETE** /apps/{app_id}/segments/{segment_id} | Delete Segments |
+| [**end_live_activity**](DefaultApi.md#end_live_activity) | **DELETE** /apps/{app_id}/live_activities/{activity_id}/token/{subscription_id} | Stop Live Activity |
 | [**export_players**](DefaultApi.md#export_players) | **POST** /players/csv_export?app_id&#x3D;{app_id} | CSV export |
 | [**get_app**](DefaultApi.md#get_app) | **GET** /apps/{app_id} | View an app |
 | [**get_apps**](DefaultApi.md#get_apps) | **GET** /apps | View apps |
@@ -21,8 +23,81 @@ All URIs are relative to *https://onesignal.com/api/v1*
 | [**get_player**](DefaultApi.md#get_player) | **GET** /players/{player_id} | View device |
 | [**get_players**](DefaultApi.md#get_players) | **GET** /players | View devices |
 | [**update_app**](DefaultApi.md#update_app) | **PUT** /apps/{app_id} | Update an app |
+| [**update_live_activity**](DefaultApi.md#update_live_activity) | **POST** /apps/{app_id}/live_activities/{activity_id}/notifications | Update a Live Activity via Push |
 | [**update_player**](DefaultApi.md#update_player) | **PUT** /players/{player_id} | Edit device |
 | [**update_player_tags**](DefaultApi.md#update_player_tags) | **PUT** /apps/{app_id}/users/{external_user_id} | Edit tags with external user id |
+
+
+## begin_live_activity
+
+> begin_live_activity(app_id, activity_id, begin_live_activity_request)
+
+Start Live Activity
+
+Starts a Live Activity
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: app_key
+  config.app_key = 'YOUR_BEARER_TOKEN'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'app_id_example' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
+activity_id = 'activity_id_example' # String | Live Activity record ID
+begin_live_activity_request = OneSignal::BeginLiveActivityRequest.new({push_token: 'push_token_example', subscription_id: 'subscription_id_example'}) # BeginLiveActivityRequest | 
+
+begin
+  # Start Live Activity
+  api_instance.begin_live_activity(app_id, activity_id, begin_live_activity_request)
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->begin_live_activity: #{e}"
+end
+```
+
+#### Using the begin_live_activity_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> begin_live_activity_with_http_info(app_id, activity_id, begin_live_activity_request)
+
+```ruby
+begin
+  # Start Live Activity
+  data, status_code, headers = api_instance.begin_live_activity_with_http_info(app_id, activity_id, begin_live_activity_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->begin_live_activity_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | The OneSignal App ID for your app.  Available in Keys &amp; IDs. |  |
+| **activity_id** | **String** | Live Activity record ID |  |
+| **begin_live_activity_request** | [**BeginLiveActivityRequest**](BeginLiveActivityRequest.md) |  |  |
+
+### Return type
+
+nil (empty response body)
+
+### Authorization
+
+[app_key](../README.md#app_key)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## cancel_notification
@@ -507,6 +582,78 @@ end
 ### Return type
 
 [**DeleteSegmentSuccessResponse**](DeleteSegmentSuccessResponse.md)
+
+### Authorization
+
+[app_key](../README.md#app_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## end_live_activity
+
+> end_live_activity(app_id, activity_id, subscription_id)
+
+Stop Live Activity
+
+Stops a Live Activity
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: app_key
+  config.app_key = 'YOUR_BEARER_TOKEN'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'app_id_example' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
+activity_id = 'activity_id_example' # String | Live Activity record ID
+subscription_id = 'subscription_id_example' # String | Subscription ID
+
+begin
+  # Stop Live Activity
+  api_instance.end_live_activity(app_id, activity_id, subscription_id)
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->end_live_activity: #{e}"
+end
+```
+
+#### Using the end_live_activity_with_http_info variant
+
+This returns an Array which contains the response data (`nil` in this case), status code and headers.
+
+> <Array(nil, Integer, Hash)> end_live_activity_with_http_info(app_id, activity_id, subscription_id)
+
+```ruby
+begin
+  # Stop Live Activity
+  data, status_code, headers = api_instance.end_live_activity_with_http_info(app_id, activity_id, subscription_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => nil
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->end_live_activity_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | The OneSignal App ID for your app.  Available in Keys &amp; IDs. |  |
+| **activity_id** | **String** | Live Activity record ID |  |
+| **subscription_id** | **String** | Subscription ID |  |
+
+### Return type
+
+nil (empty response body)
 
 ### Authorization
 
@@ -1240,6 +1387,79 @@ end
 ### Authorization
 
 [user_key](../README.md#user_key)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_live_activity
+
+> <UpdateLiveActivitySuccessResponse> update_live_activity(app_id, activity_id, update_live_activity_request)
+
+Update a Live Activity via Push
+
+Updates a specified live activity.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: app_key
+  config.app_key = 'YOUR_BEARER_TOKEN'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'app_id_example' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
+activity_id = 'activity_id_example' # String | Live Activity record ID
+update_live_activity_request = OneSignal::UpdateLiveActivityRequest.new({name: 'headings', event: 'update', event_updates: 3.56}) # UpdateLiveActivityRequest | 
+
+begin
+  # Update a Live Activity via Push
+  result = api_instance.update_live_activity(app_id, activity_id, update_live_activity_request)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->update_live_activity: #{e}"
+end
+```
+
+#### Using the update_live_activity_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UpdateLiveActivitySuccessResponse>, Integer, Hash)> update_live_activity_with_http_info(app_id, activity_id, update_live_activity_request)
+
+```ruby
+begin
+  # Update a Live Activity via Push
+  data, status_code, headers = api_instance.update_live_activity_with_http_info(app_id, activity_id, update_live_activity_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UpdateLiveActivitySuccessResponse>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->update_live_activity_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | The OneSignal App ID for your app.  Available in Keys &amp; IDs. |  |
+| **activity_id** | **String** | Live Activity record ID |  |
+| **update_live_activity_request** | [**UpdateLiveActivityRequest**](UpdateLiveActivityRequest.md) |  |  |
+
+### Return type
+
+[**UpdateLiveActivitySuccessResponse**](UpdateLiveActivitySuccessResponse.md)
+
+### Authorization
+
+[app_key](../README.md#app_key)
 
 ### HTTP request headers
 
