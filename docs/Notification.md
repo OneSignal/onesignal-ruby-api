@@ -16,6 +16,8 @@
 | **include_chrome_reg_ids** | **Array&lt;String&gt;** | Not Recommended: Please consider using include_player_ids or include_external_user_ids instead. Target using Chrome App registration IDs. If a token does not correspond to an existing user, a new user will be created. Example: APA91bEeiUeSukAAUdnw3O2RB45FWlSpgJ7Ji_... Limit of 2,000 entries per REST API call  | [optional] |
 | **include_chrome_web_reg_ids** | **Array&lt;String&gt;** | Not Recommended: Please consider using include_player_ids or include_external_user_ids instead. Target using Chrome Web Push registration IDs. If a token does not correspond to an existing user, a new user will be created. Example: APA91bEeiUeSukAAUdnw3O2RB45FWlSpgJ7Ji_... Limit of 2,000 entries per REST API call  | [optional] |
 | **include_android_reg_ids** | **Array&lt;String&gt;** | Not Recommended: Please consider using include_player_ids or include_external_user_ids instead. Target using Android device registration IDs. If a token does not correspond to an existing user, a new user will be created. Example: APA91bEeiUeSukAAUdnw3O2RB45FWlSpgJ7Ji_... Limit of 2,000 entries per REST API call  | [optional] |
+| **include_aliases** | [**PlayerNotificationTargetIncludeAliases**](PlayerNotificationTargetIncludeAliases.md) |  | [optional] |
+| **target_channel** | **String** |  | [optional] |
 | **id** | **String** |  | [optional] |
 | **value** | **Integer** |  | [optional][readonly] |
 | **name** | **String** | Required for SMS Messages. An identifier for tracking message within the OneSignal dashboard or export analytics. Not shown to end user. | [optional] |
@@ -125,6 +127,8 @@ instance = OneSignal::Notification.new(
   include_chrome_reg_ids: null,
   include_chrome_web_reg_ids: null,
   include_android_reg_ids: null,
+  include_aliases: null,
+  target_channel: null,
   id: null,
   value: null,
   name: null,
