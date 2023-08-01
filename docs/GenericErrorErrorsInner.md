@@ -1,4 +1,4 @@
-# OneSignal::IdentifyUserConflictResponseErrorsInner
+# OneSignal::GenericErrorErrorsInner
 
 ## Properties
 
@@ -12,7 +12,7 @@
 ```ruby
 require 'onesignal'
 
-instance = OneSignal::IdentifyUserConflictResponseErrorsInner.new(
+instance = OneSignal::GenericErrorErrorsInner.new(
   code: null,
   title: null
 )
