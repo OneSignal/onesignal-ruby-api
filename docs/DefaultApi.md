@@ -1,6 +1,6 @@
 # OneSignal::DefaultApi
 
-All URIs are relative to *https://onesignal.com/api/v1*
+All URIs are relative to *https://api.onesignal.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
@@ -911,6 +911,12 @@ Removes the User identified by (:alias_label, :alias_id), and all Subscriptions 
 
 ```ruby
 require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: app_key
+  config.app_key = 'YOUR_BEARER_TOKEN'
+
+end
 
 api_instance = OneSignal::DefaultApi.new
 app_id = 'app_id_example' # String | 
@@ -957,7 +963,7 @@ nil (empty response body)
 
 ### Authorization
 
-No authorization required
+[app_key](../README.md#app_key)
 
 ### HTTP request headers
 
