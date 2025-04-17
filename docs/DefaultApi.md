@@ -4,120 +4,41 @@ All URIs are relative to *https://api.onesignal.com*
 
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
-| [**begin_live_activity**](DefaultApi.md#begin_live_activity) | **POST** /apps/{app_id}/live_activities/{activity_id}/token | Start Live Activity |
 | [**cancel_notification**](DefaultApi.md#cancel_notification) | **DELETE** /notifications/{notification_id} | Stop a scheduled or currently outgoing notification |
+| [**create_alias**](DefaultApi.md#create_alias) | **PATCH** /apps/{app_id}/users/by/{alias_label}/{alias_id}/identity |  |
+| [**create_alias_by_subscription**](DefaultApi.md#create_alias_by_subscription) | **PATCH** /apps/{app_id}/subscriptions/{subscription_id}/user/identity |  |
 | [**create_app**](DefaultApi.md#create_app) | **POST** /apps | Create an app |
 | [**create_notification**](DefaultApi.md#create_notification) | **POST** /notifications | Create notification |
-| [**create_player**](DefaultApi.md#create_player) | **POST** /players | Add a device |
-| [**create_segments**](DefaultApi.md#create_segments) | **POST** /apps/{app_id}/segments | Create Segments |
+| [**create_segment**](DefaultApi.md#create_segment) | **POST** /apps/{app_id}/segments | Create Segment |
 | [**create_subscription**](DefaultApi.md#create_subscription) | **POST** /apps/{app_id}/users/by/{alias_label}/{alias_id}/subscriptions |  |
 | [**create_user**](DefaultApi.md#create_user) | **POST** /apps/{app_id}/users |  |
 | [**delete_alias**](DefaultApi.md#delete_alias) | **DELETE** /apps/{app_id}/users/by/{alias_label}/{alias_id}/identity/{alias_label_to_delete} |  |
-| [**delete_player**](DefaultApi.md#delete_player) | **DELETE** /players/{player_id} | Delete a user record |
-| [**delete_segments**](DefaultApi.md#delete_segments) | **DELETE** /apps/{app_id}/segments/{segment_id} | Delete Segments |
+| [**delete_segment**](DefaultApi.md#delete_segment) | **DELETE** /apps/{app_id}/segments/{segment_id} | Delete Segment |
 | [**delete_subscription**](DefaultApi.md#delete_subscription) | **DELETE** /apps/{app_id}/subscriptions/{subscription_id} |  |
 | [**delete_user**](DefaultApi.md#delete_user) | **DELETE** /apps/{app_id}/users/by/{alias_label}/{alias_id} |  |
-| [**end_live_activity**](DefaultApi.md#end_live_activity) | **DELETE** /apps/{app_id}/live_activities/{activity_id}/token/{subscription_id} | Stop Live Activity |
 | [**export_events**](DefaultApi.md#export_events) | **POST** /notifications/{notification_id}/export_events?app_id&#x3D;{app_id} | Export CSV of Events |
-| [**export_players**](DefaultApi.md#export_players) | **POST** /players/csv_export?app_id&#x3D;{app_id} | Export CSV of Players |
-| [**fetch_aliases**](DefaultApi.md#fetch_aliases) | **GET** /apps/{app_id}/subscriptions/{subscription_id}/user/identity |  |
-| [**fetch_user**](DefaultApi.md#fetch_user) | **GET** /apps/{app_id}/users/by/{alias_label}/{alias_id} |  |
-| [**fetch_user_identity**](DefaultApi.md#fetch_user_identity) | **GET** /apps/{app_id}/users/by/{alias_label}/{alias_id}/identity |  |
+| [**export_subscriptions**](DefaultApi.md#export_subscriptions) | **POST** /players/csv_export?app_id&#x3D;{app_id} | Export CSV of Subscriptions |
+| [**get_aliases**](DefaultApi.md#get_aliases) | **GET** /apps/{app_id}/users/by/{alias_label}/{alias_id}/identity |  |
+| [**get_aliases_by_subscription**](DefaultApi.md#get_aliases_by_subscription) | **GET** /apps/{app_id}/subscriptions/{subscription_id}/user/identity |  |
 | [**get_app**](DefaultApi.md#get_app) | **GET** /apps/{app_id} | View an app |
 | [**get_apps**](DefaultApi.md#get_apps) | **GET** /apps | View apps |
-| [**get_eligible_iams**](DefaultApi.md#get_eligible_iams) | **GET** /apps/{app_id}/subscriptions/{subscription_id}/iams |  |
 | [**get_notification**](DefaultApi.md#get_notification) | **GET** /notifications/{notification_id} | View notification |
 | [**get_notification_history**](DefaultApi.md#get_notification_history) | **POST** /notifications/{notification_id}/history | Notification History |
 | [**get_notifications**](DefaultApi.md#get_notifications) | **GET** /notifications | View notifications |
 | [**get_outcomes**](DefaultApi.md#get_outcomes) | **GET** /apps/{app_id}/outcomes | View Outcomes |
-| [**get_player**](DefaultApi.md#get_player) | **GET** /players/{player_id} | View device |
-| [**get_players**](DefaultApi.md#get_players) | **GET** /players | View devices |
-| [**identify_user_by_alias**](DefaultApi.md#identify_user_by_alias) | **PATCH** /apps/{app_id}/users/by/{alias_label}/{alias_id}/identity |  |
-| [**identify_user_by_subscription_id**](DefaultApi.md#identify_user_by_subscription_id) | **PATCH** /apps/{app_id}/subscriptions/{subscription_id}/user/identity |  |
+| [**get_segments**](DefaultApi.md#get_segments) | **GET** /apps/{app_id}/segments | Get Segments |
+| [**get_user**](DefaultApi.md#get_user) | **GET** /apps/{app_id}/users/by/{alias_label}/{alias_id} |  |
 | [**transfer_subscription**](DefaultApi.md#transfer_subscription) | **PATCH** /apps/{app_id}/subscriptions/{subscription_id}/owner |  |
+| [**unsubscribe_email_with_token**](DefaultApi.md#unsubscribe_email_with_token) | **POST** /apps/{app_id}/notifications/{notification_id}/unsubscribe | Unsubscribe with token |
 | [**update_app**](DefaultApi.md#update_app) | **PUT** /apps/{app_id} | Update an app |
 | [**update_live_activity**](DefaultApi.md#update_live_activity) | **POST** /apps/{app_id}/live_activities/{activity_id}/notifications | Update a Live Activity via Push |
-| [**update_player**](DefaultApi.md#update_player) | **PUT** /players/{player_id} | Edit device |
-| [**update_player_tags**](DefaultApi.md#update_player_tags) | **PUT** /apps/{app_id}/users/{external_user_id} | Edit tags with external user id |
 | [**update_subscription**](DefaultApi.md#update_subscription) | **PATCH** /apps/{app_id}/subscriptions/{subscription_id} |  |
 | [**update_user**](DefaultApi.md#update_user) | **PATCH** /apps/{app_id}/users/by/{alias_label}/{alias_id} |  |
 
 
-## begin_live_activity
-
-> begin_live_activity(app_id, activity_id, begin_live_activity_request)
-
-Start Live Activity
-
-Starts a Live Activity
-
-### Examples
-
-```ruby
-require 'onesignal'
-# setup authorization
-OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
-
-end
-
-api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
-activity_id = 'activity_id_example' # String | Live Activity record ID
-begin_live_activity_request = OneSignal::BeginLiveActivityRequest.new({push_token: 'push_token_example', subscription_id: 'subscription_id_example'}) # BeginLiveActivityRequest | 
-
-begin
-  # Start Live Activity
-  api_instance.begin_live_activity(app_id, activity_id, begin_live_activity_request)
-rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->begin_live_activity: #{e}"
-end
-```
-
-#### Using the begin_live_activity_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> begin_live_activity_with_http_info(app_id, activity_id, begin_live_activity_request)
-
-```ruby
-begin
-  # Start Live Activity
-  data, status_code, headers = api_instance.begin_live_activity_with_http_info(app_id, activity_id, begin_live_activity_request)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->begin_live_activity_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **app_id** | **String** | The OneSignal App ID for your app.  Available in Keys &amp; IDs. |  |
-| **activity_id** | **String** | Live Activity record ID |  |
-| **begin_live_activity_request** | [**BeginLiveActivityRequest**](BeginLiveActivityRequest.md) |  |  |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[app_key](../README.md#app_key)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
 ## cancel_notification
 
-> <CancelNotificationSuccessResponse> cancel_notification(app_id, notification_id)
+> <GenericSuccessBoolResponse> cancel_notification(app_id, notification_id)
 
 Stop a scheduled or currently outgoing notification
 
@@ -129,8 +50,8 @@ Used to stop a scheduled or currently outgoing notification
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
@@ -151,7 +72,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<CancelNotificationSuccessResponse>, Integer, Hash)> cancel_notification_with_http_info(app_id, notification_id)
+> <Array(<GenericSuccessBoolResponse>, Integer, Hash)> cancel_notification_with_http_info(app_id, notification_id)
 
 ```ruby
 begin
@@ -159,7 +80,7 @@ begin
   data, status_code, headers = api_instance.cancel_notification_with_http_info(app_id, notification_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <CancelNotificationSuccessResponse>
+  p data # => <GenericSuccessBoolResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->cancel_notification_with_http_info: #{e}"
 end
@@ -174,15 +95,163 @@ end
 
 ### Return type
 
-[**CancelNotificationSuccessResponse**](CancelNotificationSuccessResponse.md)
+[**GenericSuccessBoolResponse**](GenericSuccessBoolResponse.md)
 
 ### Authorization
 
-[app_key](../README.md#app_key)
+[rest_api_key](../README.md#rest_api_key)
 
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## create_alias
+
+> <UserIdentityBody> create_alias(app_id, alias_label, alias_id, user_identity_body)
+
+
+
+Upserts one or more Aliases to an existing User identified by (:alias_label, :alias_id).
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'app_id_example' # String | 
+alias_label = 'alias_label_example' # String | 
+alias_id = 'alias_id_example' # String | 
+user_identity_body = OneSignal::UserIdentityBody.new # UserIdentityBody | 
+
+begin
+  
+  result = api_instance.create_alias(app_id, alias_label, alias_id, user_identity_body)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->create_alias: #{e}"
+end
+```
+
+#### Using the create_alias_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UserIdentityBody>, Integer, Hash)> create_alias_with_http_info(app_id, alias_label, alias_id, user_identity_body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_alias_with_http_info(app_id, alias_label, alias_id, user_identity_body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UserIdentityBody>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->create_alias_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** |  |  |
+| **alias_label** | **String** |  |  |
+| **alias_id** | **String** |  |  |
+| **user_identity_body** | [**UserIdentityBody**](UserIdentityBody.md) |  |  |
+
+### Return type
+
+[**UserIdentityBody**](UserIdentityBody.md)
+
+### Authorization
+
+[rest_api_key](../README.md#rest_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_alias_by_subscription
+
+> <UserIdentityBody> create_alias_by_subscription(app_id, subscription_id, user_identity_body)
+
+
+
+Upserts one or more Aliases for the User identified by :subscription_id.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'app_id_example' # String | 
+subscription_id = 'subscription_id_example' # String | 
+user_identity_body = OneSignal::UserIdentityBody.new # UserIdentityBody | 
+
+begin
+  
+  result = api_instance.create_alias_by_subscription(app_id, subscription_id, user_identity_body)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->create_alias_by_subscription: #{e}"
+end
+```
+
+#### Using the create_alias_by_subscription_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UserIdentityBody>, Integer, Hash)> create_alias_by_subscription_with_http_info(app_id, subscription_id, user_identity_body)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.create_alias_by_subscription_with_http_info(app_id, subscription_id, user_identity_body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UserIdentityBody>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->create_alias_by_subscription_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** |  |  |
+| **subscription_id** | **String** |  |  |
+| **user_identity_body** | [**UserIdentityBody**](UserIdentityBody.md) |  |  |
+
+### Return type
+
+[**UserIdentityBody**](UserIdentityBody.md)
+
+### Authorization
+
+[rest_api_key](../README.md#rest_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -200,8 +269,8 @@ Creates a new OneSignal app
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: user_key
-  config.user_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: user_auth_key
+  config.user_auth_key = 'YOUR_BEARER_TOKEN'
 
 end
 
@@ -247,7 +316,7 @@ end
 
 ### Authorization
 
-[user_key](../README.md#user_key)
+[user_auth_key](../README.md#user_auth_key)
 
 ### HTTP request headers
 
@@ -269,8 +338,8 @@ Sends notifications to your users
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
@@ -316,7 +385,7 @@ end
 
 ### Authorization
 
-[app_key](../README.md#app_key)
+[rest_api_key](../README.md#rest_api_key)
 
 ### HTTP request headers
 
@@ -324,82 +393,13 @@ end
 - **Accept**: application/json
 
 
-## create_player
+## create_segment
 
-> <CreatePlayerSuccessResponse> create_player(player)
+> <CreateSegmentSuccessResponse> create_segment(app_id, opts)
 
-Add a device
+Create Segment
 
-Register a new device to one of your OneSignal apps &#x1F6A7; Don't use this This API endpoint is designed to be used from our open source Mobile and Web Push SDKs. It is not designed for developers to use it directly, unless instructed to do so by OneSignal support. If you use this method instead of our SDKs, many OneSignal features such as conversion tracking, timezone tracking, language detection, and rich-push won't work out of the box. It will also make it harder to identify possible setup issues. This method is used to register a new device with OneSignal. If a device is already registered with the specified identifier, then this will update the existing device record instead of creating a new one. The returned player is a player / user ID. Use the returned ID to send push notifications to this specific user later, or to include this player when sending to a set of users. &#x1F6A7; iOS Must set test_type to 1 when building your iOS app as development. Omit this field in your production app builds. 
-
-### Examples
-
-```ruby
-require 'onesignal'
-# setup authorization
-OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
-
-end
-
-api_instance = OneSignal::DefaultApi.new
-player = OneSignal::Player.new({device_type: 37}) # Player | 
-
-begin
-  # Add a device
-  result = api_instance.create_player(player)
-  p result
-rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->create_player: #{e}"
-end
-```
-
-#### Using the create_player_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<CreatePlayerSuccessResponse>, Integer, Hash)> create_player_with_http_info(player)
-
-```ruby
-begin
-  # Add a device
-  data, status_code, headers = api_instance.create_player_with_http_info(player)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <CreatePlayerSuccessResponse>
-rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->create_player_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **player** | [**Player**](Player.md) |  |  |
-
-### Return type
-
-[**CreatePlayerSuccessResponse**](CreatePlayerSuccessResponse.md)
-
-### Authorization
-
-[app_key](../README.md#app_key)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## create_segments
-
-> <CreateSegmentSuccessResponse> create_segments(app_id, opts)
-
-Create Segments
-
-Create segments visible and usable in the dashboard and API - Required: OneSignal Paid Plan The Create Segment method is used when you want your server to programmatically create a segment instead of using the OneSignal Dashboard UI. Just like creating Segments from the dashboard you can pass in filters with multiple \"AND\" or \"OR\" operator's. &#x1F6A7; Does Not Update Segments This endpoint will only create segments, it does not edit or update currently created Segments. You will need to use the Delete Segments endpoint and re-create it with this endpoint to edit. 
+Create a segment visible and usable in the dashboard and API - Required: OneSignal Paid Plan The Create Segment method is used when you want your server to programmatically create a segment instead of using the OneSignal Dashboard UI. Just like creating Segments from the dashboard you can pass in filters with multiple \"AND\" or \"OR\" operator's. &#x1F6A7; Does Not Update Segments This endpoint will only create segments, it does not edit or update currently created Segments. You will need to use the Delete Segment endpoint and re-create it with this endpoint to edit. 
 
 ### Examples
 
@@ -407,41 +407,41 @@ Create segments visible and usable in the dashboard and API - Required: OneSigna
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
 api_instance = OneSignal::DefaultApi.new
 app_id = 'app_id_example' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
 opts = {
-  segment: OneSignal::Segment.new({name: 'name_example', filters: [OneSignal::FilterExpressions.new({field: 'field_example', relation: '>'})]}) # Segment | 
+  segment: OneSignal::Segment.new({name: 'name_example', filters: [OneSignal::Filter.new]}) # Segment | 
 }
 
 begin
-  # Create Segments
-  result = api_instance.create_segments(app_id, opts)
+  # Create Segment
+  result = api_instance.create_segment(app_id, opts)
   p result
 rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->create_segments: #{e}"
+  puts "Error when calling DefaultApi->create_segment: #{e}"
 end
 ```
 
-#### Using the create_segments_with_http_info variant
+#### Using the create_segment_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<CreateSegmentSuccessResponse>, Integer, Hash)> create_segments_with_http_info(app_id, opts)
+> <Array(<CreateSegmentSuccessResponse>, Integer, Hash)> create_segment_with_http_info(app_id, opts)
 
 ```ruby
 begin
-  # Create Segments
-  data, status_code, headers = api_instance.create_segments_with_http_info(app_id, opts)
+  # Create Segment
+  data, status_code, headers = api_instance.create_segment_with_http_info(app_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <CreateSegmentSuccessResponse>
 rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->create_segments_with_http_info: #{e}"
+  puts "Error when calling DefaultApi->create_segment_with_http_info: #{e}"
 end
 ```
 
@@ -458,7 +458,7 @@ end
 
 ### Authorization
 
-[app_key](../README.md#app_key)
+[rest_api_key](../README.md#rest_api_key)
 
 ### HTTP request headers
 
@@ -468,7 +468,7 @@ end
 
 ## create_subscription
 
-> <InlineResponse201> create_subscription(app_id, alias_label, alias_id, create_subscription_request_body)
+> <SubscriptionBody> create_subscription(app_id, alias_label, alias_id, subscription_body)
 
 
 
@@ -480,8 +480,8 @@ Creates a new Subscription under the User provided. Useful to add email addresse
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
@@ -489,11 +489,11 @@ api_instance = OneSignal::DefaultApi.new
 app_id = 'app_id_example' # String | 
 alias_label = 'alias_label_example' # String | 
 alias_id = 'alias_id_example' # String | 
-create_subscription_request_body = OneSignal::CreateSubscriptionRequestBody.new # CreateSubscriptionRequestBody | 
+subscription_body = OneSignal::SubscriptionBody.new # SubscriptionBody | 
 
 begin
   
-  result = api_instance.create_subscription(app_id, alias_label, alias_id, create_subscription_request_body)
+  result = api_instance.create_subscription(app_id, alias_label, alias_id, subscription_body)
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_subscription: #{e}"
@@ -504,15 +504,15 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse201>, Integer, Hash)> create_subscription_with_http_info(app_id, alias_label, alias_id, create_subscription_request_body)
+> <Array(<SubscriptionBody>, Integer, Hash)> create_subscription_with_http_info(app_id, alias_label, alias_id, subscription_body)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.create_subscription_with_http_info(app_id, alias_label, alias_id, create_subscription_request_body)
+  data, status_code, headers = api_instance.create_subscription_with_http_info(app_id, alias_label, alias_id, subscription_body)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse201>
+  p data # => <SubscriptionBody>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_subscription_with_http_info: #{e}"
 end
@@ -525,15 +525,15 @@ end
 | **app_id** | **String** |  |  |
 | **alias_label** | **String** |  |  |
 | **alias_id** | **String** |  |  |
-| **create_subscription_request_body** | [**CreateSubscriptionRequestBody**](CreateSubscriptionRequestBody.md) |  |  |
+| **subscription_body** | [**SubscriptionBody**](SubscriptionBody.md) |  |  |
 
 ### Return type
 
-[**InlineResponse201**](InlineResponse201.md)
+[**SubscriptionBody**](SubscriptionBody.md)
 
 ### Authorization
 
-[app_key](../README.md#app_key)
+[rest_api_key](../README.md#rest_api_key)
 
 ### HTTP request headers
 
@@ -555,8 +555,8 @@ Creates a User, optionally Subscriptions owned by the User as well as Aliases. A
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
@@ -604,7 +604,7 @@ end
 
 ### Authorization
 
-[app_key](../README.md#app_key)
+[rest_api_key](../README.md#rest_api_key)
 
 ### HTTP request headers
 
@@ -614,7 +614,7 @@ end
 
 ## delete_alias
 
-> <InlineResponse200> delete_alias(app_id, alias_label, alias_id, alias_label_to_delete)
+> <UserIdentityBody> delete_alias(app_id, alias_label, alias_id, alias_label_to_delete)
 
 
 
@@ -626,8 +626,8 @@ Deletes an alias by alias label
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
@@ -650,7 +650,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse200>, Integer, Hash)> delete_alias_with_http_info(app_id, alias_label, alias_id, alias_label_to_delete)
+> <Array(<UserIdentityBody>, Integer, Hash)> delete_alias_with_http_info(app_id, alias_label, alias_id, alias_label_to_delete)
 
 ```ruby
 begin
@@ -658,7 +658,7 @@ begin
   data, status_code, headers = api_instance.delete_alias_with_http_info(app_id, alias_label, alias_id, alias_label_to_delete)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse200>
+  p data # => <UserIdentityBody>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->delete_alias_with_http_info: #{e}"
 end
@@ -675,11 +675,11 @@ end
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**UserIdentityBody**](UserIdentityBody.md)
 
 ### Authorization
 
-[app_key](../README.md#app_key)
+[rest_api_key](../README.md#rest_api_key)
 
 ### HTTP request headers
 
@@ -687,84 +687,13 @@ end
 - **Accept**: application/json
 
 
-## delete_player
+## delete_segment
 
-> <DeletePlayerSuccessResponse> delete_player(app_id, player_id)
+> <GenericSuccessBoolResponse> delete_segment(app_id, segment_id)
 
-Delete a user record
+Delete Segment
 
-Delete player - Required: Used to delete a single, specific Player ID record from a specific OneSignal app. 
-
-### Examples
-
-```ruby
-require 'onesignal'
-# setup authorization
-OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
-
-end
-
-api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
-player_id = 'player_id_example' # String | The OneSignal player_id
-
-begin
-  # Delete a user record
-  result = api_instance.delete_player(app_id, player_id)
-  p result
-rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->delete_player: #{e}"
-end
-```
-
-#### Using the delete_player_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<DeletePlayerSuccessResponse>, Integer, Hash)> delete_player_with_http_info(app_id, player_id)
-
-```ruby
-begin
-  # Delete a user record
-  data, status_code, headers = api_instance.delete_player_with_http_info(app_id, player_id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <DeletePlayerSuccessResponse>
-rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->delete_player_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **app_id** | **String** | The OneSignal App ID for your app.  Available in Keys &amp; IDs. |  |
-| **player_id** | **String** | The OneSignal player_id |  |
-
-### Return type
-
-[**DeletePlayerSuccessResponse**](DeletePlayerSuccessResponse.md)
-
-### Authorization
-
-[app_key](../README.md#app_key)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## delete_segments
-
-> <DeleteSegmentSuccessResponse> delete_segments(app_id, segment_id)
-
-Delete Segments
-
-Delete segments (not user devices) - Required: OneSignal Paid Plan You can delete a segment under your app by calling this API. You must provide an API key in the Authorization header that has admin access on the app. The segment_id can be found in the URL of the segment when viewing it in the dashboard. 
+Delete a segment (not user devices) - Required: OneSignal Paid Plan You can delete a segment under your app by calling this API. You must provide an API key in the Authorization header that has admin access on the app. The segment_id can be found in the URL of the segment when viewing it in the dashboard. 
 
 ### Examples
 
@@ -772,8 +701,8 @@ Delete segments (not user devices) - Required: OneSignal Paid Plan You can delet
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
@@ -782,29 +711,29 @@ app_id = 'app_id_example' # String | The OneSignal App ID for your app.  Availab
 segment_id = 'segment_id_example' # String | The segment_id can be found in the URL of the segment when viewing it in the dashboard.
 
 begin
-  # Delete Segments
-  result = api_instance.delete_segments(app_id, segment_id)
+  # Delete Segment
+  result = api_instance.delete_segment(app_id, segment_id)
   p result
 rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->delete_segments: #{e}"
+  puts "Error when calling DefaultApi->delete_segment: #{e}"
 end
 ```
 
-#### Using the delete_segments_with_http_info variant
+#### Using the delete_segment_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<DeleteSegmentSuccessResponse>, Integer, Hash)> delete_segments_with_http_info(app_id, segment_id)
+> <Array(<GenericSuccessBoolResponse>, Integer, Hash)> delete_segment_with_http_info(app_id, segment_id)
 
 ```ruby
 begin
-  # Delete Segments
-  data, status_code, headers = api_instance.delete_segments_with_http_info(app_id, segment_id)
+  # Delete Segment
+  data, status_code, headers = api_instance.delete_segment_with_http_info(app_id, segment_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <DeleteSegmentSuccessResponse>
+  p data # => <GenericSuccessBoolResponse>
 rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->delete_segments_with_http_info: #{e}"
+  puts "Error when calling DefaultApi->delete_segment_with_http_info: #{e}"
 end
 ```
 
@@ -817,11 +746,11 @@ end
 
 ### Return type
 
-[**DeleteSegmentSuccessResponse**](DeleteSegmentSuccessResponse.md)
+[**GenericSuccessBoolResponse**](GenericSuccessBoolResponse.md)
 
 ### Authorization
 
-[app_key](../README.md#app_key)
+[rest_api_key](../README.md#rest_api_key)
 
 ### HTTP request headers
 
@@ -843,8 +772,8 @@ Deletes the Subscription.
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
@@ -891,7 +820,7 @@ nil (empty response body)
 
 ### Authorization
 
-[app_key](../README.md#app_key)
+[rest_api_key](../README.md#rest_api_key)
 
 ### HTTP request headers
 
@@ -913,8 +842,8 @@ Removes the User identified by (:alias_label, :alias_id), and all Subscriptions 
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
@@ -963,79 +892,7 @@ nil (empty response body)
 
 ### Authorization
 
-[app_key](../README.md#app_key)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## end_live_activity
-
-> end_live_activity(app_id, activity_id, subscription_id)
-
-Stop Live Activity
-
-Stops a Live Activity
-
-### Examples
-
-```ruby
-require 'onesignal'
-# setup authorization
-OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
-
-end
-
-api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
-activity_id = 'activity_id_example' # String | Live Activity record ID
-subscription_id = 'subscription_id_example' # String | Subscription ID
-
-begin
-  # Stop Live Activity
-  api_instance.end_live_activity(app_id, activity_id, subscription_id)
-rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->end_live_activity: #{e}"
-end
-```
-
-#### Using the end_live_activity_with_http_info variant
-
-This returns an Array which contains the response data (`nil` in this case), status code and headers.
-
-> <Array(nil, Integer, Hash)> end_live_activity_with_http_info(app_id, activity_id, subscription_id)
-
-```ruby
-begin
-  # Stop Live Activity
-  data, status_code, headers = api_instance.end_live_activity_with_http_info(app_id, activity_id, subscription_id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => nil
-rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->end_live_activity_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **app_id** | **String** | The OneSignal App ID for your app.  Available in Keys &amp; IDs. |  |
-| **activity_id** | **String** | Live Activity record ID |  |
-| **subscription_id** | **String** | Subscription ID |  |
-
-### Return type
-
-nil (empty response body)
-
-### Authorization
-
-[app_key](../README.md#app_key)
+[rest_api_key](../README.md#rest_api_key)
 
 ### HTTP request headers
 
@@ -1057,8 +914,8 @@ Generate a compressed CSV report of all of the events data for a notification. T
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
@@ -1106,7 +963,7 @@ end
 
 ### Authorization
 
-[app_key](../README.md#app_key)
+[rest_api_key](../README.md#rest_api_key)
 
 ### HTTP request headers
 
@@ -1114,11 +971,11 @@ end
 - **Accept**: application/json
 
 
-## export_players
+## export_subscriptions
 
-> <ExportPlayersSuccessResponse> export_players(app_id, opts)
+> <ExportSubscriptionsSuccessResponse> export_subscriptions(app_id, opts)
 
-Export CSV of Players
+Export CSV of Subscriptions
 
 Generate a compressed CSV export of all of your current user data This method can be used to generate a compressed CSV export of all of your current user data. It is a much faster alternative than retrieving this data using the /players API endpoint. The file will be compressed using GZip. The file may take several minutes to generate depending on the number of users in your app. The URL generated will be available for 3 days and includes random v4 uuid as part of the resource name to be unguessable. &#x1F6A7; 403 Error Responses          You can test if it is complete by making a GET request to the csv_file_url value. This file may take time to generate depending on how many device records are being pulled. If the file is not ready, a 403 error will be returned. Otherwise the file itself will be returned. &#x1F6A7; Requires Authentication Key Requires your OneSignal App's REST API Key, available in Keys & IDs. &#x1F6A7; Concurrent Exports Only one concurrent export is allowed per OneSignal account. Please ensure you have successfully downloaded the .csv.gz file before exporting another app. CSV File Format: - Default Columns:   | Field | Details |   | --- | --- |   | id | OneSignal Player Id |   | identifier | Push Token |   | session_count | Number of times they visited the app or site   | language | Device language code |   | timezone | Number of seconds away from UTC. Example: -28800 |   | game_version | Version of your mobile app gathered from Android Studio versionCode in your App/build.gradle and iOS uses kCFBundleVersionKey in Xcode. |   | device_os | Device Operating System Version. Example: 80 = Chrome 80, 9 = Android 9 |   | device_type | Device Operating System Type |   | device_model | Device Hardware String Code. Example: Mobile Web Subscribers will have `Linux armv` |   | ad_id | Based on the Google Advertising Id for Android, identifierForVendor for iOS. OptedOut means user turned off Advertising tracking on the device. |   | tags | Current OneSignal Data Tags on the device. |   | last_active | Date and time the user last opened the mobile app or visited the site. |   | playtime | Total amount of time in seconds the user had the mobile app open. |   | amount_spent |  Mobile only - amount spent in USD on In-App Purchases. |    | created_at | Date and time the device record was created in OneSignal. Mobile - first time they opened the app with OneSignal SDK. Web - first time the user subscribed to the site. |   | invalid_identifier | t = unsubscribed, f = subscibed |   | badge_count | Current number of badges on the device | - Extra Columns:   | Field | Details |   | --- | --- |   | external_user_id | Your User Id set on the device |   | notification_types | Notification types |   | location | Location points (Latitude and Longitude) set on the device. |   | country | Country code |   | rooted | Android device rooted or not |   | ip | IP Address of the device if being tracked. See Handling Personal Data. |   | web_auth | Web Only authorization key. |   | web_p256 | Web Only p256 key. | 
 
@@ -1128,41 +985,41 @@ Generate a compressed CSV export of all of your current user data This method ca
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
 api_instance = OneSignal::DefaultApi.new
 app_id = 'app_id_example' # String | The app ID that you want to export devices from
 opts = {
-  export_players_request_body: OneSignal::ExportPlayersRequestBody.new # ExportPlayersRequestBody | 
+  export_subscriptions_request_body: OneSignal::ExportSubscriptionsRequestBody.new # ExportSubscriptionsRequestBody | 
 }
 
 begin
-  # Export CSV of Players
-  result = api_instance.export_players(app_id, opts)
+  # Export CSV of Subscriptions
+  result = api_instance.export_subscriptions(app_id, opts)
   p result
 rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->export_players: #{e}"
+  puts "Error when calling DefaultApi->export_subscriptions: #{e}"
 end
 ```
 
-#### Using the export_players_with_http_info variant
+#### Using the export_subscriptions_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<ExportPlayersSuccessResponse>, Integer, Hash)> export_players_with_http_info(app_id, opts)
+> <Array(<ExportSubscriptionsSuccessResponse>, Integer, Hash)> export_subscriptions_with_http_info(app_id, opts)
 
 ```ruby
 begin
-  # Export CSV of Players
-  data, status_code, headers = api_instance.export_players_with_http_info(app_id, opts)
+  # Export CSV of Subscriptions
+  data, status_code, headers = api_instance.export_subscriptions_with_http_info(app_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <ExportPlayersSuccessResponse>
+  p data # => <ExportSubscriptionsSuccessResponse>
 rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->export_players_with_http_info: #{e}"
+  puts "Error when calling DefaultApi->export_subscriptions_with_http_info: #{e}"
 end
 ```
 
@@ -1171,15 +1028,15 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **app_id** | **String** | The app ID that you want to export devices from |  |
-| **export_players_request_body** | [**ExportPlayersRequestBody**](ExportPlayersRequestBody.md) |  | [optional] |
+| **export_subscriptions_request_body** | [**ExportSubscriptionsRequestBody**](ExportSubscriptionsRequestBody.md) |  | [optional] |
 
 ### Return type
 
-[**ExportPlayersSuccessResponse**](ExportPlayersSuccessResponse.md)
+[**ExportSubscriptionsSuccessResponse**](ExportSubscriptionsSuccessResponse.md)
 
 ### Authorization
 
-[app_key](../README.md#app_key)
+[rest_api_key](../README.md#rest_api_key)
 
 ### HTTP request headers
 
@@ -1187,9 +1044,82 @@ end
 - **Accept**: application/json
 
 
-## fetch_aliases
+## get_aliases
 
-> <UserIdentityResponse> fetch_aliases(app_id, subscription_id)
+> <UserIdentityBody> get_aliases(app_id, alias_label, alias_id)
+
+
+
+Lists all Aliases for the User identified by (:alias_label, :alias_id).
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'app_id_example' # String | 
+alias_label = 'alias_label_example' # String | 
+alias_id = 'alias_id_example' # String | 
+
+begin
+  
+  result = api_instance.get_aliases(app_id, alias_label, alias_id)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->get_aliases: #{e}"
+end
+```
+
+#### Using the get_aliases_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UserIdentityBody>, Integer, Hash)> get_aliases_with_http_info(app_id, alias_label, alias_id)
+
+```ruby
+begin
+  
+  data, status_code, headers = api_instance.get_aliases_with_http_info(app_id, alias_label, alias_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UserIdentityBody>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->get_aliases_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** |  |  |
+| **alias_label** | **String** |  |  |
+| **alias_id** | **String** |  |  |
+
+### Return type
+
+[**UserIdentityBody**](UserIdentityBody.md)
+
+### Authorization
+
+[rest_api_key](../README.md#rest_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_aliases_by_subscription
+
+> <UserIdentityBody> get_aliases_by_subscription(app_id, subscription_id)
 
 
 
@@ -1201,8 +1131,8 @@ Lists all Aliases for the User identified by :subscription_id.
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
@@ -1212,28 +1142,28 @@ subscription_id = 'subscription_id_example' # String |
 
 begin
   
-  result = api_instance.fetch_aliases(app_id, subscription_id)
+  result = api_instance.get_aliases_by_subscription(app_id, subscription_id)
   p result
 rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->fetch_aliases: #{e}"
+  puts "Error when calling DefaultApi->get_aliases_by_subscription: #{e}"
 end
 ```
 
-#### Using the fetch_aliases_with_http_info variant
+#### Using the get_aliases_by_subscription_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<UserIdentityResponse>, Integer, Hash)> fetch_aliases_with_http_info(app_id, subscription_id)
+> <Array(<UserIdentityBody>, Integer, Hash)> get_aliases_by_subscription_with_http_info(app_id, subscription_id)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.fetch_aliases_with_http_info(app_id, subscription_id)
+  data, status_code, headers = api_instance.get_aliases_by_subscription_with_http_info(app_id, subscription_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <UserIdentityResponse>
+  p data # => <UserIdentityBody>
 rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->fetch_aliases_with_http_info: #{e}"
+  puts "Error when calling DefaultApi->get_aliases_by_subscription_with_http_info: #{e}"
 end
 ```
 
@@ -1246,157 +1176,11 @@ end
 
 ### Return type
 
-[**UserIdentityResponse**](UserIdentityResponse.md)
+[**UserIdentityBody**](UserIdentityBody.md)
 
 ### Authorization
 
-[app_key](../README.md#app_key)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## fetch_user
-
-> <User> fetch_user(app_id, alias_label, alias_id)
-
-
-
-Returns the User’s properties, Aliases, and Subscriptions.
-
-### Examples
-
-```ruby
-require 'onesignal'
-# setup authorization
-OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
-
-end
-
-api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | 
-alias_label = 'alias_label_example' # String | 
-alias_id = 'alias_id_example' # String | 
-
-begin
-  
-  result = api_instance.fetch_user(app_id, alias_label, alias_id)
-  p result
-rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->fetch_user: #{e}"
-end
-```
-
-#### Using the fetch_user_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<User>, Integer, Hash)> fetch_user_with_http_info(app_id, alias_label, alias_id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.fetch_user_with_http_info(app_id, alias_label, alias_id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <User>
-rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->fetch_user_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **app_id** | **String** |  |  |
-| **alias_label** | **String** |  |  |
-| **alias_id** | **String** |  |  |
-
-### Return type
-
-[**User**](User.md)
-
-### Authorization
-
-[app_key](../README.md#app_key)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## fetch_user_identity
-
-> <InlineResponse200> fetch_user_identity(app_id, alias_label, alias_id)
-
-
-
-Lists all Aliases for the User identified by (:alias_label, :alias_id).
-
-### Examples
-
-```ruby
-require 'onesignal'
-# setup authorization
-OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
-
-end
-
-api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | 
-alias_label = 'alias_label_example' # String | 
-alias_id = 'alias_id_example' # String | 
-
-begin
-  
-  result = api_instance.fetch_user_identity(app_id, alias_label, alias_id)
-  p result
-rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->fetch_user_identity: #{e}"
-end
-```
-
-#### Using the fetch_user_identity_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<InlineResponse200>, Integer, Hash)> fetch_user_identity_with_http_info(app_id, alias_label, alias_id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.fetch_user_identity_with_http_info(app_id, alias_label, alias_id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <InlineResponse200>
-rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->fetch_user_identity_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **app_id** | **String** |  |  |
-| **alias_label** | **String** |  |  |
-| **alias_id** | **String** |  |  |
-
-### Return type
-
-[**InlineResponse200**](InlineResponse200.md)
-
-### Authorization
-
-[app_key](../README.md#app_key)
+[rest_api_key](../README.md#rest_api_key)
 
 ### HTTP request headers
 
@@ -1418,8 +1202,8 @@ View the details of a single OneSignal app
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: user_key
-  config.user_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: user_auth_key
+  config.user_auth_key = 'YOUR_BEARER_TOKEN'
 
 end
 
@@ -1465,7 +1249,7 @@ end
 
 ### Authorization
 
-[user_key](../README.md#user_key)
+[user_auth_key](../README.md#user_auth_key)
 
 ### HTTP request headers
 
@@ -1487,8 +1271,8 @@ View the details of all of your current OneSignal apps
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: user_key
-  config.user_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: user_auth_key
+  config.user_auth_key = 'YOUR_BEARER_TOKEN'
 
 end
 
@@ -1531,78 +1315,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[user_key](../README.md#user_key)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## get_eligible_iams
-
-> <InlineResponse2003> get_eligible_iams(app_id, subscription_id)
-
-
-
-Manifest of In-App Messages the Subscription is eligible to display by the SDK.
-
-### Examples
-
-```ruby
-require 'onesignal'
-# setup authorization
-OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
-
-end
-
-api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | 
-subscription_id = 'subscription_id_example' # String | 
-
-begin
-  
-  result = api_instance.get_eligible_iams(app_id, subscription_id)
-  p result
-rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->get_eligible_iams: #{e}"
-end
-```
-
-#### Using the get_eligible_iams_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<InlineResponse2003>, Integer, Hash)> get_eligible_iams_with_http_info(app_id, subscription_id)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.get_eligible_iams_with_http_info(app_id, subscription_id)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <InlineResponse2003>
-rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->get_eligible_iams_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **app_id** | **String** |  |  |
-| **subscription_id** | **String** |  |  |
-
-### Return type
-
-[**InlineResponse2003**](InlineResponse2003.md)
-
-### Authorization
-
-[app_key](../README.md#app_key)
+[user_auth_key](../README.md#user_auth_key)
 
 ### HTTP request headers
 
@@ -1624,8 +1337,8 @@ View the details of a single notification and outcomes associated with it
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
@@ -1673,7 +1386,7 @@ end
 
 ### Authorization
 
-[app_key](../README.md#app_key)
+[rest_api_key](../README.md#rest_api_key)
 
 ### HTTP request headers
 
@@ -1683,7 +1396,7 @@ end
 
 ## get_notification_history
 
-> <NotificationHistorySuccessResponse> get_notification_history(notification_id, get_notification_request_body)
+> <NotificationHistorySuccessResponse> get_notification_history(notification_id, get_notification_history_request_body)
 
 Notification History
 
@@ -1695,18 +1408,18 @@ Notification History
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
 api_instance = OneSignal::DefaultApi.new
 notification_id = 'notification_id_example' # String | The \"id\" of the message found in the Notification object
-get_notification_request_body = OneSignal::GetNotificationRequestBody.new # GetNotificationRequestBody | 
+get_notification_history_request_body = OneSignal::GetNotificationHistoryRequestBody.new # GetNotificationHistoryRequestBody | 
 
 begin
   # Notification History
-  result = api_instance.get_notification_history(notification_id, get_notification_request_body)
+  result = api_instance.get_notification_history(notification_id, get_notification_history_request_body)
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_notification_history: #{e}"
@@ -1717,12 +1430,12 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<NotificationHistorySuccessResponse>, Integer, Hash)> get_notification_history_with_http_info(notification_id, get_notification_request_body)
+> <Array(<NotificationHistorySuccessResponse>, Integer, Hash)> get_notification_history_with_http_info(notification_id, get_notification_history_request_body)
 
 ```ruby
 begin
   # Notification History
-  data, status_code, headers = api_instance.get_notification_history_with_http_info(notification_id, get_notification_request_body)
+  data, status_code, headers = api_instance.get_notification_history_with_http_info(notification_id, get_notification_history_request_body)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => <NotificationHistorySuccessResponse>
@@ -1736,7 +1449,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **notification_id** | **String** | The \&quot;id\&quot; of the message found in the Notification object |  |
-| **get_notification_request_body** | [**GetNotificationRequestBody**](GetNotificationRequestBody.md) |  |  |
+| **get_notification_history_request_body** | [**GetNotificationHistoryRequestBody**](GetNotificationHistoryRequestBody.md) |  |  |
 
 ### Return type
 
@@ -1744,7 +1457,7 @@ end
 
 ### Authorization
 
-[app_key](../README.md#app_key)
+[rest_api_key](../README.md#rest_api_key)
 
 ### HTTP request headers
 
@@ -1766,8 +1479,8 @@ View the details of multiple notifications
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
@@ -1821,7 +1534,7 @@ end
 
 ### Authorization
 
-[app_key](../README.md#app_key)
+[rest_api_key](../README.md#rest_api_key)
 
 ### HTTP request headers
 
@@ -1843,8 +1556,8 @@ View the details of all the outcomes associated with your app  &#x1F6A7; Require
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
@@ -1902,7 +1615,7 @@ end
 
 ### Authorization
 
-[app_key](../README.md#app_key)
+[rest_api_key](../README.md#rest_api_key)
 
 ### HTTP request headers
 
@@ -1910,13 +1623,13 @@ end
 - **Accept**: application/json
 
 
-## get_player
+## get_segments
 
-> <Player> get_player(app_id, player_id, opts)
+> <GetSegmentsSuccessResponse> get_segments(app_id, opts)
 
-View device
+Get Segments
 
-View the details of an existing device in one of your OneSignal apps
+Returns an array of segments from an app.
 
 ### Examples
 
@@ -1924,42 +1637,42 @@ View the details of an existing device in one of your OneSignal apps
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | Your app_id for this device
-player_id = 'player_id_example' # String | Player's OneSignal ID
+app_id = 'app_id_example' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
 opts = {
-  email_auth_hash: 'email_auth_hash_example' # String | Email - Only required if you have enabled Identity Verification and device_type is email (11).
+  offset: 56, # Integer | Segments are listed in ascending order of created_at date. offset will omit that number of segments from the beginning of the list. Eg offset 5, will remove the 5 earliest created Segments.
+  limit: 56 # Integer | The amount of Segments in the response. Maximum 300.
 }
 
 begin
-  # View device
-  result = api_instance.get_player(app_id, player_id, opts)
+  # Get Segments
+  result = api_instance.get_segments(app_id, opts)
   p result
 rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->get_player: #{e}"
+  puts "Error when calling DefaultApi->get_segments: #{e}"
 end
 ```
 
-#### Using the get_player_with_http_info variant
+#### Using the get_segments_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<Player>, Integer, Hash)> get_player_with_http_info(app_id, player_id, opts)
+> <Array(<GetSegmentsSuccessResponse>, Integer, Hash)> get_segments_with_http_info(app_id, opts)
 
 ```ruby
 begin
-  # View device
-  data, status_code, headers = api_instance.get_player_with_http_info(app_id, player_id, opts)
+  # Get Segments
+  data, status_code, headers = api_instance.get_segments_with_http_info(app_id, opts)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <Player>
+  p data # => <GetSegmentsSuccessResponse>
 rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->get_player_with_http_info: #{e}"
+  puts "Error when calling DefaultApi->get_segments_with_http_info: #{e}"
 end
 ```
 
@@ -1967,17 +1680,17 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **app_id** | **String** | Your app_id for this device |  |
-| **player_id** | **String** | Player&#39;s OneSignal ID |  |
-| **email_auth_hash** | **String** | Email - Only required if you have enabled Identity Verification and device_type is email (11). | [optional] |
+| **app_id** | **String** | The OneSignal App ID for your app.  Available in Keys &amp; IDs. |  |
+| **offset** | **Integer** | Segments are listed in ascending order of created_at date. offset will omit that number of segments from the beginning of the list. Eg offset 5, will remove the 5 earliest created Segments. | [optional] |
+| **limit** | **Integer** | The amount of Segments in the response. Maximum 300. | [optional] |
 
 ### Return type
 
-[**Player**](Player.md)
+[**GetSegmentsSuccessResponse**](GetSegmentsSuccessResponse.md)
 
 ### Authorization
 
-[app_key](../README.md#app_key)
+[rest_api_key](../README.md#rest_api_key)
 
 ### HTTP request headers
 
@@ -1985,88 +1698,13 @@ end
 - **Accept**: application/json
 
 
-## get_players
+## get_user
 
-> <PlayerSlice> get_players(app_id, opts)
-
-View devices
-
-View the details of multiple devices in one of your OneSignal apps Unavailable for Apps Over 80,000 Users For performance reasons, this method is not available for larger apps. Larger apps should use the CSV export API endpoint, which is much more performant. 
-
-### Examples
-
-```ruby
-require 'onesignal'
-# setup authorization
-OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
-
-end
-
-api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | The app ID that you want to view players from
-opts = {
-  limit: 56, # Integer | How many devices to return. Max is 300. Default is 300
-  offset: 56 # Integer | Result offset. Default is 0. Results are sorted by id;
-}
-
-begin
-  # View devices
-  result = api_instance.get_players(app_id, opts)
-  p result
-rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->get_players: #{e}"
-end
-```
-
-#### Using the get_players_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<PlayerSlice>, Integer, Hash)> get_players_with_http_info(app_id, opts)
-
-```ruby
-begin
-  # View devices
-  data, status_code, headers = api_instance.get_players_with_http_info(app_id, opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <PlayerSlice>
-rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->get_players_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **app_id** | **String** | The app ID that you want to view players from |  |
-| **limit** | **Integer** | How many devices to return. Max is 300. Default is 300 | [optional] |
-| **offset** | **Integer** | Result offset. Default is 0. Results are sorted by id; | [optional] |
-
-### Return type
-
-[**PlayerSlice**](PlayerSlice.md)
-
-### Authorization
-
-[app_key](../README.md#app_key)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: application/json
-
-
-## identify_user_by_alias
-
-> <InlineResponse200> identify_user_by_alias(app_id, alias_label, alias_id, user_identity_request_body)
+> <User> get_user(app_id, alias_label, alias_id)
 
 
 
-Upserts one or more Aliases to an existing User identified by (:alias_label, :alias_id).
+Returns the User’s properties, Aliases, and Subscriptions.
 
 ### Examples
 
@@ -2074,8 +1712,8 @@ Upserts one or more Aliases to an existing User identified by (:alias_label, :al
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
@@ -2083,32 +1721,31 @@ api_instance = OneSignal::DefaultApi.new
 app_id = 'app_id_example' # String | 
 alias_label = 'alias_label_example' # String | 
 alias_id = 'alias_id_example' # String | 
-user_identity_request_body = OneSignal::UserIdentityRequestBody.new # UserIdentityRequestBody | 
 
 begin
   
-  result = api_instance.identify_user_by_alias(app_id, alias_label, alias_id, user_identity_request_body)
+  result = api_instance.get_user(app_id, alias_label, alias_id)
   p result
 rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->identify_user_by_alias: #{e}"
+  puts "Error when calling DefaultApi->get_user: #{e}"
 end
 ```
 
-#### Using the identify_user_by_alias_with_http_info variant
+#### Using the get_user_with_http_info variant
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse200>, Integer, Hash)> identify_user_by_alias_with_http_info(app_id, alias_label, alias_id, user_identity_request_body)
+> <Array(<User>, Integer, Hash)> get_user_with_http_info(app_id, alias_label, alias_id)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.identify_user_by_alias_with_http_info(app_id, alias_label, alias_id, user_identity_request_body)
+  data, status_code, headers = api_instance.get_user_with_http_info(app_id, alias_label, alias_id)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse200>
+  p data # => <User>
 rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->identify_user_by_alias_with_http_info: #{e}"
+  puts "Error when calling DefaultApi->get_user_with_http_info: #{e}"
 end
 ```
 
@@ -2119,98 +1756,24 @@ end
 | **app_id** | **String** |  |  |
 | **alias_label** | **String** |  |  |
 | **alias_id** | **String** |  |  |
-| **user_identity_request_body** | [**UserIdentityRequestBody**](UserIdentityRequestBody.md) |  |  |
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**User**](User.md)
 
 ### Authorization
 
-[app_key](../README.md#app_key)
+[rest_api_key](../README.md#rest_api_key)
 
 ### HTTP request headers
 
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## identify_user_by_subscription_id
-
-> <UserIdentityResponse> identify_user_by_subscription_id(app_id, subscription_id, user_identity_request_body)
-
-
-
-Upserts one or more Aliases for the User identified by :subscription_id.
-
-### Examples
-
-```ruby
-require 'onesignal'
-# setup authorization
-OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
-
-end
-
-api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | 
-subscription_id = 'subscription_id_example' # String | 
-user_identity_request_body = OneSignal::UserIdentityRequestBody.new # UserIdentityRequestBody | 
-
-begin
-  
-  result = api_instance.identify_user_by_subscription_id(app_id, subscription_id, user_identity_request_body)
-  p result
-rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->identify_user_by_subscription_id: #{e}"
-end
-```
-
-#### Using the identify_user_by_subscription_id_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<UserIdentityResponse>, Integer, Hash)> identify_user_by_subscription_id_with_http_info(app_id, subscription_id, user_identity_request_body)
-
-```ruby
-begin
-  
-  data, status_code, headers = api_instance.identify_user_by_subscription_id_with_http_info(app_id, subscription_id, user_identity_request_body)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <UserIdentityResponse>
-rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->identify_user_by_subscription_id_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **app_id** | **String** |  |  |
-| **subscription_id** | **String** |  |  |
-| **user_identity_request_body** | [**UserIdentityRequestBody**](UserIdentityRequestBody.md) |  |  |
-
-### Return type
-
-[**UserIdentityResponse**](UserIdentityResponse.md)
-
-### Authorization
-
-[app_key](../README.md#app_key)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
 ## transfer_subscription
 
-> <UserIdentityResponse> transfer_subscription(app_id, subscription_id, transfer_subscription_request_body)
+> <UserIdentityBody> transfer_subscription(app_id, subscription_id, transfer_subscription_request_body)
 
 
 
@@ -2222,8 +1785,8 @@ Transfers this Subscription to the User identified by the identity in the payloa
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
@@ -2245,7 +1808,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<UserIdentityResponse>, Integer, Hash)> transfer_subscription_with_http_info(app_id, subscription_id, transfer_subscription_request_body)
+> <Array(<UserIdentityBody>, Integer, Hash)> transfer_subscription_with_http_info(app_id, subscription_id, transfer_subscription_request_body)
 
 ```ruby
 begin
@@ -2253,7 +1816,7 @@ begin
   data, status_code, headers = api_instance.transfer_subscription_with_http_info(app_id, subscription_id, transfer_subscription_request_body)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <UserIdentityResponse>
+  p data # => <UserIdentityBody>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->transfer_subscription_with_http_info: #{e}"
 end
@@ -2269,15 +1832,88 @@ end
 
 ### Return type
 
-[**UserIdentityResponse**](UserIdentityResponse.md)
+[**UserIdentityBody**](UserIdentityBody.md)
 
 ### Authorization
 
-[app_key](../README.md#app_key)
+[rest_api_key](../README.md#rest_api_key)
 
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## unsubscribe_email_with_token
+
+> <GenericSuccessBoolResponse> unsubscribe_email_with_token(app_id, notification_id, token)
+
+Unsubscribe with token
+
+Unsubscribe an email with a token when using your own custom email unsubscribe landing page
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'app_id_example' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
+notification_id = 'notification_id_example' # String | The id of the message found in the creation notification POST response, View Notifications GET response, or URL within the Message Report.
+token = 'token_example' # String | The unsubscribe token that is generated via liquid syntax in {{subscription.unsubscribe_token}} when personalizing an email.
+
+begin
+  # Unsubscribe with token
+  result = api_instance.unsubscribe_email_with_token(app_id, notification_id, token)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->unsubscribe_email_with_token: #{e}"
+end
+```
+
+#### Using the unsubscribe_email_with_token_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GenericSuccessBoolResponse>, Integer, Hash)> unsubscribe_email_with_token_with_http_info(app_id, notification_id, token)
+
+```ruby
+begin
+  # Unsubscribe with token
+  data, status_code, headers = api_instance.unsubscribe_email_with_token_with_http_info(app_id, notification_id, token)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GenericSuccessBoolResponse>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->unsubscribe_email_with_token_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | The OneSignal App ID for your app.  Available in Keys &amp; IDs. |  |
+| **notification_id** | **String** | The id of the message found in the creation notification POST response, View Notifications GET response, or URL within the Message Report. |  |
+| **token** | **String** | The unsubscribe token that is generated via liquid syntax in {{subscription.unsubscribe_token}} when personalizing an email. |  |
+
+### Return type
+
+[**GenericSuccessBoolResponse**](GenericSuccessBoolResponse.md)
+
+### Authorization
+
+[rest_api_key](../README.md#rest_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
 
@@ -2295,8 +1931,8 @@ Updates the name or configuration settings of an existing OneSignal app
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: user_key
-  config.user_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: user_auth_key
+  config.user_auth_key = 'YOUR_BEARER_TOKEN'
 
 end
 
@@ -2344,7 +1980,7 @@ end
 
 ### Authorization
 
-[user_key](../README.md#user_key)
+[user_auth_key](../README.md#user_auth_key)
 
 ### HTTP request headers
 
@@ -2366,15 +2002,15 @@ Updates a specified live activity.
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
 api_instance = OneSignal::DefaultApi.new
 app_id = 'app_id_example' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
 activity_id = 'activity_id_example' # String | Live Activity record ID
-update_live_activity_request = OneSignal::UpdateLiveActivityRequest.new({name: 'headings', event: 'update', event_updates: 3.56}) # UpdateLiveActivityRequest | 
+update_live_activity_request = OneSignal::UpdateLiveActivityRequest.new({name: 'name_example', event: 'update', event_updates: 3.56}) # UpdateLiveActivityRequest | 
 
 begin
   # Update a Live Activity via Push
@@ -2417,153 +2053,7 @@ end
 
 ### Authorization
 
-[app_key](../README.md#app_key)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## update_player
-
-> <UpdatePlayerSuccessResponse> update_player(player_id, player)
-
-Edit device
-
-Update an existing device in one of your OneSignal apps
-
-### Examples
-
-```ruby
-require 'onesignal'
-# setup authorization
-OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
-
-end
-
-api_instance = OneSignal::DefaultApi.new
-player_id = 'player_id_example' # String | Player's OneSignal ID
-player = OneSignal::Player.new({device_type: 37}) # Player | 
-
-begin
-  # Edit device
-  result = api_instance.update_player(player_id, player)
-  p result
-rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->update_player: #{e}"
-end
-```
-
-#### Using the update_player_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<UpdatePlayerSuccessResponse>, Integer, Hash)> update_player_with_http_info(player_id, player)
-
-```ruby
-begin
-  # Edit device
-  data, status_code, headers = api_instance.update_player_with_http_info(player_id, player)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <UpdatePlayerSuccessResponse>
-rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->update_player_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **player_id** | **String** | Player&#39;s OneSignal ID |  |
-| **player** | [**Player**](Player.md) |  |  |
-
-### Return type
-
-[**UpdatePlayerSuccessResponse**](UpdatePlayerSuccessResponse.md)
-
-### Authorization
-
-[app_key](../README.md#app_key)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
-## update_player_tags
-
-> <UpdatePlayerTagsSuccessResponse> update_player_tags(app_id, external_user_id, opts)
-
-Edit tags with external user id
-
-Update an existing device's tags in one of your OneSignal apps using the External User ID. Warning - Android SDK Data Synchronization Tags added through the Android SDK tagging methods may not update if using the API to change or update the same tag. For example, if you use SDK method sendTag(\"key\", \"value1\") then update the tag value to \"value2\" with this API endpoint. You will not be able to set the value back to \"value1\" through the SDK, you will need to change it to something different through the SDK to be reset. Recommendations if using this Endpoint on Android Mobile Apps: 1 - Do not use the same tag keys for SDK and API updates 2 - If you want to use the same key for both SDK and API updates, call the SDK getTags method first to update the device's tags. This is only applicable on the Android Mobile App SDKs. &#128216; Deleting Tags To delete a tag, include its key and set its value to blank. Omitting a key/value will not delete it. For example, if I wanted to delete two existing tags rank and category while simultaneously adding a new tag class, the tags JSON would look like the following: \"tags\": {    \"rank\": \"\",    \"category\": \"\",    \"class\": \"my_new_value\" } 
-
-### Examples
-
-```ruby
-require 'onesignal'
-# setup authorization
-OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
-
-end
-
-api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | The OneSignal App ID the user record is found under.
-external_user_id = 'external_user_id_example' # String | The External User ID mapped to teh device record in OneSignal.  Must be actively set on the device to be updated.
-opts = {
-  update_player_tags_request_body: OneSignal::UpdatePlayerTagsRequestBody.new # UpdatePlayerTagsRequestBody | 
-}
-
-begin
-  # Edit tags with external user id
-  result = api_instance.update_player_tags(app_id, external_user_id, opts)
-  p result
-rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->update_player_tags: #{e}"
-end
-```
-
-#### Using the update_player_tags_with_http_info variant
-
-This returns an Array which contains the response data, status code and headers.
-
-> <Array(<UpdatePlayerTagsSuccessResponse>, Integer, Hash)> update_player_tags_with_http_info(app_id, external_user_id, opts)
-
-```ruby
-begin
-  # Edit tags with external user id
-  data, status_code, headers = api_instance.update_player_tags_with_http_info(app_id, external_user_id, opts)
-  p status_code # => 2xx
-  p headers # => { ... }
-  p data # => <UpdatePlayerTagsSuccessResponse>
-rescue OneSignal::ApiError => e
-  puts "Error when calling DefaultApi->update_player_tags_with_http_info: #{e}"
-end
-```
-
-### Parameters
-
-| Name | Type | Description | Notes |
-| ---- | ---- | ----------- | ----- |
-| **app_id** | **String** | The OneSignal App ID the user record is found under. |  |
-| **external_user_id** | **String** | The External User ID mapped to teh device record in OneSignal.  Must be actively set on the device to be updated. |  |
-| **update_player_tags_request_body** | [**UpdatePlayerTagsRequestBody**](UpdatePlayerTagsRequestBody.md) |  | [optional] |
-
-### Return type
-
-[**UpdatePlayerTagsSuccessResponse**](UpdatePlayerTagsSuccessResponse.md)
-
-### Authorization
-
-[app_key](../README.md#app_key)
+[rest_api_key](../README.md#rest_api_key)
 
 ### HTTP request headers
 
@@ -2573,7 +2063,7 @@ end
 
 ## update_subscription
 
-> update_subscription(app_id, subscription_id, update_subscription_request_body)
+> update_subscription(app_id, subscription_id, subscription_body)
 
 
 
@@ -2585,19 +2075,19 @@ Updates an existing Subscription’s properties.
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
 api_instance = OneSignal::DefaultApi.new
 app_id = 'app_id_example' # String | 
 subscription_id = 'subscription_id_example' # String | 
-update_subscription_request_body = OneSignal::UpdateSubscriptionRequestBody.new # UpdateSubscriptionRequestBody | 
+subscription_body = OneSignal::SubscriptionBody.new # SubscriptionBody | 
 
 begin
   
-  api_instance.update_subscription(app_id, subscription_id, update_subscription_request_body)
+  api_instance.update_subscription(app_id, subscription_id, subscription_body)
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_subscription: #{e}"
 end
@@ -2607,12 +2097,12 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> update_subscription_with_http_info(app_id, subscription_id, update_subscription_request_body)
+> <Array(nil, Integer, Hash)> update_subscription_with_http_info(app_id, subscription_id, subscription_body)
 
 ```ruby
 begin
   
-  data, status_code, headers = api_instance.update_subscription_with_http_info(app_id, subscription_id, update_subscription_request_body)
+  data, status_code, headers = api_instance.update_subscription_with_http_info(app_id, subscription_id, subscription_body)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
@@ -2627,7 +2117,7 @@ end
 | ---- | ---- | ----------- | ----- |
 | **app_id** | **String** |  |  |
 | **subscription_id** | **String** |  |  |
-| **update_subscription_request_body** | [**UpdateSubscriptionRequestBody**](UpdateSubscriptionRequestBody.md) |  |  |
+| **subscription_body** | [**SubscriptionBody**](SubscriptionBody.md) |  |  |
 
 ### Return type
 
@@ -2635,7 +2125,7 @@ nil (empty response body)
 
 ### Authorization
 
-[app_key](../README.md#app_key)
+[rest_api_key](../README.md#rest_api_key)
 
 ### HTTP request headers
 
@@ -2645,7 +2135,7 @@ nil (empty response body)
 
 ## update_user
 
-> <InlineResponse202> update_user(app_id, alias_label, alias_id, update_user_request)
+> <PropertiesBody> update_user(app_id, alias_label, alias_id, update_user_request)
 
 
 
@@ -2657,8 +2147,8 @@ Updates an existing User’s properties.
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
@@ -2681,7 +2171,7 @@ end
 
 This returns an Array which contains the response data, status code and headers.
 
-> <Array(<InlineResponse202>, Integer, Hash)> update_user_with_http_info(app_id, alias_label, alias_id, update_user_request)
+> <Array(<PropertiesBody>, Integer, Hash)> update_user_with_http_info(app_id, alias_label, alias_id, update_user_request)
 
 ```ruby
 begin
@@ -2689,7 +2179,7 @@ begin
   data, status_code, headers = api_instance.update_user_with_http_info(app_id, alias_label, alias_id, update_user_request)
   p status_code # => 2xx
   p headers # => { ... }
-  p data # => <InlineResponse202>
+  p data # => <PropertiesBody>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_user_with_http_info: #{e}"
 end
@@ -2706,11 +2196,11 @@ end
 
 ### Return type
 
-[**InlineResponse202**](InlineResponse202.md)
+[**PropertiesBody**](PropertiesBody.md)
 
 ### Authorization
 
-[app_key](../README.md#app_key)
+[rest_api_key](../README.md#rest_api_key)
 
 ### HTTP request headers
 
