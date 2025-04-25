@@ -57,8 +57,10 @@ Starts a Live Activity
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -129,8 +131,10 @@ Used to stop a scheduled or currently outgoing notification
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -201,7 +205,9 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: user_key
-  config.user_key = 'YOUR_BEARER_TOKEN'
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
+  # Configure Bearer authorization: user_key
+  config.user_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -269,8 +275,10 @@ Sends notifications to your users
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -338,8 +346,10 @@ Register a new device to one of your OneSignal apps &#x1F6A7; Don't use this Thi
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -407,8 +417,10 @@ Create segments visible and usable in the dashboard and API - Required: OneSigna
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -480,8 +492,10 @@ Creates a new Subscription under the User provided. Useful to add email addresse
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -555,8 +569,10 @@ Creates a User, optionally Subscriptions owned by the User as well as Aliases. A
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -626,8 +642,10 @@ Deletes an alias by alias label
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -701,8 +719,10 @@ Delete player - Required: Used to delete a single, specific Player ID record fro
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -772,8 +792,10 @@ Delete segments (not user devices) - Required: OneSignal Paid Plan You can delet
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -843,8 +865,10 @@ Deletes the Subscription.
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -913,8 +937,10 @@ Removes the User identified by (:alias_label, :alias_id), and all Subscriptions 
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -985,8 +1011,10 @@ Stops a Live Activity
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -1057,8 +1085,10 @@ Generate a compressed CSV report of all of the events data for a notification. T
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -1128,8 +1158,10 @@ Generate a compressed CSV export of all of your current user data This method ca
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -1201,8 +1233,10 @@ Lists all Aliases for the User identified by :subscription_id.
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -1272,8 +1306,10 @@ Returns the User’s properties, Aliases, and Subscriptions.
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -1345,8 +1381,10 @@ Lists all Aliases for the User identified by (:alias_label, :alias_id).
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -1419,7 +1457,9 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: user_key
-  config.user_key = 'YOUR_BEARER_TOKEN'
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
+  # Configure Bearer authorization: user_key
+  config.user_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -1488,7 +1528,9 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: user_key
-  config.user_key = 'YOUR_BEARER_TOKEN'
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
+  # Configure Bearer authorization: user_key
+  config.user_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -1553,8 +1595,10 @@ Manifest of In-App Messages the Subscription is eligible to display by the SDK.
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -1624,8 +1668,10 @@ View the details of a single notification and outcomes associated with it
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -1695,8 +1741,10 @@ Notification History
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -1766,8 +1814,10 @@ View the details of multiple notifications
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -1843,8 +1893,10 @@ View the details of all the outcomes associated with your app  &#x1F6A7; Require
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -1924,8 +1976,10 @@ View the details of an existing device in one of your OneSignal apps
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -1999,8 +2053,10 @@ View the details of multiple devices in one of your OneSignal apps Unavailable f
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -2074,8 +2130,10 @@ Upserts one or more Aliases to an existing User identified by (:alias_label, :al
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -2149,8 +2207,10 @@ Upserts one or more Aliases for the User identified by :subscription_id.
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -2222,8 +2282,10 @@ Transfers this Subscription to the User identified by the identity in the payloa
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -2296,7 +2358,9 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: user_key
-  config.user_key = 'YOUR_BEARER_TOKEN'
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
+  # Configure Bearer authorization: user_key
+  config.user_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -2366,8 +2430,10 @@ Updates a specified live activity.
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -2439,8 +2505,10 @@ Update an existing device in one of your OneSignal apps
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -2510,8 +2578,10 @@ Update an existing device's tags in one of your OneSignal apps using the Externa
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -2585,8 +2655,10 @@ Updates an existing Subscription’s properties.
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
@@ -2657,8 +2729,10 @@ Updates an existing User’s properties.
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.app_key = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 
 end
 
