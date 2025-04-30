@@ -4,8 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **notification_id** | **String** |  | [optional] |
-| **errors** | [**Notification200Errors**](Notification200Errors.md) |  | [optional] |
+| **id** | **String** |  | [optional] |
 
 ## Example
 
@@ -13,8 +12,7 @@
 require 'onesignal'
 
 instance = OneSignal::UpdateLiveActivitySuccessResponse.new(
-  notification_id: null,
-  errors: null
+  id: null
 )
 ```
 
