@@ -10,8 +10,8 @@
 | **lat** | **Float** |  | [optional] |
 | **long** | **Float** |  | [optional] |
 | **country** | **String** |  | [optional] |
-| **first_active** | **Float** |  | [optional] |
-| **last_active** | **Float** |  | [optional] |
+| **first_active** | **Integer** |  | [optional] |
+| **last_active** | **Integer** |  | [optional] |
 | **amount_spent** | **Float** |  | [optional] |
 | **purchases** | [**Array&lt;Purchase&gt;**](Purchase.md) |  | [optional] |
 | **ip** | **String** |  | [optional] |

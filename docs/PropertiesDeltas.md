@@ -4,8 +4,8 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **session_time** | **Float** |  | [optional] |
-| **session_count** | **Float** |  | [optional] |
+| **session_time** | **Integer** |  | [optional] |
+| **session_count** | **Integer** |  | [optional] |
 | **purchases** | [**Array&lt;Purchase&gt;**](Purchase.md) |  | [optional] |
 
 ## Example
