@@ -59,8 +59,10 @@ require 'onesignal'
 
 # Setup authorization
 OneSignal.configure do |config|
+  # Configure Bearer authorization: user_key
+  config.user_key = 'ORGANIZATION_API_KEY' # Organization key is only required for creating new apps and other top-level endpoints
   # Configure Bearer authorization: app_key
-  config.access_token = 'YOUR_BEARER_TOKEN'
+  config.app_key = 'REST_API_KEY' # App REST API key required for most endpoints
 end
 
 api_instance = OneSignal::DefaultApi.new
