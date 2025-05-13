@@ -4,7 +4,9 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **errors** | [**Array&lt;GenericErrorErrorsInner&gt;**](GenericErrorErrorsInner.md) |  | [optional] |
+| **errors** | **Object** |  | [optional] |
+| **success** | **Boolean** |  | [optional] |
+| **reference** | **Object** |  | [optional] |
 
 ## Example
 
@@ -12,7 +14,9 @@
 require 'onesignal'
 
 instance = OneSignal::GenericError.new(
-  errors: null
+  errors: null,
+  success: null,
+  reference: null
 )
 ```
 
