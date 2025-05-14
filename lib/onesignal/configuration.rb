@@ -180,14 +180,14 @@ module OneSignal
             type: 'bearer',
             in: 'header',
             key: 'Authorization',
-            value: "Key token=\"#{ app_key }\""
+            value: "Key \"#{ app_key }\""
           },
         'user_key' =>
           {
             type: 'bearer',
             in: 'header',
             key: 'Authorization',
-            value: "Key token=\"#{ user_key }\""
+            value: "Key \"#{ user_key }\""
           },
       }
     end
