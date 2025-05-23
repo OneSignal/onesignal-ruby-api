@@ -4,7 +4,7 @@
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **identity** | **Hash&lt;String, Object&gt;** |  | [optional] |
+| **identity** | **Hash&lt;String, String&gt;** |  | [optional] |
 
 ## Example
 
