@@ -8,7 +8,7 @@
 | **type** | **String** |  | [optional] |
 | **token** | **String** |  | [optional] |
 | **enabled** | **Boolean** |  | [optional] |
-| **notification_types** | **Float** |  | [optional] |
+| **notification_types** | **Integer** |  | [optional] |
 | **session_time** | **Float** |  | [optional] |
 | **session_count** | **Float** |  | [optional] |
 | **sdk** | **String** |  | [optional] |
