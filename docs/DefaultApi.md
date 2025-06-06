@@ -269,8 +269,8 @@ Creates a new OneSignal app
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: user_auth_key
-  config.user_auth_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: organization_api_key
+  config.organization_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
@@ -316,7 +316,7 @@ end
 
 ### Authorization
 
-[user_auth_key](../README.md#user_auth_key)
+[organization_api_key](../README.md#organization_api_key)
 
 ### HTTP request headers
 
@@ -1202,8 +1202,8 @@ View the details of a single OneSignal app
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: user_auth_key
-  config.user_auth_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: organization_api_key
+  config.organization_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
@@ -1249,7 +1249,7 @@ end
 
 ### Authorization
 
-[user_auth_key](../README.md#user_auth_key)
+[organization_api_key](../README.md#organization_api_key)
 
 ### HTTP request headers
 
@@ -1271,8 +1271,8 @@ View the details of all of your current OneSignal apps
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: user_auth_key
-  config.user_auth_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: organization_api_key
+  config.organization_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
@@ -1315,7 +1315,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[user_auth_key](../README.md#user_auth_key)
+[organization_api_key](../README.md#organization_api_key)
 
 ### HTTP request headers
 
@@ -1931,8 +1931,8 @@ Updates the name or configuration settings of an existing OneSignal app
 require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
-  # Configure Bearer authorization: user_auth_key
-  config.user_auth_key = 'YOUR_BEARER_TOKEN'
+  # Configure Bearer authorization: organization_api_key
+  config.organization_api_key = 'YOUR_BEARER_TOKEN'
 
 end
 
@@ -1980,7 +1980,7 @@ end
 
 ### Authorization
 
-[user_auth_key](../README.md#user_auth_key)
+[organization_api_key](../README.md#organization_api_key)
 
 ### HTTP request headers
 
