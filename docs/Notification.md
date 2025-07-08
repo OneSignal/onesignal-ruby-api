@@ -106,6 +106,7 @@
 | **email_from_name** | **String** | Channel: Email The name the email is from. If not specified, will default to \&quot;from name\&quot; set in the OneSignal Dashboard Email Settings.  | [optional] |
 | **email_from_address** | **String** | Channel: Email The email address the email is from. If not specified, will default to \&quot;from email\&quot; set in the OneSignal Dashboard Email Settings.  | [optional] |
 | **email_preheader** | **String** | Channel: Email The preheader text of the email. Preheader is the preview text displayed immediately after an email subject that provides additional context about the email content. If not specified, will default to null.  | [optional] |
+| **disable_email_click_tracking** | **Boolean** | Channel: Email Default is &#x60;false&#x60;. If set to &#x60;true&#x60;, the URLs sent within the email will not include link tracking and will be the same as originally set; otherwise, all the URLs in the email will be tracked. | [optional] |
 | **include_unsubscribed** | **Boolean** | Channel: Email Default is &#x60;false&#x60;. This field is used to send transactional notifications. If set to &#x60;true&#x60;, this notification will also be sent to unsubscribed emails. If a &#x60;template_id&#x60; is provided, the &#x60;include_unsubscribed&#x60; value from the template will be inherited. If you are using a third-party ESP, this field requires the ESP&#39;s list of unsubscribed emails to be cleared. | [optional] |
 | **sms_from** | **String** | Channel: SMS Phone Number used to send SMS. Should be a registered Twilio phone number in E.164 format.  | [optional] |
 | **sms_media_urls** | **Array&lt;String&gt;** | Channel: SMS URLs for the media files to be attached to the SMS content. Limit: 10 media urls with a total max. size of 5MBs.  | [optional] |
@@ -221,6 +222,7 @@ instance = OneSignal::Notification.new(
   email_from_name: null,
   email_from_address: null,
   email_preheader: null,
+  disable_email_click_tracking: null,
   include_unsubscribed: null,
   sms_from: null,
   sms_media_urls: null,
