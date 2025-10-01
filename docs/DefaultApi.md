@@ -5,16 +5,22 @@ All URIs are relative to *https://api.onesignal.com*
 | Method | HTTP request | Description |
 | ------ | ------------ | ----------- |
 | [**cancel_notification**](DefaultApi.md#cancel_notification) | **DELETE** /notifications/{notification_id} | Stop a scheduled or currently outgoing notification |
+| [**copy_template_to_app**](DefaultApi.md#copy_template_to_app) | **POST** /templates/{template_id}/copy_to_app | Copy template to another app |
 | [**create_alias**](DefaultApi.md#create_alias) | **PATCH** /apps/{app_id}/users/by/{alias_label}/{alias_id}/identity |  |
 | [**create_alias_by_subscription**](DefaultApi.md#create_alias_by_subscription) | **PATCH** /apps/{app_id}/subscriptions/{subscription_id}/user/identity |  |
+| [**create_api_key**](DefaultApi.md#create_api_key) | **POST** /apps/{app_id}/auth/tokens | Create API key |
 | [**create_app**](DefaultApi.md#create_app) | **POST** /apps | Create an app |
+| [**create_custom_events**](DefaultApi.md#create_custom_events) | **POST** /apps/{app_id}/integrations/custom_events | Create custom events |
 | [**create_notification**](DefaultApi.md#create_notification) | **POST** /notifications | Create notification |
 | [**create_segment**](DefaultApi.md#create_segment) | **POST** /apps/{app_id}/segments | Create Segment |
 | [**create_subscription**](DefaultApi.md#create_subscription) | **POST** /apps/{app_id}/users/by/{alias_label}/{alias_id}/subscriptions |  |
+| [**create_template**](DefaultApi.md#create_template) | **POST** /templates | Create template |
 | [**create_user**](DefaultApi.md#create_user) | **POST** /apps/{app_id}/users |  |
 | [**delete_alias**](DefaultApi.md#delete_alias) | **DELETE** /apps/{app_id}/users/by/{alias_label}/{alias_id}/identity/{alias_label_to_delete} |  |
+| [**delete_api_key**](DefaultApi.md#delete_api_key) | **DELETE** /apps/{app_id}/auth/tokens/{token_id} | Delete API key |
 | [**delete_segment**](DefaultApi.md#delete_segment) | **DELETE** /apps/{app_id}/segments/{segment_id} | Delete Segment |
 | [**delete_subscription**](DefaultApi.md#delete_subscription) | **DELETE** /apps/{app_id}/subscriptions/{subscription_id} |  |
+| [**delete_template**](DefaultApi.md#delete_template) | **DELETE** /templates/{template_id} | Delete template |
 | [**delete_user**](DefaultApi.md#delete_user) | **DELETE** /apps/{app_id}/users/by/{alias_label}/{alias_id} |  |
 | [**export_events**](DefaultApi.md#export_events) | **POST** /notifications/{notification_id}/export_events?app_id&#x3D;{app_id} | Export CSV of Events |
 | [**export_subscriptions**](DefaultApi.md#export_subscriptions) | **POST** /players/csv_export?app_id&#x3D;{app_id} | Export CSV of Subscriptions |
@@ -28,12 +34,20 @@ All URIs are relative to *https://api.onesignal.com*
 | [**get_outcomes**](DefaultApi.md#get_outcomes) | **GET** /apps/{app_id}/outcomes | View Outcomes |
 | [**get_segments**](DefaultApi.md#get_segments) | **GET** /apps/{app_id}/segments | Get Segments |
 | [**get_user**](DefaultApi.md#get_user) | **GET** /apps/{app_id}/users/by/{alias_label}/{alias_id} |  |
+| [**rotate_api_key**](DefaultApi.md#rotate_api_key) | **POST** /apps/{app_id}/auth/tokens/{token_id}/rotate | Rotate API key |
+| [**start_live_activity**](DefaultApi.md#start_live_activity) | **POST** /apps/{app_id}/activities/activity/{activity_type} | Start Live Activity |
 | [**transfer_subscription**](DefaultApi.md#transfer_subscription) | **PATCH** /apps/{app_id}/subscriptions/{subscription_id}/owner |  |
 | [**unsubscribe_email_with_token**](DefaultApi.md#unsubscribe_email_with_token) | **POST** /apps/{app_id}/notifications/{notification_id}/unsubscribe | Unsubscribe with token |
+| [**update_api_key**](DefaultApi.md#update_api_key) | **PATCH** /apps/{app_id}/auth/tokens/{token_id} | Update API key |
 | [**update_app**](DefaultApi.md#update_app) | **PUT** /apps/{app_id} | Update an app |
 | [**update_live_activity**](DefaultApi.md#update_live_activity) | **POST** /apps/{app_id}/live_activities/{activity_id}/notifications | Update a Live Activity via Push |
 | [**update_subscription**](DefaultApi.md#update_subscription) | **PATCH** /apps/{app_id}/subscriptions/{subscription_id} |  |
+| [**update_subscription_by_token**](DefaultApi.md#update_subscription_by_token) | **PATCH** /apps/{app_id}/subscriptions_by_token/{token_type}/{token} | Update subscription by token |
+| [**update_template**](DefaultApi.md#update_template) | **PATCH** /templates/{template_id} | Update template |
 | [**update_user**](DefaultApi.md#update_user) | **PATCH** /apps/{app_id}/users/by/{alias_label}/{alias_id} |  |
+| [**view_api_keys**](DefaultApi.md#view_api_keys) | **GET** /apps/{app_id}/auth/tokens | View API keys |
+| [**view_template**](DefaultApi.md#view_template) | **GET** /templates/{template_id} | View template |
+| [**view_templates**](DefaultApi.md#view_templates) | **GET** /templates | View templates |
 
 
 ## cancel_notification
@@ -104,6 +118,79 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## copy_template_to_app
+
+> <TemplateResource> copy_template_to_app(template_id, app_id, copy_template_request)
+
+Copy template to another app
+
+Copy a template to a destination app.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: organization_api_key
+  config.organization_api_key = 'YOUR_BEARER_TOKEN'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+template_id = 'template_id_example' # String | 
+app_id = 'app_id_example' # String | 
+copy_template_request = OneSignal::CopyTemplateRequest.new({target_app_id: 'target_app_id_example'}) # CopyTemplateRequest | 
+
+begin
+  # Copy template to another app
+  result = api_instance.copy_template_to_app(template_id, app_id, copy_template_request)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->copy_template_to_app: #{e}"
+end
+```
+
+#### Using the copy_template_to_app_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TemplateResource>, Integer, Hash)> copy_template_to_app_with_http_info(template_id, app_id, copy_template_request)
+
+```ruby
+begin
+  # Copy template to another app
+  data, status_code, headers = api_instance.copy_template_to_app_with_http_info(template_id, app_id, copy_template_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TemplateResource>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->copy_template_to_app_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **template_id** | **String** |  |  |
+| **app_id** | **String** |  |  |
+| **copy_template_request** | [**CopyTemplateRequest**](CopyTemplateRequest.md) |  |  |
+
+### Return type
+
+[**TemplateResource**](TemplateResource.md)
+
+### Authorization
+
+[organization_api_key](../README.md#organization_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -255,6 +342,77 @@ end
 - **Accept**: application/json
 
 
+## create_api_key
+
+> <CreateApiKeyResponse> create_api_key(app_id, create_api_key_request)
+
+Create API key
+
+Use this API to create a new App API Key (also called a Rich Authentication Token) for a specific OneSignal app. These keys are used to authenticate API requests at the app level and offer enhanced security features, including optional IP allowlisting.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: organization_api_key
+  config.organization_api_key = 'YOUR_BEARER_TOKEN'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'app_id_example' # String | 
+create_api_key_request = OneSignal::CreateApiKeyRequest.new # CreateApiKeyRequest | 
+
+begin
+  # Create API key
+  result = api_instance.create_api_key(app_id, create_api_key_request)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->create_api_key: #{e}"
+end
+```
+
+#### Using the create_api_key_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateApiKeyResponse>, Integer, Hash)> create_api_key_with_http_info(app_id, create_api_key_request)
+
+```ruby
+begin
+  # Create API key
+  data, status_code, headers = api_instance.create_api_key_with_http_info(app_id, create_api_key_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateApiKeyResponse>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->create_api_key_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** |  |  |
+| **create_api_key_request** | [**CreateApiKeyRequest**](CreateApiKeyRequest.md) |  |  |
+
+### Return type
+
+[**CreateApiKeyResponse**](CreateApiKeyResponse.md)
+
+### Authorization
+
+[organization_api_key](../README.md#organization_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_app
 
 > <App> create_app(app)
@@ -317,6 +475,77 @@ end
 ### Authorization
 
 [organization_api_key](../README.md#organization_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_custom_events
+
+> Object create_custom_events(app_id, custom_events_request)
+
+Create custom events
+
+The Custom Events API allows you to record user events. Custom events can represent any action users take in your application, such as completing a purchase, viewing content, or achieving milestones.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'app_id_example' # String | Your OneSignal App ID in UUID v4 format.
+custom_events_request = OneSignal::CustomEventsRequest.new({events: [OneSignal::CustomEvent.new({name: 'name_example'})]}) # CustomEventsRequest | 
+
+begin
+  # Create custom events
+  result = api_instance.create_custom_events(app_id, custom_events_request)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->create_custom_events: #{e}"
+end
+```
+
+#### Using the create_custom_events_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> create_custom_events_with_http_info(app_id, custom_events_request)
+
+```ruby
+begin
+  # Create custom events
+  data, status_code, headers = api_instance.create_custom_events_with_http_info(app_id, custom_events_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->create_custom_events_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | Your OneSignal App ID in UUID v4 format. |  |
+| **custom_events_request** | [**CustomEventsRequest**](CustomEventsRequest.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[rest_api_key](../README.md#rest_api_key)
 
 ### HTTP request headers
 
@@ -541,6 +770,75 @@ end
 - **Accept**: application/json
 
 
+## create_template
+
+> <TemplateResource> create_template(create_template_request)
+
+Create template
+
+Create reusable message templates for push, email, and SMS channels.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+create_template_request = OneSignal::CreateTemplateRequest.new({app_id: 'app_id_example', name: 'name_example', contents: OneSignal::LanguageStringMap.new}) # CreateTemplateRequest | 
+
+begin
+  # Create template
+  result = api_instance.create_template(create_template_request)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->create_template: #{e}"
+end
+```
+
+#### Using the create_template_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TemplateResource>, Integer, Hash)> create_template_with_http_info(create_template_request)
+
+```ruby
+begin
+  # Create template
+  data, status_code, headers = api_instance.create_template_with_http_info(create_template_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TemplateResource>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->create_template_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **create_template_request** | [**CreateTemplateRequest**](CreateTemplateRequest.md) |  |  |
+
+### Return type
+
+[**TemplateResource**](TemplateResource.md)
+
+### Authorization
+
+[rest_api_key](../README.md#rest_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## create_user
 
 > <User> create_user(app_id, user)
@@ -687,6 +985,77 @@ end
 - **Accept**: application/json
 
 
+## delete_api_key
+
+> Object delete_api_key(app_id, token_id)
+
+Delete API key
+
+Delete a specific Rich Authentication Token (App API Key) for a OneSignal app. Requires your Organization API Key and the token’s unique ID, not the token value itself.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: organization_api_key
+  config.organization_api_key = 'YOUR_BEARER_TOKEN'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'app_id_example' # String | 
+token_id = 'token_id_example' # String | 
+
+begin
+  # Delete API key
+  result = api_instance.delete_api_key(app_id, token_id)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->delete_api_key: #{e}"
+end
+```
+
+#### Using the delete_api_key_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> delete_api_key_with_http_info(app_id, token_id)
+
+```ruby
+begin
+  # Delete API key
+  data, status_code, headers = api_instance.delete_api_key_with_http_info(app_id, token_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->delete_api_key_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** |  |  |
+| **token_id** | **String** |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[organization_api_key](../README.md#organization_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## delete_segment
 
 > <GenericSuccessBoolResponse> delete_segment(app_id, segment_id)
@@ -817,6 +1186,77 @@ end
 ### Return type
 
 nil (empty response body)
+
+### Authorization
+
+[rest_api_key](../README.md#rest_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_template
+
+> <GenericSuccessBoolResponse> delete_template(template_id, app_id)
+
+Delete template
+
+Delete a template by id.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+template_id = 'template_id_example' # String | 
+app_id = 'app_id_example' # String | 
+
+begin
+  # Delete template
+  result = api_instance.delete_template(template_id, app_id)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->delete_template: #{e}"
+end
+```
+
+#### Using the delete_template_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GenericSuccessBoolResponse>, Integer, Hash)> delete_template_with_http_info(template_id, app_id)
+
+```ruby
+begin
+  # Delete template
+  data, status_code, headers = api_instance.delete_template_with_http_info(template_id, app_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GenericSuccessBoolResponse>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->delete_template_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **template_id** | **String** |  |  |
+| **app_id** | **String** |  |  |
+
+### Return type
+
+[**GenericSuccessBoolResponse**](GenericSuccessBoolResponse.md)
 
 ### Authorization
 
@@ -1771,6 +2211,150 @@ end
 - **Accept**: application/json
 
 
+## rotate_api_key
+
+> <CreateApiKeyResponse> rotate_api_key(app_id, token_id)
+
+Rotate API key
+
+Rotate a Rich Authentication Token (App API Key) for a OneSignal app. Rotating a key revokes the current token and generates a new one under the same configuration—ideal when a token is lost or compromised but you don’t want to recreate and reconfigure it from scratch.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: organization_api_key
+  config.organization_api_key = 'YOUR_BEARER_TOKEN'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'app_id_example' # String | 
+token_id = 'token_id_example' # String | 
+
+begin
+  # Rotate API key
+  result = api_instance.rotate_api_key(app_id, token_id)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->rotate_api_key: #{e}"
+end
+```
+
+#### Using the rotate_api_key_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<CreateApiKeyResponse>, Integer, Hash)> rotate_api_key_with_http_info(app_id, token_id)
+
+```ruby
+begin
+  # Rotate API key
+  data, status_code, headers = api_instance.rotate_api_key_with_http_info(app_id, token_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <CreateApiKeyResponse>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->rotate_api_key_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** |  |  |
+| **token_id** | **String** |  |  |
+
+### Return type
+
+[**CreateApiKeyResponse**](CreateApiKeyResponse.md)
+
+### Authorization
+
+[organization_api_key](../README.md#organization_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## start_live_activity
+
+> <StartLiveActivitySuccessResponse> start_live_activity(app_id, activity_type, start_live_activity_request)
+
+Start Live Activity
+
+Remotely start a Live Activity on iOS devices via OneSignal’s REST API.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'app_id_example' # String | Your OneSignal App ID in UUID v4 format.
+activity_type = 'activity_type_example' # String | The name of the Live Activity defined in your app. This should match the attributes struct used in your app's Live Activity implementation.
+start_live_activity_request = OneSignal::StartLiveActivityRequest.new({name: 'name_example', event: 'start', activity_id: 'activity_id_example', event_attributes: 3.56, event_updates: 3.56, contents: OneSignal::LanguageStringMap.new, headings: OneSignal::LanguageStringMap.new}) # StartLiveActivityRequest | 
+
+begin
+  # Start Live Activity
+  result = api_instance.start_live_activity(app_id, activity_type, start_live_activity_request)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->start_live_activity: #{e}"
+end
+```
+
+#### Using the start_live_activity_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<StartLiveActivitySuccessResponse>, Integer, Hash)> start_live_activity_with_http_info(app_id, activity_type, start_live_activity_request)
+
+```ruby
+begin
+  # Start Live Activity
+  data, status_code, headers = api_instance.start_live_activity_with_http_info(app_id, activity_type, start_live_activity_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <StartLiveActivitySuccessResponse>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->start_live_activity_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | Your OneSignal App ID in UUID v4 format. |  |
+| **activity_type** | **String** | The name of the Live Activity defined in your app. This should match the attributes struct used in your app&#39;s Live Activity implementation. |  |
+| **start_live_activity_request** | [**StartLiveActivityRequest**](StartLiveActivityRequest.md) |  |  |
+
+### Return type
+
+[**StartLiveActivitySuccessResponse**](StartLiveActivitySuccessResponse.md)
+
+### Authorization
+
+[rest_api_key](../README.md#rest_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## transfer_subscription
 
 > <UserIdentityBody> transfer_subscription(app_id, subscription_id, transfer_subscription_request_body)
@@ -1914,6 +2498,79 @@ end
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## update_api_key
+
+> Object update_api_key(app_id, token_id, update_api_key_request)
+
+Update API key
+
+Update a Rich Authentication Token (App API Key) for a OneSignal app.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: organization_api_key
+  config.organization_api_key = 'YOUR_BEARER_TOKEN'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'app_id_example' # String | 
+token_id = 'token_id_example' # String | 
+update_api_key_request = OneSignal::UpdateApiKeyRequest.new # UpdateApiKeyRequest | 
+
+begin
+  # Update API key
+  result = api_instance.update_api_key(app_id, token_id, update_api_key_request)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->update_api_key: #{e}"
+end
+```
+
+#### Using the update_api_key_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> update_api_key_with_http_info(app_id, token_id, update_api_key_request)
+
+```ruby
+begin
+  # Update API key
+  data, status_code, headers = api_instance.update_api_key_with_http_info(app_id, token_id, update_api_key_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->update_api_key_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** |  |  |
+| **token_id** | **String** |  |  |
+| **update_api_key_request** | [**UpdateApiKeyRequest**](UpdateApiKeyRequest.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[organization_api_key](../README.md#organization_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
@@ -2133,6 +2790,154 @@ nil (empty response body)
 - **Accept**: application/json
 
 
+## update_subscription_by_token
+
+> Object update_subscription_by_token(app_id, token_type, token, subscription_body)
+
+Update subscription by token
+
+Update properties on an existing OneSignal subscription using its token.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'app_id_example' # String | Your OneSignal App ID in UUID v4 format.
+token_type = 'token_type_example' # String | The type of token to use when looking up the subscription. See Subscription Types.
+token = 'token_example' # String | The value of the token to lookup by (e.g., email address, phone number).
+subscription_body = OneSignal::SubscriptionBody.new # SubscriptionBody | 
+
+begin
+  # Update subscription by token
+  result = api_instance.update_subscription_by_token(app_id, token_type, token, subscription_body)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->update_subscription_by_token: #{e}"
+end
+```
+
+#### Using the update_subscription_by_token_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(Object, Integer, Hash)> update_subscription_by_token_with_http_info(app_id, token_type, token, subscription_body)
+
+```ruby
+begin
+  # Update subscription by token
+  data, status_code, headers = api_instance.update_subscription_by_token_with_http_info(app_id, token_type, token, subscription_body)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => Object
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->update_subscription_by_token_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | Your OneSignal App ID in UUID v4 format. |  |
+| **token_type** | **String** | The type of token to use when looking up the subscription. See Subscription Types. |  |
+| **token** | **String** | The value of the token to lookup by (e.g., email address, phone number). |  |
+| **subscription_body** | [**SubscriptionBody**](SubscriptionBody.md) |  |  |
+
+### Return type
+
+**Object**
+
+### Authorization
+
+[rest_api_key](../README.md#rest_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_template
+
+> <TemplateResource> update_template(template_id, app_id, update_template_request)
+
+Update template
+
+Update an existing template.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+template_id = 'template_id_example' # String | 
+app_id = 'app_id_example' # String | 
+update_template_request = OneSignal::UpdateTemplateRequest.new # UpdateTemplateRequest | 
+
+begin
+  # Update template
+  result = api_instance.update_template(template_id, app_id, update_template_request)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->update_template: #{e}"
+end
+```
+
+#### Using the update_template_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TemplateResource>, Integer, Hash)> update_template_with_http_info(template_id, app_id, update_template_request)
+
+```ruby
+begin
+  # Update template
+  data, status_code, headers = api_instance.update_template_with_http_info(template_id, app_id, update_template_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TemplateResource>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->update_template_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **template_id** | **String** |  |  |
+| **app_id** | **String** |  |  |
+| **update_template_request** | [**UpdateTemplateRequest**](UpdateTemplateRequest.md) |  |  |
+
+### Return type
+
+[**TemplateResource**](TemplateResource.md)
+
+### Authorization
+
+[rest_api_key](../README.md#rest_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## update_user
 
 > <PropertiesBody> update_user(app_id, alias_label, alias_id, update_user_request)
@@ -2205,5 +3010,222 @@ end
 ### HTTP request headers
 
 - **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## view_api_keys
+
+> <ApiKeyTokensListResponse> view_api_keys(app_id)
+
+View API keys
+
+View the details of all of your current app API keys (Rich Authentication Token) for a single OneSignal app.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: organization_api_key
+  config.organization_api_key = 'YOUR_BEARER_TOKEN'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'app_id_example' # String | 
+
+begin
+  # View API keys
+  result = api_instance.view_api_keys(app_id)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->view_api_keys: #{e}"
+end
+```
+
+#### Using the view_api_keys_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ApiKeyTokensListResponse>, Integer, Hash)> view_api_keys_with_http_info(app_id)
+
+```ruby
+begin
+  # View API keys
+  data, status_code, headers = api_instance.view_api_keys_with_http_info(app_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ApiKeyTokensListResponse>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->view_api_keys_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** |  |  |
+
+### Return type
+
+[**ApiKeyTokensListResponse**](ApiKeyTokensListResponse.md)
+
+### Authorization
+
+[organization_api_key](../README.md#organization_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## view_template
+
+> <TemplateResource> view_template(template_id, app_id)
+
+View template
+
+Fetch a single template by id.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+template_id = 'template_id_example' # String | 
+app_id = 'app_id_example' # String | 
+
+begin
+  # View template
+  result = api_instance.view_template(template_id, app_id)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->view_template: #{e}"
+end
+```
+
+#### Using the view_template_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TemplateResource>, Integer, Hash)> view_template_with_http_info(template_id, app_id)
+
+```ruby
+begin
+  # View template
+  data, status_code, headers = api_instance.view_template_with_http_info(template_id, app_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TemplateResource>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->view_template_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **template_id** | **String** |  |  |
+| **app_id** | **String** |  |  |
+
+### Return type
+
+[**TemplateResource**](TemplateResource.md)
+
+### Authorization
+
+[rest_api_key](../README.md#rest_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## view_templates
+
+> <TemplatesListResponse> view_templates(app_id, opts)
+
+View templates
+
+List templates for an app.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'app_id_example' # String | Your OneSignal App ID in UUID v4 format.
+opts = {
+  limit: 56, # Integer | Maximum number of templates. Default and max is 50.
+  offset: 56, # Integer | Pagination offset.
+  channel: 'push' # String | Filter by delivery channel.
+}
+
+begin
+  # View templates
+  result = api_instance.view_templates(app_id, opts)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->view_templates: #{e}"
+end
+```
+
+#### Using the view_templates_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<TemplatesListResponse>, Integer, Hash)> view_templates_with_http_info(app_id, opts)
+
+```ruby
+begin
+  # View templates
+  data, status_code, headers = api_instance.view_templates_with_http_info(app_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <TemplatesListResponse>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->view_templates_with_http_info: #{e}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | Your OneSignal App ID in UUID v4 format. |  |
+| **limit** | **Integer** | Maximum number of templates. Default and max is 50. | [optional][default to 50] |
+| **offset** | **Integer** | Pagination offset. | [optional][default to 0] |
+| **channel** | **String** | Filter by delivery channel. | [optional] |
+
+### Return type
+
+[**TemplatesListResponse**](TemplatesListResponse.md)
+
+### Authorization
+
+[rest_api_key](../README.md#rest_api_key)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: application/json
 
