@@ -15,6 +15,7 @@
 | **platform_delivery_stats** | [**PlatformDeliveryData**](PlatformDeliveryData.md) |  | [optional] |
 | **received** | **Integer** | Confirmed Deliveries number of devices that received the push notification. Paid Feature Only. Free accounts will see 0. | [optional] |
 | **throttle_rate_per_minute** | **Integer** | number of push notifications sent per minute. Paid Feature Only. If throttling is not enabled for the app or the notification, and for free accounts, null is returned. Refer to Throttling for more details. | [optional] |
+| **canceled** | **Boolean** | Indicates whether the notification was canceled before it could be sent. | [optional] |
 
 ## Example
 
@@ -32,7 +33,8 @@ instance = OneSignal::NotificationWithMetaAllOf.new(
   completed_at: null,
   platform_delivery_stats: null,
   received: null,
-  throttle_rate_per_minute: null
+  throttle_rate_per_minute: null,
+  canceled: null
 )
 ```
 
