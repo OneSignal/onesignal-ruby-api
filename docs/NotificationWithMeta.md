@@ -123,6 +123,7 @@
 | **send_after** | **Integer** | Unix timestamp indicating when notification delivery should begin. | [optional] |
 | **completed_at** | **Integer** | Unix timestamp indicating when notification delivery completed. The delivery duration from start to finish can be calculated with completed_at - send_after. | [optional] |
 | **platform_delivery_stats** | [**PlatformDeliveryData**](PlatformDeliveryData.md) |  | [optional] |
+| **canceled** | **Boolean** | Indicates whether the notification was canceled before it could be sent. | [optional] |
 
 ## Example
 
@@ -248,7 +249,8 @@ instance = OneSignal::NotificationWithMeta.new(
   queued_at: null,
   send_after: null,
   completed_at: null,
-  platform_delivery_stats: null
+  platform_delivery_stats: null,
+  canceled: null
 )
 ```
 
