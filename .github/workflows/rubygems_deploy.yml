@@ -1,0 +1,54 @@
+name: RubyGems Release
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  publish:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create GitHub Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npx -p semantic-release \
+              -p @semantic-release/changelog \
+              -p @semantic-release/git \
+              -p @semantic-release/github \
+              -p conventional-changelog-conventionalcommits \
+              semantic-release
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # IMPORTANT: this permission is mandatory for trusted publishing
+      contents: write # IMPORTANT: this permission is required for `rake release` to push the release tag
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'  # Adjust to your preferred Ruby version
+          bundler-cache: true
+
+      - name: Build gem
+        run: |
+          gem build onesignal.gemspec
+          ls -la *.gem
+
+      - name: Publish to RubyGems
+        uses: rubygems/release-gem@v1
+        env:
+          GEM_HOST_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
