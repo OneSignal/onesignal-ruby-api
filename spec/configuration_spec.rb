@@ -39,4 +39,16 @@ describe OneSignal::Configuration do
       end
     end
   end
+
+  describe 'API keys' do
+    it 'should allow setting and retrieving organization_api_key' do
+      config.organization_api_key = 'test_org_key'
+      expect(config.organization_api_key).to eq('test_org_key')
+    end
+
+    it 'should allow setting and retrieving rest_api_key' do
+      config.rest_api_key = 'test_rest_key'
+      expect(config.rest_api_key).to eq('test_rest_key')
+    end
+  end
 end

@@ -39,6 +39,12 @@ module OneSignal
     # OneSignal API token for User Authentication
     attr_accessor :user_key
 
+    # OneSignal Organization API Key
+    attr_accessor :organization_api_key
+
+    # OneSignal REST API Key
+    attr_accessor :rest_api_key
+
     # Set this to enable/disable debugging. When enabled (set to true), HTTP request/response
     # details will be logged with `logger.debug` (see the `logger` attribute).
     # Default to false.
