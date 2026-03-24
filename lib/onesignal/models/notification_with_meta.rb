@@ -310,6 +310,9 @@ module OneSignal
     # Channel: Email The email address the email is from. If not specified, will default to \"from email\" set in the OneSignal Dashboard Email Settings. 
     attr_accessor :email_from_address
 
+    # Channel: Email The email address where replies should be sent. If not specified, replies will go to the from address. 
+    attr_accessor :email_reply_to_address
+
     # Channel: Email The preheader text of the email. Preheader is the preview text displayed immediately after an email subject that provides additional context about the email content. If not specified, will default to null. 
     attr_accessor :email_preheader
 
@@ -329,6 +332,21 @@ module OneSignal
 
     # Channel: All JSON object that can be used as a source of message personalization data for fields that support tag variable substitution. Push, SMS: Can accept up to 2048 bytes of valid JSON. Email: Can accept up to 10000 bytes of valid JSON. Example: {\"order_id\": 123, \"currency\": \"USD\", \"amount\": 25} 
     attr_accessor :custom_data
+
+    # Channel: Push Notifications Platform: Huawei Full path of the app entry activity class
+    attr_accessor :huawei_badge_class
+
+    # Channel: Push Notifications Platform: Huawei Accumulative badge number, which is an integer ranging from 1 to 99
+    attr_accessor :huawei_badge_add_num
+
+    # Channel: Push Notifications Platform: Huawei Badge number, which is an integer ranging from 0 to 99
+    attr_accessor :huawei_badge_set_num
+
+    # Channel: Push Notifications Platform: Huawei Category of the push notification for HMS classification.
+    attr_accessor :huawei_category
+
+    # Channel: Push Notifications Platform: Huawei A tag used for Huawei business intelligence and analytics.
+    attr_accessor :huawei_bi_tag
 
     # Number of notifications that were successfully delivered.
     attr_accessor :successful
@@ -490,6 +508,7 @@ module OneSignal
         :'email_body' => :'email_body',
         :'email_from_name' => :'email_from_name',
         :'email_from_address' => :'email_from_address',
+        :'email_reply_to_address' => :'email_reply_to_address',
         :'email_preheader' => :'email_preheader',
         :'disable_email_click_tracking' => :'disable_email_click_tracking',
         :'include_unsubscribed' => :'include_unsubscribed',
@@ -497,6 +516,11 @@ module OneSignal
         :'sms_media_urls' => :'sms_media_urls',
         :'filters' => :'filters',
         :'custom_data' => :'custom_data',
+        :'huawei_badge_class' => :'huawei_badge_class',
+        :'huawei_badge_add_num' => :'huawei_badge_add_num',
+        :'huawei_badge_set_num' => :'huawei_badge_set_num',
+        :'huawei_category' => :'huawei_category',
+        :'huawei_bi_tag' => :'huawei_bi_tag',
         :'successful' => :'successful',
         :'failed' => :'failed',
         :'errored' => :'errored',
@@ -621,6 +645,7 @@ module OneSignal
         :'email_body' => :'String',
         :'email_from_name' => :'String',
         :'email_from_address' => :'String',
+        :'email_reply_to_address' => :'String',
         :'email_preheader' => :'String',
         :'disable_email_click_tracking' => :'Boolean',
         :'include_unsubscribed' => :'Boolean',
@@ -628,6 +653,11 @@ module OneSignal
         :'sms_media_urls' => :'Array<String>',
         :'filters' => :'Array<FilterExpression>',
         :'custom_data' => :'Object',
+        :'huawei_badge_class' => :'String',
+        :'huawei_badge_add_num' => :'Integer',
+        :'huawei_badge_set_num' => :'Integer',
+        :'huawei_category' => :'String',
+        :'huawei_bi_tag' => :'String',
         :'successful' => :'Integer',
         :'failed' => :'Integer',
         :'errored' => :'Integer',
@@ -723,12 +753,18 @@ module OneSignal
         :'email_subject',
         :'email_from_name',
         :'email_from_address',
+        :'email_reply_to_address',
         :'email_preheader',
         :'disable_email_click_tracking',
         :'sms_from',
         :'sms_media_urls',
         :'filters',
         :'custom_data',
+        :'huawei_badge_class',
+        :'huawei_badge_add_num',
+        :'huawei_badge_set_num',
+        :'huawei_category',
+        :'huawei_bi_tag',
         :'received',
         :'send_after',
         :'completed_at',
@@ -1192,6 +1228,10 @@ module OneSignal
         self.email_from_address = attributes[:'email_from_address']
       end
 
+      if attributes.key?(:'email_reply_to_address')
+        self.email_reply_to_address = attributes[:'email_reply_to_address']
+      end
+
       if attributes.key?(:'email_preheader')
         self.email_preheader = attributes[:'email_preheader']
       end
@@ -1222,6 +1262,26 @@ module OneSignal
 
       if attributes.key?(:'custom_data')
         self.custom_data = attributes[:'custom_data']
+      end
+
+      if attributes.key?(:'huawei_badge_class')
+        self.huawei_badge_class = attributes[:'huawei_badge_class']
+      end
+
+      if attributes.key?(:'huawei_badge_add_num')
+        self.huawei_badge_add_num = attributes[:'huawei_badge_add_num']
+      end
+
+      if attributes.key?(:'huawei_badge_set_num')
+        self.huawei_badge_set_num = attributes[:'huawei_badge_set_num']
+      end
+
+      if attributes.key?(:'huawei_category')
+        self.huawei_category = attributes[:'huawei_category']
+      end
+
+      if attributes.key?(:'huawei_bi_tag')
+        self.huawei_bi_tag = attributes[:'huawei_bi_tag']
       end
 
       if attributes.key?(:'successful')
@@ -1294,6 +1354,8 @@ module OneSignal
       aggregation_validator = EnumAttributeValidator.new('String', ["sum", "count"])
       return false unless aggregation_validator.valid?(@aggregation)
       return false if @app_id.nil?
+      huawei_category_validator = EnumAttributeValidator.new('String', ["IM", "VOIP", "SUBSCRIPTION", "TRAVEL", "HEALTH", "WORK", "ACCOUNT", "EXPRESS", "FINANCE", "DEVICE_REMINDER", "MAIL", "MARKETING"])
+      return false unless huawei_category_validator.valid?(@huawei_category)
       true
     end
 
@@ -1315,6 +1377,16 @@ module OneSignal
         fail ArgumentError, "invalid value for \"aggregation\", must be one of #{validator.allowable_values}."
       end
       @aggregation = aggregation
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] huawei_category Object to be assigned
+    def huawei_category=(huawei_category)
+      validator = EnumAttributeValidator.new('String', ["IM", "VOIP", "SUBSCRIPTION", "TRAVEL", "HEALTH", "WORK", "ACCOUNT", "EXPRESS", "FINANCE", "DEVICE_REMINDER", "MAIL", "MARKETING"])
+      unless validator.valid?(huawei_category)
+        fail ArgumentError, "invalid value for \"huawei_category\", must be one of #{validator.allowable_values}."
+      end
+      @huawei_category = huawei_category
     end
 
     # Checks equality by comparing each attribute.
@@ -1423,6 +1495,7 @@ module OneSignal
           email_body == o.email_body &&
           email_from_name == o.email_from_name &&
           email_from_address == o.email_from_address &&
+          email_reply_to_address == o.email_reply_to_address &&
           email_preheader == o.email_preheader &&
           disable_email_click_tracking == o.disable_email_click_tracking &&
           include_unsubscribed == o.include_unsubscribed &&
@@ -1430,6 +1503,11 @@ module OneSignal
           sms_media_urls == o.sms_media_urls &&
           filters == o.filters &&
           custom_data == o.custom_data &&
+          huawei_badge_class == o.huawei_badge_class &&
+          huawei_badge_add_num == o.huawei_badge_add_num &&
+          huawei_badge_set_num == o.huawei_badge_set_num &&
+          huawei_category == o.huawei_category &&
+          huawei_bi_tag == o.huawei_bi_tag &&
           successful == o.successful &&
           failed == o.failed &&
           errored == o.errored &&
@@ -1453,7 +1531,7 @@ module OneSignal
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [included_segments, excluded_segments, include_subscription_ids, include_email_tokens, include_phone_numbers, include_ios_tokens, include_wp_wns_uris, include_amazon_reg_ids, include_chrome_reg_ids, include_chrome_web_reg_ids, include_android_reg_ids, include_aliases, target_channel, id, value, name, aggregation, is_ios, is_android, is_huawei, is_any_web, is_chrome_web, is_firefox, is_safari, is_wp_wns, is_adm, is_chrome, app_id, external_id, idempotency_key, contents, headings, subtitle, data, huawei_msg_type, url, web_url, app_url, ios_attachments, template_id, content_available, mutable_content, target_content_identifier, big_picture, huawei_big_picture, adm_big_picture, chrome_big_picture, chrome_web_image, buttons, web_buttons, ios_category, android_channel_id, huawei_channel_id, existing_android_channel_id, huawei_existing_channel_id, android_background_layout, small_icon, huawei_small_icon, large_icon, huawei_large_icon, adm_small_icon, adm_large_icon, chrome_web_icon, chrome_web_badge, firefox_icon, chrome_icon, ios_sound, android_sound, huawei_sound, adm_sound, wp_wns_sound, android_led_color, huawei_led_color, android_accent_color, huawei_accent_color, android_visibility, huawei_visibility, ios_badge_type, ios_badge_count, collapse_id, web_push_topic, apns_alert, delayed_option, delivery_time_of_day, ttl, priority, apns_push_type_override, throttle_rate_per_minute, android_group, android_group_message, adm_group, adm_group_message, thread_id, summary_arg, summary_arg_count, ios_relevance_score, ios_interruption_level, email_subject, email_body, email_from_name, email_from_address, email_preheader, disable_email_click_tracking, include_unsubscribed, sms_from, sms_media_urls, filters, custom_data, successful, failed, errored, converted, received, outcomes, remaining, queued_at, send_after, completed_at, platform_delivery_stats, canceled].hash
+      [included_segments, excluded_segments, include_subscription_ids, include_email_tokens, include_phone_numbers, include_ios_tokens, include_wp_wns_uris, include_amazon_reg_ids, include_chrome_reg_ids, include_chrome_web_reg_ids, include_android_reg_ids, include_aliases, target_channel, id, value, name, aggregation, is_ios, is_android, is_huawei, is_any_web, is_chrome_web, is_firefox, is_safari, is_wp_wns, is_adm, is_chrome, app_id, external_id, idempotency_key, contents, headings, subtitle, data, huawei_msg_type, url, web_url, app_url, ios_attachments, template_id, content_available, mutable_content, target_content_identifier, big_picture, huawei_big_picture, adm_big_picture, chrome_big_picture, chrome_web_image, buttons, web_buttons, ios_category, android_channel_id, huawei_channel_id, existing_android_channel_id, huawei_existing_channel_id, android_background_layout, small_icon, huawei_small_icon, large_icon, huawei_large_icon, adm_small_icon, adm_large_icon, chrome_web_icon, chrome_web_badge, firefox_icon, chrome_icon, ios_sound, android_sound, huawei_sound, adm_sound, wp_wns_sound, android_led_color, huawei_led_color, android_accent_color, huawei_accent_color, android_visibility, huawei_visibility, ios_badge_type, ios_badge_count, collapse_id, web_push_topic, apns_alert, delayed_option, delivery_time_of_day, ttl, priority, apns_push_type_override, throttle_rate_per_minute, android_group, android_group_message, adm_group, adm_group_message, thread_id, summary_arg, summary_arg_count, ios_relevance_score, ios_interruption_level, email_subject, email_body, email_from_name, email_from_address, email_reply_to_address, email_preheader, disable_email_click_tracking, include_unsubscribed, sms_from, sms_media_urls, filters, custom_data, huawei_badge_class, huawei_badge_add_num, huawei_badge_set_num, huawei_category, huawei_bi_tag, successful, failed, errored, converted, received, outcomes, remaining, queued_at, send_after, completed_at, platform_delivery_stats, canceled].hash
     end
 
     # Builds the object from hash
