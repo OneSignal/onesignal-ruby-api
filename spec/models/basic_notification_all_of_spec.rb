@@ -557,6 +557,12 @@ describe OneSignal::BasicNotificationAllOf do
     end
   end
 
+  describe 'test attribute "email_reply_to_address"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "email_preheader"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
@@ -594,6 +600,40 @@ describe OneSignal::BasicNotificationAllOf do
   end
 
   describe 'test attribute "custom_data"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "huawei_badge_class"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "huawei_badge_add_num"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "huawei_badge_set_num"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  describe 'test attribute "huawei_category"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["IM", "VOIP", "SUBSCRIPTION", "TRAVEL", "HEALTH", "WORK", "ACCOUNT", "EXPRESS", "FINANCE", "DEVICE_REMINDER", "MAIL", "MARKETING"])
+      # validator.allowable_values.each do |value|
+      #   expect { instance.huawei_category = value }.not_to raise_error
+      # end
+    end
+  end
+
+  describe 'test attribute "huawei_bi_tag"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
