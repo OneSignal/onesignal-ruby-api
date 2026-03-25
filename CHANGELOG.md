@@ -1,11 +1,3 @@
-# Changelog
-
-## [5.3.0](https://github.com/OneSignal/onesignal-ruby-api/compare/v5.2.0...v5.3.0) (2026-03-24)
-
-### Features
-
-* add Huawei and email_reply_to_address parameters to Notification ([#61](https://github.com/OneSignal/onesignal-ruby-api/issues/61)) ([9777640](https://github.com/OneSignal/onesignal-ruby-api/commit/97776405f6125f480f1ff7db04f8e497fae8c4ad))
-
 # Change Log
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
