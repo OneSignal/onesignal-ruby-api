@@ -113,7 +113,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -186,7 +186,7 @@ end
 
 ### Authorization
 
-[organization_api_key](../README.md#organization_api_key)
+[organization_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -261,7 +261,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -334,7 +334,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -405,7 +405,7 @@ end
 
 ### Authorization
 
-[organization_api_key](../README.md#organization_api_key)
+[organization_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -474,7 +474,7 @@ end
 
 ### Authorization
 
-[organization_api_key](../README.md#organization_api_key)
+[organization_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -545,7 +545,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -614,7 +614,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -687,7 +687,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -762,7 +762,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -831,7 +831,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -902,7 +902,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -977,7 +977,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -1048,7 +1048,7 @@ end
 
 ### Authorization
 
-[organization_api_key](../README.md#organization_api_key)
+[organization_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -1119,7 +1119,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -1189,7 +1189,7 @@ nil (empty response body)
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -1260,7 +1260,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -1332,7 +1332,7 @@ nil (empty response body)
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -1403,7 +1403,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -1476,7 +1476,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -1549,7 +1549,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -1620,7 +1620,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -1689,7 +1689,7 @@ end
 
 ### Authorization
 
-[organization_api_key](../README.md#organization_api_key)
+[organization_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -1755,7 +1755,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[organization_api_key](../README.md#organization_api_key)
+[organization_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -1826,7 +1826,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -1897,7 +1897,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -1974,7 +1974,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -2055,7 +2055,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -2130,7 +2130,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -2203,7 +2203,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -2274,7 +2274,7 @@ end
 
 ### Authorization
 
-[organization_api_key](../README.md#organization_api_key)
+[organization_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -2347,7 +2347,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -2420,7 +2420,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -2493,7 +2493,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -2566,7 +2566,7 @@ end
 
 ### Authorization
 
-[organization_api_key](../README.md#organization_api_key)
+[organization_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -2637,7 +2637,7 @@ end
 
 ### Authorization
 
-[organization_api_key](../README.md#organization_api_key)
+[organization_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -2710,7 +2710,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -2782,7 +2782,7 @@ nil (empty response body)
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -2857,7 +2857,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -2930,7 +2930,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -3005,7 +3005,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -3074,7 +3074,7 @@ end
 
 ### Authorization
 
-[organization_api_key](../README.md#organization_api_key)
+[organization_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -3145,7 +3145,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -3222,7 +3222,7 @@ end
 
 ### Authorization
 
-[rest_api_key](../README.md#rest_api_key)
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
