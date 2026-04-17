@@ -6,6 +6,8 @@
 | ---- | ---- | ----------- | ----- |
 | **name** | **String** | Updated name of the template. | [optional] |
 | **contents** | [**LanguageStringMap**](LanguageStringMap.md) |  | [optional] |
+| **headings** | [**LanguageStringMap**](LanguageStringMap.md) |  | [optional] |
+| **subtitle** | [**LanguageStringMap**](LanguageStringMap.md) |  | [optional] |
 | **is_email** | **Boolean** | Set true for an Email template. | [optional] |
 | **email_subject** | **String** | Subject of the email. | [optional] |
 | **email_body** | **String** | Body of the email (HTML supported). | [optional] |
@@ -20,6 +22,8 @@ require 'onesignal'
 instance = OneSignal::UpdateTemplateRequest.new(
   name: null,
   contents: null,
+  headings: null,
+  subtitle: null,
   is_email: null,
   email_subject: null,
   email_body: null,
