@@ -33,11 +33,10 @@ module OneSignal
     # Default server operation variables
     attr_accessor :server_operation_variables
 
-    # OneSignal API token for App Authentication
-    attr_accessor :app_key
+    attr_accessor :organization_api_key
 
-    # OneSignal API token for User Authentication
-    attr_accessor :user_key
+    attr_accessor :rest_api_key
+
 
     # Set this to enable/disable debugging. When enabled (set to true), HTTP request/response
     # details will be logged with `logger.debug` (see the `logger` attribute).

@@ -20,6 +20,10 @@ module OneSignal
 
     attr_accessor :contents
 
+    attr_accessor :headings
+
+    attr_accessor :subtitle
+
     # Set true for an Email template.
     attr_accessor :is_email
 
@@ -40,6 +44,8 @@ module OneSignal
       {
         :'name' => :'name',
         :'contents' => :'contents',
+        :'headings' => :'headings',
+        :'subtitle' => :'subtitle',
         :'is_email' => :'isEmail',
         :'email_subject' => :'email_subject',
         :'email_body' => :'email_body',
@@ -58,6 +64,8 @@ module OneSignal
       {
         :'name' => :'String',
         :'contents' => :'LanguageStringMap',
+        :'headings' => :'LanguageStringMap',
+        :'subtitle' => :'LanguageStringMap',
         :'is_email' => :'Boolean',
         :'email_subject' => :'String',
         :'email_body' => :'String',
@@ -96,6 +104,14 @@ module OneSignal
 
       if attributes.key?(:'contents')
         self.contents = attributes[:'contents']
+      end
+
+      if attributes.key?(:'headings')
+        self.headings = attributes[:'headings']
+      end
+
+      if attributes.key?(:'subtitle')
+        self.subtitle = attributes[:'subtitle']
       end
 
       if attributes.key?(:'is_email')
@@ -139,6 +155,8 @@ module OneSignal
       self.class == o.class &&
           name == o.name &&
           contents == o.contents &&
+          headings == o.headings &&
+          subtitle == o.subtitle &&
           is_email == o.is_email &&
           email_subject == o.email_subject &&
           email_body == o.email_body &&
@@ -155,7 +173,7 @@ module OneSignal
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, contents, is_email, email_subject, email_body, is_sms, dynamic_content].hash
+      [name, contents, headings, subtitle, is_email, email_subject, email_body, is_sms, dynamic_content].hash
     end
 
     # Builds the object from hash

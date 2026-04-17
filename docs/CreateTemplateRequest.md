@@ -7,6 +7,8 @@
 | **app_id** | **String** | Your OneSignal App ID in UUID v4 format. |  |
 | **name** | **String** | Name of the template. |  |
 | **contents** | [**LanguageStringMap**](LanguageStringMap.md) |  |  |
+| **headings** | [**LanguageStringMap**](LanguageStringMap.md) |  | [optional] |
+| **subtitle** | [**LanguageStringMap**](LanguageStringMap.md) |  | [optional] |
 | **is_email** | **Boolean** | Set true for an Email template. | [optional] |
 | **email_subject** | **String** | Subject of the email. | [optional] |
 | **email_body** | **String** | Body of the email (HTML supported). | [optional] |
@@ -22,6 +24,8 @@ instance = OneSignal::CreateTemplateRequest.new(
   app_id: null,
   name: null,
   contents: null,
+  headings: null,
+  subtitle: null,
   is_email: null,
   email_subject: null,
   email_body: null,
