@@ -573,7 +573,11 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-notification = OneSignal::Notification.new({app_id: 'app_id_example'}) # Notification | 
+notification = OneSignal::Notification.new
+notification.app_id = 'YOUR_APP_ID'
+notification.contents = OneSignal::LanguageStringMap.new({ en: 'Hello from OneSignal!' })
+notification.include_aliases = { 'external_id' => ['YOUR_USER_EXTERNAL_ID'] }
+notification.target_channel = 'push'
 
 begin
   # Create notification
