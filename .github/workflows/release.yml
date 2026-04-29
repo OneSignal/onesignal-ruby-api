@@ -57,11 +57,6 @@ jobs:
           ruby-version: '3.2'
           bundler-cache: true
 
-      - name: Build gem
-        run: |
-          gem build onesignal.gemspec
-          ls -la *.gem
-
       - name: Publish to RubyGems
         uses: rubygems/release-gem@v1
         env:
