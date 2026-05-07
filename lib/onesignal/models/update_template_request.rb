@@ -33,6 +33,9 @@ module OneSignal
     # Body of the email (HTML supported).
     attr_accessor :email_body
 
+    # BCC recipients for the email template. Maximum 5 addresses. Only supported when the email service provider is OneSignal Email.
+    attr_accessor :email_bcc
+
     # Set true for an SMS template.
     attr_accessor :is_sms
 
@@ -49,6 +52,7 @@ module OneSignal
         :'is_email' => :'isEmail',
         :'email_subject' => :'email_subject',
         :'email_body' => :'email_body',
+        :'email_bcc' => :'email_bcc',
         :'is_sms' => :'isSMS',
         :'dynamic_content' => :'dynamic_content'
       }
@@ -69,6 +73,7 @@ module OneSignal
         :'is_email' => :'Boolean',
         :'email_subject' => :'String',
         :'email_body' => :'String',
+        :'email_bcc' => :'Array<String>',
         :'is_sms' => :'Boolean',
         :'dynamic_content' => :'String'
       }
@@ -79,6 +84,7 @@ module OneSignal
       Set.new([
         :'email_subject',
         :'email_body',
+        :'email_bcc',
         :'dynamic_content'
       ])
     end
@@ -126,6 +132,12 @@ module OneSignal
         self.email_body = attributes[:'email_body']
       end
 
+      if attributes.key?(:'email_bcc')
+        if (value = attributes[:'email_bcc']).is_a?(Array)
+          self.email_bcc = value
+        end
+      end
+
       if attributes.key?(:'is_sms')
         self.is_sms = attributes[:'is_sms']
       end
@@ -139,13 +151,28 @@ module OneSignal
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if !@email_bcc.nil? && @email_bcc.length > 5
+        invalid_properties.push('invalid value for "email_bcc", number of items must be less than or equal to 5.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if !@email_bcc.nil? && @email_bcc.length > 5
       true
+    end
+
+    # Custom attribute writer method with validation
+    # @param [Object] email_bcc Value to be assigned
+    def email_bcc=(email_bcc)
+      if !email_bcc.nil? && email_bcc.length > 5
+        fail ArgumentError, 'invalid value for "email_bcc", number of items must be less than or equal to 5.'
+      end
+
+      @email_bcc = email_bcc
     end
 
     # Checks equality by comparing each attribute.
@@ -160,6 +187,7 @@ module OneSignal
           is_email == o.is_email &&
           email_subject == o.email_subject &&
           email_body == o.email_body &&
+          email_bcc == o.email_bcc &&
           is_sms == o.is_sms &&
           dynamic_content == o.dynamic_content
     end
@@ -173,7 +201,7 @@ module OneSignal
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, contents, headings, subtitle, is_email, email_subject, email_body, is_sms, dynamic_content].hash
+      [name, contents, headings, subtitle, is_email, email_subject, email_body, email_bcc, is_sms, dynamic_content].hash
     end
 
     # Builds the object from hash

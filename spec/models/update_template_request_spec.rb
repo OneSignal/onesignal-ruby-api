@@ -67,6 +67,12 @@ describe OneSignal::UpdateTemplateRequest do
     end
   end
 
+  describe 'test attribute "email_bcc"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "is_sms"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
