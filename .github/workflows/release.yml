@@ -59,5 +59,3 @@ jobs:
 
       - name: Publish to RubyGems
         uses: rubygems/release-gem@v1
-        env:
-          GEM_HOST_API_KEY: ${{ secrets.RUBYGEMS_API_KEY }}
