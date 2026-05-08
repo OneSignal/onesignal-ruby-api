@@ -1,5 +1,11 @@
 # Changelog
 
+## [5.5.0](https://github.com/OneSignal/onesignal-ruby-api/compare/v5.4.0...v5.5.0) (2026-05-08)
+
+### Features
+
+* add `email_bcc` and `bcc_sent` to Notification and Template models ([#84](https://github.com/OneSignal/onesignal-ruby-api/issues/84)) ([9cb235f](https://github.com/OneSignal/onesignal-ruby-api/commit/9cb235fcfd299fa58877733108eba660c86fc4ba))
+
 ## [5.4.0](https://github.com/OneSignal/onesignal-ruby-api/compare/v5.3.0...v5.4.0) (2026-04-17)
 
 ### Features
