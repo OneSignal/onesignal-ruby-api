@@ -18,8 +18,11 @@ module OneSignal
     # Specific subscription ids to send your notification to. _Does not require API Auth Key._ Not compatible with any other targeting parameters. Example: [\"1dd608f2-c6a1-11e3-851d-000c2940e62c\"] Limit of 2,000 entries per REST API call 
     attr_accessor :include_subscription_ids
 
-    # Recommended for Sending Emails - Target specific email addresses. If an email does not correspond to an existing user, a new user will be created. Example: nick@catfac.ts Limit of 2,000 entries per REST API call 
+    # Deprecated alias for `email_to`. Target specific email addresses. If an email does not correspond to an existing user, a new user will be created. Example: nick@catfac.ts. Limit of 2,000 entries per REST API call. Prefer `email_to` in new integrations. 
     attr_accessor :include_email_tokens
+
+    # Recommended for Sending Emails - Target specific email addresses. If an email does not correspond to an existing user, a new user will be created. Example: nick@catfac.ts. Limit of 2,000 entries per REST API call. Supersedes the deprecated `include_email_tokens` field. 
+    attr_accessor :email_to
 
     # Recommended for Sending SMS - Target specific phone numbers. The phone number should be in the E.164 format. Phone number should be an existing subscriber on OneSignal. Refer our docs to learn how to add phone numbers to OneSignal. Example phone number: +1999999999 Limit of 2,000 entries per REST API call 
     attr_accessor :include_phone_numbers
@@ -74,6 +77,7 @@ module OneSignal
       {
         :'include_subscription_ids' => :'include_subscription_ids',
         :'include_email_tokens' => :'include_email_tokens',
+        :'email_to' => :'email_to',
         :'include_phone_numbers' => :'include_phone_numbers',
         :'include_ios_tokens' => :'include_ios_tokens',
         :'include_wp_wns_uris' => :'include_wp_wns_uris',
@@ -96,6 +100,7 @@ module OneSignal
       {
         :'include_subscription_ids' => :'Array<String>',
         :'include_email_tokens' => :'Array<String>',
+        :'email_to' => :'Array<String>',
         :'include_phone_numbers' => :'Array<String>',
         :'include_ios_tokens' => :'Array<String>',
         :'include_wp_wns_uris' => :'Array<String>',
@@ -140,6 +145,12 @@ module OneSignal
       if attributes.key?(:'include_email_tokens')
         if (value = attributes[:'include_email_tokens']).is_a?(Array)
           self.include_email_tokens = value
+        end
+      end
+
+      if attributes.key?(:'email_to')
+        if (value = attributes[:'email_to']).is_a?(Array)
+          self.email_to = value
         end
       end
 
@@ -228,6 +239,7 @@ module OneSignal
       self.class == o.class &&
           include_subscription_ids == o.include_subscription_ids &&
           include_email_tokens == o.include_email_tokens &&
+          email_to == o.email_to &&
           include_phone_numbers == o.include_phone_numbers &&
           include_ios_tokens == o.include_ios_tokens &&
           include_wp_wns_uris == o.include_wp_wns_uris &&
@@ -248,7 +260,7 @@ module OneSignal
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [include_subscription_ids, include_email_tokens, include_phone_numbers, include_ios_tokens, include_wp_wns_uris, include_amazon_reg_ids, include_chrome_reg_ids, include_chrome_web_reg_ids, include_android_reg_ids, include_aliases, target_channel].hash
+      [include_subscription_ids, include_email_tokens, email_to, include_phone_numbers, include_ios_tokens, include_wp_wns_uris, include_amazon_reg_ids, include_chrome_reg_ids, include_chrome_web_reg_ids, include_android_reg_ids, include_aliases, target_channel].hash
     end
 
     # Builds the object from hash

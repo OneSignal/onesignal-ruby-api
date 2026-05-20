@@ -287,6 +287,9 @@ module OneSignal
     # Channel: Email BCC recipients for the email. Maximum 5 addresses. Only supported when the email service provider is OneSignal Email. 
     attr_accessor :email_bcc
 
+    # Channel: Email Sender domain to use for the email message. Overrides the default sender domain configured for the app. Only supported when the email service provider is OneSignal Email. 
+    attr_accessor :email_sender_domain
+
     # Channel: SMS Phone Number used to send SMS. Should be a registered Twilio phone number in E.164 format. 
     attr_accessor :sms_from
 
@@ -431,6 +434,7 @@ module OneSignal
         :'disable_email_click_tracking' => :'disable_email_click_tracking',
         :'include_unsubscribed' => :'include_unsubscribed',
         :'email_bcc' => :'email_bcc',
+        :'email_sender_domain' => :'email_sender_domain',
         :'sms_from' => :'sms_from',
         :'sms_media_urls' => :'sms_media_urls',
         :'filters' => :'filters',
@@ -544,6 +548,7 @@ module OneSignal
         :'disable_email_click_tracking' => :'Boolean',
         :'include_unsubscribed' => :'Boolean',
         :'email_bcc' => :'Array<String>',
+        :'email_sender_domain' => :'String',
         :'sms_from' => :'String',
         :'sms_media_urls' => :'Array<String>',
         :'filters' => :'Array<FilterExpression>',
@@ -640,6 +645,7 @@ module OneSignal
         :'email_preheader',
         :'disable_email_click_tracking',
         :'email_bcc',
+        :'email_sender_domain',
         :'sms_from',
         :'sms_media_urls',
         :'filters',
@@ -1045,6 +1051,10 @@ module OneSignal
         end
       end
 
+      if attributes.key?(:'email_sender_domain')
+        self.email_sender_domain = attributes[:'email_sender_domain']
+      end
+
       if attributes.key?(:'sms_from')
         self.sms_from = attributes[:'sms_from']
       end
@@ -1236,6 +1246,7 @@ module OneSignal
           disable_email_click_tracking == o.disable_email_click_tracking &&
           include_unsubscribed == o.include_unsubscribed &&
           email_bcc == o.email_bcc &&
+          email_sender_domain == o.email_sender_domain &&
           sms_from == o.sms_from &&
           sms_media_urls == o.sms_media_urls &&
           filters == o.filters &&
@@ -1256,7 +1267,7 @@ module OneSignal
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, value, name, aggregation, is_ios, is_android, is_huawei, is_any_web, is_chrome_web, is_firefox, is_safari, is_wp_wns, is_adm, is_chrome, app_id, external_id, idempotency_key, contents, headings, subtitle, data, huawei_msg_type, url, web_url, app_url, ios_attachments, template_id, content_available, mutable_content, target_content_identifier, big_picture, huawei_big_picture, adm_big_picture, chrome_big_picture, chrome_web_image, buttons, web_buttons, ios_category, android_channel_id, huawei_channel_id, existing_android_channel_id, huawei_existing_channel_id, android_background_layout, small_icon, huawei_small_icon, large_icon, huawei_large_icon, adm_small_icon, adm_large_icon, chrome_web_icon, chrome_web_badge, firefox_icon, chrome_icon, ios_sound, android_sound, huawei_sound, adm_sound, wp_wns_sound, android_led_color, huawei_led_color, android_accent_color, huawei_accent_color, android_visibility, huawei_visibility, ios_badge_type, ios_badge_count, collapse_id, web_push_topic, apns_alert, delayed_option, delivery_time_of_day, ttl, priority, apns_push_type_override, throttle_rate_per_minute, android_group, android_group_message, adm_group, adm_group_message, thread_id, summary_arg, summary_arg_count, ios_relevance_score, ios_interruption_level, email_subject, email_body, email_from_name, email_from_address, email_reply_to_address, email_preheader, disable_email_click_tracking, include_unsubscribed, email_bcc, sms_from, sms_media_urls, filters, custom_data, huawei_badge_class, huawei_badge_add_num, huawei_badge_set_num, huawei_category, huawei_bi_tag].hash
+      [id, value, name, aggregation, is_ios, is_android, is_huawei, is_any_web, is_chrome_web, is_firefox, is_safari, is_wp_wns, is_adm, is_chrome, app_id, external_id, idempotency_key, contents, headings, subtitle, data, huawei_msg_type, url, web_url, app_url, ios_attachments, template_id, content_available, mutable_content, target_content_identifier, big_picture, huawei_big_picture, adm_big_picture, chrome_big_picture, chrome_web_image, buttons, web_buttons, ios_category, android_channel_id, huawei_channel_id, existing_android_channel_id, huawei_existing_channel_id, android_background_layout, small_icon, huawei_small_icon, large_icon, huawei_large_icon, adm_small_icon, adm_large_icon, chrome_web_icon, chrome_web_badge, firefox_icon, chrome_icon, ios_sound, android_sound, huawei_sound, adm_sound, wp_wns_sound, android_led_color, huawei_led_color, android_accent_color, huawei_accent_color, android_visibility, huawei_visibility, ios_badge_type, ios_badge_count, collapse_id, web_push_topic, apns_alert, delayed_option, delivery_time_of_day, ttl, priority, apns_push_type_override, throttle_rate_per_minute, android_group, android_group_message, adm_group, adm_group_message, thread_id, summary_arg, summary_arg_count, ios_relevance_score, ios_interruption_level, email_subject, email_body, email_from_name, email_from_address, email_reply_to_address, email_preheader, disable_email_click_tracking, include_unsubscribed, email_bcc, email_sender_domain, sms_from, sms_media_urls, filters, custom_data, huawei_badge_class, huawei_badge_add_num, huawei_badge_set_num, huawei_category, huawei_bi_tag].hash
     end
 
     # Builds the object from hash
