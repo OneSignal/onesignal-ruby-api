@@ -70,8 +70,8 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | 
-notification_id = 'notification_id_example' # String | 
+app_id = '00000000-0000-0000-0000-000000000000' # String | 
+notification_id = 'b3a0c8bd-3a4c-4b22-9a73-3f1a8c2d1b88' # String | 
 
 begin
   # Stop a scheduled or currently outgoing notification
@@ -79,6 +79,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->cancel_notification: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -97,6 +99,8 @@ begin
   p data # => <GenericSuccessBoolResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->cancel_notification_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -141,8 +145,8 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-template_id = 'template_id_example' # String | 
-app_id = 'app_id_example' # String | 
+template_id = 'e4d3c2b1-a09f-4f1e-8d7c-6b5a4f3e2d1c' # String | 
+app_id = '00000000-0000-0000-0000-000000000000' # String | 
 copy_template_request = OneSignal::CopyTemplateRequest.new({target_app_id: 'target_app_id_example'}) # CopyTemplateRequest | 
 
 begin
@@ -151,6 +155,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->copy_template_to_app: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -169,6 +175,8 @@ begin
   p data # => <TemplateResource>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->copy_template_to_app_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -214,9 +222,9 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | 
-alias_label = 'alias_label_example' # String | 
-alias_id = 'alias_id_example' # String | 
+app_id = '00000000-0000-0000-0000-000000000000' # String | 
+alias_label = 'external_id' # String | 
+alias_id = 'YOUR_USER_EXTERNAL_ID' # String | 
 user_identity_body = OneSignal::UserIdentityBody.new # UserIdentityBody | 
 
 begin
@@ -225,6 +233,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_alias: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -243,6 +253,8 @@ begin
   p data # => <UserIdentityBody>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_alias_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -289,8 +301,8 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | 
-subscription_id = 'subscription_id_example' # String | 
+app_id = '00000000-0000-0000-0000-000000000000' # String | 
+subscription_id = '7e4c5b9a-1f60-4d07-9b1a-2e8c8d2cae51' # String | 
 user_identity_body = OneSignal::UserIdentityBody.new # UserIdentityBody | 
 
 begin
@@ -299,6 +311,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_alias_by_subscription: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -317,6 +331,8 @@ begin
   p data # => <UserIdentityBody>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_alias_by_subscription_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -362,7 +378,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | 
+app_id = '00000000-0000-0000-0000-000000000000' # String | 
 create_api_key_request = OneSignal::CreateApiKeyRequest.new # CreateApiKeyRequest | 
 
 begin
@@ -371,6 +387,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_api_key: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -389,6 +407,8 @@ begin
   p data # => <CreateApiKeyResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_api_key_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -441,6 +461,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_app: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -459,6 +481,8 @@ begin
   p data # => <App>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_app_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -502,7 +526,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | Your OneSignal App ID in UUID v4 format.
+app_id = '00000000-0000-0000-0000-000000000000' # String | Your OneSignal App ID in UUID v4 format.
 custom_events_request = OneSignal::CustomEventsRequest.new({events: [OneSignal::CustomEvent.new({name: 'name_example'})]}) # CustomEventsRequest | 
 
 begin
@@ -511,6 +535,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_custom_events: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -529,6 +555,8 @@ begin
   p data # => Object
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_custom_events_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -573,18 +601,39 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
+require 'securerandom'
+
 notification = OneSignal::Notification.new
 notification.app_id = 'YOUR_APP_ID'
 notification.contents = OneSignal::LanguageStringMap.new({ en: 'Hello from OneSignal!' })
 notification.include_aliases = { 'external_id' => ['YOUR_USER_EXTERNAL_ID'] }
 notification.target_channel = 'push'
+# Idempotency key: a client-generated UUID that lets you safely retry on network failure.
+# If two requests arrive with the same key inside the 30-day window, only the first is sent
+# and the second returns the original response. Use SecureRandom.uuid — DO NOT reuse keys
+# across logically distinct sends.
+notification.idempotency_key = SecureRandom.uuid
 
 begin
   # Create notification
   result = api_instance.create_notification(notification)
-  p result
+  # `result.id` discriminates the two HTTP 200 shapes. An empty string means no
+  # notification was created (e.g. all targets were unreachable / not subscribed).
+  # `result.errors` is polymorphic: an `Array<String>` in the no-subscribers case, or
+  # a Hash keyed by recipient-identifier type (`invalid_player_ids`,
+  # `invalid_external_user_ids`, `invalid_aliases`, ...) when the notification WAS
+  # created but some recipients were skipped.
+  if result.id.to_s.empty?
+    puts "Notification was not sent: #{result.errors}"
+  elsif result.errors
+    puts "Notification created: #{result.id} (partial failures: #{result.errors})"
+  else
+    puts "Notification created: #{result.id}"
+  end
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_notification: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -603,6 +652,8 @@ begin
   p data # => <CreateNotificationSuccessResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_notification_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -646,7 +697,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
+app_id = '00000000-0000-0000-0000-000000000000' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
 opts = {
   segment: OneSignal::Segment.new({name: 'name_example', filters: [OneSignal::Filter.new]}) # Segment | 
 }
@@ -657,6 +708,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_segment: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -675,6 +728,8 @@ begin
   p data # => <CreateSegmentSuccessResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_segment_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -719,9 +774,9 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | 
-alias_label = 'alias_label_example' # String | 
-alias_id = 'alias_id_example' # String | 
+app_id = '00000000-0000-0000-0000-000000000000' # String | 
+alias_label = 'external_id' # String | 
+alias_id = 'YOUR_USER_EXTERNAL_ID' # String | 
 subscription_body = OneSignal::SubscriptionBody.new # SubscriptionBody | 
 
 begin
@@ -730,6 +785,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_subscription: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -748,6 +805,8 @@ begin
   p data # => <SubscriptionBody>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_subscription_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -802,6 +861,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_template: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -820,6 +881,8 @@ begin
   p data # => <TemplateResource>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_template_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -863,7 +926,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | 
+app_id = '00000000-0000-0000-0000-000000000000' # String | 
 user = OneSignal::User.new # User | 
 
 begin
@@ -872,6 +935,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_user: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -890,6 +955,8 @@ begin
   p data # => <User>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_user_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -934,10 +1001,10 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | 
-alias_label = 'alias_label_example' # String | 
-alias_id = 'alias_id_example' # String | 
-alias_label_to_delete = 'alias_label_to_delete_example' # String | 
+app_id = '00000000-0000-0000-0000-000000000000' # String | 
+alias_label = 'external_id' # String | 
+alias_id = 'YOUR_USER_EXTERNAL_ID' # String | 
+alias_label_to_delete = 'external_id' # String | 
 
 begin
   
@@ -945,6 +1012,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->delete_alias: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -963,6 +1032,8 @@ begin
   p data # => <UserIdentityBody>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->delete_alias_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1009,8 +1080,8 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | 
-token_id = 'token_id_example' # String | 
+app_id = '00000000-0000-0000-0000-000000000000' # String | 
+token_id = '0aa1b2c3-d4e5-46f7-8899-aabbccddeeff' # String | 
 
 begin
   # Delete API key
@@ -1018,6 +1089,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->delete_api_key: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1036,6 +1109,8 @@ begin
   p data # => Object
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->delete_api_key_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1080,8 +1155,8 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
-segment_id = 'segment_id_example' # String | The segment_id can be found in the URL of the segment when viewing it in the dashboard.
+app_id = '00000000-0000-0000-0000-000000000000' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
+segment_id = 'd6c5a3e1-9f17-44a1-9d10-7c0e4a2b1c8e' # String | The segment_id can be found in the URL of the segment when viewing it in the dashboard.
 
 begin
   # Delete Segment
@@ -1089,6 +1164,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->delete_segment: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1107,6 +1184,8 @@ begin
   p data # => <GenericSuccessBoolResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->delete_segment_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1151,14 +1230,16 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | 
-subscription_id = 'subscription_id_example' # String | 
+app_id = '00000000-0000-0000-0000-000000000000' # String | 
+subscription_id = '7e4c5b9a-1f60-4d07-9b1a-2e8c8d2cae51' # String | 
 
 begin
   
   api_instance.delete_subscription(app_id, subscription_id)
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->delete_subscription: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1177,6 +1258,8 @@ begin
   p data # => nil
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->delete_subscription_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1221,8 +1304,8 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-template_id = 'template_id_example' # String | 
-app_id = 'app_id_example' # String | 
+template_id = 'e4d3c2b1-a09f-4f1e-8d7c-6b5a4f3e2d1c' # String | 
+app_id = '00000000-0000-0000-0000-000000000000' # String | 
 
 begin
   # Delete template
@@ -1230,6 +1313,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->delete_template: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1248,6 +1333,8 @@ begin
   p data # => <GenericSuccessBoolResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->delete_template_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1292,15 +1379,17 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | 
-alias_label = 'alias_label_example' # String | 
-alias_id = 'alias_id_example' # String | 
+app_id = '00000000-0000-0000-0000-000000000000' # String | 
+alias_label = 'external_id' # String | 
+alias_id = 'YOUR_USER_EXTERNAL_ID' # String | 
 
 begin
   
   api_instance.delete_user(app_id, alias_label, alias_id)
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->delete_user: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1319,6 +1408,8 @@ begin
   p data # => nil
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->delete_user_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1364,8 +1455,8 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-notification_id = 'notification_id_example' # String | The ID of the notification to export events from.
-app_id = 'app_id_example' # String | The ID of the app that the notification belongs to.
+notification_id = 'b3a0c8bd-3a4c-4b22-9a73-3f1a8c2d1b88' # String | The ID of the notification to export events from.
+app_id = '00000000-0000-0000-0000-000000000000' # String | The ID of the app that the notification belongs to.
 
 begin
   # Export CSV of Events
@@ -1373,6 +1464,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->export_events: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1391,6 +1484,8 @@ begin
   p data # => <ExportEventsSuccessResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->export_events_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1435,7 +1530,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | The app ID that you want to export devices from
+app_id = '00000000-0000-0000-0000-000000000000' # String | The app ID that you want to export devices from
 opts = {
   export_subscriptions_request_body: OneSignal::ExportSubscriptionsRequestBody.new # ExportSubscriptionsRequestBody | 
 }
@@ -1446,6 +1541,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->export_subscriptions: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1464,6 +1561,8 @@ begin
   p data # => <ExportSubscriptionsSuccessResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->export_subscriptions_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1508,9 +1607,9 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | 
-alias_label = 'alias_label_example' # String | 
-alias_id = 'alias_id_example' # String | 
+app_id = '00000000-0000-0000-0000-000000000000' # String | 
+alias_label = 'external_id' # String | 
+alias_id = 'YOUR_USER_EXTERNAL_ID' # String | 
 
 begin
   
@@ -1518,6 +1617,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_aliases: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1536,6 +1637,8 @@ begin
   p data # => <UserIdentityBody>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_aliases_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1581,8 +1684,8 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | 
-subscription_id = 'subscription_id_example' # String | 
+app_id = '00000000-0000-0000-0000-000000000000' # String | 
+subscription_id = '7e4c5b9a-1f60-4d07-9b1a-2e8c8d2cae51' # String | 
 
 begin
   
@@ -1590,6 +1693,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_aliases_by_subscription: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1608,6 +1713,8 @@ begin
   p data # => <UserIdentityBody>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_aliases_by_subscription_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1652,7 +1759,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | An app id
+app_id = '00000000-0000-0000-0000-000000000000' # String | An app id
 
 begin
   # View an app
@@ -1660,6 +1767,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_app: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1678,6 +1787,8 @@ begin
   p data # => <App>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_app_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1728,6 +1839,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_apps: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1746,6 +1859,8 @@ begin
   p data # => <Array<App>>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_apps_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1787,8 +1902,8 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | 
-notification_id = 'notification_id_example' # String | 
+app_id = '00000000-0000-0000-0000-000000000000' # String | 
+notification_id = 'b3a0c8bd-3a4c-4b22-9a73-3f1a8c2d1b88' # String | 
 
 begin
   # View notification
@@ -1796,6 +1911,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_notification: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1814,6 +1931,8 @@ begin
   p data # => <NotificationWithMeta>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_notification_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1858,7 +1977,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-notification_id = 'notification_id_example' # String | The \"id\" of the message found in the Notification object
+notification_id = 'b3a0c8bd-3a4c-4b22-9a73-3f1a8c2d1b88' # String | The \"id\" of the message found in the Notification object
 get_notification_history_request_body = OneSignal::GetNotificationHistoryRequestBody.new # GetNotificationHistoryRequestBody | 
 
 begin
@@ -1867,6 +1986,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_notification_history: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1885,6 +2006,8 @@ begin
   p data # => <NotificationHistorySuccessResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_notification_history_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1929,10 +2052,10 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | The app ID that you want to view notifications from
+app_id = '00000000-0000-0000-0000-000000000000' # String | The app ID that you want to view notifications from
 opts = {
-  limit: 56, # Integer | How many notifications to return.  Max is 50.  Default is 50.
-  offset: 56, # Integer | Page offset.  Default is 0.  Results are sorted by queued_at in descending order.  queued_at is a representation of the time that the notification was queued at.
+  limit: 10, # Integer | How many notifications to return.  Max is 50.  Default is 50.
+  offset: 0, # Integer | Page offset.  Default is 0.  Results are sorted by queued_at in descending order.  queued_at is a representation of the time that the notification was queued at.
   kind: 0 # Integer | Kind of notifications returned:   * unset - All notification types (default)   * `0` - Dashboard only   * `1` - API only   * `3` - Automated only 
 }
 
@@ -1942,6 +2065,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_notifications: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -1960,6 +2085,8 @@ begin
   p data # => <NotificationSlice>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_notifications_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2006,13 +2133,13 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
-outcome_names = 'outcome_names_example' # String | Required Comma-separated list of names and the value (sum/count) for the returned outcome data. Note: Clicks only support count aggregation. For out-of-the-box OneSignal outcomes such as click and session duration, please use the \"os\" prefix with two underscores. For other outcomes, please use the name specified by the user. Example:os__session_duration.count,os__click.count,CustomOutcomeName.sum 
+app_id = '00000000-0000-0000-0000-000000000000' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
+outcome_names = 'os__session_duration.count,os__click.count' # String | Required Comma-separated list of names and the value (sum/count) for the returned outcome data. Note: Clicks only support count aggregation. For out-of-the-box OneSignal outcomes such as click and session duration, please use the \"os\" prefix with two underscores. For other outcomes, please use the name specified by the user. Example:os__session_duration.count,os__click.count,CustomOutcomeName.sum 
 opts = {
-  outcome_names2: 'outcome_names_example', # String | Optional If outcome names contain any commas, then please specify only one value at a time. Example: outcome_names[]=os__click.count&outcome_names[]=Sales, Purchase.count where \"Sales, Purchase\" is the custom outcomes with a comma in the name. 
-  outcome_time_range: 'outcome_time_range_example', # String | Optional Time range for the returned data. The values can be 1h (for the last 1 hour data), 1d (for the last 1 day data), or 1mo (for the last 1 month data). Default is 1h if the parameter is omitted. 
-  outcome_platforms: 'outcome_platforms_example', # String | Optional Platform id. Refer device's platform ids for values. Example: outcome_platform=0 for iOS outcome_platform=7,8 for Safari and Firefox Default is data from all platforms if the parameter is omitted. 
-  outcome_attribution: 'outcome_attribution_example' # String | Optional Attribution type for the outcomes. The values can be direct or influenced or unattributed. Example: outcome_attribution=direct Default is total (returns direct+influenced+unattributed) if the parameter is omitted. 
+  outcome_names2: 'os__session_duration.count', # String | Optional If outcome names contain any commas, then please specify only one value at a time. Example: outcome_names[]=os__click.count&outcome_names[]=Sales, Purchase.count where \"Sales, Purchase\" is the custom outcomes with a comma in the name. 
+  outcome_time_range: '1d', # String | Optional Time range for the returned data. The values can be 1h (for the last 1 hour data), 1d (for the last 1 day data), or 1mo (for the last 1 month data). Default is 1h if the parameter is omitted. 
+  outcome_platforms: '0,1', # String | Optional Platform id. Refer device's platform ids for values. Example: outcome_platform=0 for iOS outcome_platform=7,8 for Safari and Firefox Default is data from all platforms if the parameter is omitted. 
+  outcome_attribution: 'direct' # String | Optional Attribution type for the outcomes. The values can be direct or influenced or unattributed. Example: outcome_attribution=direct Default is total (returns direct+influenced+unattributed) if the parameter is omitted. 
 }
 
 begin
@@ -2021,6 +2148,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_outcomes: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2039,6 +2168,8 @@ begin
   p data # => <OutcomesData>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_outcomes_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2087,10 +2218,10 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
+app_id = '00000000-0000-0000-0000-000000000000' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
 opts = {
-  offset: 56, # Integer | Segments are listed in ascending order of created_at date. offset will omit that number of segments from the beginning of the list. Eg offset 5, will remove the 5 earliest created Segments.
-  limit: 56 # Integer | The amount of Segments in the response. Maximum 300.
+  offset: 0, # Integer | Segments are listed in ascending order of created_at date. offset will omit that number of segments from the beginning of the list. Eg offset 5, will remove the 5 earliest created Segments.
+  limit: 10 # Integer | The amount of Segments in the response. Maximum 300.
 }
 
 begin
@@ -2099,6 +2230,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_segments: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2117,6 +2250,8 @@ begin
   p data # => <GetSegmentsSuccessResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_segments_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2162,9 +2297,9 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | 
-alias_label = 'alias_label_example' # String | 
-alias_id = 'alias_id_example' # String | 
+app_id = '00000000-0000-0000-0000-000000000000' # String | 
+alias_label = 'external_id' # String | 
+alias_id = 'YOUR_USER_EXTERNAL_ID' # String | 
 
 begin
   
@@ -2172,6 +2307,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_user: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2190,6 +2327,8 @@ begin
   p data # => <User>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_user_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2235,8 +2374,8 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | 
-token_id = 'token_id_example' # String | 
+app_id = '00000000-0000-0000-0000-000000000000' # String | 
+token_id = '0aa1b2c3-d4e5-46f7-8899-aabbccddeeff' # String | 
 
 begin
   # Rotate API key
@@ -2244,6 +2383,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->rotate_api_key: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2262,6 +2403,8 @@ begin
   p data # => <CreateApiKeyResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->rotate_api_key_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2306,8 +2449,8 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | Your OneSignal App ID in UUID v4 format.
-activity_type = 'activity_type_example' # String | The name of the Live Activity defined in your app. This should match the attributes struct used in your app's Live Activity implementation.
+app_id = '00000000-0000-0000-0000-000000000000' # String | Your OneSignal App ID in UUID v4 format.
+activity_type = 'order_status' # String | The name of the Live Activity defined in your app. This should match the attributes struct used in your app's Live Activity implementation.
 start_live_activity_request = OneSignal::StartLiveActivityRequest.new({name: 'name_example', event: 'start', activity_id: 'activity_id_example', event_attributes: 3.56, event_updates: 3.56, contents: OneSignal::LanguageStringMap.new, headings: OneSignal::LanguageStringMap.new}) # StartLiveActivityRequest | 
 
 begin
@@ -2316,6 +2459,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->start_live_activity: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2334,6 +2479,8 @@ begin
   p data # => <StartLiveActivitySuccessResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->start_live_activity_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2379,8 +2526,8 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | 
-subscription_id = 'subscription_id_example' # String | 
+app_id = '00000000-0000-0000-0000-000000000000' # String | 
+subscription_id = '7e4c5b9a-1f60-4d07-9b1a-2e8c8d2cae51' # String | 
 transfer_subscription_request_body = OneSignal::TransferSubscriptionRequestBody.new # TransferSubscriptionRequestBody | 
 
 begin
@@ -2389,6 +2536,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->transfer_subscription: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2407,6 +2556,8 @@ begin
   p data # => <UserIdentityBody>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->transfer_subscription_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2452,9 +2603,9 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
-notification_id = 'notification_id_example' # String | The id of the message found in the creation notification POST response, View Notifications GET response, or URL within the Message Report.
-token = 'token_example' # String | The unsubscribe token that is generated via liquid syntax in {{subscription.unsubscribe_token}} when personalizing an email.
+app_id = '00000000-0000-0000-0000-000000000000' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
+notification_id = 'b3a0c8bd-3a4c-4b22-9a73-3f1a8c2d1b88' # String | The id of the message found in the creation notification POST response, View Notifications GET response, or URL within the Message Report.
+token = 'YOUR_TOKEN_ID' # String | The unsubscribe token that is generated via liquid syntax in {{subscription.unsubscribe_token}} when personalizing an email.
 
 begin
   # Unsubscribe with token
@@ -2462,6 +2613,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->unsubscribe_email_with_token: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2480,6 +2633,8 @@ begin
   p data # => <GenericSuccessBoolResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->unsubscribe_email_with_token_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2525,8 +2680,8 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | 
-token_id = 'token_id_example' # String | 
+app_id = '00000000-0000-0000-0000-000000000000' # String | 
+token_id = '0aa1b2c3-d4e5-46f7-8899-aabbccddeeff' # String | 
 update_api_key_request = OneSignal::UpdateApiKeyRequest.new # UpdateApiKeyRequest | 
 
 begin
@@ -2535,6 +2690,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_api_key: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2553,6 +2710,8 @@ begin
   p data # => Object
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_api_key_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2598,7 +2757,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | An app id
+app_id = '00000000-0000-0000-0000-000000000000' # String | An app id
 app = OneSignal::App.new # App | 
 
 begin
@@ -2607,6 +2766,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_app: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2625,6 +2786,8 @@ begin
   p data # => <App>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_app_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2669,8 +2832,8 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
-activity_id = 'activity_id_example' # String | Live Activity record ID
+app_id = '00000000-0000-0000-0000-000000000000' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
+activity_id = '12345' # String | Live Activity record ID
 update_live_activity_request = OneSignal::UpdateLiveActivityRequest.new({name: 'name_example', event: 'update', event_updates: 3.56}) # UpdateLiveActivityRequest | 
 
 begin
@@ -2679,6 +2842,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_live_activity: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2697,6 +2862,8 @@ begin
   p data # => <UpdateLiveActivitySuccessResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_live_activity_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2742,8 +2909,8 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | 
-subscription_id = 'subscription_id_example' # String | 
+app_id = '00000000-0000-0000-0000-000000000000' # String | 
+subscription_id = '7e4c5b9a-1f60-4d07-9b1a-2e8c8d2cae51' # String | 
 subscription_body = OneSignal::SubscriptionBody.new # SubscriptionBody | 
 
 begin
@@ -2751,6 +2918,8 @@ begin
   api_instance.update_subscription(app_id, subscription_id, subscription_body)
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_subscription: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2769,6 +2938,8 @@ begin
   p data # => nil
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_subscription_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2814,9 +2985,9 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | Your OneSignal App ID in UUID v4 format.
-token_type = 'token_type_example' # String | The type of token to use when looking up the subscription. See Subscription Types.
-token = 'token_example' # String | The value of the token to lookup by (e.g., email address, phone number).
+app_id = '00000000-0000-0000-0000-000000000000' # String | Your OneSignal App ID in UUID v4 format.
+token_type = 'Email' # String | The type of token to use when looking up the subscription. See Subscription Types.
+token = 'user@example.com' # String | The value of the token to lookup by (e.g., email address, phone number).
 subscription_body = OneSignal::SubscriptionBody.new # SubscriptionBody | 
 
 begin
@@ -2825,6 +2996,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_subscription_by_token: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2843,6 +3016,8 @@ begin
   p data # => Object
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_subscription_by_token_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2889,8 +3064,8 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-template_id = 'template_id_example' # String | 
-app_id = 'app_id_example' # String | 
+template_id = 'e4d3c2b1-a09f-4f1e-8d7c-6b5a4f3e2d1c' # String | 
+app_id = '00000000-0000-0000-0000-000000000000' # String | 
 update_template_request = OneSignal::UpdateTemplateRequest.new # UpdateTemplateRequest | 
 
 begin
@@ -2899,6 +3074,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_template: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2917,6 +3094,8 @@ begin
   p data # => <TemplateResource>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_template_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2962,9 +3141,9 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | 
-alias_label = 'alias_label_example' # String | 
-alias_id = 'alias_id_example' # String | 
+app_id = '00000000-0000-0000-0000-000000000000' # String | 
+alias_label = 'external_id' # String | 
+alias_id = 'YOUR_USER_EXTERNAL_ID' # String | 
 update_user_request = OneSignal::UpdateUserRequest.new # UpdateUserRequest | 
 
 begin
@@ -2973,6 +3152,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_user: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -2991,6 +3172,8 @@ begin
   p data # => <PropertiesBody>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_user_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -3037,7 +3220,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | 
+app_id = '00000000-0000-0000-0000-000000000000' # String | 
 
 begin
   # View API keys
@@ -3045,6 +3228,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->view_api_keys: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -3063,6 +3248,8 @@ begin
   p data # => <ApiKeyTokensListResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->view_api_keys_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -3106,8 +3293,8 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-template_id = 'template_id_example' # String | 
-app_id = 'app_id_example' # String | 
+template_id = 'e4d3c2b1-a09f-4f1e-8d7c-6b5a4f3e2d1c' # String | 
+app_id = '00000000-0000-0000-0000-000000000000' # String | 
 
 begin
   # View template
@@ -3115,6 +3302,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->view_template: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -3133,6 +3322,8 @@ begin
   p data # => <TemplateResource>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->view_template_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -3177,10 +3368,10 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = 'app_id_example' # String | Your OneSignal App ID in UUID v4 format.
+app_id = '00000000-0000-0000-0000-000000000000' # String | Your OneSignal App ID in UUID v4 format.
 opts = {
-  limit: 56, # Integer | Maximum number of templates. Default and max is 50.
-  offset: 56, # Integer | Pagination offset.
+  limit: 10, # Integer | Maximum number of templates. Default and max is 50.
+  offset: 0, # Integer | Pagination offset.
   channel: 'push' # String | Filter by delivery channel.
 }
 
@@ -3190,6 +3381,8 @@ begin
   p result
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->view_templates: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
@@ -3208,6 +3401,8 @@ begin
   p data # => <TemplatesListResponse>
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->view_templates_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
 end
 ```
 
