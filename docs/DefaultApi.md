@@ -63,7 +63,7 @@ Every operation requires either a **REST API Key** (App-scoped, used by ~77% of 
 
 ### Error handling
 
-When a request fails, the SDK raises `OneSignal::ApiError`. The HTTP status code is `e.code` (Integer); the parsed error body is `e.response_body` (String — the raw JSON envelope). Response headers are available via `e.response_headers`. Most envelopes match `{ "errors": ["..."] }` (an array of strings) but a few endpoints return `{ "errors": [{"code": ..., "title": ..., "meta": {...}}] }` (an array of structured error objects — used by `POST /apps/{app_id}/users` 409 conflict, see `CreateUserConflictResponse`), `{ "errors": "..." }` (string), or `{ "success": false }` (no `errors` field at all). Robust error-handling code should tolerate all four shapes.
+When a request fails, the SDK raises `OneSignal::ApiError`. The HTTP status code is `e.code` (Integer); the parsed error body is `e.response_body` (String — the raw JSON envelope). Response headers are available via `e.response_headers`. Most envelopes match `{ "errors": ["..."] }` (an array of strings) but a few endpoints return `{ "errors": [{"code": ..., "title": ..., "meta": {...}}] }` (an array of structured error objects — used by `POST /apps/{app_id}/users` 409 conflict, see `CreateUserConflictResponse`), `{ "errors": "..." }` (string), or `{ "success": false }` (no `errors` field at all). Robust error-handling code should tolerate all four shapes. The `e.error_messages` method does this for you, normalizing every shape to a flat `Array<String>` (empty when the body carries no `errors`).
 
 ### Polymorphic 200 from POST /notifications
 
@@ -108,6 +108,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->cancel_notification: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -184,6 +187,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->copy_template_to_app: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -262,6 +268,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_alias: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -340,6 +349,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_alias_by_subscription: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -416,6 +428,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_api_key: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -490,6 +505,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_app: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -564,6 +582,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_custom_events: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -661,6 +682,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_notification: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -737,6 +761,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_segment: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -814,6 +841,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_subscription: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -890,6 +920,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_template: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -964,6 +997,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->create_user: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -1041,6 +1077,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->delete_alias: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -1118,6 +1157,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->delete_api_key: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -1193,6 +1235,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->delete_segment: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -1267,6 +1312,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->delete_subscription: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -1342,6 +1390,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->delete_template: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -1417,6 +1468,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->delete_user: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -1493,6 +1547,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->export_events: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -1570,6 +1627,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->export_subscriptions: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -1646,6 +1706,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_aliases: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -1722,6 +1785,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_aliases_by_subscription: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -1796,6 +1862,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_app: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -1868,6 +1937,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_apps: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -1940,6 +2012,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_notification: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -2015,6 +2090,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_notification_history: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -2094,6 +2172,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_notifications: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -2177,6 +2258,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_outcomes: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -2259,6 +2343,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_segments: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -2336,6 +2423,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->get_user: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -2412,6 +2502,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->rotate_api_key: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -2488,6 +2581,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->start_live_activity: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -2565,6 +2661,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->transfer_subscription: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -2642,6 +2741,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->unsubscribe_email_with_token: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -2719,6 +2821,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_api_key: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -2795,6 +2900,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_app: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -2871,6 +2979,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_live_activity: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -2947,6 +3058,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_subscription: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -3025,6 +3139,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_subscription_by_token: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -3103,6 +3220,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_template: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -3181,6 +3301,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->update_user: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -3257,6 +3380,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->view_api_keys: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -3331,6 +3457,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->view_template: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
@@ -3410,6 +3539,9 @@ begin
 rescue OneSignal::ApiError => e
   puts "Error when calling DefaultApi->view_templates: #{e}"
   puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
   puts "Response Body: #{e.response_body}"
 end
 ```
