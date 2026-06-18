@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.7.0](https://github.com/OneSignal/onesignal-ruby-api/compare/v5.6.0...v5.7.0) (2026-06-18)
+
+### Features
+
+* add v5.7.0 package updates ([f1fdea6](https://github.com/OneSignal/onesignal-ruby-api/commit/f1fdea6f6e6f6b6ca1b599e3ed9bef70cfb7b749))
+* add v5.7.0 package updates ([#102](https://github.com/OneSignal/onesignal-ruby-api/issues/102)) ([07743e2](https://github.com/OneSignal/onesignal-ruby-api/commit/07743e2a070f89ea055f1a97a9f9e8c179172dc5))
+
 ## [5.6.0](https://github.com/OneSignal/onesignal-ruby-api/compare/v5.5.0...v5.6.0) (2026-05-20)
 
 ### Features
