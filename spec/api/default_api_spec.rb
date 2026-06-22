@@ -373,6 +373,7 @@ describe 'DefaultApi' do
   # @option opts [Integer] :limit How many notifications to return.  Max is 50.  Default is 50.
   # @option opts [Integer] :offset Page offset.  Default is 0.  Results are sorted by queued_at in descending order.  queued_at is a representation of the time that the notification was queued at.
   # @option opts [Integer] :kind Kind of notifications returned:   * unset - All notification types (default)   * &#x60;0&#x60; - Dashboard only   * &#x60;1&#x60; - API only   * &#x60;3&#x60; - Automated only 
+  # @option opts [String] :time_offset Time-offset pagination cursor for sequential pulls of all messages.  Accepts either an ISO 8601 formatted timestamp (e.g. &#x60;2025-01-01T00:00:00.000Z&#x60;) or the opaque Base64 cursor token returned as &#x60;next_time_offset&#x60; in a prior response.  When set, results are sorted ascending by send_after and the standard &#x60;offset&#x60; parameter cannot be used.  Repeat the request with each &#x60;next_time_offset&#x60; until an empty notifications array is returned.
   # @return [NotificationSlice]
   describe 'get_notifications test' do
     it 'should work' do

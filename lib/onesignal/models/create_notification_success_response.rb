@@ -15,7 +15,7 @@ require 'time'
 
 module OneSignal
   class CreateNotificationSuccessResponse
-    # Notification identifier when the request created a notification. An empty string means no notification was created; read `errors` for details (HTTP may still be 200).
+    # Notification identifier when the request created a notification. An empty string means no notification was created; read `errors` for details (HTTP may still be 200). All OneSignal server SDKs expose message-sent / message-not-sent narrowing helpers (named idiomatically per language — e.g. `isMessageSent`, `is_message_sent`, `message_sent?`); prefer them over comparing `id` directly.
     attr_accessor :id
 
     # Optional correlation / idempotency-related value from the API response. This is not the end-user External ID used for targeting recipients (that lives under `include_aliases.external_id`).
