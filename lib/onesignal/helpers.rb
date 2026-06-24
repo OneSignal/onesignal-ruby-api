@@ -54,6 +54,30 @@ module OneSignal
       end
     end
 
+    # Whether a POST /notifications 200 response is the "message sent" branch.
+    #
+    # POST /notifications returns 200 in two cases that share the
+    # CreateNotificationSuccessResponse shape: a notification was created
+    # (non-empty +id+), or none was (empty +id+, with +errors+ carrying the
+    # reason). Prefer this guard over inspecting +id+ directly.
+    #
+    # @param response [CreateNotificationSuccessResponse]
+    # @return [Boolean] true when a notification was created
+    def self.message_sent?(response)
+      id = response.respond_to?(:id) ? response.id : nil
+      id.is_a?(String) && !id.empty?
+    end
+
+    # Whether a POST /notifications 200 response is the "message not sent"
+    # branch -- no notification was created (+id+ absent or empty); inspect
+    # +errors+ for why.
+    #
+    # @param response [CreateNotificationSuccessResponse]
+    # @return [Boolean] true when no notification was created
+    def self.message_not_sent?(response)
+      !message_sent?(response)
+    end
+
     def self.header_value(headers, name)
       return nil unless headers.respond_to?(:each_pair)
 
