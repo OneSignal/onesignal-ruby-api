@@ -100,7 +100,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -178,7 +178,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: organization_api_key
-  config.organization_api_key = 'YOUR_BEARER_TOKEN'
+  config.organization_api_key = 'YOUR_ORGANIZATION_API_KEY'
 
 end
 
@@ -258,7 +258,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -340,7 +340,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -420,7 +420,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: organization_api_key
-  config.organization_api_key = 'YOUR_BEARER_TOKEN'
+  config.organization_api_key = 'YOUR_ORGANIZATION_API_KEY'
 
 end
 
@@ -498,7 +498,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: organization_api_key
-  config.organization_api_key = 'YOUR_BEARER_TOKEN'
+  config.organization_api_key = 'YOUR_ORGANIZATION_API_KEY'
 
 end
 
@@ -574,7 +574,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -652,7 +652,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -704,7 +704,7 @@ The `create_notification_with_retry` method mirrors `create_notification` but ge
 require 'onesignal'
 
 OneSignal.configure do |config|
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 end
 
 api_instance = OneSignal::DefaultApi.new
@@ -784,7 +784,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -864,7 +864,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -946,7 +946,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -1022,7 +1022,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -1112,7 +1112,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -1194,7 +1194,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: organization_api_key
-  config.organization_api_key = 'YOUR_BEARER_TOKEN'
+  config.organization_api_key = 'YOUR_ORGANIZATION_API_KEY'
 
 end
 
@@ -1272,7 +1272,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -1350,7 +1350,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -1427,7 +1427,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -1505,7 +1505,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -1584,7 +1584,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -1662,7 +1662,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -1742,7 +1742,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -1822,7 +1822,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -1900,7 +1900,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: organization_api_key
-  config.organization_api_key = 'YOUR_BEARER_TOKEN'
+  config.organization_api_key = 'YOUR_ORGANIZATION_API_KEY'
 
 end
 
@@ -1976,7 +1976,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: organization_api_key
-  config.organization_api_key = 'YOUR_BEARER_TOKEN'
+  config.organization_api_key = 'YOUR_ORGANIZATION_API_KEY'
 
 end
 
@@ -2049,7 +2049,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -2127,7 +2127,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -2205,7 +2205,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -2291,7 +2291,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -2379,7 +2379,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -2461,7 +2461,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -2541,7 +2541,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: organization_api_key
-  config.organization_api_key = 'YOUR_BEARER_TOKEN'
+  config.organization_api_key = 'YOUR_ORGANIZATION_API_KEY'
 
 end
 
@@ -2619,7 +2619,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -2699,7 +2699,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -2779,7 +2779,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -2859,7 +2859,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: organization_api_key
-  config.organization_api_key = 'YOUR_BEARER_TOKEN'
+  config.organization_api_key = 'YOUR_ORGANIZATION_API_KEY'
 
 end
 
@@ -2939,7 +2939,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: organization_api_key
-  config.organization_api_key = 'YOUR_BEARER_TOKEN'
+  config.organization_api_key = 'YOUR_ORGANIZATION_API_KEY'
 
 end
 
@@ -3017,7 +3017,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -3097,7 +3097,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -3176,7 +3176,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -3258,7 +3258,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -3338,7 +3338,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -3420,7 +3420,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: organization_api_key
-  config.organization_api_key = 'YOUR_BEARER_TOKEN'
+  config.organization_api_key = 'YOUR_ORGANIZATION_API_KEY'
 
 end
 
@@ -3496,7 +3496,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
@@ -3574,7 +3574,7 @@ require 'onesignal'
 # setup authorization
 OneSignal.configure do |config|
   # Configure Bearer authorization: rest_api_key
-  config.rest_api_key = 'YOUR_BEARER_TOKEN'
+  config.rest_api_key = 'YOUR_REST_API_KEY'
 
 end
 
