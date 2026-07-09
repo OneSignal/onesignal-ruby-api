@@ -20,15 +20,15 @@
 require 'onesignal'
 
 instance = OneSignal::UpdateLiveActivityRequest.new(
-  name: null,
-  event: null,
-  event_updates: null,
-  contents: null,
-  headings: null,
-  sound: null,
-  stale_date: null,
-  dismissal_date: null,
-  priority: null
+  name: nil,
+  event: nil,
+  event_updates: nil,
+  contents: nil,
+  headings: nil,
+  sound: nil,
+  stale_date: nil,
+  dismissal_date: nil,
+  priority: nil
 )
 ```
 

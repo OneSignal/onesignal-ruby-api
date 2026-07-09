@@ -12,7 +12,7 @@
 require 'onesignal'
 
 instance = OneSignal::SubscriptionBody.new(
-  subscription: null
+  subscription: nil
 )
 ```
 

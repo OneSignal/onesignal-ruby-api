@@ -105,7 +105,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | 
+app_id = 'YOUR_APP_ID' # String | 
 notification_id = 'b3a0c8bd-3a4c-4b22-9a73-3f1a8c2d1b88' # String | 
 
 begin
@@ -184,7 +184,7 @@ end
 
 api_instance = OneSignal::DefaultApi.new
 template_id = 'e4d3c2b1-a09f-4f1e-8d7c-6b5a4f3e2d1c' # String | 
-app_id = '00000000-0000-0000-0000-000000000000' # String | 
+app_id = 'YOUR_APP_ID' # String | 
 copy_template_request = OneSignal::CopyTemplateRequest.new({target_app_id: 'target_app_id_example'}) # CopyTemplateRequest | 
 
 begin
@@ -263,7 +263,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | 
+app_id = 'YOUR_APP_ID' # String | 
 alias_label = 'external_id' # String | 
 alias_id = 'YOUR_USER_EXTERNAL_ID' # String | 
 user_identity_body = OneSignal::UserIdentityBody.new # UserIdentityBody | 
@@ -345,7 +345,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | 
+app_id = 'YOUR_APP_ID' # String | 
 subscription_id = '7e4c5b9a-1f60-4d07-9b1a-2e8c8d2cae51' # String | 
 user_identity_body = OneSignal::UserIdentityBody.new # UserIdentityBody | 
 
@@ -425,7 +425,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | 
+app_id = 'YOUR_APP_ID' # String | 
 create_api_key_request = OneSignal::CreateApiKeyRequest.new # CreateApiKeyRequest | 
 
 begin
@@ -579,7 +579,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | Your OneSignal App ID in UUID v4 format.
+app_id = 'YOUR_APP_ID' # String | Your OneSignal App ID in UUID v4 format.
 custom_events_request = OneSignal::CustomEventsRequest.new({events: [OneSignal::CustomEvent.new({name: 'name_example'})]}) # CustomEventsRequest | 
 
 begin
@@ -662,6 +662,7 @@ require 'securerandom'
 notification = OneSignal::Notification.new
 notification.app_id = 'YOUR_APP_ID'
 notification.contents = OneSignal::LanguageStringMap.new({ en: 'Hello from OneSignal!' })
+notification.headings = OneSignal::LanguageStringMap.new({ en: 'Push Notification' })
 notification.include_aliases = { 'external_id' => ['YOUR_USER_EXTERNAL_ID'] }
 notification.target_channel = 'push'
 # Idempotency key: a client-generated UUID that lets you safely retry on network failure.
@@ -711,6 +712,7 @@ api_instance = OneSignal::DefaultApi.new
 notification = OneSignal::Notification.new
 notification.app_id = 'YOUR_APP_ID'
 notification.contents = OneSignal::LanguageStringMap.new({ en: 'Hello from OneSignal!' })
+notification.headings = OneSignal::LanguageStringMap.new({ en: 'Push Notification' })
 notification.include_aliases = { 'external_id' => ['YOUR_USER_EXTERNAL_ID'] }
 notification.target_channel = 'push'
 # No idempotency_key set: the helper generates a UUIDv4 and reuses it across retries.
@@ -789,9 +791,9 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
+app_id = 'YOUR_APP_ID' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
 opts = {
-  segment: OneSignal::Segment.new({name: 'name_example', filters: [OneSignal::Filter.new]}) # Segment | 
+  segment: OneSignal::Segment.new({name: 'Inactive 30 days', filters: [OneSignal::Filter.new]}) # Segment | 
 }
 
 begin
@@ -869,7 +871,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | 
+app_id = 'YOUR_APP_ID' # String | 
 alias_label = 'external_id' # String | 
 alias_id = 'YOUR_USER_EXTERNAL_ID' # String | 
 subscription_body = OneSignal::SubscriptionBody.new # SubscriptionBody | 
@@ -1027,7 +1029,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | 
+app_id = 'YOUR_APP_ID' # String | 
 user = OneSignal::User.new # User | 
 
 begin
@@ -1117,7 +1119,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | 
+app_id = 'YOUR_APP_ID' # String | 
 alias_label = 'external_id' # String | 
 alias_id = 'YOUR_USER_EXTERNAL_ID' # String | 
 alias_label_to_delete = 'external_id' # String | 
@@ -1199,7 +1201,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | 
+app_id = 'YOUR_APP_ID' # String | 
 token_id = '0aa1b2c3-d4e5-46f7-8899-aabbccddeeff' # String | 
 
 begin
@@ -1277,7 +1279,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
+app_id = 'YOUR_APP_ID' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
 segment_id = 'd6c5a3e1-9f17-44a1-9d10-7c0e4a2b1c8e' # String | The segment_id can be found in the URL of the segment when viewing it in the dashboard.
 
 begin
@@ -1355,7 +1357,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | 
+app_id = 'YOUR_APP_ID' # String | 
 subscription_id = '7e4c5b9a-1f60-4d07-9b1a-2e8c8d2cae51' # String | 
 
 begin
@@ -1433,7 +1435,7 @@ end
 
 api_instance = OneSignal::DefaultApi.new
 template_id = 'e4d3c2b1-a09f-4f1e-8d7c-6b5a4f3e2d1c' # String | 
-app_id = '00000000-0000-0000-0000-000000000000' # String | 
+app_id = 'YOUR_APP_ID' # String | 
 
 begin
   # Delete template
@@ -1510,7 +1512,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | 
+app_id = 'YOUR_APP_ID' # String | 
 alias_label = 'external_id' # String | 
 alias_id = 'YOUR_USER_EXTERNAL_ID' # String | 
 
@@ -1590,7 +1592,7 @@ end
 
 api_instance = OneSignal::DefaultApi.new
 notification_id = 'b3a0c8bd-3a4c-4b22-9a73-3f1a8c2d1b88' # String | The ID of the notification to export events from.
-app_id = '00000000-0000-0000-0000-000000000000' # String | The ID of the app that the notification belongs to.
+app_id = 'YOUR_APP_ID' # String | The ID of the app that the notification belongs to.
 
 begin
   # Export CSV of Events
@@ -1667,7 +1669,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | The app ID that you want to export devices from
+app_id = 'YOUR_APP_ID' # String | The app ID that you want to export devices from
 opts = {
   export_subscriptions_request_body: OneSignal::ExportSubscriptionsRequestBody.new # ExportSubscriptionsRequestBody | 
 }
@@ -1747,7 +1749,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | 
+app_id = 'YOUR_APP_ID' # String | 
 alias_label = 'external_id' # String | 
 alias_id = 'YOUR_USER_EXTERNAL_ID' # String | 
 
@@ -1827,7 +1829,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | 
+app_id = 'YOUR_APP_ID' # String | 
 subscription_id = '7e4c5b9a-1f60-4d07-9b1a-2e8c8d2cae51' # String | 
 
 begin
@@ -1905,7 +1907,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | An app id
+app_id = 'YOUR_APP_ID' # String | An app id
 
 begin
   # View an app
@@ -2054,7 +2056,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | 
+app_id = 'YOUR_APP_ID' # String | 
 notification_id = 'b3a0c8bd-3a4c-4b22-9a73-3f1a8c2d1b88' # String | 
 
 begin
@@ -2210,7 +2212,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | The app ID that you want to view notifications from
+app_id = 'YOUR_APP_ID' # String | The app ID that you want to view notifications from
 opts = {
   limit: 10, # Integer | How many notifications to return.  Max is 50.  Default is 50.
   offset: 0, # Integer | Page offset.  Default is 0.  Results are sorted by queued_at in descending order.  queued_at is a representation of the time that the notification was queued at.
@@ -2296,7 +2298,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
+app_id = 'YOUR_APP_ID' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
 outcome_names = 'os__session_duration.count,os__click.count' # String | Required Comma-separated list of names and the value (sum/count) for the returned outcome data. Note: Clicks only support count aggregation. For out-of-the-box OneSignal outcomes such as click and session duration, please use the \"os\" prefix with two underscores. For other outcomes, please use the name specified by the user. Example:os__session_duration.count,os__click.count,CustomOutcomeName.sum 
 opts = {
   outcome_names2: 'os__session_duration.count', # String | Optional If outcome names contain any commas, then please specify only one value at a time. Example: outcome_names[]=os__click.count&outcome_names[]=Sales, Purchase.count where \"Sales, Purchase\" is the custom outcomes with a comma in the name. 
@@ -2384,7 +2386,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
+app_id = 'YOUR_APP_ID' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
 opts = {
   offset: 0, # Integer | Segments are listed in ascending order of created_at date. offset will omit that number of segments from the beginning of the list. Eg offset 5, will remove the 5 earliest created Segments.
   limit: 10 # Integer | The amount of Segments in the response. Maximum 300.
@@ -2466,7 +2468,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | 
+app_id = 'YOUR_APP_ID' # String | 
 alias_label = 'external_id' # String | 
 alias_id = 'YOUR_USER_EXTERNAL_ID' # String | 
 
@@ -2546,7 +2548,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | 
+app_id = 'YOUR_APP_ID' # String | 
 token_id = '0aa1b2c3-d4e5-46f7-8899-aabbccddeeff' # String | 
 
 begin
@@ -2624,7 +2626,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | Your OneSignal App ID in UUID v4 format.
+app_id = 'YOUR_APP_ID' # String | Your OneSignal App ID in UUID v4 format.
 activity_type = 'order_status' # String | The name of the Live Activity defined in your app. This should match the attributes struct used in your app's Live Activity implementation.
 start_live_activity_request = OneSignal::StartLiveActivityRequest.new({name: 'name_example', event: 'start', activity_id: 'activity_id_example', event_attributes: 3.56, event_updates: 3.56, contents: OneSignal::LanguageStringMap.new, headings: OneSignal::LanguageStringMap.new}) # StartLiveActivityRequest | 
 
@@ -2704,7 +2706,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | 
+app_id = 'YOUR_APP_ID' # String | 
 subscription_id = '7e4c5b9a-1f60-4d07-9b1a-2e8c8d2cae51' # String | 
 transfer_subscription_request_body = OneSignal::TransferSubscriptionRequestBody.new # TransferSubscriptionRequestBody | 
 
@@ -2784,7 +2786,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
+app_id = 'YOUR_APP_ID' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
 notification_id = 'b3a0c8bd-3a4c-4b22-9a73-3f1a8c2d1b88' # String | The id of the message found in the creation notification POST response, View Notifications GET response, or URL within the Message Report.
 token = 'YOUR_TOKEN_ID' # String | The unsubscribe token that is generated via liquid syntax in {{subscription.unsubscribe_token}} when personalizing an email.
 
@@ -2864,7 +2866,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | 
+app_id = 'YOUR_APP_ID' # String | 
 token_id = '0aa1b2c3-d4e5-46f7-8899-aabbccddeeff' # String | 
 update_api_key_request = OneSignal::UpdateApiKeyRequest.new # UpdateApiKeyRequest | 
 
@@ -2944,7 +2946,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | An app id
+app_id = 'YOUR_APP_ID' # String | An app id
 app = OneSignal::App.new # App | 
 
 begin
@@ -3022,7 +3024,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
+app_id = 'YOUR_APP_ID' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
 activity_id = '12345' # String | Live Activity record ID
 update_live_activity_request = OneSignal::UpdateLiveActivityRequest.new({name: 'name_example', event: 'update', event_updates: 3.56}) # UpdateLiveActivityRequest | 
 
@@ -3102,7 +3104,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | 
+app_id = 'YOUR_APP_ID' # String | 
 subscription_id = '7e4c5b9a-1f60-4d07-9b1a-2e8c8d2cae51' # String | 
 subscription_body = OneSignal::SubscriptionBody.new # SubscriptionBody | 
 
@@ -3181,7 +3183,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | Your OneSignal App ID in UUID v4 format.
+app_id = 'YOUR_APP_ID' # String | Your OneSignal App ID in UUID v4 format.
 token_type = 'Email' # String | The type of token to use when looking up the subscription. See Subscription Types.
 token = 'user@example.com' # String | The value of the token to lookup by (e.g., email address, phone number).
 subscription_body = OneSignal::SubscriptionBody.new # SubscriptionBody | 
@@ -3264,7 +3266,7 @@ end
 
 api_instance = OneSignal::DefaultApi.new
 template_id = 'e4d3c2b1-a09f-4f1e-8d7c-6b5a4f3e2d1c' # String | 
-app_id = '00000000-0000-0000-0000-000000000000' # String | 
+app_id = 'YOUR_APP_ID' # String | 
 update_template_request = OneSignal::UpdateTemplateRequest.new # UpdateTemplateRequest | 
 
 begin
@@ -3343,7 +3345,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | 
+app_id = 'YOUR_APP_ID' # String | 
 alias_label = 'external_id' # String | 
 alias_id = 'YOUR_USER_EXTERNAL_ID' # String | 
 update_user_request = OneSignal::UpdateUserRequest.new # UpdateUserRequest | 
@@ -3425,7 +3427,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | 
+app_id = 'YOUR_APP_ID' # String | 
 
 begin
   # View API keys
@@ -3502,7 +3504,7 @@ end
 
 api_instance = OneSignal::DefaultApi.new
 template_id = 'e4d3c2b1-a09f-4f1e-8d7c-6b5a4f3e2d1c' # String | 
-app_id = '00000000-0000-0000-0000-000000000000' # String | 
+app_id = 'YOUR_APP_ID' # String | 
 
 begin
   # View template
@@ -3579,7 +3581,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-app_id = '00000000-0000-0000-0000-000000000000' # String | Your OneSignal App ID in UUID v4 format.
+app_id = 'YOUR_APP_ID' # String | Your OneSignal App ID in UUID v4 format.
 opts = {
   limit: 10, # Integer | Maximum number of templates. Default and max is 50.
   offset: 0, # Integer | Pagination offset.

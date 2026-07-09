@@ -778,6 +778,7 @@ module OneSignal
         :'email_reply_to_address',
         :'email_preheader',
         :'disable_email_click_tracking',
+        :'include_unsubscribed',
         :'email_bcc',
         :'email_sender_domain',
         :'sms_from',

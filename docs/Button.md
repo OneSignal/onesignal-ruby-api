@@ -14,9 +14,9 @@
 require 'onesignal'
 
 instance = OneSignal::Button.new(
-  id: null,
-  text: null,
-  icon: null
+  id: nil,
+  text: nil,
+  icon: nil
 )
 ```
 

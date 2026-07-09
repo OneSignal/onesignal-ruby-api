@@ -18,13 +18,13 @@
 require 'onesignal'
 
 instance = OneSignal::SegmentData.new(
-  id: null,
-  name: null,
-  created_at: null,
-  updated_at: null,
-  app_id: null,
-  read_only: null,
-  is_active: null
+  id: nil,
+  name: nil,
+  created_at: nil,
+  updated_at: nil,
+  app_id: nil,
+  read_only: nil,
+  is_active: nil
 )
 ```
 

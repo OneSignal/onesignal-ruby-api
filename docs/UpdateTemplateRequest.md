@@ -21,16 +21,16 @@
 require 'onesignal'
 
 instance = OneSignal::UpdateTemplateRequest.new(
-  name: null,
-  contents: null,
-  headings: null,
-  subtitle: null,
-  is_email: null,
-  email_subject: null,
-  email_body: null,
-  email_bcc: null,
-  is_sms: null,
-  dynamic_content: null
+  name: nil,
+  contents: nil,
+  headings: nil,
+  subtitle: nil,
+  is_email: nil,
+  email_subject: nil,
+  email_body: nil,
+  email_bcc: nil,
+  is_sms: nil,
+  dynamic_content: nil
 )
 ```
 

@@ -18,13 +18,13 @@
 require 'onesignal'
 
 instance = OneSignal::PlatformDeliveryDataEmailAllOf.new(
-  opened: null,
-  unique_opens: null,
-  clicks: null,
-  unique_clicks: null,
-  bounced: null,
-  reported_spam: null,
-  unsubscribed: null
+  opened: nil,
+  unique_opens: nil,
+  clicks: nil,
+  unique_clicks: nil,
+  bounced: nil,
+  reported_spam: nil,
+  unsubscribed: nil
 )
 ```
 

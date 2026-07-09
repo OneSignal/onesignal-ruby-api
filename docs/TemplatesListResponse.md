@@ -12,7 +12,7 @@
 require 'onesignal'
 
 instance = OneSignal::TemplatesListResponse.new(
-  templates: null
+  templates: nil
 )
 ```
 

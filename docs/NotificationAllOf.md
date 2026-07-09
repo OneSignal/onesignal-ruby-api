@@ -12,7 +12,7 @@
 require 'onesignal'
 
 instance = OneSignal::NotificationAllOf.new(
-  send_after: null
+  send_after: nil
 )
 ```
 

@@ -14,9 +14,9 @@
 require 'onesignal'
 
 instance = OneSignal::CreateNotificationSuccessResponse.new(
-  id: null,
-  external_id: null,
-  errors: null
+  id: nil,
+  external_id: nil,
+  errors: nil
 )
 ```
 

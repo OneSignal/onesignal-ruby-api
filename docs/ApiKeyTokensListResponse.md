@@ -12,7 +12,7 @@
 require 'onesignal'
 
 instance = OneSignal::ApiKeyTokensListResponse.new(
-  tokens: null
+  tokens: nil
 )
 ```
 

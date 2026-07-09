@@ -28,23 +28,23 @@
 require 'onesignal'
 
 instance = OneSignal::Subscription.new(
-  id: null,
-  type: null,
-  token: null,
-  enabled: null,
-  notification_types: null,
-  session_time: null,
-  session_count: null,
-  sdk: null,
-  device_model: null,
-  device_os: null,
-  rooted: null,
-  test_type: null,
-  app_version: null,
-  net_type: null,
-  carrier: null,
-  web_auth: null,
-  web_p256: null
+  id: 'e4e87830-b954-4363-b7bc-1f01dbaee5c8',
+  type: nil,
+  token: 'd5d4d1a8-1c9e-42fb-b3f2-56d3a5a9a8b7',
+  enabled: true,
+  notification_types: 1,
+  session_time: 60,
+  session_count: 1,
+  sdk: '5.2.0',
+  device_model: 'iPhone14,2',
+  device_os: '17.1',
+  rooted: nil,
+  test_type: nil,
+  app_version: '1.0.0',
+  net_type: nil,
+  carrier: 'Verizon',
+  web_auth: '5DUmpGmLuTxWCLj5lJpwLQ',
+  web_p256: 'BM5-r8DauQXOb2E-3PgLPjSvjT0Ao9v5oJhw8bZ0cW7Vh6BbmPYcqbbCEJ1P2sK0hZ7HxSh9zGyU5pQk1jJmZ8A'
 )
 ```
 

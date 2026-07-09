@@ -12,7 +12,7 @@
 require 'onesignal'
 
 instance = OneSignal::CreateUserConflictResponseErrorsItemsMeta.new(
-  conflicting_aliases: null
+  conflicting_aliases: nil
 )
 ```
 

@@ -14,9 +14,9 @@
 require 'onesignal'
 
 instance = OneSignal::PropertiesDeltas.new(
-  session_time: null,
-  session_count: null,
-  purchases: null
+  session_time: nil,
+  session_count: nil,
+  purchases: nil
 )
 ```
 

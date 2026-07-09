@@ -14,9 +14,9 @@
 require 'onesignal'
 
 instance = OneSignal::PlatformDeliveryDataSmsAllOf.new(
-  provider_successful: null,
-  provider_failed: null,
-  provider_errored: null
+  provider_successful: nil,
+  provider_failed: nil,
+  provider_errored: nil
 )
 ```
 

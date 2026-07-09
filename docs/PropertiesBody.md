@@ -12,7 +12,7 @@
 require 'onesignal'
 
 instance = OneSignal::PropertiesBody.new(
-  properties: null
+  properties: nil
 )
 ```
 

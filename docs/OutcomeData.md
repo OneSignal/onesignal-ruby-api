@@ -14,9 +14,9 @@
 require 'onesignal'
 
 instance = OneSignal::OutcomeData.new(
-  id: null,
-  value: null,
-  aggregation: null
+  id: nil,
+  value: nil,
+  aggregation: nil
 )
 ```
 

@@ -15,10 +15,10 @@
 require 'onesignal'
 
 instance = OneSignal::Purchase.new(
-  sku: null,
-  amount: null,
-  iso: null,
-  count: null
+  sku: 'com.example.coins100',
+  amount: '0.99',
+  iso: 'USD',
+  count: nil
 )
 ```
 

@@ -12,7 +12,7 @@
 require 'onesignal'
 
 instance = OneSignal::UserIdentityBody.new(
-  identity: null
+  identity: {"external_id":"YOUR_USER_EXTERNAL_ID"}
 )
 ```
 

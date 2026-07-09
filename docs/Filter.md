@@ -19,14 +19,14 @@
 require 'onesignal'
 
 instance = OneSignal::Filter.new(
-  field: null,
-  key: null,
-  value: null,
-  hours_ago: null,
-  radius: null,
-  lat: null,
-  long: null,
-  relation: null
+  field: 'tag',
+  key: 'level',
+  value: '10',
+  hours_ago: '24',
+  radius: nil,
+  lat: nil,
+  long: nil,
+  relation: nil
 )
 ```
 

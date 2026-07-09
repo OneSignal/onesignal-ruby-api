@@ -25,20 +25,20 @@
 require 'onesignal'
 
 instance = OneSignal::NotificationWithMetaAllOf.new(
-  remaining: null,
-  successful: null,
-  failed: null,
-  errored: null,
-  converted: null,
-  queued_at: null,
-  send_after: null,
-  completed_at: null,
-  platform_delivery_stats: null,
-  received: null,
-  throttle_rate_per_minute: null,
-  canceled: null,
-  email_bcc: null,
-  bcc_sent: null
+  remaining: nil,
+  successful: nil,
+  failed: nil,
+  errored: nil,
+  converted: nil,
+  queued_at: nil,
+  send_after: nil,
+  completed_at: nil,
+  platform_delivery_stats: nil,
+  received: nil,
+  throttle_rate_per_minute: nil,
+  canceled: nil,
+  email_bcc: nil,
+  bcc_sent: nil
 )
 ```
 

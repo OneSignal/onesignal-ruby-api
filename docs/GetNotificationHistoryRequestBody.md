@@ -14,9 +14,9 @@
 require 'onesignal'
 
 instance = OneSignal::GetNotificationHistoryRequestBody.new(
-  events: null,
-  email: null,
-  app_id: null
+  events: nil,
+  email: nil,
+  app_id: nil
 )
 ```
 
