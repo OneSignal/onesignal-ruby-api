@@ -27,22 +27,22 @@
 require 'onesignal'
 
 instance = OneSignal::StartLiveActivityRequest.new(
-  name: null,
-  event: null,
-  activity_id: null,
-  event_attributes: null,
-  event_updates: null,
-  contents: null,
-  headings: null,
-  stale_date: null,
-  priority: null,
-  ios_relevance_score: null,
-  idempotency_key: null,
-  include_aliases: null,
-  include_subscription_ids: null,
-  included_segments: null,
-  excluded_segments: null,
-  filters: null
+  name: nil,
+  event: nil,
+  activity_id: nil,
+  event_attributes: nil,
+  event_updates: nil,
+  contents: nil,
+  headings: nil,
+  stale_date: nil,
+  priority: nil,
+  ios_relevance_score: nil,
+  idempotency_key: nil,
+  include_aliases: nil,
+  include_subscription_ids: nil,
+  included_segments: nil,
+  excluded_segments: nil,
+  filters: nil
 )
 ```
 

@@ -14,9 +14,9 @@
 require 'onesignal'
 
 instance = OneSignal::User.new(
-  properties: null,
-  identity: null,
-  subscriptions: null
+  properties: nil,
+  identity: {"external_id":"YOUR_USER_EXTERNAL_ID"},
+  subscriptions: nil
 )
 ```
 

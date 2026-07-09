@@ -13,8 +13,8 @@
 require 'onesignal'
 
 instance = OneSignal::RateLimitError.new(
-  errors: null,
-  limit: null
+  errors: nil,
+  limit: nil
 )
 ```
 

@@ -16,11 +16,11 @@
 require 'onesignal'
 
 instance = OneSignal::DeliveryData.new(
-  successful: null,
-  failed: null,
-  errored: null,
-  converted: null,
-  received: null
+  successful: nil,
+  failed: nil,
+  errored: nil,
+  converted: nil,
+  received: nil
 )
 ```
 

@@ -14,9 +14,9 @@
 require 'onesignal'
 
 instance = OneSignal::GenericError.new(
-  errors: null,
-  success: null,
-  reference: null
+  errors: nil,
+  success: nil,
+  reference: nil
 )
 ```
 

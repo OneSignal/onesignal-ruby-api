@@ -22,17 +22,17 @@
 require 'onesignal'
 
 instance = OneSignal::PropertiesObject.new(
-  tags: null,
-  language: null,
-  timezone_id: null,
-  lat: null,
-  long: null,
-  country: null,
-  first_active: null,
-  last_active: null,
-  amount_spent: null,
-  purchases: null,
-  ip: null
+  tags: {"level":"10","vip":"true"},
+  language: 'en',
+  timezone_id: 'America/Los_Angeles',
+  lat: nil,
+  long: nil,
+  country: 'US',
+  first_active: nil,
+  last_active: nil,
+  amount_spent: nil,
+  purchases: nil,
+  ip: '203.0.113.10'
 )
 ```
 

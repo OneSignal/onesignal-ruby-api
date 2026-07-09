@@ -12,7 +12,7 @@
 require 'onesignal'
 
 instance = OneSignal::CopyTemplateRequest.new(
-  target_app_id: null
+  target_app_id: nil
 )
 ```
 

@@ -14,9 +14,9 @@
 require 'onesignal'
 
 instance = OneSignal::UpdateUserRequest.new(
-  properties: null,
-  refresh_device_metadata: null,
-  deltas: null
+  properties: nil,
+  refresh_device_metadata: nil,
+  deltas: nil
 )
 ```
 

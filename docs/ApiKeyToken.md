@@ -17,12 +17,12 @@
 require 'onesignal'
 
 instance = OneSignal::ApiKeyToken.new(
-  token_id: null,
-  updated_at: null,
-  created_at: null,
-  name: null,
-  ip_allowlist_mode: null,
-  ip_allowlist: null
+  token_id: nil,
+  updated_at: nil,
+  created_at: nil,
+  name: nil,
+  ip_allowlist_mode: nil,
+  ip_allowlist: nil
 )
 ```
 

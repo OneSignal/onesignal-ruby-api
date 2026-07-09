@@ -12,7 +12,7 @@
 require 'onesignal'
 
 instance = OneSignal::TransferSubscriptionRequestBody.new(
-  identity: null
+  identity: nil
 )
 ```
 

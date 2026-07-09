@@ -12,7 +12,7 @@
 require 'onesignal'
 
 instance = OneSignal::CustomEventsRequest.new(
-  events: null
+  events: nil
 )
 ```
 

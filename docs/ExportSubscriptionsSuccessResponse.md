@@ -12,7 +12,7 @@
 require 'onesignal'
 
 instance = OneSignal::ExportSubscriptionsSuccessResponse.new(
-  csv_file_url: null
+  csv_file_url: nil
 )
 ```
 

@@ -19,14 +19,14 @@
 require 'onesignal'
 
 instance = OneSignal::PlatformDeliveryData.new(
-  edge_web_push: null,
-  chrome_web_push: null,
-  firefox_web_push: null,
-  safari_web_push: null,
-  android: null,
-  ios: null,
-  sms: null,
-  email: null
+  edge_web_push: nil,
+  chrome_web_push: nil,
+  firefox_web_push: nil,
+  safari_web_push: nil,
+  android: nil,
+  ios: nil,
+  sms: nil,
+  email: nil
 )
 ```
 

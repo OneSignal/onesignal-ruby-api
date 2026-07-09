@@ -12,7 +12,7 @@
 require 'onesignal'
 
 instance = OneSignal::GenericSuccessBoolResponse.new(
-  success: null
+  success: nil
 )
 ```
 

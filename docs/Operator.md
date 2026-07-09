@@ -12,7 +12,7 @@
 require 'onesignal'
 
 instance = OneSignal::Operator.new(
-  operator: null
+  operator: nil
 )
 ```
 

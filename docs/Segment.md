@@ -14,9 +14,9 @@
 require 'onesignal'
 
 instance = OneSignal::Segment.new(
-  id: null,
-  name: null,
-  filters: null
+  id: 'd5d4d1a8-1c9e-42fb-b3f2-56d3a5a9a8b7',
+  name: 'Inactive 30 days',
+  filters: nil
 )
 ```
 

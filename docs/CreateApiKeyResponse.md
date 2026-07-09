@@ -13,8 +13,8 @@
 require 'onesignal'
 
 instance = OneSignal::CreateApiKeyResponse.new(
-  token_id: null,
-  formatted_token: null
+  token_id: nil,
+  formatted_token: nil
 )
 ```
 

@@ -15,10 +15,10 @@
 require 'onesignal'
 
 instance = OneSignal::GetSegmentsSuccessResponse.new(
-  total_count: null,
-  offset: null,
-  limit: null,
-  segments: null
+  total_count: nil,
+  offset: nil,
+  limit: nil,
+  segments: nil
 )
 ```
 
