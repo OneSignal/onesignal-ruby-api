@@ -17,12 +17,12 @@
 require 'onesignal'
 
 instance = OneSignal::TemplateResource.new(
-  id: null,
-  name: null,
-  created_at: null,
-  updated_at: null,
-  channel: null,
-  content: null
+  id: nil,
+  name: nil,
+  created_at: nil,
+  updated_at: nil,
+  channel: nil,
+  content: nil
 )
 ```
 

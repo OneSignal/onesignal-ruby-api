@@ -14,9 +14,9 @@
 require 'onesignal'
 
 instance = OneSignal::BasicNotificationAllOfAndroidBackgroundLayout.new(
-  image: null,
-  headings_color: null,
-  contents_color: null
+  image: nil,
+  headings_color: nil,
+  contents_color: nil
 )
 ```
 

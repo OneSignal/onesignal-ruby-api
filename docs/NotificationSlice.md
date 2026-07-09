@@ -17,12 +17,12 @@
 require 'onesignal'
 
 instance = OneSignal::NotificationSlice.new(
-  total_count: null,
-  offset: null,
-  limit: null,
-  time_offset: null,
-  next_time_offset: null,
-  notifications: null
+  total_count: nil,
+  offset: nil,
+  limit: nil,
+  time_offset: nil,
+  next_time_offset: nil,
+  notifications: nil
 )
 ```
 

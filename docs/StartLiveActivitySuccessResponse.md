@@ -12,7 +12,7 @@
 require 'onesignal'
 
 instance = OneSignal::StartLiveActivitySuccessResponse.new(
-  notification_id: null
+  notification_id: nil
 )
 ```
 

@@ -16,11 +16,11 @@
 require 'onesignal'
 
 instance = OneSignal::CustomEvent.new(
-  name: null,
-  external_id: null,
-  onesignal_id: null,
-  timestamp: null,
-  payload: null
+  name: nil,
+  external_id: nil,
+  onesignal_id: nil,
+  timestamp: nil,
+  payload: nil
 )
 ```
 

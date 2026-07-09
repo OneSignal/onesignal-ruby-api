@@ -13,8 +13,8 @@
 require 'onesignal'
 
 instance = OneSignal::SegmentNotificationTarget.new(
-  included_segments: null,
-  excluded_segments: null
+  included_segments: nil,
+  excluded_segments: nil
 )
 ```
 

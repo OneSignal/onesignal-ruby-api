@@ -13,8 +13,8 @@
 require 'onesignal'
 
 instance = OneSignal::CreateSegmentConflictResponse.new(
-  success: null,
-  errors: null
+  success: nil,
+  errors: nil
 )
 ```
 

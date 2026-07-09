@@ -13,8 +13,8 @@
 require 'onesignal'
 
 instance = OneSignal::NotificationHistorySuccessResponse.new(
-  success: null,
-  destination_url: null
+  success: nil,
+  destination_url: nil
 )
 ```
 

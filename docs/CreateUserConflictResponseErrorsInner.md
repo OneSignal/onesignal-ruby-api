@@ -14,9 +14,9 @@
 require 'onesignal'
 
 instance = OneSignal::CreateUserConflictResponseErrorsInner.new(
-  code: null,
-  title: null,
-  meta: null
+  code: nil,
+  title: nil,
+  meta: nil
 )
 ```
 

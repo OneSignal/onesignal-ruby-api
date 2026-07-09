@@ -14,9 +14,9 @@
 require 'onesignal'
 
 instance = OneSignal::ExportSubscriptionsRequestBody.new(
-  extra_fields: null,
-  last_active_since: null,
-  segment_name: null
+  extra_fields: nil,
+  last_active_since: nil,
+  segment_name: nil
 )
 ```
 

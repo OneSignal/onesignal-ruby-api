@@ -14,9 +14,9 @@
 require 'onesignal'
 
 instance = OneSignal::UpdateApiKeyRequest.new(
-  name: null,
-  ip_allowlist_mode: null,
-  ip_allowlist: null
+  name: nil,
+  ip_allowlist_mode: nil,
+  ip_allowlist: nil
 )
 ```
 

@@ -15,10 +15,10 @@
 require 'onesignal'
 
 instance = OneSignal::WebButton.new(
-  id: null,
-  text: null,
-  icon: null,
-  url: null
+  id: nil,
+  text: nil,
+  icon: nil,
+  url: nil
 )
 ```
 

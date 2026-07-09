@@ -23,18 +23,18 @@
 require 'onesignal'
 
 instance = OneSignal::SubscriptionNotificationTarget.new(
-  include_subscription_ids: null,
-  include_email_tokens: null,
-  email_to: null,
-  include_phone_numbers: null,
-  include_ios_tokens: null,
-  include_wp_wns_uris: null,
-  include_amazon_reg_ids: null,
-  include_chrome_reg_ids: null,
-  include_chrome_web_reg_ids: null,
-  include_android_reg_ids: null,
-  include_aliases: null,
-  target_channel: null
+  include_subscription_ids: nil,
+  include_email_tokens: nil,
+  email_to: nil,
+  include_phone_numbers: nil,
+  include_ios_tokens: nil,
+  include_wp_wns_uris: nil,
+  include_amazon_reg_ids: nil,
+  include_chrome_reg_ids: nil,
+  include_chrome_web_reg_ids: nil,
+  include_android_reg_ids: nil,
+  include_aliases: nil,
+  target_channel: nil
 )
 ```
 

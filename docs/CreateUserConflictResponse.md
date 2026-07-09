@@ -12,7 +12,7 @@
 require 'onesignal'
 
 instance = OneSignal::CreateUserConflictResponse.new(
-  errors: null
+  errors: nil
 )
 ```
 

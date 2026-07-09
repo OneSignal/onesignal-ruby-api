@@ -12,7 +12,7 @@
 require 'onesignal'
 
 instance = OneSignal::OutcomesData.new(
-  outcomes: null
+  outcomes: nil
 )
 ```
 

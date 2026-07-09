@@ -13,8 +13,8 @@
 require 'onesignal'
 
 instance = OneSignal::CreateSegmentSuccessResponse.new(
-  success: null,
-  id: null
+  success: nil,
+  id: nil
 )
 ```
 
