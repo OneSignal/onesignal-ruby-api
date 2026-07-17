@@ -21,7 +21,7 @@ module OneSignal
     # If `field` is `tag`, this field is *required* to specify `key` inside the tags.
     attr_accessor :key
 
-    # Constant value to use as the second operand in the filter expression. This value is *required* when the relation operator is a binary operator.
+    # Constant value to use as the second operand in the filter expression. This value is *required* when the relation operator is a binary operator. For `in_array` and `not_in_array` relations, provide a comma-separated list of up to 20 values.
     attr_accessor :value
 
     # If `field` is session-related, this is *required* to specify the number of hours before or after the user's session.
@@ -158,7 +158,7 @@ module OneSignal
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      relation_validator = EnumAttributeValidator.new('String', [">", "<", "=", "!=", "exists", "not_exists", "time_elapsed_gt", "time_elapsed_lt"])
+      relation_validator = EnumAttributeValidator.new('String', [">", "<", "=", "!=", "exists", "not_exists", "time_elapsed_gt", "time_elapsed_lt", "in_array", "not_in_array"])
       return false unless relation_validator.valid?(@relation)
       true
     end
@@ -166,7 +166,7 @@ module OneSignal
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] relation Object to be assigned
     def relation=(relation)
-      validator = EnumAttributeValidator.new('String', [">", "<", "=", "!=", "exists", "not_exists", "time_elapsed_gt", "time_elapsed_lt"])
+      validator = EnumAttributeValidator.new('String', [">", "<", "=", "!=", "exists", "not_exists", "time_elapsed_gt", "time_elapsed_lt", "in_array", "not_in_array"])
       unless validator.valid?(relation)
         fail ArgumentError, "invalid value for \"relation\", must be one of #{validator.allowable_values}."
       end

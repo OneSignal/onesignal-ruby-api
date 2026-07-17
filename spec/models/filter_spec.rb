@@ -70,7 +70,7 @@ describe OneSignal::Filter do
   describe 'test attribute "relation"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
-      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', [">", "<", "=", "!=", "exists", "not_exists", "time_elapsed_gt", "time_elapsed_lt"])
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', [">", "<", "=", "!=", "exists", "not_exists", "time_elapsed_gt", "time_elapsed_lt", "in_array", "not_in_array"])
       # validator.allowable_values.each do |value|
       #   expect { instance.relation = value }.not_to raise_error
       # end
