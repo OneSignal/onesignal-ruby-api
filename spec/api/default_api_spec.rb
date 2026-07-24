@@ -398,6 +398,20 @@ describe 'DefaultApi' do
     end
   end
 
+  # unit tests for get_segment
+  # View Segment
+  # Retrieve details for a single segment by its ID, including subscriber count and optionally segment metadata and filters.
+  # @param app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs.
+  # @param segment_id The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard.
+  # @param [Hash] opts the optional parameters
+  # @option opts [Boolean] :include_segment_detail Set to true to include segment metadata and filters in the response.
+  # @return [GetSegmentSuccessResponse]
+  describe 'get_segment test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get_segments
   # Get Segments
   # Returns an array of segments from an app.

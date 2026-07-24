@@ -32,6 +32,7 @@ All URIs are relative to *https://api.onesignal.com*
 | [**get_notification_history**](DefaultApi.md#get_notification_history) | **POST** /notifications/{notification_id}/history | Notification History |
 | [**get_notifications**](DefaultApi.md#get_notifications) | **GET** /notifications | View notifications |
 | [**get_outcomes**](DefaultApi.md#get_outcomes) | **GET** /apps/{app_id}/outcomes | View Outcomes |
+| [**get_segment**](DefaultApi.md#get_segment) | **GET** /apps/{app_id}/segments/{segment_id} | View Segment |
 | [**get_segments**](DefaultApi.md#get_segments) | **GET** /apps/{app_id}/segments | Get Segments |
 | [**get_user**](DefaultApi.md#get_user) | **GET** /apps/{app_id}/users/by/{alias_label}/{alias_id} |  |
 | [**rotate_api_key**](DefaultApi.md#rotate_api_key) | **POST** /apps/{app_id}/auth/tokens/{token_id}/rotate | Rotate API key |
@@ -2355,6 +2356,88 @@ end
 ### Return type
 
 [**OutcomesData**](OutcomesData.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_segment
+
+> <GetSegmentSuccessResponse> get_segment(app_id, segment_id, opts)
+
+View Segment
+
+Retrieve details for a single segment by its ID, including subscriber count and optionally segment metadata and filters.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_REST_API_KEY'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'YOUR_APP_ID' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
+segment_id = 'd6c5a3e1-9f17-44a1-9d10-7c0e4a2b1c8e' # String | The segment's unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard.
+opts = {
+  include_segment_detail: true # Boolean | Set to true to include segment metadata and filters in the response.
+}
+
+begin
+  # View Segment
+  result = api_instance.get_segment(app_id, segment_id, opts)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->get_segment: #{e}"
+  puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+#### Using the get_segment_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetSegmentSuccessResponse>, Integer, Hash)> get_segment_with_http_info(app_id, segment_id, opts)
+
+```ruby
+begin
+  # View Segment
+  data, status_code, headers = api_instance.get_segment_with_http_info(app_id, segment_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetSegmentSuccessResponse>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->get_segment_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | The OneSignal App ID for your app.  Available in Keys &amp; IDs. |  |
+| **segment_id** | **String** | The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. |  |
+| **include_segment_detail** | **Boolean** | Set to true to include segment metadata and filters in the response. | [optional] |
+
+### Return type
+
+[**GetSegmentSuccessResponse**](GetSegmentSuccessResponse.md)
 
 ### Authorization
 
