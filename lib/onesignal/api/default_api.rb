@@ -2043,6 +2043,78 @@ module OneSignal
       return data, status_code, headers
     end
 
+    # View Segment
+    # Retrieve details for a single segment by its ID, including subscriber count and optionally segment metadata and filters.
+    # @param app_id [String] The OneSignal App ID for your app.  Available in Keys &amp; IDs.
+    # @param segment_id [String] The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :include_segment_detail Set to true to include segment metadata and filters in the response.
+    # @return [GetSegmentSuccessResponse]
+    def get_segment(app_id, segment_id, opts = {})
+      data, _status_code, _headers = get_segment_with_http_info(app_id, segment_id, opts)
+      data
+    end
+
+    # View Segment
+    # Retrieve details for a single segment by its ID, including subscriber count and optionally segment metadata and filters.
+    # @param app_id [String] The OneSignal App ID for your app.  Available in Keys &amp; IDs.
+    # @param segment_id [String] The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Boolean] :include_segment_detail Set to true to include segment metadata and filters in the response.
+    # @return [Array<(GetSegmentSuccessResponse, Integer, Hash)>] GetSegmentSuccessResponse data, response status code and response headers
+    def get_segment_with_http_info(app_id, segment_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_segment ...'
+      end
+      # verify the required parameter 'app_id' is set
+      if @api_client.config.client_side_validation && app_id.nil?
+        fail ArgumentError, "Missing the required parameter 'app_id' when calling DefaultApi.get_segment"
+      end
+      # verify the required parameter 'segment_id' is set
+      if @api_client.config.client_side_validation && segment_id.nil?
+        fail ArgumentError, "Missing the required parameter 'segment_id' when calling DefaultApi.get_segment"
+      end
+      # resource path
+      local_var_path = '/apps/{app_id}/segments/{segment_id}'.sub('{' + 'app_id' + '}', CGI.escape(app_id.to_s)).sub('{' + 'segment_id' + '}', CGI.escape(segment_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'include-segment-detail'] = opts[:'include_segment_detail'] if !opts[:'include_segment_detail'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GetSegmentSuccessResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['rest_api_key']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_segment",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_segment\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get Segments
     # Returns an array of segments from an app.
     # @param app_id [String] The OneSignal App ID for your app.  Available in Keys &amp; IDs.
