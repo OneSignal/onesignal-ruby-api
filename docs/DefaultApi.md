@@ -32,8 +32,10 @@ All URIs are relative to *https://api.onesignal.com*
 | [**get_notification_history**](DefaultApi.md#get_notification_history) | **POST** /notifications/{notification_id}/history | Notification History |
 | [**get_notifications**](DefaultApi.md#get_notifications) | **GET** /notifications | View notifications |
 | [**get_outcomes**](DefaultApi.md#get_outcomes) | **GET** /apps/{app_id}/outcomes | View Outcomes |
+| [**get_segment**](DefaultApi.md#get_segment) | **GET** /apps/{app_id}/segments/{segment_id} | View Segment |
 | [**get_segments**](DefaultApi.md#get_segments) | **GET** /apps/{app_id}/segments | Get Segments |
 | [**get_user**](DefaultApi.md#get_user) | **GET** /apps/{app_id}/users/by/{alias_label}/{alias_id} |  |
+| [**list_audit_logs**](DefaultApi.md#list_audit_logs) | **GET** /organizations/{organization_id}/audit_logs | List audit logs |
 | [**rotate_api_key**](DefaultApi.md#rotate_api_key) | **POST** /apps/{app_id}/auth/tokens/{token_id}/rotate | Rotate API key |
 | [**start_live_activity**](DefaultApi.md#start_live_activity) | **POST** /apps/{app_id}/activities/activity/{activity_type} | Start Live Activity |
 | [**transfer_subscription**](DefaultApi.md#transfer_subscription) | **PATCH** /apps/{app_id}/subscriptions/{subscription_id}/owner |  |
@@ -41,6 +43,7 @@ All URIs are relative to *https://api.onesignal.com*
 | [**update_api_key**](DefaultApi.md#update_api_key) | **PATCH** /apps/{app_id}/auth/tokens/{token_id} | Update API key |
 | [**update_app**](DefaultApi.md#update_app) | **PUT** /apps/{app_id} | Update an app |
 | [**update_live_activity**](DefaultApi.md#update_live_activity) | **POST** /apps/{app_id}/live_activities/{activity_id}/notifications | Update a Live Activity via Push |
+| [**update_segment**](DefaultApi.md#update_segment) | **PATCH** /apps/{app_id}/segments/{segment_id} | Update Segment |
 | [**update_subscription**](DefaultApi.md#update_subscription) | **PATCH** /apps/{app_id}/subscriptions/{subscription_id} |  |
 | [**update_subscription_by_token**](DefaultApi.md#update_subscription_by_token) | **PATCH** /apps/{app_id}/subscriptions_by_token/{token_type}/{token} | Update subscription by token |
 | [**update_template**](DefaultApi.md#update_template) | **PATCH** /templates/{template_id} | Update template |
@@ -2366,6 +2369,88 @@ end
 - **Accept**: application/json
 
 
+## get_segment
+
+> <GetSegmentSuccessResponse> get_segment(app_id, segment_id, opts)
+
+View Segment
+
+Retrieve details for a single segment by its ID, including subscriber count and optionally segment metadata and filters.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_REST_API_KEY'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'YOUR_APP_ID' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
+segment_id = 'd6c5a3e1-9f17-44a1-9d10-7c0e4a2b1c8e' # String | The segment's unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard.
+opts = {
+  include_segment_detail: true # Boolean | Set to true to include segment metadata and filters in the response.
+}
+
+begin
+  # View Segment
+  result = api_instance.get_segment(app_id, segment_id, opts)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->get_segment: #{e}"
+  puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+#### Using the get_segment_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GetSegmentSuccessResponse>, Integer, Hash)> get_segment_with_http_info(app_id, segment_id, opts)
+
+```ruby
+begin
+  # View Segment
+  data, status_code, headers = api_instance.get_segment_with_http_info(app_id, segment_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GetSegmentSuccessResponse>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->get_segment_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | The OneSignal App ID for your app.  Available in Keys &amp; IDs. |  |
+| **segment_id** | **String** | The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. |  |
+| **include_segment_detail** | **Boolean** | Set to true to include segment metadata and filters in the response. | [optional] |
+
+### Return type
+
+[**GetSegmentSuccessResponse**](GetSegmentSuccessResponse.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_segments
 
 > <GetSegmentsSuccessResponse> get_segments(app_id, opts)
@@ -2521,6 +2606,106 @@ end
 ### Authorization
 
 [rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## list_audit_logs
+
+> <ListAuditLogsSuccessResponse> list_audit_logs(organization_id, opts)
+
+List audit logs
+
+Retrieve a paginated, time-scoped list of audit log events for an organization. Requires an Enterprise plan with the audit logs entitlement enabled.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: organization_api_key
+  config.organization_api_key = 'YOUR_ORGANIZATION_API_KEY'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+organization_id = 'YOUR_ORG_ID' # String | The UUID of the organization to retrieve audit logs for. Must match the authenticated Organization API Key.
+opts = {
+  start_time: 'start_time_example', # String | Start of the time range in ISO 8601 format (e.g. 2026-02-01T00:00:00Z). Required unless cursor is provided. Must be within the last 90 days.
+  end_time: 'end_time_example', # String | End of the time range in ISO 8601 format. Defaults to the current time. Must be after start_time.
+  cursor: 'cursor_example', # String | Pagination cursor returned in a previous response as next_cursor. When provided, start_time and end_time are ignored.
+  limit: 56, # Integer | Maximum number of events to return per page. Minimum 1, maximum 100. Values outside this range are clamped automatically by the server.
+  app_ids: ['inner_example'], # Array<String> | Filter events by app UUID. Accepts up to 10 values. Org-level events are always included.
+  actions: ['inner_example'], # Array<String> | Filter by action type (e.g. notification.sent, segment.created). Accepts up to 20 values.
+  actor_ids: ['inner_example'], # Array<String> | Filter by actor UUID (the user or service that performed the action). Accepts up to 10 values.
+  actor_emails: ['inner_example'], # Array<String> | Filter by actor email address. Accepts up to 10 values.
+  target_types: ['inner_example'], # Array<String> | Filter by the type of resource the action was performed on (e.g. notification, segment, journey). Accepts up to 10 values.
+  target_ids: ['inner_example'], # Array<String> | Filter by the UUID of the resource the action was performed on. Accepts up to 10 values.
+  ip_addresses: ['inner_example'] # Array<String> | Filter by the IP address the action originated from. Accepts up to 10 values.
+}
+
+begin
+  # List audit logs
+  result = api_instance.list_audit_logs(organization_id, opts)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->list_audit_logs: #{e}"
+  puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+#### Using the list_audit_logs_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<ListAuditLogsSuccessResponse>, Integer, Hash)> list_audit_logs_with_http_info(organization_id, opts)
+
+```ruby
+begin
+  # List audit logs
+  data, status_code, headers = api_instance.list_audit_logs_with_http_info(organization_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <ListAuditLogsSuccessResponse>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->list_audit_logs_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **organization_id** | **String** | The UUID of the organization to retrieve audit logs for. Must match the authenticated Organization API Key. |  |
+| **start_time** | **String** | Start of the time range in ISO 8601 format (e.g. 2026-02-01T00:00:00Z). Required unless cursor is provided. Must be within the last 90 days. | [optional] |
+| **end_time** | **String** | End of the time range in ISO 8601 format. Defaults to the current time. Must be after start_time. | [optional] |
+| **cursor** | **String** | Pagination cursor returned in a previous response as next_cursor. When provided, start_time and end_time are ignored. | [optional] |
+| **limit** | **Integer** | Maximum number of events to return per page. Minimum 1, maximum 100. Values outside this range are clamped automatically by the server. | [optional] |
+| **app_ids** | [**Array&lt;String&gt;**](String.md) | Filter events by app UUID. Accepts up to 10 values. Org-level events are always included. | [optional] |
+| **actions** | [**Array&lt;String&gt;**](String.md) | Filter by action type (e.g. notification.sent, segment.created). Accepts up to 20 values. | [optional] |
+| **actor_ids** | [**Array&lt;String&gt;**](String.md) | Filter by actor UUID (the user or service that performed the action). Accepts up to 10 values. | [optional] |
+| **actor_emails** | [**Array&lt;String&gt;**](String.md) | Filter by actor email address. Accepts up to 10 values. | [optional] |
+| **target_types** | [**Array&lt;String&gt;**](String.md) | Filter by the type of resource the action was performed on (e.g. notification, segment, journey). Accepts up to 10 values. | [optional] |
+| **target_ids** | [**Array&lt;String&gt;**](String.md) | Filter by the UUID of the resource the action was performed on. Accepts up to 10 values. | [optional] |
+| **ip_addresses** | [**Array&lt;String&gt;**](String.md) | Filter by the IP address the action originated from. Accepts up to 10 values. | [optional] |
+
+### Return type
+
+[**ListAuditLogsSuccessResponse**](ListAuditLogsSuccessResponse.md)
+
+### Authorization
+
+[organization_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -3073,6 +3258,88 @@ end
 ### Return type
 
 [**UpdateLiveActivitySuccessResponse**](UpdateLiveActivitySuccessResponse.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_segment
+
+> <UpdateSegmentSuccessResponse> update_segment(app_id, segment_id, opts)
+
+Update Segment
+
+Update an existing segment's name and/or filters. The name parameter is always required. When filters are provided, all existing filters are replaced with the new ones.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_REST_API_KEY'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'YOUR_APP_ID' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
+segment_id = 'd6c5a3e1-9f17-44a1-9d10-7c0e4a2b1c8e' # String | The segment's unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard.
+opts = {
+  update_segment_request: OneSignal::UpdateSegmentRequest.new({name: 'name_example'}) # UpdateSegmentRequest | 
+}
+
+begin
+  # Update Segment
+  result = api_instance.update_segment(app_id, segment_id, opts)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->update_segment: #{e}"
+  puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+#### Using the update_segment_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<UpdateSegmentSuccessResponse>, Integer, Hash)> update_segment_with_http_info(app_id, segment_id, opts)
+
+```ruby
+begin
+  # Update Segment
+  data, status_code, headers = api_instance.update_segment_with_http_info(app_id, segment_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <UpdateSegmentSuccessResponse>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->update_segment_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | The OneSignal App ID for your app.  Available in Keys &amp; IDs. |  |
+| **segment_id** | **String** | The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard. |  |
+| **update_segment_request** | [**UpdateSegmentRequest**](UpdateSegmentRequest.md) |  | [optional] |
+
+### Return type
+
+[**UpdateSegmentSuccessResponse**](UpdateSegmentSuccessResponse.md)
 
 ### Authorization
 
