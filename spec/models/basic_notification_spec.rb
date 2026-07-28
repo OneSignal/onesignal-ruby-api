@@ -303,6 +303,12 @@ describe OneSignal::BasicNotification do
     end
   end
 
+  describe 'test attribute "global_image"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "huawei_big_picture"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
