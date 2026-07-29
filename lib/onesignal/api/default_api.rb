@@ -1367,7 +1367,7 @@ module OneSignal
         fail ArgumentError, "Missing the required parameter 'app_id' when calling DefaultApi.export_events"
       end
       # resource path
-      local_var_path = '/notifications/{notification_id}/export_events?app_id={app_id}'.sub('{' + 'notification_id' + '}', CGI.escape(notification_id.to_s))
+      local_var_path = '/notifications/{notification_id}/export_events'.sub('{' + 'notification_id' + '}', CGI.escape(notification_id.to_s))
 
       # query parameters
       query_params = opts[:query_params] || {}
