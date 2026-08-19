@@ -123,6 +123,19 @@ describe 'DefaultApi' do
     end
   end
 
+  # unit tests for create_journey
+  # Create journey
+  # The Journeys API is in beta. Endpoints and response fields can still change. Create a new journey with an audience and a node graph. Journeys are always created in the draft state. The authenticated App API key must have permission to create journeys.
+  # @param app_id Your OneSignal App ID in UUID v4 format.
+  # @param create_journey_request 
+  # @param [Hash] opts the optional parameters
+  # @return [Journey]
+  describe 'create_journey test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for create_notification
   # Create notification
   # Sends notifications to your users.  **Target by External ID (push example):** set &#x60;include_aliases&#x60; to &#x60;{ \&quot;external_id\&quot;: [\&quot;your-user-id\&quot;] }&#x60; and set &#x60;target_channel&#x60; to &#x60;push&#x60; (or &#x60;email&#x60; / &#x60;sms&#x60; for those channels). Alias object keys must match API labels exactly (for example &#x60;external_id&#x60;, not camelCase).  **Do not confuse** the notification-level &#x60;external_id&#x60; field with External ID targeting: top-level &#x60;external_id&#x60; / &#x60;idempotency_key&#x60; are for idempotent notification requests only, not for selecting recipients.  **Targeting compatibility:** &#x60;include_aliases&#x60; must not be combined with other targeting modes (segments, filters, subscription IDs, legacy player IDs, etc.). Clients should send only one targeting strategy per request. 
@@ -208,6 +221,19 @@ describe 'DefaultApi' do
   # @param [Hash] opts the optional parameters
   # @return [Object]
   describe 'delete_api_key test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for delete_journey
+  # Delete journey
+  # The Journeys API is in beta. Endpoints and response fields can still change. Permanently delete a journey by its UUID. Returns { \&quot;success\&quot;: true } on success. The authenticated App API key must have permission to delete journeys. Deleting a journey stops any in-flight users and cannot be undone. Archive a running journey instead if you need to keep its data.
+  # @param app_id Your OneSignal App ID in UUID v4 format.
+  # @param journey_id UUID of the journey to delete.
+  # @param [Hash] opts the optional parameters
+  # @return [GenericSuccessBoolResponse]
+  describe 'delete_journey test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -542,6 +568,35 @@ describe 'DefaultApi' do
     end
   end
 
+  # unit tests for update_journey
+  # Update journey
+  # The Journeys API is in beta. Endpoints and response fields can still change. Apply a partial update to a journey using JSON Merge Patch (RFC 7396). Send only the fields you want to change; omitted fields are left unchanged. A null value clears a nullable field, and arrays such as nodes are replaced wholesale. Set state to active to activate a draft journey.
+  # @param app_id Your OneSignal App ID in UUID v4 format.
+  # @param journey_id UUID of the journey to update.
+  # @param update_journey_request 
+  # @param [Hash] opts the optional parameters
+  # @return [Journey]
+  describe 'update_journey test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for update_journey_node
+  # Update journey node
+  # The Journeys API is in beta. Endpoints and response fields can still change. Apply a partial update to a single node, located by its server-assigned id, using JSON Merge Patch (RFC 7396). Send only the node fields you want to change; the rest of the node and the rest of the journey graph are left untouched. Returns the full updated journey.
+  # @param app_id Your OneSignal App ID in UUID v4 format.
+  # @param journey_id UUID of the journey that owns the node.
+  # @param node_id Server-assigned UUID of the node to update, from a prior View journey fetch.
+  # @param update_journey_node_request 
+  # @param [Hash] opts the optional parameters
+  # @return [Journey]
+  describe 'update_journey_node test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for update_live_activity
   # Update a Live Activity via Push
   # Updates a specified live activity.
@@ -633,6 +688,46 @@ describe 'DefaultApi' do
   # @param [Hash] opts the optional parameters
   # @return [ApiKeyTokensListResponse]
   describe 'view_api_keys test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for view_journey
+  # View journey
+  # The Journeys API is in beta. Endpoints and response fields can still change. Retrieve the full configuration of a single journey by its UUID, including its audience and node graph.
+  # @param app_id Your OneSignal App ID in UUID v4 format.
+  # @param journey_id UUID of the journey to retrieve.
+  # @param [Hash] opts the optional parameters
+  # @return [Journey]
+  describe 'view_journey test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for view_journey_stats
+  # View journey stats
+  # The Journeys API is in beta. Endpoints and response fields can still change. Retrieve performance stats for a single journey: journey-level entry and exit counts, per-node counts keyed by node id, per-branch counts keyed by branch id, and channel delivery stats for message-sending nodes. The response carries no definition detail, so join it by id against the journey from View journey.
+  # @param app_id Your OneSignal App ID in UUID v4 format.
+  # @param journey_id UUID of the journey to retrieve stats for.
+  # @param [Hash] opts the optional parameters
+  # @return [JourneyStats]
+  describe 'view_journey_stats test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for view_journeys
+  # View journeys
+  # The Journeys API is in beta. Endpoints and response fields can still change. Retrieve a paginated list of journeys for an app. Returns a summary representation of each journey; use View journey for the full configuration. Uses forward-only cursor-based pagination.
+  # @param app_id Your OneSignal App ID in UUID v4 format.
+  # @param [Hash] opts the optional parameters
+  # @option opts [String] :cursor Opaque pagination token from a previous response&#39;s next_cursor. Omit for the first page.
+  # @option opts [Integer] :limit Maximum journeys to return per page. Minimum 1, maximum 50.
+  # @return [JourneyListResponse]
+  describe 'view_journeys test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
