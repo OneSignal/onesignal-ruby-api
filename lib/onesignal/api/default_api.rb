@@ -547,6 +547,80 @@ module OneSignal
       return data, status_code, headers
     end
 
+    # Create journey
+    # The Journeys API is in beta. Endpoints and response fields can still change. Create a new journey with an audience and a node graph. Journeys are always created in the draft state. The authenticated App API key must have permission to create journeys.
+    # @param app_id [String] Your OneSignal App ID in UUID v4 format.
+    # @param create_journey_request [CreateJourneyRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Journey]
+    def create_journey(app_id, create_journey_request, opts = {})
+      data, _status_code, _headers = create_journey_with_http_info(app_id, create_journey_request, opts)
+      data
+    end
+
+    # Create journey
+    # The Journeys API is in beta. Endpoints and response fields can still change. Create a new journey with an audience and a node graph. Journeys are always created in the draft state. The authenticated App API key must have permission to create journeys.
+    # @param app_id [String] Your OneSignal App ID in UUID v4 format.
+    # @param create_journey_request [CreateJourneyRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Journey, Integer, Hash)>] Journey data, response status code and response headers
+    def create_journey_with_http_info(app_id, create_journey_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.create_journey ...'
+      end
+      # verify the required parameter 'app_id' is set
+      if @api_client.config.client_side_validation && app_id.nil?
+        fail ArgumentError, "Missing the required parameter 'app_id' when calling DefaultApi.create_journey"
+      end
+      # verify the required parameter 'create_journey_request' is set
+      if @api_client.config.client_side_validation && create_journey_request.nil?
+        fail ArgumentError, "Missing the required parameter 'create_journey_request' when calling DefaultApi.create_journey"
+      end
+      # resource path
+      local_var_path = '/apps/{app_id}/journeys'.sub('{' + 'app_id' + '}', CGI.escape(app_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(create_journey_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Journey'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['rest_api_key']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.create_journey",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#create_journey\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Create notification
     # Sends notifications to your users.  **Target by External ID (push example):** set `include_aliases` to `{ \"external_id\": [\"your-user-id\"] }` and set `target_channel` to `push` (or `email` / `sms` for those channels). Alias object keys must match API labels exactly (for example `external_id`, not camelCase).  **Do not confuse** the notification-level `external_id` field with External ID targeting: top-level `external_id` / `idempotency_key` are for idempotent notification requests only, not for selecting recipients.  **Targeting compatibility:** `include_aliases` must not be combined with other targeting modes (segments, filters, subscription IDs, legacy player IDs, etc.). Clients should send only one targeting strategy per request. 
     # @param notification [Notification] 
@@ -1053,6 +1127,75 @@ module OneSignal
       data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#delete_api_key\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Delete journey
+    # The Journeys API is in beta. Endpoints and response fields can still change. Permanently delete a journey by its UUID. Returns { \"success\": true } on success. The authenticated App API key must have permission to delete journeys. Deleting a journey stops any in-flight users and cannot be undone. Archive a running journey instead if you need to keep its data.
+    # @param app_id [String] Your OneSignal App ID in UUID v4 format.
+    # @param journey_id [String] UUID of the journey to delete.
+    # @param [Hash] opts the optional parameters
+    # @return [GenericSuccessBoolResponse]
+    def delete_journey(app_id, journey_id, opts = {})
+      data, _status_code, _headers = delete_journey_with_http_info(app_id, journey_id, opts)
+      data
+    end
+
+    # Delete journey
+    # The Journeys API is in beta. Endpoints and response fields can still change. Permanently delete a journey by its UUID. Returns { \&quot;success\&quot;: true } on success. The authenticated App API key must have permission to delete journeys. Deleting a journey stops any in-flight users and cannot be undone. Archive a running journey instead if you need to keep its data.
+    # @param app_id [String] Your OneSignal App ID in UUID v4 format.
+    # @param journey_id [String] UUID of the journey to delete.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(GenericSuccessBoolResponse, Integer, Hash)>] GenericSuccessBoolResponse data, response status code and response headers
+    def delete_journey_with_http_info(app_id, journey_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.delete_journey ...'
+      end
+      # verify the required parameter 'app_id' is set
+      if @api_client.config.client_side_validation && app_id.nil?
+        fail ArgumentError, "Missing the required parameter 'app_id' when calling DefaultApi.delete_journey"
+      end
+      # verify the required parameter 'journey_id' is set
+      if @api_client.config.client_side_validation && journey_id.nil?
+        fail ArgumentError, "Missing the required parameter 'journey_id' when calling DefaultApi.delete_journey"
+      end
+      # resource path
+      local_var_path = '/apps/{app_id}/journeys/{journey_id}'.sub('{' + 'app_id' + '}', CGI.escape(app_id.to_s)).sub('{' + 'journey_id' + '}', CGI.escape(journey_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'GenericSuccessBoolResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['rest_api_key']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.delete_journey",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:DELETE, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#delete_journey\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
@@ -2837,6 +2980,172 @@ module OneSignal
       return data, status_code, headers
     end
 
+    # Update journey
+    # The Journeys API is in beta. Endpoints and response fields can still change. Apply a partial update to a journey using JSON Merge Patch (RFC 7396). Send only the fields you want to change; omitted fields are left unchanged. A null value clears a nullable field, and arrays such as nodes are replaced wholesale. Set state to active to activate a draft journey.
+    # @param app_id [String] Your OneSignal App ID in UUID v4 format.
+    # @param journey_id [String] UUID of the journey to update.
+    # @param update_journey_request [UpdateJourneyRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Journey]
+    def update_journey(app_id, journey_id, update_journey_request, opts = {})
+      data, _status_code, _headers = update_journey_with_http_info(app_id, journey_id, update_journey_request, opts)
+      data
+    end
+
+    # Update journey
+    # The Journeys API is in beta. Endpoints and response fields can still change. Apply a partial update to a journey using JSON Merge Patch (RFC 7396). Send only the fields you want to change; omitted fields are left unchanged. A null value clears a nullable field, and arrays such as nodes are replaced wholesale. Set state to active to activate a draft journey.
+    # @param app_id [String] Your OneSignal App ID in UUID v4 format.
+    # @param journey_id [String] UUID of the journey to update.
+    # @param update_journey_request [UpdateJourneyRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Journey, Integer, Hash)>] Journey data, response status code and response headers
+    def update_journey_with_http_info(app_id, journey_id, update_journey_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_journey ...'
+      end
+      # verify the required parameter 'app_id' is set
+      if @api_client.config.client_side_validation && app_id.nil?
+        fail ArgumentError, "Missing the required parameter 'app_id' when calling DefaultApi.update_journey"
+      end
+      # verify the required parameter 'journey_id' is set
+      if @api_client.config.client_side_validation && journey_id.nil?
+        fail ArgumentError, "Missing the required parameter 'journey_id' when calling DefaultApi.update_journey"
+      end
+      # verify the required parameter 'update_journey_request' is set
+      if @api_client.config.client_side_validation && update_journey_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_journey_request' when calling DefaultApi.update_journey"
+      end
+      # resource path
+      local_var_path = '/apps/{app_id}/journeys/{journey_id}'.sub('{' + 'app_id' + '}', CGI.escape(app_id.to_s)).sub('{' + 'journey_id' + '}', CGI.escape(journey_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_journey_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Journey'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['rest_api_key']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_journey",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_journey\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Update journey node
+    # The Journeys API is in beta. Endpoints and response fields can still change. Apply a partial update to a single node, located by its server-assigned id, using JSON Merge Patch (RFC 7396). Send only the node fields you want to change; the rest of the node and the rest of the journey graph are left untouched. Returns the full updated journey.
+    # @param app_id [String] Your OneSignal App ID in UUID v4 format.
+    # @param journey_id [String] UUID of the journey that owns the node.
+    # @param node_id [String] Server-assigned UUID of the node to update, from a prior View journey fetch.
+    # @param update_journey_node_request [UpdateJourneyNodeRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Journey]
+    def update_journey_node(app_id, journey_id, node_id, update_journey_node_request, opts = {})
+      data, _status_code, _headers = update_journey_node_with_http_info(app_id, journey_id, node_id, update_journey_node_request, opts)
+      data
+    end
+
+    # Update journey node
+    # The Journeys API is in beta. Endpoints and response fields can still change. Apply a partial update to a single node, located by its server-assigned id, using JSON Merge Patch (RFC 7396). Send only the node fields you want to change; the rest of the node and the rest of the journey graph are left untouched. Returns the full updated journey.
+    # @param app_id [String] Your OneSignal App ID in UUID v4 format.
+    # @param journey_id [String] UUID of the journey that owns the node.
+    # @param node_id [String] Server-assigned UUID of the node to update, from a prior View journey fetch.
+    # @param update_journey_node_request [UpdateJourneyNodeRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Journey, Integer, Hash)>] Journey data, response status code and response headers
+    def update_journey_node_with_http_info(app_id, journey_id, node_id, update_journey_node_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.update_journey_node ...'
+      end
+      # verify the required parameter 'app_id' is set
+      if @api_client.config.client_side_validation && app_id.nil?
+        fail ArgumentError, "Missing the required parameter 'app_id' when calling DefaultApi.update_journey_node"
+      end
+      # verify the required parameter 'journey_id' is set
+      if @api_client.config.client_side_validation && journey_id.nil?
+        fail ArgumentError, "Missing the required parameter 'journey_id' when calling DefaultApi.update_journey_node"
+      end
+      # verify the required parameter 'node_id' is set
+      if @api_client.config.client_side_validation && node_id.nil?
+        fail ArgumentError, "Missing the required parameter 'node_id' when calling DefaultApi.update_journey_node"
+      end
+      # verify the required parameter 'update_journey_node_request' is set
+      if @api_client.config.client_side_validation && update_journey_node_request.nil?
+        fail ArgumentError, "Missing the required parameter 'update_journey_node_request' when calling DefaultApi.update_journey_node"
+      end
+      # resource path
+      local_var_path = '/apps/{app_id}/journeys/{journey_id}/nodes/{node_id}'.sub('{' + 'app_id' + '}', CGI.escape(app_id.to_s)).sub('{' + 'journey_id' + '}', CGI.escape(journey_id.to_s)).sub('{' + 'node_id' + '}', CGI.escape(node_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(update_journey_node_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Journey'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['rest_api_key']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.update_journey_node",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:PATCH, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#update_journey_node\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Update a Live Activity via Push
     # Updates a specified live activity.
     # @param app_id [String] The OneSignal App ID for your app.  Available in Keys &amp; IDs.
@@ -3381,6 +3690,221 @@ module OneSignal
       data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DefaultApi#view_api_keys\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # View journey
+    # The Journeys API is in beta. Endpoints and response fields can still change. Retrieve the full configuration of a single journey by its UUID, including its audience and node graph.
+    # @param app_id [String] Your OneSignal App ID in UUID v4 format.
+    # @param journey_id [String] UUID of the journey to retrieve.
+    # @param [Hash] opts the optional parameters
+    # @return [Journey]
+    def view_journey(app_id, journey_id, opts = {})
+      data, _status_code, _headers = view_journey_with_http_info(app_id, journey_id, opts)
+      data
+    end
+
+    # View journey
+    # The Journeys API is in beta. Endpoints and response fields can still change. Retrieve the full configuration of a single journey by its UUID, including its audience and node graph.
+    # @param app_id [String] Your OneSignal App ID in UUID v4 format.
+    # @param journey_id [String] UUID of the journey to retrieve.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(Journey, Integer, Hash)>] Journey data, response status code and response headers
+    def view_journey_with_http_info(app_id, journey_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.view_journey ...'
+      end
+      # verify the required parameter 'app_id' is set
+      if @api_client.config.client_side_validation && app_id.nil?
+        fail ArgumentError, "Missing the required parameter 'app_id' when calling DefaultApi.view_journey"
+      end
+      # verify the required parameter 'journey_id' is set
+      if @api_client.config.client_side_validation && journey_id.nil?
+        fail ArgumentError, "Missing the required parameter 'journey_id' when calling DefaultApi.view_journey"
+      end
+      # resource path
+      local_var_path = '/apps/{app_id}/journeys/{journey_id}'.sub('{' + 'app_id' + '}', CGI.escape(app_id.to_s)).sub('{' + 'journey_id' + '}', CGI.escape(journey_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Journey'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['rest_api_key']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.view_journey",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#view_journey\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # View journey stats
+    # The Journeys API is in beta. Endpoints and response fields can still change. Retrieve performance stats for a single journey: journey-level entry and exit counts, per-node counts keyed by node id, per-branch counts keyed by branch id, and channel delivery stats for message-sending nodes. The response carries no definition detail, so join it by id against the journey from View journey.
+    # @param app_id [String] Your OneSignal App ID in UUID v4 format.
+    # @param journey_id [String] UUID of the journey to retrieve stats for.
+    # @param [Hash] opts the optional parameters
+    # @return [JourneyStats]
+    def view_journey_stats(app_id, journey_id, opts = {})
+      data, _status_code, _headers = view_journey_stats_with_http_info(app_id, journey_id, opts)
+      data
+    end
+
+    # View journey stats
+    # The Journeys API is in beta. Endpoints and response fields can still change. Retrieve performance stats for a single journey: journey-level entry and exit counts, per-node counts keyed by node id, per-branch counts keyed by branch id, and channel delivery stats for message-sending nodes. The response carries no definition detail, so join it by id against the journey from View journey.
+    # @param app_id [String] Your OneSignal App ID in UUID v4 format.
+    # @param journey_id [String] UUID of the journey to retrieve stats for.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(JourneyStats, Integer, Hash)>] JourneyStats data, response status code and response headers
+    def view_journey_stats_with_http_info(app_id, journey_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.view_journey_stats ...'
+      end
+      # verify the required parameter 'app_id' is set
+      if @api_client.config.client_side_validation && app_id.nil?
+        fail ArgumentError, "Missing the required parameter 'app_id' when calling DefaultApi.view_journey_stats"
+      end
+      # verify the required parameter 'journey_id' is set
+      if @api_client.config.client_side_validation && journey_id.nil?
+        fail ArgumentError, "Missing the required parameter 'journey_id' when calling DefaultApi.view_journey_stats"
+      end
+      # resource path
+      local_var_path = '/apps/{app_id}/journeys/{journey_id}/stats'.sub('{' + 'app_id' + '}', CGI.escape(app_id.to_s)).sub('{' + 'journey_id' + '}', CGI.escape(journey_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'JourneyStats'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['rest_api_key']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.view_journey_stats",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#view_journey_stats\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # View journeys
+    # The Journeys API is in beta. Endpoints and response fields can still change. Retrieve a paginated list of journeys for an app. Returns a summary representation of each journey; use View journey for the full configuration. Uses forward-only cursor-based pagination.
+    # @param app_id [String] Your OneSignal App ID in UUID v4 format.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :cursor Opaque pagination token from a previous response&#39;s next_cursor. Omit for the first page.
+    # @option opts [Integer] :limit Maximum journeys to return per page. Minimum 1, maximum 50. (default to 50)
+    # @return [JourneyListResponse]
+    def view_journeys(app_id, opts = {})
+      data, _status_code, _headers = view_journeys_with_http_info(app_id, opts)
+      data
+    end
+
+    # View journeys
+    # The Journeys API is in beta. Endpoints and response fields can still change. Retrieve a paginated list of journeys for an app. Returns a summary representation of each journey; use View journey for the full configuration. Uses forward-only cursor-based pagination.
+    # @param app_id [String] Your OneSignal App ID in UUID v4 format.
+    # @param [Hash] opts the optional parameters
+    # @option opts [String] :cursor Opaque pagination token from a previous response&#39;s next_cursor. Omit for the first page.
+    # @option opts [Integer] :limit Maximum journeys to return per page. Minimum 1, maximum 50. (default to 50)
+    # @return [Array<(JourneyListResponse, Integer, Hash)>] JourneyListResponse data, response status code and response headers
+    def view_journeys_with_http_info(app_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.view_journeys ...'
+      end
+      # verify the required parameter 'app_id' is set
+      if @api_client.config.client_side_validation && app_id.nil?
+        fail ArgumentError, "Missing the required parameter 'app_id' when calling DefaultApi.view_journeys"
+      end
+      if @api_client.config.client_side_validation && !opts[:'limit'].nil? && opts[:'limit'] > 50
+        fail ArgumentError, 'invalid value for "opts[:"limit"]" when calling DefaultApi.view_journeys, must be smaller than or equal to 50.'
+      end
+
+      if @api_client.config.client_side_validation && !opts[:'limit'].nil? && opts[:'limit'] < 1
+        fail ArgumentError, 'invalid value for "opts[:"limit"]" when calling DefaultApi.view_journeys, must be greater than or equal to 1.'
+      end
+
+      # resource path
+      local_var_path = '/apps/{app_id}/journeys'.sub('{' + 'app_id' + '}', CGI.escape(app_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'cursor'] = opts[:'cursor'] if !opts[:'cursor'].nil?
+      query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'JourneyListResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['rest_api_key']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.view_journeys",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#view_journeys\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

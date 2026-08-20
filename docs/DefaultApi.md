@@ -11,6 +11,7 @@ All URIs are relative to *https://api.onesignal.com*
 | [**create_api_key**](DefaultApi.md#create_api_key) | **POST** /apps/{app_id}/auth/tokens | Create API key |
 | [**create_app**](DefaultApi.md#create_app) | **POST** /apps | Create an app |
 | [**create_custom_events**](DefaultApi.md#create_custom_events) | **POST** /apps/{app_id}/custom_events | Create custom events |
+| [**create_journey**](DefaultApi.md#create_journey) | **POST** /apps/{app_id}/journeys | Create journey |
 | [**create_notification**](DefaultApi.md#create_notification) | **POST** /notifications | Create notification |
 | [**create_segment**](DefaultApi.md#create_segment) | **POST** /apps/{app_id}/segments | Create Segment |
 | [**create_subscription**](DefaultApi.md#create_subscription) | **POST** /apps/{app_id}/users/by/{alias_label}/{alias_id}/subscriptions |  |
@@ -18,6 +19,7 @@ All URIs are relative to *https://api.onesignal.com*
 | [**create_user**](DefaultApi.md#create_user) | **POST** /apps/{app_id}/users |  |
 | [**delete_alias**](DefaultApi.md#delete_alias) | **DELETE** /apps/{app_id}/users/by/{alias_label}/{alias_id}/identity/{alias_label_to_delete} |  |
 | [**delete_api_key**](DefaultApi.md#delete_api_key) | **DELETE** /apps/{app_id}/auth/tokens/{token_id} | Delete API key |
+| [**delete_journey**](DefaultApi.md#delete_journey) | **DELETE** /apps/{app_id}/journeys/{journey_id} | Delete journey |
 | [**delete_segment**](DefaultApi.md#delete_segment) | **DELETE** /apps/{app_id}/segments/{segment_id} | Delete Segment |
 | [**delete_subscription**](DefaultApi.md#delete_subscription) | **DELETE** /apps/{app_id}/subscriptions/{subscription_id} |  |
 | [**delete_template**](DefaultApi.md#delete_template) | **DELETE** /templates/{template_id} | Delete template |
@@ -42,6 +44,8 @@ All URIs are relative to *https://api.onesignal.com*
 | [**unsubscribe_email_with_token**](DefaultApi.md#unsubscribe_email_with_token) | **POST** /apps/{app_id}/notifications/{notification_id}/unsubscribe | Unsubscribe with token |
 | [**update_api_key**](DefaultApi.md#update_api_key) | **PATCH** /apps/{app_id}/auth/tokens/{token_id} | Update API key |
 | [**update_app**](DefaultApi.md#update_app) | **PUT** /apps/{app_id} | Update an app |
+| [**update_journey**](DefaultApi.md#update_journey) | **PATCH** /apps/{app_id}/journeys/{journey_id} | Update journey |
+| [**update_journey_node**](DefaultApi.md#update_journey_node) | **PATCH** /apps/{app_id}/journeys/{journey_id}/nodes/{node_id} | Update journey node |
 | [**update_live_activity**](DefaultApi.md#update_live_activity) | **POST** /apps/{app_id}/live_activities/{activity_id}/notifications | Update a Live Activity via Push |
 | [**update_segment**](DefaultApi.md#update_segment) | **PATCH** /apps/{app_id}/segments/{segment_id} | Update Segment |
 | [**update_subscription**](DefaultApi.md#update_subscription) | **PATCH** /apps/{app_id}/subscriptions/{subscription_id} |  |
@@ -49,6 +53,9 @@ All URIs are relative to *https://api.onesignal.com*
 | [**update_template**](DefaultApi.md#update_template) | **PATCH** /templates/{template_id} | Update template |
 | [**update_user**](DefaultApi.md#update_user) | **PATCH** /apps/{app_id}/users/by/{alias_label}/{alias_id} |  |
 | [**view_api_keys**](DefaultApi.md#view_api_keys) | **GET** /apps/{app_id}/auth/tokens | View API keys |
+| [**view_journey**](DefaultApi.md#view_journey) | **GET** /apps/{app_id}/journeys/{journey_id} | View journey |
+| [**view_journey_stats**](DefaultApi.md#view_journey_stats) | **GET** /apps/{app_id}/journeys/{journey_id}/stats | View journey stats |
+| [**view_journeys**](DefaultApi.md#view_journeys) | **GET** /apps/{app_id}/journeys | View journeys |
 | [**view_template**](DefaultApi.md#view_template) | **GET** /templates/{template_id} | View template |
 | [**view_templates**](DefaultApi.md#view_templates) | **GET** /templates | View templates |
 
@@ -629,6 +636,84 @@ end
 ### Return type
 
 **Object**
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## create_journey
+
+> <Journey> create_journey(app_id, create_journey_request)
+
+Create journey
+
+The Journeys API is in beta. Endpoints and response fields can still change. Create a new journey with an audience and a node graph. Journeys are always created in the draft state. The authenticated App API key must have permission to create journeys.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_REST_API_KEY'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'YOUR_APP_ID' # String | Your OneSignal App ID in UUID v4 format.
+create_journey_request = OneSignal::CreateJourneyRequest.new({name: 'name_example'}) # CreateJourneyRequest | 
+
+begin
+  # Create journey
+  result = api_instance.create_journey(app_id, create_journey_request)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->create_journey: #{e}"
+  puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+#### Using the create_journey_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Journey>, Integer, Hash)> create_journey_with_http_info(app_id, create_journey_request)
+
+```ruby
+begin
+  # Create journey
+  data, status_code, headers = api_instance.create_journey_with_http_info(app_id, create_journey_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Journey>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->create_journey_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | Your OneSignal App ID in UUID v4 format. |  |
+| **create_journey_request** | [**CreateJourneyRequest**](CreateJourneyRequest.md) |  |  |
+
+### Return type
+
+[**Journey**](Journey.md)
 
 ### Authorization
 
@@ -1255,6 +1340,84 @@ end
 ### Authorization
 
 [organization_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## delete_journey
+
+> <GenericSuccessBoolResponse> delete_journey(app_id, journey_id)
+
+Delete journey
+
+The Journeys API is in beta. Endpoints and response fields can still change. Permanently delete a journey by its UUID. Returns { \"success\": true } on success. The authenticated App API key must have permission to delete journeys. Deleting a journey stops any in-flight users and cannot be undone. Archive a running journey instead if you need to keep its data.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_REST_API_KEY'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'YOUR_APP_ID' # String | Your OneSignal App ID in UUID v4 format.
+journey_id = 'YOUR_JOURNEY_ID' # String | UUID of the journey to delete.
+
+begin
+  # Delete journey
+  result = api_instance.delete_journey(app_id, journey_id)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->delete_journey: #{e}"
+  puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+#### Using the delete_journey_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<GenericSuccessBoolResponse>, Integer, Hash)> delete_journey_with_http_info(app_id, journey_id)
+
+```ruby
+begin
+  # Delete journey
+  data, status_code, headers = api_instance.delete_journey_with_http_info(app_id, journey_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <GenericSuccessBoolResponse>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->delete_journey_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | Your OneSignal App ID in UUID v4 format. |  |
+| **journey_id** | **String** | UUID of the journey to delete. |  |
+
+### Return type
+
+[**GenericSuccessBoolResponse**](GenericSuccessBoolResponse.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
@@ -3189,6 +3352,168 @@ end
 - **Accept**: application/json
 
 
+## update_journey
+
+> <Journey> update_journey(app_id, journey_id, update_journey_request)
+
+Update journey
+
+The Journeys API is in beta. Endpoints and response fields can still change. Apply a partial update to a journey using JSON Merge Patch (RFC 7396). Send only the fields you want to change; omitted fields are left unchanged. A null value clears a nullable field, and arrays such as nodes are replaced wholesale. Set state to active to activate a draft journey.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_REST_API_KEY'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'YOUR_APP_ID' # String | Your OneSignal App ID in UUID v4 format.
+journey_id = 'YOUR_JOURNEY_ID' # String | UUID of the journey to update.
+update_journey_request = OneSignal::UpdateJourneyRequest.new # UpdateJourneyRequest | 
+
+begin
+  # Update journey
+  result = api_instance.update_journey(app_id, journey_id, update_journey_request)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->update_journey: #{e}"
+  puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+#### Using the update_journey_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Journey>, Integer, Hash)> update_journey_with_http_info(app_id, journey_id, update_journey_request)
+
+```ruby
+begin
+  # Update journey
+  data, status_code, headers = api_instance.update_journey_with_http_info(app_id, journey_id, update_journey_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Journey>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->update_journey_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | Your OneSignal App ID in UUID v4 format. |  |
+| **journey_id** | **String** | UUID of the journey to update. |  |
+| **update_journey_request** | [**UpdateJourneyRequest**](UpdateJourneyRequest.md) |  |  |
+
+### Return type
+
+[**Journey**](Journey.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## update_journey_node
+
+> <Journey> update_journey_node(app_id, journey_id, node_id, update_journey_node_request)
+
+Update journey node
+
+The Journeys API is in beta. Endpoints and response fields can still change. Apply a partial update to a single node, located by its server-assigned id, using JSON Merge Patch (RFC 7396). Send only the node fields you want to change; the rest of the node and the rest of the journey graph are left untouched. Returns the full updated journey.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_REST_API_KEY'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'YOUR_APP_ID' # String | Your OneSignal App ID in UUID v4 format.
+journey_id = 'YOUR_JOURNEY_ID' # String | UUID of the journey that owns the node.
+node_id = 'YOUR_NODE_ID' # String | Server-assigned UUID of the node to update, from a prior View journey fetch.
+update_journey_node_request = OneSignal::UpdateJourneyNodeRequest.new # UpdateJourneyNodeRequest | 
+
+begin
+  # Update journey node
+  result = api_instance.update_journey_node(app_id, journey_id, node_id, update_journey_node_request)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->update_journey_node: #{e}"
+  puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+#### Using the update_journey_node_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Journey>, Integer, Hash)> update_journey_node_with_http_info(app_id, journey_id, node_id, update_journey_node_request)
+
+```ruby
+begin
+  # Update journey node
+  data, status_code, headers = api_instance.update_journey_node_with_http_info(app_id, journey_id, node_id, update_journey_node_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Journey>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->update_journey_node_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | Your OneSignal App ID in UUID v4 format. |  |
+| **journey_id** | **String** | UUID of the journey that owns the node. |  |
+| **node_id** | **String** | Server-assigned UUID of the node to update, from a prior View journey fetch. |  |
+| **update_journey_node_request** | [**UpdateJourneyNodeRequest**](UpdateJourneyNodeRequest.md) |  |  |
+
+### Return type
+
+[**Journey**](Journey.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
 ## update_live_activity
 
 > <UpdateLiveActivitySuccessResponse> update_live_activity(app_id, activity_id, update_live_activity_request)
@@ -3743,6 +4068,244 @@ end
 ### Authorization
 
 [organization_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## view_journey
+
+> <Journey> view_journey(app_id, journey_id)
+
+View journey
+
+The Journeys API is in beta. Endpoints and response fields can still change. Retrieve the full configuration of a single journey by its UUID, including its audience and node graph.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_REST_API_KEY'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'YOUR_APP_ID' # String | Your OneSignal App ID in UUID v4 format.
+journey_id = 'YOUR_JOURNEY_ID' # String | UUID of the journey to retrieve.
+
+begin
+  # View journey
+  result = api_instance.view_journey(app_id, journey_id)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->view_journey: #{e}"
+  puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+#### Using the view_journey_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Journey>, Integer, Hash)> view_journey_with_http_info(app_id, journey_id)
+
+```ruby
+begin
+  # View journey
+  data, status_code, headers = api_instance.view_journey_with_http_info(app_id, journey_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Journey>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->view_journey_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | Your OneSignal App ID in UUID v4 format. |  |
+| **journey_id** | **String** | UUID of the journey to retrieve. |  |
+
+### Return type
+
+[**Journey**](Journey.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## view_journey_stats
+
+> <JourneyStats> view_journey_stats(app_id, journey_id)
+
+View journey stats
+
+The Journeys API is in beta. Endpoints and response fields can still change. Retrieve performance stats for a single journey: journey-level entry and exit counts, per-node counts keyed by node id, per-branch counts keyed by branch id, and channel delivery stats for message-sending nodes. The response carries no definition detail, so join it by id against the journey from View journey.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_REST_API_KEY'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'YOUR_APP_ID' # String | Your OneSignal App ID in UUID v4 format.
+journey_id = 'YOUR_JOURNEY_ID' # String | UUID of the journey to retrieve stats for.
+
+begin
+  # View journey stats
+  result = api_instance.view_journey_stats(app_id, journey_id)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->view_journey_stats: #{e}"
+  puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+#### Using the view_journey_stats_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<JourneyStats>, Integer, Hash)> view_journey_stats_with_http_info(app_id, journey_id)
+
+```ruby
+begin
+  # View journey stats
+  data, status_code, headers = api_instance.view_journey_stats_with_http_info(app_id, journey_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <JourneyStats>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->view_journey_stats_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | Your OneSignal App ID in UUID v4 format. |  |
+| **journey_id** | **String** | UUID of the journey to retrieve stats for. |  |
+
+### Return type
+
+[**JourneyStats**](JourneyStats.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## view_journeys
+
+> <JourneyListResponse> view_journeys(app_id, opts)
+
+View journeys
+
+The Journeys API is in beta. Endpoints and response fields can still change. Retrieve a paginated list of journeys for an app. Returns a summary representation of each journey; use View journey for the full configuration. Uses forward-only cursor-based pagination.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_REST_API_KEY'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'YOUR_APP_ID' # String | Your OneSignal App ID in UUID v4 format.
+opts = {
+  cursor: 'cursor_example', # String | Opaque pagination token from a previous response's next_cursor. Omit for the first page.
+  limit: 50 # Integer | Maximum journeys to return per page. Minimum 1, maximum 50.
+}
+
+begin
+  # View journeys
+  result = api_instance.view_journeys(app_id, opts)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->view_journeys: #{e}"
+  puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+#### Using the view_journeys_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<JourneyListResponse>, Integer, Hash)> view_journeys_with_http_info(app_id, opts)
+
+```ruby
+begin
+  # View journeys
+  data, status_code, headers = api_instance.view_journeys_with_http_info(app_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <JourneyListResponse>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->view_journeys_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | Your OneSignal App ID in UUID v4 format. |  |
+| **cursor** | **String** | Opaque pagination token from a previous response&#39;s next_cursor. Omit for the first page. | [optional] |
+| **limit** | **Integer** | Maximum journeys to return per page. Minimum 1, maximum 50. | [optional][default to 50] |
+
+### Return type
+
+[**JourneyListResponse**](JourneyListResponse.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
