@@ -26,8 +26,11 @@ module OneSignal
 
     attr_accessor :headings
 
-    # Sound file that is included in your app to play instead of the default device notification sound. Omit to disable vibration and sound for the notification.
+    # Deprecated. The API ignores this field. Use `ios_sound`.
     attr_accessor :sound
+
+    # Sound file that is included in your app to play instead of the default device notification sound. Omit to disable vibration and sound for the notification. Requires `headings` on the same request: ActivityKit ignores an update whose alert has no title, which silently drops the sound. Supersedes the deprecated `sound` field. 
+    attr_accessor :ios_sound
 
     # Accepts Unix timestamp in seconds. When time reaches the configured stale date, the system considers the Live Activity out of date, and the ActivityState of the Live Activity changes to ActivityState.stale.
     attr_accessor :stale_date
@@ -35,8 +38,11 @@ module OneSignal
     # Accepts Unix timestamp in seconds; only allowed if event is \"end\"
     attr_accessor :dismissal_date
 
-    # Delivery priority through the the push provider (APNs). Pass 10 for higher priority notifications, or 5 for lower priority notifications. Lower priority notifications are sent based on the power considerations of the end user's device. If not set, defaults to 10. Some providers (APNs) allow for a limited budget of high priority notifications per hour, and if that budget is exceeded, the provider may throttle notification delivery.
+    # Delivery priority through the push provider (APNs). Pass 10 for higher priority notifications, or 5 for lower priority notifications. Lower priority notifications are sent based on the power considerations of the end user's device. If not set, defaults to 10. Some providers (APNs) allow for a limited budget of high priority notifications per hour, and if that budget is exceeded, the provider may throttle notification delivery.
     attr_accessor :priority
+
+    # A value between 0 and 1. When more than one Live Activity is active for your app, the one with the highest relevance score shows in the Dynamic Island. If the scores are equal, the system shows the Live Activity that started first. The score also sets the order of Live Activities on the Lock Screen. Only available on iOS 16.2 and later.
+    attr_accessor :ios_relevance_score
 
     class EnumAttributeValidator
       attr_reader :datatype
@@ -69,9 +75,11 @@ module OneSignal
         :'contents' => :'contents',
         :'headings' => :'headings',
         :'sound' => :'sound',
+        :'ios_sound' => :'ios_sound',
         :'stale_date' => :'stale_date',
         :'dismissal_date' => :'dismissal_date',
-        :'priority' => :'priority'
+        :'priority' => :'priority',
+        :'ios_relevance_score' => :'ios_relevance_score'
       }
     end
 
@@ -89,15 +97,18 @@ module OneSignal
         :'contents' => :'LanguageStringMap',
         :'headings' => :'LanguageStringMap',
         :'sound' => :'String',
+        :'ios_sound' => :'String',
         :'stale_date' => :'Integer',
         :'dismissal_date' => :'Integer',
-        :'priority' => :'Integer'
+        :'priority' => :'Integer',
+        :'ios_relevance_score' => :'Float'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'ios_relevance_score'
       ])
     end
 
@@ -140,6 +151,10 @@ module OneSignal
         self.sound = attributes[:'sound']
       end
 
+      if attributes.key?(:'ios_sound')
+        self.ios_sound = attributes[:'ios_sound']
+      end
+
       if attributes.key?(:'stale_date')
         self.stale_date = attributes[:'stale_date']
       end
@@ -150,6 +165,10 @@ module OneSignal
 
       if attributes.key?(:'priority')
         self.priority = attributes[:'priority']
+      end
+
+      if attributes.key?(:'ios_relevance_score')
+        self.ios_relevance_score = attributes[:'ios_relevance_score']
       end
     end
 
@@ -204,9 +223,11 @@ module OneSignal
           contents == o.contents &&
           headings == o.headings &&
           sound == o.sound &&
+          ios_sound == o.ios_sound &&
           stale_date == o.stale_date &&
           dismissal_date == o.dismissal_date &&
-          priority == o.priority
+          priority == o.priority &&
+          ios_relevance_score == o.ios_relevance_score
     end
 
     # @see the `==` method
@@ -218,7 +239,7 @@ module OneSignal
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [name, event, event_updates, contents, headings, sound, stale_date, dismissal_date, priority].hash
+      [name, event, event_updates, contents, headings, sound, ios_sound, stale_date, dismissal_date, priority, ios_relevance_score].hash
     end
 
     # Builds the object from hash
