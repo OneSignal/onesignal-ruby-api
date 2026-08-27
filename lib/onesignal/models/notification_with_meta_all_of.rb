@@ -55,6 +55,8 @@ module OneSignal
     # Number of BCC copies successfully sent for this notification.
     attr_accessor :bcc_sent
 
+    attr_accessor :email_warm_up
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
@@ -71,7 +73,8 @@ module OneSignal
         :'throttle_rate_per_minute' => :'throttle_rate_per_minute',
         :'canceled' => :'canceled',
         :'email_bcc' => :'email_bcc',
-        :'bcc_sent' => :'bcc_sent'
+        :'bcc_sent' => :'bcc_sent',
+        :'email_warm_up' => :'email_warm_up'
       }
     end
 
@@ -96,7 +99,8 @@ module OneSignal
         :'throttle_rate_per_minute' => :'Integer',
         :'canceled' => :'Boolean',
         :'email_bcc' => :'Array<String>',
-        :'bcc_sent' => :'Integer'
+        :'bcc_sent' => :'Integer',
+        :'email_warm_up' => :'EmailWarmUp'
       }
     end
 
@@ -108,7 +112,7 @@ module OneSignal
         :'received',
         :'throttle_rate_per_minute',
         :'email_bcc',
-        :'bcc_sent'
+        :'bcc_sent',
       ])
     end
 
@@ -184,6 +188,10 @@ module OneSignal
       if attributes.key?(:'bcc_sent')
         self.bcc_sent = attributes[:'bcc_sent']
       end
+
+      if attributes.key?(:'email_warm_up')
+        self.email_warm_up = attributes[:'email_warm_up']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -217,7 +225,8 @@ module OneSignal
           throttle_rate_per_minute == o.throttle_rate_per_minute &&
           canceled == o.canceled &&
           email_bcc == o.email_bcc &&
-          bcc_sent == o.bcc_sent
+          bcc_sent == o.bcc_sent &&
+          email_warm_up == o.email_warm_up
     end
 
     # @see the `==` method
@@ -229,7 +238,7 @@ module OneSignal
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [remaining, successful, failed, errored, converted, queued_at, send_after, completed_at, platform_delivery_stats, received, throttle_rate_per_minute, canceled, email_bcc, bcc_sent].hash
+      [remaining, successful, failed, errored, converted, queued_at, send_after, completed_at, platform_delivery_stats, received, throttle_rate_per_minute, canceled, email_bcc, bcc_sent, email_warm_up].hash
     end
 
     # Builds the object from hash

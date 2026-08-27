@@ -598,6 +598,22 @@ describe OneSignal::BasicNotificationAllOf do
     end
   end
 
+  describe 'test attribute "kind"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+      # validator = Petstore::EnumTest::EnumAttributeValidator.new('String', ["warmup"])
+      # validator.allowable_values.each do |value|
+      #   expect { instance.kind = value }.not_to raise_error
+      # end
+    end
+  end
+
+  describe 'test attribute "email_warm_up"' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   describe 'test attribute "sms_from"' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
