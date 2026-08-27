@@ -18,6 +18,7 @@
 | **canceled** | **Boolean** | Indicates whether the notification was canceled before it could be sent. | [optional] |
 | **email_bcc** | **Array&lt;String&gt;** | BCC recipients that were set on this email notification. | [optional] |
 | **bcc_sent** | **Integer** | Number of BCC copies successfully sent for this notification. | [optional] |
+| **email_warm_up** | [**EmailWarmUp**](EmailWarmUp.md) |  | [optional] |
 
 ## Example
 
@@ -38,7 +39,8 @@ instance = OneSignal::NotificationWithMetaAllOf.new(
   throttle_rate_per_minute: nil,
   canceled: nil,
   email_bcc: nil,
-  bcc_sent: nil
+  bcc_sent: nil,
+  email_warm_up: nil
 )
 ```
 
