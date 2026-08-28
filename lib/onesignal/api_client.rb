@@ -89,7 +89,7 @@ module OneSignal
       url = build_request_url(path, opts)
       http_method = http_method.to_sym.downcase
 
-      opts[:header_params]['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-ruby, version=5.13.0'
+      opts[:header_params]['OS-Usage-Data'] = 'kind=sdk, sdk-name=onesignal-ruby, version=5.14.0'
       header_params = @default_headers.merge(opts[:header_params] || {})
       query_params = opts[:query_params] || {}
       form_params = opts[:form_params] || {}
