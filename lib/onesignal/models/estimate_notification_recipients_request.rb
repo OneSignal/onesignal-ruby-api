@@ -13,18 +13,56 @@ require 'date'
 require 'time'
 
 module OneSignal
-  class SegmentNotificationTarget
+  # The targeting subset of notification fields this endpoint honors. `included_segments` (or its `\"All\"` shorthand) is required. `excluded_segments`, `filters`, `include_aliases`, and `target_channel` narrow that segment-based audience further when present. Use `target_channel` to select which platforms to count. Other notification targeting fields (`include_subscription_ids` and the other raw subscription id/token fields, and the individual `isIos` / `isAndroid` / etc. platform flags) are not read by this endpoint. All non-targeting notification fields (content, delivery options, and so on) are accepted, but ignored. 
+  class EstimateNotificationRecipientsRequest
     # The segment names you want to target. Users in these segments will receive a notification. This targeting parameter is only compatible with excluded_segments. Example: [\"Active Users\", \"Inactive Users\"] `\"All\"` is a shorthand for every subscribed user: if the array includes the string `\"All\"` and the app has no segment actually named `All`, it targets all subscribers instead of a literal segment lookup. 
     attr_accessor :included_segments
 
     # Segment that will be excluded when sending. Users in these segments will not receive a notification, even if they were included in included_segments. This targeting parameter is only compatible with included_segments. Example: [\"Active Users\", \"Inactive Users\"] 
     attr_accessor :excluded_segments
 
+    # The OneSignal App ID for your app, which can be found in Keys & IDs.
+    attr_accessor :app_id
+
+    attr_accessor :filters
+
+    # Target specific users by aliases assigned via API. An alias can be an external_id, onesignal_id, or a custom alias. Accepts an object where keys are alias labels and values are arrays of alias IDs to include Example usage: { \"external_id\": [\"exId1\", \"extId2\"], \"internal_label\": [\"id1\", \"id2\"] } Keys must match API spellings exactly (for example the label for External ID is the string `external_id`; arbitrary keys such as camelCase variants are not aliases and may yield no recipients). Not compatible with any other targeting parameters. REQUIRED: REST API Key Authentication Limit of 2,000 entries per REST API call Note: If targeting push, email, or sms subscribers with same ids, use with target_channel to indicate you are sending a push or email or sms.
+    attr_accessor :include_aliases
+
+    # Which platforms to count recipients for. Selects the same default platforms Create notification would use for the channel. Individual platform flags (`isIos`, `isAndroid`, etc.) are not supported by this endpoint.
+    attr_accessor :target_channel
+
+    class EnumAttributeValidator
+      attr_reader :datatype
+      attr_reader :allowable_values
+
+      def initialize(datatype, allowable_values)
+        @allowable_values = allowable_values.map do |value|
+          case datatype.to_s
+          when /Integer/i
+            value.to_i
+          when /Float/i
+            value.to_f
+          else
+            value
+          end
+        end
+      end
+
+      def valid?(value)
+        !value || allowable_values.include?(value)
+      end
+    end
+
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
         :'included_segments' => :'included_segments',
-        :'excluded_segments' => :'excluded_segments'
+        :'excluded_segments' => :'excluded_segments',
+        :'app_id' => :'app_id',
+        :'filters' => :'filters',
+        :'include_aliases' => :'include_aliases',
+        :'target_channel' => :'target_channel'
       }
     end
 
@@ -37,27 +75,41 @@ module OneSignal
     def self.openapi_types
       {
         :'included_segments' => :'Array<String>',
-        :'excluded_segments' => :'Array<String>'
+        :'excluded_segments' => :'Array<String>',
+        :'app_id' => :'String',
+        :'filters' => :'Array<FilterExpression>',
+        :'include_aliases' => :'Hash<String, Array<String>>',
+        :'target_channel' => :'String'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'filters',
+        :'include_aliases',
       ])
+    end
+
+    # List of class defined in allOf (OpenAPI v3)
+    def self.openapi_all_of
+      [
+      :'EstimateNotificationRecipientsRequestAllOf',
+      :'SegmentNotificationTarget'
+      ]
     end
 
     # Initializes the object
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `OneSignal::SegmentNotificationTarget` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `OneSignal::EstimateNotificationRecipientsRequest` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `OneSignal::SegmentNotificationTarget`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `OneSignal::EstimateNotificationRecipientsRequest`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
@@ -73,19 +125,56 @@ module OneSignal
           self.excluded_segments = value
         end
       end
+
+      if attributes.key?(:'app_id')
+        self.app_id = attributes[:'app_id']
+      end
+
+      if attributes.key?(:'filters')
+        if (value = attributes[:'filters']).is_a?(Array)
+          self.filters = value
+        end
+      end
+
+      if attributes.key?(:'include_aliases')
+        if (value = attributes[:'include_aliases']).is_a?(Hash)
+          self.include_aliases = value
+        end
+      end
+
+      if attributes.key?(:'target_channel')
+        self.target_channel = attributes[:'target_channel']
+      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
     # @return Array for valid properties with the reasons
     def list_invalid_properties
       invalid_properties = Array.new
+      if @app_id.nil?
+        invalid_properties.push('invalid value for "app_id", app_id cannot be nil.')
+      end
+
       invalid_properties
     end
 
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
+      return false if @app_id.nil?
+      target_channel_validator = EnumAttributeValidator.new('String', ["push", "email", "sms"])
+      return false unless target_channel_validator.valid?(@target_channel)
       true
+    end
+
+    # Custom attribute writer method checking allowed values (enum).
+    # @param [Object] target_channel Object to be assigned
+    def target_channel=(target_channel)
+      validator = EnumAttributeValidator.new('String', ["push", "email", "sms"])
+      unless validator.valid?(target_channel)
+        fail ArgumentError, "invalid value for \"target_channel\", must be one of #{validator.allowable_values}."
+      end
+      @target_channel = target_channel
     end
 
     # Checks equality by comparing each attribute.
@@ -94,7 +183,11 @@ module OneSignal
       return true if self.equal?(o)
       self.class == o.class &&
           included_segments == o.included_segments &&
-          excluded_segments == o.excluded_segments
+          excluded_segments == o.excluded_segments &&
+          app_id == o.app_id &&
+          filters == o.filters &&
+          include_aliases == o.include_aliases &&
+          target_channel == o.target_channel
     end
 
     # @see the `==` method
@@ -106,7 +199,7 @@ module OneSignal
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [included_segments, excluded_segments].hash
+      [included_segments, excluded_segments, app_id, filters, include_aliases, target_channel].hash
     end
 
     # Builds the object from hash

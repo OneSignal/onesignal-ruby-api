@@ -13,18 +13,30 @@ require 'date'
 require 'time'
 
 module OneSignal
-  class SegmentNotificationTarget
-    # The segment names you want to target. Users in these segments will receive a notification. This targeting parameter is only compatible with excluded_segments. Example: [\"Active Users\", \"Inactive Users\"] `\"All\"` is a shorthand for every subscribed user: if the array includes the string `\"All\"` and the app has no segment actually named `All`, it targets all subscribers instead of a literal segment lookup. 
-    attr_accessor :included_segments
+  class EstimateNotificationRecipientsSuccessResponse
+    # The estimated audience size based on the user targeting method you've set on the message, and the specific platforms the message is targeted to send to.
+    attr_accessor :count
 
-    # Segment that will be excluded when sending. Users in these segments will not receive a notification, even if they were included in included_segments. This targeting parameter is only compatible with included_segments. Example: [\"Active Users\", \"Inactive Users\"] 
-    attr_accessor :excluded_segments
+    # The estimated audience size before the plan's web push subscriber cap is applied. Present only when `cap_applied` is `true`; `null` otherwise.
+    attr_accessor :uncapped_count
+
+    # Whether `count` was reduced because the app is on a plan that caps the number of web push subscribers it can send to.
+    attr_accessor :cap_applied
+
+    # The mobile equivalent of `cap_applied`. Whether mobile push deliveries will be dropped for this send because the org is over its plan's mobile push subscriber cap. `false` when the notification doesn't target any mobile push platforms.
+    attr_accessor :mobile_suppressed
+
+    # How many mobile push recipients the `count` excludes due to the plan's mobile push subscriber cap. `0` when `mobile_suppressed` is `false`.
+    attr_accessor :mobile_excluded_count
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'included_segments' => :'included_segments',
-        :'excluded_segments' => :'excluded_segments'
+        :'count' => :'count',
+        :'uncapped_count' => :'uncapped_count',
+        :'cap_applied' => :'cap_applied',
+        :'mobile_suppressed' => :'mobile_suppressed',
+        :'mobile_excluded_count' => :'mobile_excluded_count'
       }
     end
 
@@ -36,14 +48,18 @@ module OneSignal
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'included_segments' => :'Array<String>',
-        :'excluded_segments' => :'Array<String>'
+        :'count' => :'Integer',
+        :'uncapped_count' => :'Integer',
+        :'cap_applied' => :'Boolean',
+        :'mobile_suppressed' => :'Boolean',
+        :'mobile_excluded_count' => :'Integer'
       }
     end
 
     # List of attributes with nullable: true
     def self.openapi_nullable
       Set.new([
+        :'uncapped_count',
       ])
     end
 
@@ -51,27 +67,35 @@ module OneSignal
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `OneSignal::SegmentNotificationTarget` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `OneSignal::EstimateNotificationRecipientsSuccessResponse` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `OneSignal::SegmentNotificationTarget`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `OneSignal::EstimateNotificationRecipientsSuccessResponse`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
 
-      if attributes.key?(:'included_segments')
-        if (value = attributes[:'included_segments']).is_a?(Array)
-          self.included_segments = value
-        end
+      if attributes.key?(:'count')
+        self.count = attributes[:'count']
       end
 
-      if attributes.key?(:'excluded_segments')
-        if (value = attributes[:'excluded_segments']).is_a?(Array)
-          self.excluded_segments = value
-        end
+      if attributes.key?(:'uncapped_count')
+        self.uncapped_count = attributes[:'uncapped_count']
+      end
+
+      if attributes.key?(:'cap_applied')
+        self.cap_applied = attributes[:'cap_applied']
+      end
+
+      if attributes.key?(:'mobile_suppressed')
+        self.mobile_suppressed = attributes[:'mobile_suppressed']
+      end
+
+      if attributes.key?(:'mobile_excluded_count')
+        self.mobile_excluded_count = attributes[:'mobile_excluded_count']
       end
     end
 
@@ -93,8 +117,11 @@ module OneSignal
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          included_segments == o.included_segments &&
-          excluded_segments == o.excluded_segments
+          count == o.count &&
+          uncapped_count == o.uncapped_count &&
+          cap_applied == o.cap_applied &&
+          mobile_suppressed == o.mobile_suppressed &&
+          mobile_excluded_count == o.mobile_excluded_count
     end
 
     # @see the `==` method
@@ -106,7 +133,7 @@ module OneSignal
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [included_segments, excluded_segments].hash
+      [count, uncapped_count, cap_applied, mobile_suppressed, mobile_excluded_count].hash
     end
 
     # Builds the object from hash

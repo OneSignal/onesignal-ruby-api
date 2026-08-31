@@ -24,6 +24,7 @@ All URIs are relative to *https://api.onesignal.com*
 | [**delete_subscription**](DefaultApi.md#delete_subscription) | **DELETE** /apps/{app_id}/subscriptions/{subscription_id} |  |
 | [**delete_template**](DefaultApi.md#delete_template) | **DELETE** /templates/{template_id} | Delete template |
 | [**delete_user**](DefaultApi.md#delete_user) | **DELETE** /apps/{app_id}/users/by/{alias_label}/{alias_id} |  |
+| [**estimate_notification_recipients**](DefaultApi.md#estimate_notification_recipients) | **POST** /notifications/count-unsaved | Estimate notification recipients |
 | [**export_events**](DefaultApi.md#export_events) | **POST** /notifications/{notification_id}/export_events | Export CSV of Events |
 | [**export_subscriptions**](DefaultApi.md#export_subscriptions) | **POST** /players/csv_export?app_id&#x3D;{app_id} | Export CSV of Subscriptions |
 | [**get_aliases**](DefaultApi.md#get_aliases) | **GET** /apps/{app_id}/users/by/{alias_label}/{alias_id}/identity |  |
@@ -1734,6 +1735,82 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## estimate_notification_recipients
+
+> <EstimateNotificationRecipientsSuccessResponse> estimate_notification_recipients(estimate_notification_recipients_request)
+
+Estimate notification recipients
+
+Returns the estimated number of recipients for a notification's targeting, without creating or sending anything. The returned `count` reflects the same audience-size estimate you would see under \"Choose your target audience\" when composing a message. It is based on the user targeting method you've set and the specific platforms the message is targeted to send to. This endpoint only supports a subset of targeting parameters: `included_segments` is required (its `\"All\"` shorthand targets every subscriber), and `excluded_segments`, `filters`, `include_aliases`, and `target_channel` narrow that audience further. Use `target_channel` to select platforms. `include_subscription_ids` and the other raw subscription id/token fields, and the individual `isIos` / `isAndroid` / etc. platform flags, are not supported. All other notification fields (content, delivery options, and so on) are accepted, but ignored. 
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_REST_API_KEY'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+estimate_notification_recipients_request = OneSignal::EstimateNotificationRecipientsRequest.new({app_id: 'app_id_example'}) # EstimateNotificationRecipientsRequest | 
+
+begin
+  # Estimate notification recipients
+  result = api_instance.estimate_notification_recipients(estimate_notification_recipients_request)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->estimate_notification_recipients: #{e}"
+  puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+#### Using the estimate_notification_recipients_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EstimateNotificationRecipientsSuccessResponse>, Integer, Hash)> estimate_notification_recipients_with_http_info(estimate_notification_recipients_request)
+
+```ruby
+begin
+  # Estimate notification recipients
+  data, status_code, headers = api_instance.estimate_notification_recipients_with_http_info(estimate_notification_recipients_request)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EstimateNotificationRecipientsSuccessResponse>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->estimate_notification_recipients_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **estimate_notification_recipients_request** | [**EstimateNotificationRecipientsRequest**](EstimateNotificationRecipientsRequest.md) |  |  |
+
+### Return type
+
+[**EstimateNotificationRecipientsSuccessResponse**](EstimateNotificationRecipientsSuccessResponse.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
