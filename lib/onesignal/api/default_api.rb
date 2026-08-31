@@ -1479,6 +1479,74 @@ module OneSignal
       return data, status_code, headers
     end
 
+    # Estimate notification recipients
+    # Returns the estimated number of recipients for a notification's targeting, without creating or sending anything. The returned `count` reflects the same audience-size estimate you would see under \"Choose your target audience\" when composing a message. It is based on the user targeting method you've set and the specific platforms the message is targeted to send to. This endpoint only supports a subset of targeting parameters: `included_segments` is required (its `\"All\"` shorthand targets every subscriber), and `excluded_segments`, `filters`, `include_aliases`, and `target_channel` narrow that audience further. Use `target_channel` to select platforms. `include_subscription_ids` and the other raw subscription id/token fields, and the individual `isIos` / `isAndroid` / etc. platform flags, are not supported. All other notification fields (content, delivery options, and so on) are accepted, but ignored. 
+    # @param estimate_notification_recipients_request [EstimateNotificationRecipientsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [EstimateNotificationRecipientsSuccessResponse]
+    def estimate_notification_recipients(estimate_notification_recipients_request, opts = {})
+      data, _status_code, _headers = estimate_notification_recipients_with_http_info(estimate_notification_recipients_request, opts)
+      data
+    end
+
+    # Estimate notification recipients
+    # Returns the estimated number of recipients for a notification&#39;s targeting, without creating or sending anything. The returned &#x60;count&#x60; reflects the same audience-size estimate you would see under \&quot;Choose your target audience\&quot; when composing a message. It is based on the user targeting method you&#39;ve set and the specific platforms the message is targeted to send to. This endpoint only supports a subset of targeting parameters: &#x60;included_segments&#x60; is required (its &#x60;\&quot;All\&quot;&#x60; shorthand targets every subscriber), and &#x60;excluded_segments&#x60;, &#x60;filters&#x60;, &#x60;include_aliases&#x60;, and &#x60;target_channel&#x60; narrow that audience further. Use &#x60;target_channel&#x60; to select platforms. &#x60;include_subscription_ids&#x60; and the other raw subscription id/token fields, and the individual &#x60;isIos&#x60; / &#x60;isAndroid&#x60; / etc. platform flags, are not supported. All other notification fields (content, delivery options, and so on) are accepted, but ignored. 
+    # @param estimate_notification_recipients_request [EstimateNotificationRecipientsRequest] 
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EstimateNotificationRecipientsSuccessResponse, Integer, Hash)>] EstimateNotificationRecipientsSuccessResponse data, response status code and response headers
+    def estimate_notification_recipients_with_http_info(estimate_notification_recipients_request, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.estimate_notification_recipients ...'
+      end
+      # verify the required parameter 'estimate_notification_recipients_request' is set
+      if @api_client.config.client_side_validation && estimate_notification_recipients_request.nil?
+        fail ArgumentError, "Missing the required parameter 'estimate_notification_recipients_request' when calling DefaultApi.estimate_notification_recipients"
+      end
+      # resource path
+      local_var_path = '/notifications/count-unsaved'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(estimate_notification_recipients_request)
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EstimateNotificationRecipientsSuccessResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['rest_api_key']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.estimate_notification_recipients",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#estimate_notification_recipients\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Export CSV of Events
     # Generate a compressed CSV report of all of the events data for a notification. This will return a URL immediately upon success but it may take several minutes for the CSV to become available at that URL depending on the volume of data. Only one export can be in-progress per OneSignal account at any given time.
     # @param notification_id [String] The ID of the notification to export events from.
