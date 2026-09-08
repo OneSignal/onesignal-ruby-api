@@ -31,6 +31,7 @@ All URIs are relative to *https://api.onesignal.com*
 | [**get_aliases_by_subscription**](DefaultApi.md#get_aliases_by_subscription) | **GET** /apps/{app_id}/subscriptions/{subscription_id}/user/identity |  |
 | [**get_app**](DefaultApi.md#get_app) | **GET** /apps/{app_id} | View an app |
 | [**get_apps**](DefaultApi.md#get_apps) | **GET** /apps | View apps |
+| [**get_email_reputation**](DefaultApi.md#get_email_reputation) | **GET** /apps/{app_id}/email_analytics/delivery_metrics | Get email reputation statistics |
 | [**get_notification**](DefaultApi.md#get_notification) | **GET** /notifications/{notification_id} | View notification |
 | [**get_notification_history**](DefaultApi.md#get_notification_history) | **POST** /notifications/{notification_id}/history | Notification History |
 | [**get_notifications**](DefaultApi.md#get_notifications) | **GET** /notifications | View notifications |
@@ -2272,6 +2273,82 @@ This endpoint does not need any parameter.
 ### Authorization
 
 [organization_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_email_reputation
+
+> <EmailReputationResponse> get_email_reputation(app_id)
+
+Get email reputation statistics
+
+The email bounce and spam complaint rates received for the app over the last 24 hours, 7 days, and 30 days. Rates are expressed as fractions of successfully delivered emails (for example, `0.02` means 2%). A window reports `0` for both rates when the app has not successfully delivered any email in that period. 
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_REST_API_KEY'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'YOUR_APP_ID' # String | Your OneSignal App ID in UUID v4 format.
+
+begin
+  # Get email reputation statistics
+  result = api_instance.get_email_reputation(app_id)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->get_email_reputation: #{e}"
+  puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+#### Using the get_email_reputation_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EmailReputationResponse>, Integer, Hash)> get_email_reputation_with_http_info(app_id)
+
+```ruby
+begin
+  # Get email reputation statistics
+  data, status_code, headers = api_instance.get_email_reputation_with_http_info(app_id)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EmailReputationResponse>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->get_email_reputation_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | Your OneSignal App ID in UUID v4 format. |  |
+
+### Return type
+
+[**EmailReputationResponse**](EmailReputationResponse.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 
