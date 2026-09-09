@@ -376,6 +376,18 @@ describe 'DefaultApi' do
     end
   end
 
+  # unit tests for get_email_reputation
+  # Get email reputation statistics
+  # The email bounce and spam complaint rates received for the app over the last 24 hours, 7 days, and 30 days. Rates are expressed as fractions of successfully delivered emails (for example, &#x60;0.02&#x60; means 2%). A window reports &#x60;0&#x60; for both rates when the app has not successfully delivered any email in that period. 
+  # @param app_id Your OneSignal App ID in UUID v4 format.
+  # @param [Hash] opts the optional parameters
+  # @return [EmailReputationResponse]
+  describe 'get_email_reputation test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get_notification
   # View notification
   # View the details of a single notification and outcomes associated with it

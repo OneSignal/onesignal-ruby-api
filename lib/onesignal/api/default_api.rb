@@ -1947,6 +1947,69 @@ module OneSignal
       return data, status_code, headers
     end
 
+    # Get email reputation statistics
+    # The email bounce and spam complaint rates received for the app over the last 24 hours, 7 days, and 30 days. Rates are expressed as fractions of successfully delivered emails (for example, `0.02` means 2%). A window reports `0` for both rates when the app has not successfully delivered any email in that period. 
+    # @param app_id [String] Your OneSignal App ID in UUID v4 format.
+    # @param [Hash] opts the optional parameters
+    # @return [EmailReputationResponse]
+    def get_email_reputation(app_id, opts = {})
+      data, _status_code, _headers = get_email_reputation_with_http_info(app_id, opts)
+      data
+    end
+
+    # Get email reputation statistics
+    # The email bounce and spam complaint rates received for the app over the last 24 hours, 7 days, and 30 days. Rates are expressed as fractions of successfully delivered emails (for example, &#x60;0.02&#x60; means 2%). A window reports &#x60;0&#x60; for both rates when the app has not successfully delivered any email in that period. 
+    # @param app_id [String] Your OneSignal App ID in UUID v4 format.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailReputationResponse, Integer, Hash)>] EmailReputationResponse data, response status code and response headers
+    def get_email_reputation_with_http_info(app_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_email_reputation ...'
+      end
+      # verify the required parameter 'app_id' is set
+      if @api_client.config.client_side_validation && app_id.nil?
+        fail ArgumentError, "Missing the required parameter 'app_id' when calling DefaultApi.get_email_reputation"
+      end
+      # resource path
+      local_var_path = '/apps/{app_id}/email_analytics/delivery_metrics'.sub('{' + 'app_id' + '}', CGI.escape(app_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EmailReputationResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['rest_api_key']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_email_reputation",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_email_reputation\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # View notification
     # View the details of a single notification and outcomes associated with it
     # @param app_id [String] 
