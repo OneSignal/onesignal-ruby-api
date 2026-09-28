@@ -290,6 +290,20 @@ describe 'DefaultApi' do
     end
   end
 
+  # unit tests for duplicate_journey
+  # Duplicate journey
+  # The Journeys API is in beta. Endpoints and response fields can still change. Copy an existing journey into a new draft. The source does not change. The copy is always a draft, and started_at and archived_at are null. If you omit the body, or omit overrides, the copy keeps the source description, audience, nodes, early_exit, and reentry_rules. The copy takes the source name plus \&quot; (Copy)\&quot;. The copy does not keep schedule. Send schedule under overrides to set it. Server-controlled fields are rejected with 400. The authenticated App API key must have permission to create journeys.
+  # @param app_id Your OneSignal App ID in UUID v4 format.
+  # @param journey_id UUID of the journey to copy.
+  # @param [Hash] opts the optional parameters
+  # @option opts [DuplicateJourneyRequest] :duplicate_journey_request 
+  # @return [Journey]
+  describe 'duplicate_journey test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for estimate_notification_recipients
   # Estimate notification recipients
   # Returns the estimated number of recipients for a notification&#39;s targeting, without creating or sending anything. The returned &#x60;count&#x60; reflects the same audience-size estimate you would see under \&quot;Choose your target audience\&quot; when composing a message. It is based on the user targeting method you&#39;ve set and the specific platforms the message is targeted to send to. This endpoint only supports a subset of targeting parameters: &#x60;included_segments&#x60; is required (its &#x60;\&quot;All\&quot;&#x60; shorthand targets every subscriber), and &#x60;excluded_segments&#x60;, &#x60;filters&#x60;, &#x60;include_aliases&#x60;, and &#x60;target_channel&#x60; narrow that audience further. Use &#x60;target_channel&#x60; to select platforms. &#x60;include_subscription_ids&#x60; and the other raw subscription id/token fields, and the individual &#x60;isIos&#x60; / &#x60;isAndroid&#x60; / etc. platform flags, are not supported. All other notification fields (content, delivery options, and so on) are accepted, but ignored. 

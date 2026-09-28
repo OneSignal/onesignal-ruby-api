@@ -1479,6 +1479,82 @@ module OneSignal
       return data, status_code, headers
     end
 
+    # Duplicate journey
+    # The Journeys API is in beta. Endpoints and response fields can still change. Copy an existing journey into a new draft. The source does not change. The copy is always a draft, and started_at and archived_at are null. If you omit the body, or omit overrides, the copy keeps the source description, audience, nodes, early_exit, and reentry_rules. The copy takes the source name plus \" (Copy)\". The copy does not keep schedule. Send schedule under overrides to set it. Server-controlled fields are rejected with 400. The authenticated App API key must have permission to create journeys.
+    # @param app_id [String] Your OneSignal App ID in UUID v4 format.
+    # @param journey_id [String] UUID of the journey to copy.
+    # @param [Hash] opts the optional parameters
+    # @option opts [DuplicateJourneyRequest] :duplicate_journey_request 
+    # @return [Journey]
+    def duplicate_journey(app_id, journey_id, opts = {})
+      data, _status_code, _headers = duplicate_journey_with_http_info(app_id, journey_id, opts)
+      data
+    end
+
+    # Duplicate journey
+    # The Journeys API is in beta. Endpoints and response fields can still change. Copy an existing journey into a new draft. The source does not change. The copy is always a draft, and started_at and archived_at are null. If you omit the body, or omit overrides, the copy keeps the source description, audience, nodes, early_exit, and reentry_rules. The copy takes the source name plus \&quot; (Copy)\&quot;. The copy does not keep schedule. Send schedule under overrides to set it. Server-controlled fields are rejected with 400. The authenticated App API key must have permission to create journeys.
+    # @param app_id [String] Your OneSignal App ID in UUID v4 format.
+    # @param journey_id [String] UUID of the journey to copy.
+    # @param [Hash] opts the optional parameters
+    # @option opts [DuplicateJourneyRequest] :duplicate_journey_request 
+    # @return [Array<(Journey, Integer, Hash)>] Journey data, response status code and response headers
+    def duplicate_journey_with_http_info(app_id, journey_id, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.duplicate_journey ...'
+      end
+      # verify the required parameter 'app_id' is set
+      if @api_client.config.client_side_validation && app_id.nil?
+        fail ArgumentError, "Missing the required parameter 'app_id' when calling DefaultApi.duplicate_journey"
+      end
+      # verify the required parameter 'journey_id' is set
+      if @api_client.config.client_side_validation && journey_id.nil?
+        fail ArgumentError, "Missing the required parameter 'journey_id' when calling DefaultApi.duplicate_journey"
+      end
+      # resource path
+      local_var_path = '/apps/{app_id}/journeys/{journey_id}/duplicate'.sub('{' + 'app_id' + '}', CGI.escape(app_id.to_s)).sub('{' + 'journey_id' + '}', CGI.escape(journey_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      content_type = @api_client.select_header_content_type(['application/json'])
+      if !content_type.nil?
+          header_params['Content-Type'] = content_type
+      end
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body] || @api_client.object_to_http_body(opts[:'duplicate_journey_request'])
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'Journey'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['rest_api_key']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.duplicate_journey",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#duplicate_journey\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Estimate notification recipients
     # Returns the estimated number of recipients for a notification's targeting, without creating or sending anything. The returned `count` reflects the same audience-size estimate you would see under \"Choose your target audience\" when composing a message. It is based on the user targeting method you've set and the specific platforms the message is targeted to send to. This endpoint only supports a subset of targeting parameters: `included_segments` is required (its `\"All\"` shorthand targets every subscriber), and `excluded_segments`, `filters`, `include_aliases`, and `target_channel` narrow that audience further. Use `target_channel` to select platforms. `include_subscription_ids` and the other raw subscription id/token fields, and the individual `isIos` / `isAndroid` / etc. platform flags, are not supported. All other notification fields (content, delivery options, and so on) are accepted, but ignored. 
     # @param estimate_notification_recipients_request [EstimateNotificationRecipientsRequest] 

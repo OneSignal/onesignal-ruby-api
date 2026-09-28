@@ -24,6 +24,7 @@ All URIs are relative to *https://api.onesignal.com*
 | [**delete_subscription**](DefaultApi.md#delete_subscription) | **DELETE** /apps/{app_id}/subscriptions/{subscription_id} |  |
 | [**delete_template**](DefaultApi.md#delete_template) | **DELETE** /templates/{template_id} | Delete template |
 | [**delete_user**](DefaultApi.md#delete_user) | **DELETE** /apps/{app_id}/users/by/{alias_label}/{alias_id} |  |
+| [**duplicate_journey**](DefaultApi.md#duplicate_journey) | **POST** /apps/{app_id}/journeys/{journey_id}/duplicate | Duplicate journey |
 | [**estimate_notification_recipients**](DefaultApi.md#estimate_notification_recipients) | **POST** /notifications/count-unsaved | Estimate notification recipients |
 | [**export_events**](DefaultApi.md#export_events) | **POST** /notifications/{notification_id}/export_events | Export CSV of Events |
 | [**export_subscriptions**](DefaultApi.md#export_subscriptions) | **POST** /players/csv_export?app_id&#x3D;{app_id} | Export CSV of Subscriptions |
@@ -1736,6 +1737,88 @@ nil (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## duplicate_journey
+
+> <Journey> duplicate_journey(app_id, journey_id, opts)
+
+Duplicate journey
+
+The Journeys API is in beta. Endpoints and response fields can still change. Copy an existing journey into a new draft. The source does not change. The copy is always a draft, and started_at and archived_at are null. If you omit the body, or omit overrides, the copy keeps the source description, audience, nodes, early_exit, and reentry_rules. The copy takes the source name plus \" (Copy)\". The copy does not keep schedule. Send schedule under overrides to set it. Server-controlled fields are rejected with 400. The authenticated App API key must have permission to create journeys.
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_REST_API_KEY'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'YOUR_APP_ID' # String | Your OneSignal App ID in UUID v4 format.
+journey_id = 'YOUR_JOURNEY_ID' # String | UUID of the journey to copy.
+opts = {
+  duplicate_journey_request: OneSignal::DuplicateJourneyRequest.new # DuplicateJourneyRequest | 
+}
+
+begin
+  # Duplicate journey
+  result = api_instance.duplicate_journey(app_id, journey_id, opts)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->duplicate_journey: #{e}"
+  puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+#### Using the duplicate_journey_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<Journey>, Integer, Hash)> duplicate_journey_with_http_info(app_id, journey_id, opts)
+
+```ruby
+begin
+  # Duplicate journey
+  data, status_code, headers = api_instance.duplicate_journey_with_http_info(app_id, journey_id, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <Journey>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->duplicate_journey_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | Your OneSignal App ID in UUID v4 format. |  |
+| **journey_id** | **String** | UUID of the journey to copy. |  |
+| **duplicate_journey_request** | [**DuplicateJourneyRequest**](DuplicateJourneyRequest.md) |  | [optional] |
+
+### Return type
+
+[**Journey**](Journey.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 
 
