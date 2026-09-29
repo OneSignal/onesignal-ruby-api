@@ -13,37 +13,13 @@ require 'date'
 require 'time'
 
 module OneSignal
-  # Full journey representation returned by the detail, create, update, and duplicate endpoints.
-  class Journey
-    # Journey UUID. Read-only.
-    attr_accessor :id
-
-    # UUID of the app the journey belongs to. Read-only.
-    attr_accessor :app_id
-
-    # Journey name, up to 300 characters.
+  # Journey fields to apply over the copy as a JSON Merge Patch (RFC 7396). Accepts the same writable fields as Create journey, and none of them are required. The patch merges into the copy, not the source. The copy starts without a schedule, so an omitted schedule leaves the copy unscheduled. An object merges key by key. A null value clears a nullable field. An array such as nodes replaces the copied array. Server-controlled fields such as id or state are rejected.
+  class DuplicateJourneyOverrides
+    # Name for the copy, up to 300 characters. If you omit it, the copy takes the name of the source plus \" (Copy)\".
     attr_accessor :name
 
-    # Journey description, up to 1024 characters. Defaults to an empty string.
+    # Optional journey description, up to 1024 characters. If you omit it, the copy takes the description of the source. Send null to clear it.
     attr_accessor :description
-
-    # Journey state. New journeys are created as draft. processing is transient while activation is in progress. archived is a journey that has been stopped. Change it through the state field on Update journey.
-    attr_accessor :state
-
-    # ISO 8601 creation time. Read-only.
-    attr_accessor :created_at
-
-    # ISO 8601 last-update time. Read-only.
-    attr_accessor :updated_at
-
-    # ISO 8601 time the journey was activated, or null. Read-only. May stay null briefly after you set state to active: activation is enqueued, and started_at populates once the journey finishes processing.
-    attr_accessor :started_at
-
-    # ISO 8601 time the journey was archived, or null. Read-only.
-    attr_accessor :archived_at
-
-    # Origin of the journey, for example public_api or dashboard. Read-only.
-    attr_accessor :created_source
 
     attr_accessor :audience
 
@@ -53,53 +29,19 @@ module OneSignal
 
     attr_accessor :schedule
 
-    # Ordered list of journey nodes.
+    # Full ordered list of nodes. Replaces the copied graph. Server-assigned id fields are rejected.
     attr_accessor :nodes
-
-    # Opaque optimistic-concurrency token. Read-only. Pass it back on update to guard against overwriting a concurrent change (409). Send it back exactly as read; do not construct or parse it.
-    attr_accessor :concurrency_key
-
-    class EnumAttributeValidator
-      attr_reader :datatype
-      attr_reader :allowable_values
-
-      def initialize(datatype, allowable_values)
-        @allowable_values = allowable_values.map do |value|
-          case datatype.to_s
-          when /Integer/i
-            value.to_i
-          when /Float/i
-            value.to_f
-          else
-            value
-          end
-        end
-      end
-
-      def valid?(value)
-        !value || allowable_values.include?(value)
-      end
-    end
 
     # Attribute mapping from ruby-style variable name to JSON key.
     def self.attribute_map
       {
-        :'id' => :'id',
-        :'app_id' => :'app_id',
         :'name' => :'name',
         :'description' => :'description',
-        :'state' => :'state',
-        :'created_at' => :'created_at',
-        :'updated_at' => :'updated_at',
-        :'started_at' => :'started_at',
-        :'archived_at' => :'archived_at',
-        :'created_source' => :'created_source',
         :'audience' => :'audience',
         :'early_exit' => :'early_exit',
         :'reentry_rules' => :'reentry_rules',
         :'schedule' => :'schedule',
-        :'nodes' => :'nodes',
-        :'concurrency_key' => :'concurrency_key'
+        :'nodes' => :'nodes'
       }
     end
 
@@ -111,22 +53,13 @@ module OneSignal
     # Attribute type mapping.
     def self.openapi_types
       {
-        :'id' => :'String',
-        :'app_id' => :'String',
         :'name' => :'String',
         :'description' => :'String',
-        :'state' => :'String',
-        :'created_at' => :'String',
-        :'updated_at' => :'String',
-        :'started_at' => :'String',
-        :'archived_at' => :'String',
-        :'created_source' => :'String',
         :'audience' => :'JourneyAudience',
         :'early_exit' => :'JourneyEarlyExit',
         :'reentry_rules' => :'JourneyReentryRules',
         :'schedule' => :'JourneySchedule',
-        :'nodes' => :'Array<JourneyNode>',
-        :'concurrency_key' => :'String'
+        :'nodes' => :'Array<JourneyNode>'
       }
     end
 
@@ -134,9 +67,6 @@ module OneSignal
     def self.openapi_nullable
       Set.new([
         :'description',
-        :'started_at',
-        :'archived_at',
-        :'created_source',
         :'early_exit',
         :'reentry_rules',
         :'schedule',
@@ -147,24 +77,16 @@ module OneSignal
     # @param [Hash] attributes Model attributes in the form of hash
     def initialize(attributes = {})
       if (!attributes.is_a?(Hash))
-        fail ArgumentError, "The input argument (attributes) must be a hash in `OneSignal::Journey` initialize method"
+        fail ArgumentError, "The input argument (attributes) must be a hash in `OneSignal::DuplicateJourneyOverrides` initialize method"
       end
 
       # check to see if the attribute exists and convert string to symbol for hash key
       attributes = attributes.each_with_object({}) { |(k, v), h|
         if (!self.class.attribute_map.key?(k.to_sym))
-          fail ArgumentError, "`#{k}` is not a valid attribute in `OneSignal::Journey`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
+          fail ArgumentError, "`#{k}` is not a valid attribute in `OneSignal::DuplicateJourneyOverrides`. Please check the name to make sure it's valid. List of attributes: " + self.class.attribute_map.keys.inspect
         end
         h[k.to_sym] = v
       }
-
-      if attributes.key?(:'id')
-        self.id = attributes[:'id']
-      end
-
-      if attributes.key?(:'app_id')
-        self.app_id = attributes[:'app_id']
-      end
 
       if attributes.key?(:'name')
         self.name = attributes[:'name']
@@ -172,30 +94,6 @@ module OneSignal
 
       if attributes.key?(:'description')
         self.description = attributes[:'description']
-      end
-
-      if attributes.key?(:'state')
-        self.state = attributes[:'state']
-      end
-
-      if attributes.key?(:'created_at')
-        self.created_at = attributes[:'created_at']
-      end
-
-      if attributes.key?(:'updated_at')
-        self.updated_at = attributes[:'updated_at']
-      end
-
-      if attributes.key?(:'started_at')
-        self.started_at = attributes[:'started_at']
-      end
-
-      if attributes.key?(:'archived_at')
-        self.archived_at = attributes[:'archived_at']
-      end
-
-      if attributes.key?(:'created_source')
-        self.created_source = attributes[:'created_source']
       end
 
       if attributes.key?(:'audience')
@@ -219,10 +117,6 @@ module OneSignal
           self.nodes = value
         end
       end
-
-      if attributes.key?(:'concurrency_key')
-        self.concurrency_key = attributes[:'concurrency_key']
-      end
     end
 
     # Show invalid properties with the reasons. Usually used together with valid?
@@ -235,19 +129,7 @@ module OneSignal
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      state_validator = EnumAttributeValidator.new('String', ["draft", "scheduled", "processing", "active", "archived"])
-      return false unless state_validator.valid?(@state)
       true
-    end
-
-    # Custom attribute writer method checking allowed values (enum).
-    # @param [Object] state Object to be assigned
-    def state=(state)
-      validator = EnumAttributeValidator.new('String', ["draft", "scheduled", "processing", "active", "archived"])
-      unless validator.valid?(state)
-        fail ArgumentError, "invalid value for \"state\", must be one of #{validator.allowable_values}."
-      end
-      @state = state
     end
 
     # Checks equality by comparing each attribute.
@@ -255,22 +137,13 @@ module OneSignal
     def ==(o)
       return true if self.equal?(o)
       self.class == o.class &&
-          id == o.id &&
-          app_id == o.app_id &&
           name == o.name &&
           description == o.description &&
-          state == o.state &&
-          created_at == o.created_at &&
-          updated_at == o.updated_at &&
-          started_at == o.started_at &&
-          archived_at == o.archived_at &&
-          created_source == o.created_source &&
           audience == o.audience &&
           early_exit == o.early_exit &&
           reentry_rules == o.reentry_rules &&
           schedule == o.schedule &&
-          nodes == o.nodes &&
-          concurrency_key == o.concurrency_key
+          nodes == o.nodes
     end
 
     # @see the `==` method
@@ -282,7 +155,7 @@ module OneSignal
     # Calculates hash code according to all attributes.
     # @return [Integer] Hash code
     def hash
-      [id, app_id, name, description, state, created_at, updated_at, started_at, archived_at, created_source, audience, early_exit, reentry_rules, schedule, nodes, concurrency_key].hash
+      [name, description, audience, early_exit, reentry_rules, schedule, nodes].hash
     end
 
     # Builds the object from hash
