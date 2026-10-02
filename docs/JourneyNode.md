@@ -7,7 +7,7 @@
 | **id** | **String** | Server-assigned node UUID. Returned on reads. Required on update to keep an existing node. Rejected on create with a 400 validation error. | [optional] |
 | **kind** | **String** | Node kind. Selects which other fields apply. |  |
 | **client_node_id** | **String** | Optional client-assigned identifier, unique within the journey. Use it to reference this node from elsewhere in the same request. Persisted and returned on reads. | [optional] |
-| **annotation** | **String** | Optional free-text label, up to 255 characters. Stored and returned as-is with no effect on journey behavior. | [optional] |
+| **annotation** | **String** | Optional free-text label, up to 1024 characters. Stored and returned as-is with no effect on journey behavior. | [optional] |
 | **duration_seconds** | **Integer** | wait nodes: seconds to hold the user. Minimum 60, maximum 31556952 (1 year). | [optional] |
 | **relative_to** | **String** | time_window nodes: schedule_in_timezone uses the configured windows; last_active_time holds relative to the user&#39;s last active time. | [optional] |
 | **windows** | [**Array&lt;JourneyTimeWindow&gt;**](JourneyTimeWindow.md) | time_window nodes: one or more time windows. A window with no day_of_week applies to every day. Required when relative_to is schedule_in_timezone; omit when it is last_active_time. | [optional] |
@@ -19,7 +19,7 @@
 | **webhook_id** | **String** | send_webhook nodes: UUID of the webhook to send. | [optional] |
 | **assignments** | **Hash&lt;String, String&gt;** | tag nodes: tag key-value pairs to assign. An empty string value removes the tag. Keys are limited to 255 characters and values to 1024. | [optional] |
 | **randomize_on_entry** | **Boolean** | split_range nodes: when true, assigns each user to a branch at random on entry. Defaults to false. | [optional] |
-| **branches** | [**Array&lt;JourneyBranch&gt;**](JourneyBranch.md) | Branching nodes: nested branches. split_range requires 2-20 weighted branches that sum to 100. yes_no requires exactly 2 branches. wait_until requires 1-10 condition branches. | [optional] |
+| **branches** | [**Array&lt;JourneyBranch&gt;**](JourneyBranch.md) | Branching nodes: nested branches. split_range requires 2-25 weighted branches that sum to 100. yes_no requires exactly 2 branches. wait_until requires 1-25 condition branches. | [optional] |
 | **expiration** | [**JourneyWaitUntilExpiration**](JourneyWaitUntilExpiration.md) |  | [optional] |
 
 ## Example
