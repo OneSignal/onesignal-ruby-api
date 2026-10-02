@@ -24,7 +24,7 @@ module OneSignal
     # Optional client-assigned identifier, unique within the journey. Use it to reference this node from elsewhere in the same request. Persisted and returned on reads.
     attr_accessor :client_node_id
 
-    # Optional free-text label, up to 255 characters. Stored and returned as-is with no effect on journey behavior.
+    # Optional free-text label, up to 1024 characters. Stored and returned as-is with no effect on journey behavior.
     attr_accessor :annotation
 
     # wait nodes: seconds to hold the user. Minimum 60, maximum 31556952 (1 year).
@@ -60,7 +60,7 @@ module OneSignal
     # split_range nodes: when true, assigns each user to a branch at random on entry. Defaults to false.
     attr_accessor :randomize_on_entry
 
-    # Branching nodes: nested branches. split_range requires 2-20 weighted branches that sum to 100. yes_no requires exactly 2 branches. wait_until requires 1-10 condition branches.
+    # Branching nodes: nested branches. split_range requires 2-25 weighted branches that sum to 100. yes_no requires exactly 2 branches. wait_until requires 1-25 condition branches.
     attr_accessor :branches
 
     attr_accessor :expiration

@@ -243,7 +243,7 @@ describe 'DefaultApi' do
   # Delete Segment
   # Delete a segment (not user devices) - Required: OneSignal Paid Plan You can delete a segment under your app by calling this API. You must provide an API key in the Authorization header that has admin access on the app. The segment_id can be found in the URL of the segment when viewing it in the dashboard. 
   # @param app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs.
-  # @param segment_id The segment_id can be found in the URL of the segment when viewing it in the dashboard.
+  # @param segment_id The segment&#39;s unique identifier. In the dashboard, go to Audience &gt; Segments, open the segment&#39;s options menu, and select Copy segment ID. You can also get it from the View Segments API or the segment&#39;s URL in the dashboard.
   # @param [Hash] opts the optional parameters
   # @return [GenericSuccessBoolResponse]
   describe 'delete_segment test' do
@@ -285,6 +285,20 @@ describe 'DefaultApi' do
   # @param [Hash] opts the optional parameters
   # @return [nil]
   describe 'delete_user test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for duplicate_journey
+  # Duplicate journey
+  # The Journeys API is in beta. Endpoints and response fields can still change. Copy an existing journey into a new draft. The source does not change. The copy is always a draft, and started_at and archived_at are null. If you omit the body, or omit overrides, the copy keeps the source description, audience, nodes, early_exit, and reentry_rules. The copy takes the source name plus \&quot; (Copy)\&quot;. The copy does not keep schedule. Send schedule under overrides to set it. Server-controlled fields are rejected with 400. The authenticated App API key must have permission to create journeys.
+  # @param app_id Your OneSignal App ID in UUID v4 format.
+  # @param journey_id UUID of the journey to copy.
+  # @param [Hash] opts the optional parameters
+  # @option opts [DuplicateJourneyRequest] :duplicate_journey_request 
+  # @return [Journey]
+  describe 'duplicate_journey test' do
     it 'should work' do
       # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
     end
@@ -451,7 +465,7 @@ describe 'DefaultApi' do
   # View Segment
   # Retrieve details for a single segment by its ID, including subscriber count and optionally segment metadata and filters.
   # @param app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs.
-  # @param segment_id The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard.
+  # @param segment_id The segment&#39;s unique identifier. In the dashboard, go to Audience &gt; Segments, open the segment&#39;s options menu, and select Copy segment ID. You can also get it from the View Segments API or the segment&#39;s URL in the dashboard.
   # @param [Hash] opts the optional parameters
   # @option opts [Boolean] :include_segment_detail Set to true to include segment metadata and filters in the response.
   # @return [GetSegmentSuccessResponse]
@@ -639,7 +653,7 @@ describe 'DefaultApi' do
   # Update Segment
   # Update an existing segment&#39;s name and/or filters. The name parameter is always required. When filters are provided, all existing filters are replaced with the new ones.
   # @param app_id The OneSignal App ID for your app.  Available in Keys &amp; IDs.
-  # @param segment_id The segment&#39;s unique identifier. Can be found using the View Segments API or in the URL of the segment when viewing it in the dashboard.
+  # @param segment_id The segment&#39;s unique identifier. In the dashboard, go to Audience &gt; Segments, open the segment&#39;s options menu, and select Copy segment ID. You can also get it from the View Segments API or the segment&#39;s URL in the dashboard.
   # @param [Hash] opts the optional parameters
   # @option opts [UpdateSegmentRequest] :update_segment_request 
   # @return [UpdateSegmentSuccessResponse]

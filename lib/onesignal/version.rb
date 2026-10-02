@@ -10,5 +10,5 @@ OpenAPI Generator version: 6.0.0-SNAPSHOT
 =end
 
 module OneSignal
-  VERSION = '5.16.0'
+  VERSION = '5.17.0'
 end
