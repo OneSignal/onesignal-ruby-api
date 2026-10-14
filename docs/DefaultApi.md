@@ -198,7 +198,7 @@ end
 api_instance = OneSignal::DefaultApi.new
 template_id = 'e4d3c2b1-a09f-4f1e-8d7c-6b5a4f3e2d1c' # String | 
 app_id = 'YOUR_APP_ID' # String | 
-copy_template_request = OneSignal::CopyTemplateRequest.new({target_app_id: 'target_app_id_example'}) # CopyTemplateRequest | 
+copy_template_request = OneSignal::CopyTemplateRequest.new({target_app_id: 'YOUR_TARGET_APP_ID'}) # CopyTemplateRequest | 
 
 begin
   # Copy template to another app
@@ -593,7 +593,7 @@ end
 
 api_instance = OneSignal::DefaultApi.new
 app_id = 'YOUR_APP_ID' # String | Your OneSignal App ID in UUID v4 format.
-custom_events_request = OneSignal::CustomEventsRequest.new({events: [OneSignal::CustomEvent.new({name: 'name_example'})]}) # CustomEventsRequest | 
+custom_events_request = OneSignal::CustomEventsRequest.new({events: [OneSignal::CustomEvent.new({name: 'YOUR_NAME'})]}) # CustomEventsRequest | 
 
 begin
   # Create custom events
@@ -671,7 +671,7 @@ end
 
 api_instance = OneSignal::DefaultApi.new
 app_id = 'YOUR_APP_ID' # String | Your OneSignal App ID in UUID v4 format.
-create_journey_request = OneSignal::CreateJourneyRequest.new({name: 'name_example'}) # CreateJourneyRequest | 
+create_journey_request = OneSignal::CreateJourneyRequest.new({name: 'YOUR_NAME'}) # CreateJourneyRequest | 
 
 begin
   # Create journey
@@ -1044,7 +1044,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-create_template_request = OneSignal::CreateTemplateRequest.new({app_id: 'app_id_example', name: 'name_example', contents: OneSignal::LanguageStringMap.new}) # CreateTemplateRequest | 
+create_template_request = OneSignal::CreateTemplateRequest.new({app_id: 'YOUR_APP_ID', name: 'YOUR_NAME', contents: OneSignal::LanguageStringMap.new}) # CreateTemplateRequest | 
 
 begin
   # Create template
@@ -1842,7 +1842,7 @@ OneSignal.configure do |config|
 end
 
 api_instance = OneSignal::DefaultApi.new
-estimate_notification_recipients_request = OneSignal::EstimateNotificationRecipientsRequest.new({app_id: 'app_id_example'}) # EstimateNotificationRecipientsRequest | 
+estimate_notification_recipients_request = OneSignal::EstimateNotificationRecipientsRequest.new({app_id: 'YOUR_APP_ID'}) # EstimateNotificationRecipientsRequest | 
 
 begin
   # Estimate notification recipients
@@ -3035,17 +3035,17 @@ end
 api_instance = OneSignal::DefaultApi.new
 organization_id = 'YOUR_ORG_ID' # String | The UUID of the organization to retrieve audit logs for. Must match the authenticated Organization API Key.
 opts = {
-  start_time: 'start_time_example', # String | Start of the time range in ISO 8601 format (e.g. 2026-02-01T00:00:00Z). Required unless cursor is provided. Must be within the last 90 days.
-  end_time: 'end_time_example', # String | End of the time range in ISO 8601 format. Defaults to the current time. Must be after start_time.
-  cursor: 'cursor_example', # String | Pagination cursor returned in a previous response as next_cursor. When provided, start_time and end_time are ignored.
-  limit: 56, # Integer | Maximum number of events to return per page. Minimum 1, maximum 100. Values outside this range are clamped automatically by the server.
-  app_ids: ['inner_example'], # Array<String> | Filter events by app UUID. Accepts up to 10 values. Org-level events are always included.
-  actions: ['inner_example'], # Array<String> | Filter by action type (e.g. notification.sent, segment.created). Accepts up to 20 values.
-  actor_ids: ['inner_example'], # Array<String> | Filter by actor UUID (the user or service that performed the action). Accepts up to 10 values.
-  actor_emails: ['inner_example'], # Array<String> | Filter by actor email address. Accepts up to 10 values.
-  target_types: ['inner_example'], # Array<String> | Filter by the type of resource the action was performed on (e.g. notification, segment, journey). Accepts up to 10 values.
-  target_ids: ['inner_example'], # Array<String> | Filter by the UUID of the resource the action was performed on. Accepts up to 10 values.
-  ip_addresses: ['inner_example'] # Array<String> | Filter by the IP address the action originated from. Accepts up to 10 values.
+  start_time: '2026-02-01T00:00:00Z', # String | Start of the time range in ISO 8601 format (e.g. 2026-02-01T00:00:00Z). Required unless cursor is provided. Must be within the last 90 days.
+  end_time: '2026-02-02T00:00:00Z', # String | End of the time range in ISO 8601 format. Defaults to the current time. Must be after start_time.
+  cursor: 'YOUR_NEXT_CURSOR', # String | Pagination cursor returned in a previous response as next_cursor. When provided, start_time and end_time are ignored.
+  limit: 50, # Integer | Maximum number of events to return per page. Minimum 1, maximum 100. Values outside this range are clamped automatically by the server.
+  app_ids: ['YOUR_APP_ID'], # Array<String> | Filter events by app UUID. Accepts up to 10 values. Org-level events are always included.
+  actions: ['notification.sent'], # Array<String> | Filter by action type (e.g. notification.sent, segment.created). Accepts up to 20 values.
+  actor_ids: ['YOUR_ACTOR_ID'], # Array<String> | Filter by actor UUID (the user or service that performed the action). Accepts up to 10 values.
+  actor_emails: ['admin@example.com'], # Array<String> | Filter by actor email address. Accepts up to 10 values.
+  target_types: ['notification'], # Array<String> | Filter by the type of resource the action was performed on (e.g. notification, segment, journey). Accepts up to 10 values.
+  target_ids: ['YOUR_TARGET_ID'], # Array<String> | Filter by the UUID of the resource the action was performed on. Accepts up to 10 values.
+  ip_addresses: ['203.0.113.42'] # Array<String> | Filter by the IP address the action originated from. Accepts up to 10 values.
 }
 
 begin
@@ -3213,7 +3213,7 @@ end
 api_instance = OneSignal::DefaultApi.new
 app_id = 'YOUR_APP_ID' # String | Your OneSignal App ID in UUID v4 format.
 activity_type = 'order_status' # String | The name of the Live Activity defined in your app. This should match the attributes struct used in your app's Live Activity implementation.
-start_live_activity_request = OneSignal::StartLiveActivityRequest.new({name: 'name_example', event: 'start', activity_id: 'activity_id_example', event_attributes: 3.56, event_updates: 3.56, contents: OneSignal::LanguageStringMap.new, headings: OneSignal::LanguageStringMap.new}) # StartLiveActivityRequest | 
+start_live_activity_request = OneSignal::StartLiveActivityRequest.new({name: 'YOUR_NAME', event: 'start', activity_id: 'YOUR_ACTIVITY_ID', event_attributes: {}, event_updates: {}, contents: OneSignal::LanguageStringMap.new, headings: OneSignal::LanguageStringMap.new}) # StartLiveActivityRequest | 
 
 begin
   # Start Live Activity
@@ -3773,7 +3773,7 @@ end
 api_instance = OneSignal::DefaultApi.new
 app_id = 'YOUR_APP_ID' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
 activity_id = '12345' # String | Live Activity record ID
-update_live_activity_request = OneSignal::UpdateLiveActivityRequest.new({name: 'name_example', event: 'update', event_updates: 3.56}) # UpdateLiveActivityRequest | 
+update_live_activity_request = OneSignal::UpdateLiveActivityRequest.new({name: 'YOUR_NAME', event: 'update', event_updates: {}}) # UpdateLiveActivityRequest | 
 
 begin
   # Update a Live Activity via Push
@@ -3854,7 +3854,7 @@ api_instance = OneSignal::DefaultApi.new
 app_id = 'YOUR_APP_ID' # String | The OneSignal App ID for your app.  Available in Keys & IDs.
 segment_id = 'd6c5a3e1-9f17-44a1-9d10-7c0e4a2b1c8e' # String | The segment's unique identifier. In the dashboard, go to Audience > Segments, open the segment's options menu, and select Copy segment ID. You can also get it from the View Segments API or the segment's URL in the dashboard.
 opts = {
-  update_segment_request: OneSignal::UpdateSegmentRequest.new({name: 'name_example'}) # UpdateSegmentRequest | 
+  update_segment_request: OneSignal::UpdateSegmentRequest.new({name: 'YOUR_NAME'}) # UpdateSegmentRequest | 
 }
 
 begin
@@ -4490,7 +4490,7 @@ end
 api_instance = OneSignal::DefaultApi.new
 app_id = 'YOUR_APP_ID' # String | Your OneSignal App ID in UUID v4 format.
 opts = {
-  cursor: 'cursor_example', # String | Opaque pagination token from a previous response's next_cursor. Omit for the first page.
+  cursor: 'YOUR_NEXT_CURSOR', # String | Opaque pagination token from a previous response's next_cursor. Omit for the first page.
   limit: 50 # Integer | Maximum journeys to return per page. Minimum 1, maximum 50.
 }
 
