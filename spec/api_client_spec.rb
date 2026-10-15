@@ -54,18 +54,18 @@ describe OneSignal::ApiClient do
     let(:config) { OneSignal::Configuration.new }
     let(:api_client) { OneSignal::ApiClient.new(config) }
 
-    it 'defaults to nil' do
-      expect(OneSignal::Configuration.default.params_encoding).to eq(nil)
-      expect(config.params_encoding).to eq(nil)
+    it 'defaults to :multi' do
+      expect(OneSignal::Configuration.default.params_encoding).to eq(:multi)
+      expect(config.params_encoding).to eq(:multi)
 
       request = api_client.build_request(:get, '/test')
-      expect(request.options[:params_encoding]).to eq(nil)
+      expect(request.options[:params_encoding]).to eq(:multi)
     end
 
     it 'can be customized' do
-      config.params_encoding = :multi
+      config.params_encoding = nil
       request = api_client.build_request(:get, '/test')
-      expect(request.options[:params_encoding]).to eq(:multi)
+      expect(request.options[:params_encoding]).to eq(nil)
     end
   end
 

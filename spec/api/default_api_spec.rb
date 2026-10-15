@@ -390,6 +390,38 @@ describe 'DefaultApi' do
     end
   end
 
+  # unit tests for get_email_provider_metrics
+  # Get email inbox provider metrics
+  # Email delivery, opens, clicks, bounces, failures, and spam complaints broken down by inbox provider (Gmail, Outlook, Yahoo, Apple, and more) to pinpoint where deliverability problems are coming from. Metrics are reported for a single sending domain over the requested time range. &#x60;start&#x60; must be before &#x60;end&#x60; and no more than 365 days ago. &#x60;providers&#x60; is empty when the domain is not found for the app or is not currently active for sending. 
+  # @param app_id Your OneSignal App ID in UUID v4 format.
+  # @param domain The sending domain to report on. Must be an email domain configured for this app.
+  # @param start Start of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-01T00:00:00Z&#x60;).
+  # @param _end End of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-08T00:00:00Z&#x60;).
+  # @param [Hash] opts the optional parameters
+  # @return [EmailProviderMetricsResponse]
+  describe 'get_email_provider_metrics test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
+  # unit tests for get_email_provider_metrics_timeseries
+  # Get email inbox provider metrics over time
+  # Email delivery, opens, clicks, bounces, failures, and spam complaints for a sending domain over time, bucketed by hour, day, or month. Use &#x60;providers[]&#x60; to narrow the totals to specific inbox providers (Gmail, Outlook, Yahoo, Apple, and more) and track how deliverability to them changes. Each event&#39;s metrics are totaled across the requested providers, or across all providers when none are given. &#x60;start&#x60; must be before &#x60;end&#x60; and no more than 365 days ago, or 60 days ago for &#x60;hourly&#x60; granularity. &#x60;events&#x60; is empty when the domain is not found for the app or is not currently active for sending. 
+  # @param app_id Your OneSignal App ID in UUID v4 format.
+  # @param domain The sending domain to report on. Must be an email domain configured for this app.
+  # @param start Start of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-01T00:00:00Z&#x60;).
+  # @param _end End of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-08T00:00:00Z&#x60;).
+  # @param granularity The size of each time bucket. Hourly data is only available for the last 60 days.
+  # @param [Hash] opts the optional parameters
+  # @option opts [Array<String>] :providers Inbox providers to include in the totals. Omit to include all providers. Accepted values: &#x60;apple&#x60;, &#x60;att&#x60;, &#x60;canadian&#x60;, &#x60;chinese&#x60;, &#x60;comcast&#x60;, &#x60;free_fr&#x60;, &#x60;french&#x60;, &#x60;german&#x60;, &#x60;gmail&#x60;, &#x60;google_workspace&#x60;, &#x60;googlers&#x60;, &#x60;inbox_lv&#x60;, &#x60;italian&#x60;, &#x60;japanese&#x60;, &#x60;outlook_365&#x60;, &#x60;outlook_eu&#x60;, &#x60;outlook_us&#x60;, &#x60;proton&#x60;, &#x60;rackspace&#x60;, &#x60;russian&#x60;, &#x60;uk&#x60;, &#x60;united_online&#x60;, &#x60;yahoo_eu&#x60;, &#x60;yahoo_us&#x60;, &#x60;other_eu&#x60;, &#x60;other_us&#x60;, and &#x60;other&#x60;. Example: providers[]&#x3D;gmail&amp;providers[]&#x3D;yahoo_us 
+  # @return [EmailProviderMetricsTimeseriesResponse]
+  describe 'get_email_provider_metrics_timeseries test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get_email_reputation
   # Get email reputation statistics
   # The email bounce and spam complaint rates received for the app over the last 24 hours, 7 days, and 30 days. Rates are expressed as fractions of successfully delivered emails (for example, &#x60;0.02&#x60; means 2%). A window reports &#x60;0&#x60; for both rates when the app has not successfully delivered any email in that period. 

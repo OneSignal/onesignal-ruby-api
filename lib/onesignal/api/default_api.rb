@@ -2023,6 +2023,189 @@ module OneSignal
       return data, status_code, headers
     end
 
+    # Get email inbox provider metrics
+    # Email delivery, opens, clicks, bounces, failures, and spam complaints broken down by inbox provider (Gmail, Outlook, Yahoo, Apple, and more) to pinpoint where deliverability problems are coming from. Metrics are reported for a single sending domain over the requested time range. `start` must be before `end` and no more than 365 days ago. `providers` is empty when the domain is not found for the app or is not currently active for sending. 
+    # @param app_id [String] Your OneSignal App ID in UUID v4 format.
+    # @param domain [String] The sending domain to report on. Must be an email domain configured for this app.
+    # @param start [Time] Start of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-01T00:00:00Z&#x60;).
+    # @param _end [Time] End of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-08T00:00:00Z&#x60;).
+    # @param [Hash] opts the optional parameters
+    # @return [EmailProviderMetricsResponse]
+    def get_email_provider_metrics(app_id, domain, start, _end, opts = {})
+      data, _status_code, _headers = get_email_provider_metrics_with_http_info(app_id, domain, start, _end, opts)
+      data
+    end
+
+    # Get email inbox provider metrics
+    # Email delivery, opens, clicks, bounces, failures, and spam complaints broken down by inbox provider (Gmail, Outlook, Yahoo, Apple, and more) to pinpoint where deliverability problems are coming from. Metrics are reported for a single sending domain over the requested time range. &#x60;start&#x60; must be before &#x60;end&#x60; and no more than 365 days ago. &#x60;providers&#x60; is empty when the domain is not found for the app or is not currently active for sending. 
+    # @param app_id [String] Your OneSignal App ID in UUID v4 format.
+    # @param domain [String] The sending domain to report on. Must be an email domain configured for this app.
+    # @param start [Time] Start of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-01T00:00:00Z&#x60;).
+    # @param _end [Time] End of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-08T00:00:00Z&#x60;).
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(EmailProviderMetricsResponse, Integer, Hash)>] EmailProviderMetricsResponse data, response status code and response headers
+    def get_email_provider_metrics_with_http_info(app_id, domain, start, _end, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_email_provider_metrics ...'
+      end
+      # verify the required parameter 'app_id' is set
+      if @api_client.config.client_side_validation && app_id.nil?
+        fail ArgumentError, "Missing the required parameter 'app_id' when calling DefaultApi.get_email_provider_metrics"
+      end
+      # verify the required parameter 'domain' is set
+      if @api_client.config.client_side_validation && domain.nil?
+        fail ArgumentError, "Missing the required parameter 'domain' when calling DefaultApi.get_email_provider_metrics"
+      end
+      # verify the required parameter 'start' is set
+      if @api_client.config.client_side_validation && start.nil?
+        fail ArgumentError, "Missing the required parameter 'start' when calling DefaultApi.get_email_provider_metrics"
+      end
+      # verify the required parameter '_end' is set
+      if @api_client.config.client_side_validation && _end.nil?
+        fail ArgumentError, "Missing the required parameter '_end' when calling DefaultApi.get_email_provider_metrics"
+      end
+      # resource path
+      local_var_path = '/apps/{app_id}/email_analytics/provider_metrics'.sub('{' + 'app_id' + '}', CGI.escape(app_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'domain'] = domain
+      query_params[:'start'] = start
+      query_params[:'end'] = _end
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EmailProviderMetricsResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['rest_api_key']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_email_provider_metrics",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_email_provider_metrics\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # Get email inbox provider metrics over time
+    # Email delivery, opens, clicks, bounces, failures, and spam complaints for a sending domain over time, bucketed by hour, day, or month. Use `providers[]` to narrow the totals to specific inbox providers (Gmail, Outlook, Yahoo, Apple, and more) and track how deliverability to them changes. Each event's metrics are totaled across the requested providers, or across all providers when none are given. `start` must be before `end` and no more than 365 days ago, or 60 days ago for `hourly` granularity. `events` is empty when the domain is not found for the app or is not currently active for sending. 
+    # @param app_id [String] Your OneSignal App ID in UUID v4 format.
+    # @param domain [String] The sending domain to report on. Must be an email domain configured for this app.
+    # @param start [Time] Start of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-01T00:00:00Z&#x60;).
+    # @param _end [Time] End of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-08T00:00:00Z&#x60;).
+    # @param granularity [String] The size of each time bucket. Hourly data is only available for the last 60 days.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<String>] :providers Inbox providers to include in the totals. Omit to include all providers. Accepted values: &#x60;apple&#x60;, &#x60;att&#x60;, &#x60;canadian&#x60;, &#x60;chinese&#x60;, &#x60;comcast&#x60;, &#x60;free_fr&#x60;, &#x60;french&#x60;, &#x60;german&#x60;, &#x60;gmail&#x60;, &#x60;google_workspace&#x60;, &#x60;googlers&#x60;, &#x60;inbox_lv&#x60;, &#x60;italian&#x60;, &#x60;japanese&#x60;, &#x60;outlook_365&#x60;, &#x60;outlook_eu&#x60;, &#x60;outlook_us&#x60;, &#x60;proton&#x60;, &#x60;rackspace&#x60;, &#x60;russian&#x60;, &#x60;uk&#x60;, &#x60;united_online&#x60;, &#x60;yahoo_eu&#x60;, &#x60;yahoo_us&#x60;, &#x60;other_eu&#x60;, &#x60;other_us&#x60;, and &#x60;other&#x60;. Example: providers[]&#x3D;gmail&amp;providers[]&#x3D;yahoo_us 
+    # @return [EmailProviderMetricsTimeseriesResponse]
+    def get_email_provider_metrics_timeseries(app_id, domain, start, _end, granularity, opts = {})
+      data, _status_code, _headers = get_email_provider_metrics_timeseries_with_http_info(app_id, domain, start, _end, granularity, opts)
+      data
+    end
+
+    # Get email inbox provider metrics over time
+    # Email delivery, opens, clicks, bounces, failures, and spam complaints for a sending domain over time, bucketed by hour, day, or month. Use &#x60;providers[]&#x60; to narrow the totals to specific inbox providers (Gmail, Outlook, Yahoo, Apple, and more) and track how deliverability to them changes. Each event&#39;s metrics are totaled across the requested providers, or across all providers when none are given. &#x60;start&#x60; must be before &#x60;end&#x60; and no more than 365 days ago, or 60 days ago for &#x60;hourly&#x60; granularity. &#x60;events&#x60; is empty when the domain is not found for the app or is not currently active for sending. 
+    # @param app_id [String] Your OneSignal App ID in UUID v4 format.
+    # @param domain [String] The sending domain to report on. Must be an email domain configured for this app.
+    # @param start [Time] Start of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-01T00:00:00Z&#x60;).
+    # @param _end [Time] End of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-08T00:00:00Z&#x60;).
+    # @param granularity [String] The size of each time bucket. Hourly data is only available for the last 60 days.
+    # @param [Hash] opts the optional parameters
+    # @option opts [Array<String>] :providers Inbox providers to include in the totals. Omit to include all providers. Accepted values: &#x60;apple&#x60;, &#x60;att&#x60;, &#x60;canadian&#x60;, &#x60;chinese&#x60;, &#x60;comcast&#x60;, &#x60;free_fr&#x60;, &#x60;french&#x60;, &#x60;german&#x60;, &#x60;gmail&#x60;, &#x60;google_workspace&#x60;, &#x60;googlers&#x60;, &#x60;inbox_lv&#x60;, &#x60;italian&#x60;, &#x60;japanese&#x60;, &#x60;outlook_365&#x60;, &#x60;outlook_eu&#x60;, &#x60;outlook_us&#x60;, &#x60;proton&#x60;, &#x60;rackspace&#x60;, &#x60;russian&#x60;, &#x60;uk&#x60;, &#x60;united_online&#x60;, &#x60;yahoo_eu&#x60;, &#x60;yahoo_us&#x60;, &#x60;other_eu&#x60;, &#x60;other_us&#x60;, and &#x60;other&#x60;. Example: providers[]&#x3D;gmail&amp;providers[]&#x3D;yahoo_us 
+    # @return [Array<(EmailProviderMetricsTimeseriesResponse, Integer, Hash)>] EmailProviderMetricsTimeseriesResponse data, response status code and response headers
+    def get_email_provider_metrics_timeseries_with_http_info(app_id, domain, start, _end, granularity, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_email_provider_metrics_timeseries ...'
+      end
+      # verify the required parameter 'app_id' is set
+      if @api_client.config.client_side_validation && app_id.nil?
+        fail ArgumentError, "Missing the required parameter 'app_id' when calling DefaultApi.get_email_provider_metrics_timeseries"
+      end
+      # verify the required parameter 'domain' is set
+      if @api_client.config.client_side_validation && domain.nil?
+        fail ArgumentError, "Missing the required parameter 'domain' when calling DefaultApi.get_email_provider_metrics_timeseries"
+      end
+      # verify the required parameter 'start' is set
+      if @api_client.config.client_side_validation && start.nil?
+        fail ArgumentError, "Missing the required parameter 'start' when calling DefaultApi.get_email_provider_metrics_timeseries"
+      end
+      # verify the required parameter '_end' is set
+      if @api_client.config.client_side_validation && _end.nil?
+        fail ArgumentError, "Missing the required parameter '_end' when calling DefaultApi.get_email_provider_metrics_timeseries"
+      end
+      # verify the required parameter 'granularity' is set
+      if @api_client.config.client_side_validation && granularity.nil?
+        fail ArgumentError, "Missing the required parameter 'granularity' when calling DefaultApi.get_email_provider_metrics_timeseries"
+      end
+      # verify enum value
+      allowable_values = ["hourly", "daily", "monthly"]
+      if @api_client.config.client_side_validation && !allowable_values.include?(granularity)
+        fail ArgumentError, "invalid value for \"granularity\", must be one of #{allowable_values}"
+      end
+      # resource path
+      local_var_path = '/apps/{app_id}/email_analytics/provider_metrics_timeseries'.sub('{' + 'app_id' + '}', CGI.escape(app_id.to_s))
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'domain'] = domain
+      query_params[:'start'] = start
+      query_params[:'end'] = _end
+      query_params[:'granularity'] = granularity
+      query_params[:'providers[]'] = @api_client.build_collection_param(opts[:'providers'], :multi) if !opts[:'providers'].nil?
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'EmailProviderMetricsTimeseriesResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || ['rest_api_key']
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_email_provider_metrics_timeseries",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_email_provider_metrics_timeseries\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # Get email reputation statistics
     # The email bounce and spam complaint rates received for the app over the last 24 hours, 7 days, and 30 days. Rates are expressed as fractions of successfully delivered emails (for example, `0.02` means 2%). A window reports `0` for both rates when the app has not successfully delivered any email in that period. 
     # @param app_id [String] Your OneSignal App ID in UUID v4 format.
