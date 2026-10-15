@@ -102,7 +102,9 @@ module OneSignal
     attr_accessor :key_file
 
     # Set this to customize parameters encoding of array parameter with multi collectionFormat.
-    # Default to nil.
+    # Defaults to :multi, which sends arrays as repeated keys (ids=a&ids=b), matching
+    # OpenAPI `style: form, explode: true`. nil falls back to Ethon's default
+    # (ids[0]=a&ids[1]=b).
     #
     # @see The params_encoding option of Ethon. Related source code:
     # https://github.com/typhoeus/ethon/blob/master/lib/ethon/easy/queryable.rb#L96
@@ -128,7 +130,7 @@ module OneSignal
       @cert_file = nil
       @key_file = nil
       @timeout = 0
-      @params_encoding = nil
+      @params_encoding = :multi
       @debugging = false
       @inject_format = false
       @force_ending_format = false

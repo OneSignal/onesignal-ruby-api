@@ -32,6 +32,8 @@ All URIs are relative to *https://api.onesignal.com*
 | [**get_aliases_by_subscription**](DefaultApi.md#get_aliases_by_subscription) | **GET** /apps/{app_id}/subscriptions/{subscription_id}/user/identity |  |
 | [**get_app**](DefaultApi.md#get_app) | **GET** /apps/{app_id} | View an app |
 | [**get_apps**](DefaultApi.md#get_apps) | **GET** /apps | View apps |
+| [**get_email_provider_metrics**](DefaultApi.md#get_email_provider_metrics) | **GET** /apps/{app_id}/email_analytics/provider_metrics | Get email inbox provider metrics |
+| [**get_email_provider_metrics_timeseries**](DefaultApi.md#get_email_provider_metrics_timeseries) | **GET** /apps/{app_id}/email_analytics/provider_metrics_timeseries | Get email inbox provider metrics over time |
 | [**get_email_reputation**](DefaultApi.md#get_email_reputation) | **GET** /apps/{app_id}/email_analytics/delivery_metrics | Get email reputation statistics |
 | [**get_notification**](DefaultApi.md#get_notification) | **GET** /notifications/{notification_id} | View notification |
 | [**get_notification_history**](DefaultApi.md#get_notification_history) | **POST** /notifications/{notification_id}/history | Notification History |
@@ -2356,6 +2358,176 @@ This endpoint does not need any parameter.
 ### Authorization
 
 [organization_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_email_provider_metrics
+
+> <EmailProviderMetricsResponse> get_email_provider_metrics(app_id, domain, start, _end)
+
+Get email inbox provider metrics
+
+Email delivery, opens, clicks, bounces, failures, and spam complaints broken down by inbox provider (Gmail, Outlook, Yahoo, Apple, and more) to pinpoint where deliverability problems are coming from. Metrics are reported for a single sending domain over the requested time range. `start` must be before `end` and no more than 365 days ago. `providers` is empty when the domain is not found for the app or is not currently active for sending. 
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_REST_API_KEY'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'YOUR_APP_ID' # String | Your OneSignal App ID in UUID v4 format.
+domain = 'mail.example.com' # String | The sending domain to report on. Must be an email domain configured for this app.
+start = Time.parse('2026-08-01T00:00Z') # Time | Start of the reporting window, as an ISO 8601 timestamp (for example, `2026-08-01T00:00:00Z`).
+_end = Time.parse('2026-08-08T00:00Z') # Time | End of the reporting window, as an ISO 8601 timestamp (for example, `2026-08-08T00:00:00Z`).
+
+begin
+  # Get email inbox provider metrics
+  result = api_instance.get_email_provider_metrics(app_id, domain, start, _end)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->get_email_provider_metrics: #{e}"
+  puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+#### Using the get_email_provider_metrics_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EmailProviderMetricsResponse>, Integer, Hash)> get_email_provider_metrics_with_http_info(app_id, domain, start, _end)
+
+```ruby
+begin
+  # Get email inbox provider metrics
+  data, status_code, headers = api_instance.get_email_provider_metrics_with_http_info(app_id, domain, start, _end)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EmailProviderMetricsResponse>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->get_email_provider_metrics_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | Your OneSignal App ID in UUID v4 format. |  |
+| **domain** | **String** | The sending domain to report on. Must be an email domain configured for this app. |  |
+| **start** | **Time** | Start of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-01T00:00:00Z&#x60;). |  |
+| **_end** | **Time** | End of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-08T00:00:00Z&#x60;). |  |
+
+### Return type
+
+[**EmailProviderMetricsResponse**](EmailProviderMetricsResponse.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## get_email_provider_metrics_timeseries
+
+> <EmailProviderMetricsTimeseriesResponse> get_email_provider_metrics_timeseries(app_id, domain, start, _end, granularity, opts)
+
+Get email inbox provider metrics over time
+
+Email delivery, opens, clicks, bounces, failures, and spam complaints for a sending domain over time, bucketed by hour, day, or month. Use `providers[]` to narrow the totals to specific inbox providers (Gmail, Outlook, Yahoo, Apple, and more) and track how deliverability to them changes. Each event's metrics are totaled across the requested providers, or across all providers when none are given. `start` must be before `end` and no more than 365 days ago, or 60 days ago for `hourly` granularity. `events` is empty when the domain is not found for the app or is not currently active for sending. 
+
+### Examples
+
+```ruby
+require 'onesignal'
+# setup authorization
+OneSignal.configure do |config|
+  # Configure Bearer authorization: rest_api_key
+  config.rest_api_key = 'YOUR_REST_API_KEY'
+
+end
+
+api_instance = OneSignal::DefaultApi.new
+app_id = 'YOUR_APP_ID' # String | Your OneSignal App ID in UUID v4 format.
+domain = 'mail.example.com' # String | The sending domain to report on. Must be an email domain configured for this app.
+start = Time.parse('2026-08-01T00:00Z') # Time | Start of the reporting window, as an ISO 8601 timestamp (for example, `2026-08-01T00:00:00Z`).
+_end = Time.parse('2026-08-08T00:00Z') # Time | End of the reporting window, as an ISO 8601 timestamp (for example, `2026-08-08T00:00:00Z`).
+granularity = 'hourly' # String | The size of each time bucket. Hourly data is only available for the last 60 days.
+opts = {
+  providers: ['gmail'] # Array<String> | Inbox providers to include in the totals. Omit to include all providers. Accepted values: `apple`, `att`, `canadian`, `chinese`, `comcast`, `free_fr`, `french`, `german`, `gmail`, `google_workspace`, `googlers`, `inbox_lv`, `italian`, `japanese`, `outlook_365`, `outlook_eu`, `outlook_us`, `proton`, `rackspace`, `russian`, `uk`, `united_online`, `yahoo_eu`, `yahoo_us`, `other_eu`, `other_us`, and `other`. Example: providers[]=gmail&providers[]=yahoo_us 
+}
+
+begin
+  # Get email inbox provider metrics over time
+  result = api_instance.get_email_provider_metrics_timeseries(app_id, domain, start, _end, granularity, opts)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->get_email_provider_metrics_timeseries: #{e}"
+  puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+#### Using the get_email_provider_metrics_timeseries_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<EmailProviderMetricsTimeseriesResponse>, Integer, Hash)> get_email_provider_metrics_timeseries_with_http_info(app_id, domain, start, _end, granularity, opts)
+
+```ruby
+begin
+  # Get email inbox provider metrics over time
+  data, status_code, headers = api_instance.get_email_provider_metrics_timeseries_with_http_info(app_id, domain, start, _end, granularity, opts)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <EmailProviderMetricsTimeseriesResponse>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->get_email_provider_metrics_timeseries_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **app_id** | **String** | Your OneSignal App ID in UUID v4 format. |  |
+| **domain** | **String** | The sending domain to report on. Must be an email domain configured for this app. |  |
+| **start** | **Time** | Start of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-01T00:00:00Z&#x60;). |  |
+| **_end** | **Time** | End of the reporting window, as an ISO 8601 timestamp (for example, &#x60;2026-08-08T00:00:00Z&#x60;). |  |
+| **granularity** | **String** | The size of each time bucket. Hourly data is only available for the last 60 days. |  |
+| **providers** | [**Array&lt;String&gt;**](String.md) | Inbox providers to include in the totals. Omit to include all providers. Accepted values: &#x60;apple&#x60;, &#x60;att&#x60;, &#x60;canadian&#x60;, &#x60;chinese&#x60;, &#x60;comcast&#x60;, &#x60;free_fr&#x60;, &#x60;french&#x60;, &#x60;german&#x60;, &#x60;gmail&#x60;, &#x60;google_workspace&#x60;, &#x60;googlers&#x60;, &#x60;inbox_lv&#x60;, &#x60;italian&#x60;, &#x60;japanese&#x60;, &#x60;outlook_365&#x60;, &#x60;outlook_eu&#x60;, &#x60;outlook_us&#x60;, &#x60;proton&#x60;, &#x60;rackspace&#x60;, &#x60;russian&#x60;, &#x60;uk&#x60;, &#x60;united_online&#x60;, &#x60;yahoo_eu&#x60;, &#x60;yahoo_us&#x60;, &#x60;other_eu&#x60;, &#x60;other_us&#x60;, and &#x60;other&#x60;. Example: providers[]&#x3D;gmail&amp;providers[]&#x3D;yahoo_us  | [optional] |
+
+### Return type
+
+[**EmailProviderMetricsTimeseriesResponse**](EmailProviderMetricsTimeseriesResponse.md)
+
+### Authorization
+
+[rest_api_key](https://github.com/OneSignal/onesignal-ruby-api#configuration)
 
 ### HTTP request headers
 

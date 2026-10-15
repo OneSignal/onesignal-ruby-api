@@ -6,15 +6,15 @@ OneSignal - the Ruby gem for OneSignal
 
 A powerful way to send personalized messages at scale and build effective customer engagement strategies. Learn more at onesignal.com
 
-- API version: 5.17.0
-- Package version: 5.17.0
+- API version: 5.18.0
+- Package version: 5.18.0
 
 ## Installation
 
 Add to your `Gemfile`:
 
 ```ruby
-gem 'onesignal', '~> 5.17.0'
+gem 'onesignal', '~> 5.18.0'
 ```
 
 Then run `bundle install`.
