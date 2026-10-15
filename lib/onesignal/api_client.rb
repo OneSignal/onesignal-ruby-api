@@ -96,6 +96,7 @@ module OneSignal
       follow_location = opts[:follow_location] || true
 
       update_params_for_auth! header_params, query_params, opts[:auth_names]
+      query_params = serialize_query_params(query_params)
 
       # set ssl_verifyhosts option based on @config.verify_ssl_host (true/false)
       _verify_ssl_host = @config.verify_ssl_host ? 2 : 0
@@ -386,6 +387,28 @@ module OneSignal
         param
       else
         fail "unknown collection format: #{collection_format.inspect}"
+      end
+    end
+
+    # Serialize query parameter values for the wire.
+    # Time, DateTime and Date values are sent as ISO 8601 (Time#to_s is not),
+    # including inside arrays; other values are passed through unchanged.
+    # @param [Hash] query_params Query parameters
+    # @return [Hash] Query parameters with serialized values
+    def serialize_query_params(query_params)
+      query_params.transform_values { |value| serialize_query_value(value) }
+    end
+
+    # @param [Object] value Query parameter value
+    # @return [Object] ISO 8601 string for Time/Date values, the value otherwise
+    def serialize_query_value(value)
+      case value
+      when Array
+        value.map { |item| serialize_query_value(item) }
+      when Time, Date
+        value.iso8601
+      else
+        value
       end
     end
   end
