@@ -1,5 +1,12 @@
 # Changelog
 
+## [5.19.0](https://github.com/OneSignal/onesignal-ruby-api/compare/v5.18.0...v5.19.0) (2026-11-20)
+
+### Features
+
+* add v5.19.0 package updates ([ad2cfe3](https://github.com/OneSignal/onesignal-ruby-api/commit/ad2cfe35980d7b56313e855af5be2b5dab4b8e03))
+* add v5.19.0 package updates ([#140](https://github.com/OneSignal/onesignal-ruby-api/issues/140)) ([59cfffe](https://github.com/OneSignal/onesignal-ruby-api/commit/59cfffe21c4c8f44352a9a9df37ea620c8a1533c)), closes [OneSignal/api-client-libraries#483](https://github.com/OneSignal/api-client-libraries/issues/483) [OneSignal/api-client-libraries#482](https://github.com/OneSignal/api-client-libraries/issues/482)
+
 ## [5.18.0](https://github.com/OneSignal/onesignal-ruby-api/compare/v5.17.0...v5.18.0) (2026-10-15)
 
 ### Features
