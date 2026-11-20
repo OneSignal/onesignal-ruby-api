@@ -35,6 +35,7 @@ All URIs are relative to *https://api.onesignal.com*
 | [**get_email_provider_metrics**](DefaultApi.md#get_email_provider_metrics) | **GET** /apps/{app_id}/email_analytics/provider_metrics | Get email inbox provider metrics |
 | [**get_email_provider_metrics_timeseries**](DefaultApi.md#get_email_provider_metrics_timeseries) | **GET** /apps/{app_id}/email_analytics/provider_metrics_timeseries | Get email inbox provider metrics over time |
 | [**get_email_reputation**](DefaultApi.md#get_email_reputation) | **GET** /apps/{app_id}/email_analytics/delivery_metrics | Get email reputation statistics |
+| [**get_journey_schema**](DefaultApi.md#get_journey_schema) | **GET** /journeys/schema | Get Journey schema |
 | [**get_notification**](DefaultApi.md#get_notification) | **GET** /notifications/{notification_id} | View notification |
 | [**get_notification_history**](DefaultApi.md#get_notification_history) | **POST** /notifications/{notification_id}/history | Notification History |
 | [**get_notifications**](DefaultApi.md#get_notifications) | **GET** /notifications | View notifications |
@@ -2611,6 +2612,76 @@ end
 - **Accept**: application/json
 
 
+## get_journey_schema
+
+> <JourneySchemaResponse> get_journey_schema(operation)
+
+Get Journey schema
+
+Retrieve the JSON Schema for a Journey authoring operation without authentication or app context. The response identifies the document to validate. Schema retrieval does not validate permissions or business rules for a later write.
+
+### Examples
+
+```ruby
+require 'onesignal'
+
+api_instance = OneSignal::DefaultApi.new
+operation = 'create' # String | The authoring operation whose schema you need.
+
+begin
+  # Get Journey schema
+  result = api_instance.get_journey_schema(operation)
+  p result
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->get_journey_schema: #{e}"
+  puts "Status Code: #{e.code}"
+  # `e.error_messages` flattens any error-envelope shape to an Array<String>;
+  # the raw body remains on `e.response_body`.
+  puts "Error Messages: #{e.error_messages}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+#### Using the get_journey_schema_with_http_info variant
+
+This returns an Array which contains the response data, status code and headers.
+
+> <Array(<JourneySchemaResponse>, Integer, Hash)> get_journey_schema_with_http_info(operation)
+
+```ruby
+begin
+  # Get Journey schema
+  data, status_code, headers = api_instance.get_journey_schema_with_http_info(operation)
+  p status_code # => 2xx
+  p headers # => { ... }
+  p data # => <JourneySchemaResponse>
+rescue OneSignal::ApiError => e
+  puts "Error when calling DefaultApi->get_journey_schema_with_http_info: #{e}"
+  puts "Status Code: #{e.code}"
+  puts "Response Body: #{e.response_body}"
+end
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+| ---- | ---- | ----------- | ----- |
+| **operation** | **String** | The authoring operation whose schema you need. |  |
+
+### Return type
+
+[**JourneySchemaResponse**](JourneySchemaResponse.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
 ## get_notification
 
 > <NotificationWithMeta> get_notification(app_id, notification_id)
@@ -4824,7 +4895,8 @@ app_id = 'YOUR_APP_ID' # String | Your OneSignal App ID in UUID v4 format.
 opts = {
   limit: 10, # Integer | Maximum number of templates. Default and max is 50.
   offset: 0, # Integer | Pagination offset.
-  channel: 'push' # String | Filter by delivery channel.
+  channel: 'push', # String | Filter by delivery channel.
+  name: 'Welcome' # String | Return only templates whose name contains this text, ignoring case.
 }
 
 begin
@@ -4869,6 +4941,7 @@ end
 | **limit** | **Integer** | Maximum number of templates. Default and max is 50. | [optional][default to 50] |
 | **offset** | **Integer** | Pagination offset. | [optional][default to 0] |
 | **channel** | **String** | Filter by delivery channel. | [optional] |
+| **name** | **String** | Return only templates whose name contains this text, ignoring case. | [optional] |
 
 ### Return type
 
