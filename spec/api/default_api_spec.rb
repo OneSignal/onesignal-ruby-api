@@ -434,6 +434,18 @@ describe 'DefaultApi' do
     end
   end
 
+  # unit tests for get_journey_schema
+  # Get Journey schema
+  # Retrieve the JSON Schema for a Journey authoring operation without authentication or app context. The response identifies the document to validate. Schema retrieval does not validate permissions or business rules for a later write.
+  # @param operation The authoring operation whose schema you need.
+  # @param [Hash] opts the optional parameters
+  # @return [JourneySchemaResponse]
+  describe 'get_journey_schema test' do
+    it 'should work' do
+      # assertion here. ref: https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers
+    end
+  end
+
   # unit tests for get_notification
   # View notification
   # View the details of a single notification and outcomes associated with it
@@ -824,6 +836,7 @@ describe 'DefaultApi' do
   # @option opts [Integer] :limit Maximum number of templates. Default and max is 50.
   # @option opts [Integer] :offset Pagination offset.
   # @option opts [String] :channel Filter by delivery channel.
+  # @option opts [String] :name Return only templates whose name contains this text, ignoring case.
   # @return [TemplatesListResponse]
   describe 'view_templates test' do
     it 'should work' do

@@ -2269,6 +2269,75 @@ module OneSignal
       return data, status_code, headers
     end
 
+    # Get Journey schema
+    # Retrieve the JSON Schema for a Journey authoring operation without authentication or app context. The response identifies the document to validate. Schema retrieval does not validate permissions or business rules for a later write.
+    # @param operation [String] The authoring operation whose schema you need.
+    # @param [Hash] opts the optional parameters
+    # @return [JourneySchemaResponse]
+    def get_journey_schema(operation, opts = {})
+      data, _status_code, _headers = get_journey_schema_with_http_info(operation, opts)
+      data
+    end
+
+    # Get Journey schema
+    # Retrieve the JSON Schema for a Journey authoring operation without authentication or app context. The response identifies the document to validate. Schema retrieval does not validate permissions or business rules for a later write.
+    # @param operation [String] The authoring operation whose schema you need.
+    # @param [Hash] opts the optional parameters
+    # @return [Array<(JourneySchemaResponse, Integer, Hash)>] JourneySchemaResponse data, response status code and response headers
+    def get_journey_schema_with_http_info(operation, opts = {})
+      if @api_client.config.debugging
+        @api_client.config.logger.debug 'Calling API: DefaultApi.get_journey_schema ...'
+      end
+      # verify the required parameter 'operation' is set
+      if @api_client.config.client_side_validation && operation.nil?
+        fail ArgumentError, "Missing the required parameter 'operation' when calling DefaultApi.get_journey_schema"
+      end
+      # verify enum value
+      allowable_values = ["create", "duplicate", "update", "update_node"]
+      if @api_client.config.client_side_validation && !allowable_values.include?(operation)
+        fail ArgumentError, "invalid value for \"operation\", must be one of #{allowable_values}"
+      end
+      # resource path
+      local_var_path = '/journeys/schema'
+
+      # query parameters
+      query_params = opts[:query_params] || {}
+      query_params[:'operation'] = operation
+
+      # header parameters
+      header_params = opts[:header_params] || {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+
+      # form parameters
+      form_params = opts[:form_params] || {}
+
+      # http body (model)
+      post_body = opts[:debug_body]
+
+      # return_type
+      return_type = opts[:debug_return_type] || 'JourneySchemaResponse'
+
+      # auth_names
+      auth_names = opts[:debug_auth_names] || []
+
+      new_options = opts.merge(
+        :operation => :"DefaultApi.get_journey_schema",
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => return_type
+      )
+
+      data, status_code, headers = @api_client.call_api(:GET, local_var_path, new_options)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DefaultApi#get_journey_schema\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
     # View notification
     # View the details of a single notification and outcomes associated with it
     # @param app_id [String] 
@@ -4376,6 +4445,7 @@ module OneSignal
     # @option opts [Integer] :limit Maximum number of templates. Default and max is 50. (default to 50)
     # @option opts [Integer] :offset Pagination offset. (default to 0)
     # @option opts [String] :channel Filter by delivery channel.
+    # @option opts [String] :name Return only templates whose name contains this text, ignoring case.
     # @return [TemplatesListResponse]
     def view_templates(app_id, opts = {})
       data, _status_code, _headers = view_templates_with_http_info(app_id, opts)
@@ -4389,6 +4459,7 @@ module OneSignal
     # @option opts [Integer] :limit Maximum number of templates. Default and max is 50. (default to 50)
     # @option opts [Integer] :offset Pagination offset. (default to 0)
     # @option opts [String] :channel Filter by delivery channel.
+    # @option opts [String] :name Return only templates whose name contains this text, ignoring case.
     # @return [Array<(TemplatesListResponse, Integer, Hash)>] TemplatesListResponse data, response status code and response headers
     def view_templates_with_http_info(app_id, opts = {})
       if @api_client.config.debugging
@@ -4411,6 +4482,7 @@ module OneSignal
       query_params[:'limit'] = opts[:'limit'] if !opts[:'limit'].nil?
       query_params[:'offset'] = opts[:'offset'] if !opts[:'offset'].nil?
       query_params[:'channel'] = opts[:'channel'] if !opts[:'channel'].nil?
+      query_params[:'name'] = opts[:'name'] if !opts[:'name'].nil?
 
       # header parameters
       header_params = opts[:header_params] || {}
